@@ -10,7 +10,7 @@ import { MainService } from '../../../core/main/main.service';
 export class LoginComponent implements OnInit {
   @ViewChild('openModal') openModal;
   constructor(
-    private shared: SharedService,
+    public shared: SharedService,
     private main: MainService
   ) { }
 

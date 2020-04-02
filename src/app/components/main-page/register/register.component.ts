@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SharedService } from '../../../core/shared/shared.service';
+import { MainService } from '../../../core/main/main.service';
 
 @Component({
   selector: 'app-register',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild('openRegister') openRegister;
+  constructor(
+    public shared: SharedService,
+    private main: MainService,
+  ) { }
 
   ngOnInit(): void {
+    this.shared.openRegister.subscribe(res => {
+      this.openRegister.nativeElement.click();
+    });
   }
 
 }

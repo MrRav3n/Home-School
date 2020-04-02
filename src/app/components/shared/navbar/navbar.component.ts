@@ -9,11 +9,7 @@ import { SharedService } from '../../../core/shared/shared.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private shared: SharedService) { }
+  constructor(public shared: SharedService) { }
   ngOnInit(): void {
   }
-  openLogin() {
-    this.shared.openLoginModal();
-  }
-
 }

@@ -9,7 +9,8 @@ import { WelcomeComponent } from './components/welcome-page/welcome/welcome.comp
 import { MainPageComponent } from './components/main-page/main-page/main-page.component';
 import { LoginComponent } from './components/main-page/login/login.component';
 import { RegisterComponent } from './components/main-page/register/register.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +21,16 @@ import { RegisterComponent } from './components/main-page/register/register.comp
     LoginComponent,
     RegisterComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        ToastrModule.forRoot({
+          timeOut: 10000,
+          positionClass: 'toast-top-right',
+          preventDuplicates: true,
+        }),
+    ],
   providers: [SharedService],
   bootstrap: [AppComponent]
 })

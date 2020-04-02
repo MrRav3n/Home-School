@@ -1,6 +1,7 @@
 .btn {
-  border-radius: 12px;
+  border-radius: var(--rad);
+  background-color: var(--submit);
 }
 .form-control {
-  border-radius: 12px;
+  border-radius: var(--rad);
 }

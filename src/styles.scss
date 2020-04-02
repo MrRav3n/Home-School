@@ -4,3 +4,10 @@ body, html {
   height: 100%;
   font-family: Lato, serif;
 }
+.main {
+  --main: #ff3128; //main color
+  --rad: 12px; //radious
+  --submit: #6642ff; //color of submit buttons
+  --warn: #ff6421; //color of warn buttons
+  --dark: #3c8046;
+}

@@ -30,7 +30,8 @@
             "styles": [
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/app/inputs.css"
+              "src/app/inputs.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",

@@ -1,7 +1,7 @@
 .modal-content {
   position: relative;
   padding: 1rem;
-  border-radius: 12px;
+  border-radius: var(--rad);
 }
 .modal-title {
   text-align: center;
@@ -10,7 +10,7 @@
 }
 .btn-primary {
   width: 60%;
-  border-radius: 12px;
+  border-radius: var(--rad);
 }
 .transformUnder {
   width: 100%;

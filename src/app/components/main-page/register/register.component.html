@@ -6,12 +6,20 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <h5 class="modal-title" id="exampleModalCenterTitle">Zarejestruj się</h5>
-      <form>
-        <div class="form-group">
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adres email">
+      <form [formGroup]="registerForm">
+        <div class="form-group row justify-content-around">
+          <div class="col-4 role" (click)="select(0)" [ngClass]="{'roleSelected': selectedRole === 0}">Uczeń</div>
+          <div class="col-4 role" (click)="select(1)" [ngClass]="{'roleSelected': selectedRole === 1}">Nauczyciel</div>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Hasło">
+          <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" formControlName="email"
+                 placeholder="Adres email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="registerPassword" placeholder="Hasło" formControlName="password">
+        </div>
+        <div class="form-group" *ngIf="!selectedRole">
+          <input type="text" class="form-control" id="studentCode" placeholder="Kod dostępu">
         </div>
         <div class="row justify-content-center">
           <button type="submit" class="btn btn-primary">Wyślij</button>

@@ -7,6 +7,8 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { WelcomeComponent } from './components/welcome-page/welcome/welcome.component';
 import { MainPageComponent } from './components/main-page/main-page/main-page.component';
+import { LoginComponent } from './components/main-page/login/login.component';
+import { RegisterComponent } from './components/main-page/register/register.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { MainPageComponent } from './components/main-page/main-page/main-page.co
     NavbarComponent,
     FooterComponent,
     WelcomeComponent,
-    MainPageComponent
+    MainPageComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

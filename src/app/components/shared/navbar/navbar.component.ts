@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoginComponent } from '../../main-page/login/login.component';
+import { SharedService } from '../../../core/shared/shared.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private shared: SharedService) { }
   ngOnInit(): void {
+  }
+  openLogin() {
+    this.shared.openLoginModal();
   }
 
 }

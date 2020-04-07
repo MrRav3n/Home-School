@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoginComponent } from '../../main-page/login/login.component';
+import { LoginComponent } from '../../models/login/login.component';
 import { SharedService } from '../../../core/shared/shared.service';
+import { MainService } from '../../../core/main/main.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,15 @@ import { SharedService } from '../../../core/shared/shared.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public shared: SharedService) { }
+  constructor(
+    public shared: SharedService,
+    public main: MainService,
+  ) { }
   ngOnInit(): void {
-    this.shared.openRegisterModal();
   }
   ngAfterViewInit() {
-    this.shared.openRegisterModal();
+    // this.shared.openLoginModal();
   }
+
+
 }

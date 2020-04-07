@@ -1,6 +1,6 @@
 .modal-content {
   position: relative;
-  padding: 1rem;
+  padding: 32px;
   border-radius: 12px;
 }
 .modal-title {
@@ -13,10 +13,13 @@
   border-radius: 12px;
 }
 .transformUnder {
-  width: 100%;
-  transform: translateY(65px);
-  text-align: center;
+  height: 50px;
+  background: var(--green);
+  border-radius: 0 0 var(--rad) var(--rad);
+  padding: 10px;
   font-size: 20px;
+  transform: translateY(82px);
+  text-align: center;
 }
 .transformUnder:hover {
   cursor: pointer;
@@ -24,6 +27,7 @@
 .transformUnder:focus {
   outline: none;
 }
+
 option {
   padding: 5px !important;
 }

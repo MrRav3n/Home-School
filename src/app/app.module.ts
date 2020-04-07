@@ -6,20 +6,30 @@ import { SharedService } from './core/shared/shared.service';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { WelcomeComponent } from './components/welcome-page/welcome/welcome.component';
-import { MainPageComponent } from './components/main-page/main-page/main-page.component';
-import { LoginComponent } from './components/main-page/login/login.component';
-import { RegisterComponent } from './components/main-page/register/register.component';
+import { LoginComponent } from './components/models/login/login.component';
+import { RegisterComponent } from './components/models/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { MainTeacherComponent } from './components/teacher/main-teacher/main-teacher.component';
+import { MainStudentComponent } from './components/student/main-student/main-student.component';
+import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
+import { FriendsComponent } from './components/shared/friends/friends.component';
+import { ContactComponent } from './components/shared/contact/contact.component';
+import { ProfileComponent } from './components/shared/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FooterComponent,
     WelcomeComponent,
-    MainPageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainTeacherComponent,
+    MainStudentComponent,
+    NewClassromComponent,
+    FriendsComponent,
+    ContactComponent,
+    ProfileComponent
   ],
     imports: [
         BrowserModule,

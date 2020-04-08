@@ -6,7 +6,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class SharedService {
   openLogin = new EventEmitter();
   openRegister = new EventEmitter();
-  api = 'https://loginregisterapi.azurewebsites.net/';
+  api = 'http://localhost:8080/';
   constructor() { }
   openLoginModal() {
     this.openLogin.emit();

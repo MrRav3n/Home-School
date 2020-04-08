@@ -40,15 +40,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.main.ifUserExists();
-    const user = {
-      username: 'dsadasdassdadsaasdasd',
-      password: 'kupa',
-      code: '',
-      role: 0
-    };
-    this.main.login(user).subscribe(res => {
-      console.log(res);
-    });
     // this.router.navigateByUrl('profile');
   }
 }

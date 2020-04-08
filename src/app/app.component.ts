@@ -40,6 +40,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.main.ifUserExists();
-    // this.router.navigateByUrl('profile');
+    this.router.navigateByUrl('friends');
   }
 }

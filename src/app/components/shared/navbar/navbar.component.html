@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="#">Home-School</a>
+  <a class="navbar-brand" (click)="this.main.ifUserExists()">Home-School</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
 <!--    noone-->
-    <ul class="navbar-nav ml-auto" *ngIf="!this.main.user">
+    <ul class="navbar-nav ml-auto" *ngIf="!this.main.user;else elseBlock">
       <li class="nav-item active">
         <a class="nav-link" (click)="this.shared.openRegisterModal()">Zaloguj się</a>
       </li>
@@ -15,6 +15,7 @@
       </li>
     </ul>
 <!--    student-->
+    <ng-template #elseBlock>
     <ul class="navbar-nav ml-auto" *ngIf="this.main.user.role == 0">
       <li class="nav-item active">
         <a class="nav-link" routerLink="profile">Konto</a>
@@ -44,7 +45,7 @@
         <a class="nav-link" routerLink="contact">Kontakt</a>
       </li>
     </ul>
-
+    </ng-template>
   </div>
 </nav>
 <app-login></app-login>

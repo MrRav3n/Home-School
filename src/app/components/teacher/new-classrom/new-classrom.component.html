@@ -1,19 +1,33 @@
 <div class="p-2">
-  <div class="container text-center justify-content-center">
+  <div class="container text-center justify-content-center containerMain">
     <h1>Dodaj nową klasę!</h1>
-    <form [formGroup]="Classrom" class="row justify-content-center">
-      <div class="form-group col-12">
-        <input type="text" class="form-control" id="classromName" aria-describedby="emailHelp" placeholder="Nazwa klasy*">
-      </div>
-      <div class="form-group col-md-6 col-12">
-        <input type="text" class="form-control" id="peopleAmount" aria-describedby="emailHelp" placeholder="ilość osób*">
-      </div>
-      <div class="form-group col-md-6 col-12">
-        <input type="text" class="form-control" id="schoolName" aria-describedby="emailHelp" placeholder="Nazwa szkoły">
-      </div>
+    <form [formGroup]="Classrom" class="row justify-content-around">
 
-      <button type="submit" class="btn btn-primary col-4">Wyślij</button>
+        <div class="form__group field col-11">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='className' required />
+          <label for="className" class="form__label">Nazwa klasy*</label>
+        </div>
+
+        <div class="form__group field  col-md-5 col-12">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required />
+          <label for="numberPeople" class="form__label">Ilość osób*</label>
+        </div>
+
+        <div class="form__group field col-md-5 col-12">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required />
+          <label for="schoolName" class="form__label">Nazwa szkoły</label>
+        </div>
+
+
+      <button type="submit" class="formBtn col-4">Wyślij</button>
     </form>
+  </div>
+  <div class="container text-center justify-content-center containerInfo">
+    <h1>Jak to właściwie działa?</h1>
+    <h3>Musisz dodać klasę</h3>
+
+
+
   </div>
 </div>
 

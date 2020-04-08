@@ -7,22 +7,25 @@
     <div class="modal-content">
       <h5 class="modal-title" id="exampleModalCenterTitle">Zarejestruj się</h5>
       <form [formGroup]="registerForm">
-        <div class="form-group row justify-content-around">
-          <div class="col-4 role" (click)="select(0)" [ngClass]="{'roleSelected': selectedRole === 0}">Uczeń</div>
-          <div class="col-4 role" (click)="select(1)" [ngClass]="{'roleSelected': selectedRole === 1}">Nauczyciel</div>
+        <div class="form-group row justify-content-center">
+          <div class="role role1 col-5" (click)="select(0)" [ngClass]="{'roleSelected': selectedRole === 0}">Uczeń</div>
+          <div class="role role2 col-5" (click)="select(1)" [ngClass]="{'roleSelected': selectedRole === 1}">Nauczyciel</div>
         </div>
-        <div class="form-group">
-          <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" formControlName="email"
-                 placeholder="Adres email">
+        <div class="form__group field">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='emailRegister' required />
+          <label for="emailRegister" class="form__label">Email</label>
         </div>
-        <div class="form-group">
-          <input type="password" class="form-control" id="registerPassword" placeholder="Hasło" formControlName="password">
+
+        <div class="form__group field">
+          <input type="password" class="form__field" placeholder="Name" name="name" id='passwordRegister' required />
+          <label for="passwordRegister" class="form__label">Hasło</label>
         </div>
-        <div class="form-group" *ngIf="!selectedRole">
-          <input type="text" class="form-control" id="studentCode" placeholder="Kod dostępu">
+        <div class="form__group field" *ngIf="!selectedRole">
+          <input type="password" class="form__field" placeholder="Name" name="name" id='studentCode' required />
+          <label for="studentCode" class="form__label">Kod dostępu</label>
         </div>
         <div class="row justify-content-center">
-          <button type="submit" class="btn btn-primary">Wyślij</button>
+          <button type="submit" class="formBtn">Wyślij</button>
         </div>
       </form>
 

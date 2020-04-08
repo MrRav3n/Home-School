@@ -5,9 +5,11 @@ body, html {
   font-family: Lato, serif;
 }
 .main {
+  --width: 720px;
   --main: #255F85; //main color
   --rad: 12px; //radious
   --submit: #E9724C; //color of submit buttons
+  --submitHover: #e9a04c; //color of submit buttons
   --warn: #C5283D; //color of warn buttons
   --dark: #4C7C9B; //dark color
   --green: #1b801b; //green color

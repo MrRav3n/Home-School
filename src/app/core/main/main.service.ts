@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MainService {
-
+  user: User;
   user: User = {
     name: 'Jan',
     surrname: 'Kowalski',

@@ -1,9 +1,26 @@
 .nav-link:hover {
   cursor: pointer;
+  color: #ff8e00 !important;
+  border-bottom: 1px solid !important;
+}
+.nav-link {
+  border-bottom: 1px solid transparent;
+  font-size: 20px;
+  transition: all 0.3s;
 }
 .navbar-toggler:focus {
   outline: none;
 }
 .navbar {
   background-color: var(--main);
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: "Lato Heavy";
+}
+.navbar-brand:hover {
+  cursor: pointer;
+  color: #ff8e00 !important;
+  transition: all 0.3s;
 }

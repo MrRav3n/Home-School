@@ -9,14 +9,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class FriendsComponent implements OnInit {
   friends;
-  newFriend: FormGroup;
+  searchFriend: FormGroup;
   constructor(
     private main: MainService
   ) { }
 
   ngOnInit(): void {
     this.friends = this.main.user.friends;
-    this.newFriend = new FormGroup({
+    this.searchFriend = new FormGroup({
       searchName: new FormControl(''),
     });
   }

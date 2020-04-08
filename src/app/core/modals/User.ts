@@ -3,7 +3,9 @@ export class User {
   surrname: string;
   email: string;
   password?: string;
-  role: 0|1;
+  role: 0|1; // 0 student 1 teacher
   friends: string[];
+  username?: string;
+  code?: string;
 }
 

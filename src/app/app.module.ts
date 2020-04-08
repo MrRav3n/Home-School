@@ -16,6 +16,8 @@ import { NewClassromComponent } from './components/teacher/new-classrom/new-clas
 import { FriendsComponent } from './components/shared/friends/friends.component';
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { ProfileComponent } from './components/shared/profile/profile.component'
         BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
+        HttpClientModule,
         ToastrModule.forRoot({
           timeOut: 10000,
           positionClass: 'toast-top-right',

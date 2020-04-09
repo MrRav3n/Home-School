@@ -9,14 +9,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MainService {
+
   user: User;
-  user: User = {
-    name: 'Jan',
-    surrname: 'Kowalski',
-    role: 1,
-    email: 'jan@wp.pl',
-    friends: ['Adam', 'Ewa']
-  };
   api = this.shared.api;
 
 
@@ -25,17 +19,27 @@ export class MainService {
     private http: HttpClient,
     private router: Router,
   ) { }
-
+  loginViaToken(): Observable<any> {
+    return this.http.get(`${this.api}api/userauth/loginviatoken`);
+  }
   login(user): Observable<any> {
     return this.http.post(`${this.api}api/userauth/login` , user);
   }
+  register(user): Observable<any> {
+    return this.http.post(`${this.api}api/userauth/register`, user);
+  }
 
-  ifUserExists() {
+  async ifUserExists() {
+    if (localStorage.getItem('homeschooltoken')) {
+      await this.loginViaToken().subscribe(res => {
+        console.log(res);
+      });
+    }
     if (!this.user) {
       this.router.navigateByUrl('/');
-    } else if (this.user.role === 0) {
+    } else if (this.user.userRole === 0) {
       this.router.navigateByUrl('student');
-    } else if (this.user.role === 1) {
+    } else if (this.user.userRole === 1) {
       this.router.navigateByUrl('teacher');
     }
   }

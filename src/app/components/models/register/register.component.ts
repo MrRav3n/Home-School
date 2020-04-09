@@ -17,10 +17,10 @@ export class RegisterComponent implements OnInit {
     private main: MainService,
   ) {
     this.registerForm = new FormGroup({
-    email: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    studentCode: new FormControl(),
-    userRole: new FormControl(this.selectedRole),
+    code: new FormControl(),
+    role: new FormControl(this.selectedRole),
   }); }
 
   ngOnInit(): void {
@@ -30,7 +30,9 @@ export class RegisterComponent implements OnInit {
   }
   submit() {
     if (this.registerForm.valid) {
-
+      this.main.register(this.registerForm.value).subscribe(res => {
+        console.log(res);
+      });
     } else {
 
     }

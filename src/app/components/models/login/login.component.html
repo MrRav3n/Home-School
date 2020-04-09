@@ -10,12 +10,12 @@
       <h5 class="modal-title" id="exampleModalCenterTitle">Zaloguj się</h5>
       <form [formGroup]="loginForm">
         <div class="form__group field">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='emailLogin' required />
-          <label for="emailLogin" class="form__label">Email</label>
+          <input type="text" class="form__field" formControlName="username" placeholder="Name" name="name" id='emailLogin' required />
+          <label for="emailLogin" class="form__label">Nazwa użytkownika</label>
         </div>
 
         <div class="form__group field">
-          <input type="password" class="form__field" placeholder="Name" name="name" id='passwordLogin' required />
+          <input type="password" class="form__field" formControlName="password" placeholder="Name" name="name" id='passwordLogin' required />
           <label for="passwordLogin" class="form__label">Hasło</label>
         </div>
 

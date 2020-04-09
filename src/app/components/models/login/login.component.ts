@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
     private main: MainService
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      username: new FormControl('string', Validators.required),
+      password: new FormControl('string', Validators.required),
     });
   }
   loginForm: FormGroup;
@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit {
   }
   submit() {
     if (this.loginForm.valid) {
-      console.log('valid');
+      this.main.login(this.loginForm.value).subscribe(res => {
+        this.main.user = res.userFromRepo;
+        console.log(res.userFromRepo);
+        localStorage.setItem('homeschooltoken', res.token);
+      });
     }
   }
 }

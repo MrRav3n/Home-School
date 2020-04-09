@@ -16,7 +16,8 @@ import { NewClassromComponent } from './components/teacher/new-classrom/new-clas
 import { FriendsComponent } from './components/shared/friends/friends.component';
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,14 @@ import { HttpClientModule } from '@angular/common/http';
           preventDuplicates: true,
         }),
     ],
-  providers: [SharedService],
+  providers: [
+    SharedService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

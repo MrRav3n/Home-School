@@ -8,6 +8,7 @@ import {
   Router,
 } from '@angular/router';
 import { MainService } from './core/main/main.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,6 +19,7 @@ export class AppComponent {
   constructor(
     private router: Router,
     private main: MainService,
+    private toastr: ToastrService
   ) {
     this.router.events.subscribe((event: Event) => {
     switch ( true ) {
@@ -41,5 +43,6 @@ export class AppComponent {
   ngOnInit(): void {
     this.main.ifUserExists();
     // this.router.navigateByUrl('friends');
+
   }
 }

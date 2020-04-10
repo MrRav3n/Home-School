@@ -12,20 +12,20 @@
           <div class="role role2 col-5" (click)="select(1)" [ngClass]="{'roleSelected': selectedRole === 1}">Nauczyciel</div>
         </div>
         <div class="form__group field">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='emailRegister' required />
+          <input type="email" class="form__field" formControlName="email" placeholder="Name" name="name" id='emailRegister'/>
           <label for="emailRegister" class="form__label">Email</label>
         </div>
 
         <div class="form__group field">
-          <input type="password" class="form__field" placeholder="Name" name="name" id='passwordRegister' required />
+          <input type="password" class="form__field" formControlName="password" placeholder="Name" name="name" id='passwordRegister'/>
           <label for="passwordRegister" class="form__label">Hasło</label>
         </div>
         <div class="form__group field" *ngIf="!selectedRole">
-          <input type="password" class="form__field" placeholder="Name" name="name" id='studentCode' required />
+          <input type="password" class="form__field" placeholder="Name" name="name" id='studentCode' formControlName="userCode"/>
           <label for="studentCode" class="form__label">Kod dostępu</label>
         </div>
         <div class="row justify-content-center">
-          <button type="submit" class="formBtn">Wyślij</button>
+          <button type="submit" class="formBtn" (click)="submit()">Wyślij</button>
         </div>
       </form>
 

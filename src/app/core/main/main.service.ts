@@ -13,7 +13,6 @@ export class MainService {
   user: User;
   api = this.shared.api;
 
-
   constructor(
     private shared: SharedService,
     private http: HttpClient,
@@ -28,18 +27,25 @@ export class MainService {
   register(user): Observable<any> {
     return this.http.post(`${this.api}api/userauth/register`, user);
   }
-
-  async ifUserExists() {
+  logout() {
+    localStorage.removeItem('homeschooltoken');
+    this.user = undefined;
+    this.ifUserExists();
+  }
+  async tokenLogin() {
     if (localStorage.getItem('homeschooltoken')) {
-      await this.loginViaToken().subscribe(res => {
-        console.log(res);
-      });
+      this.user = await this.loginViaToken().toPromise();
     }
+  }
+  async ifUserExists() {
+    await this.tokenLogin();
     if (!this.user) {
       this.router.navigateByUrl('/');
     } else if (this.user.userRole === 0) {
+      console.log(this.user);
       this.router.navigateByUrl('student');
     } else if (this.user.userRole === 1) {
+      console.log(this.user);
       this.router.navigateByUrl('teacher');
     }
   }

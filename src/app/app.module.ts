@@ -9,7 +9,7 @@ import { WelcomeComponent } from './components/welcome-page/welcome/welcome.comp
 import { LoginComponent } from './components/models/login/login.component';
 import { RegisterComponent } from './components/models/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MainTeacherComponent } from './components/teacher/main-teacher/main-teacher.component';
 import { MainStudentComponent } from './components/student/main-student/main-student.component';
 import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
@@ -18,6 +18,7 @@ import { ContactComponent } from './components/shared/contact/contact.component'
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor'
     imports: [
         BrowserModule,
         AppRoutingModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         HttpClientModule,
         ToastrModule.forRoot({
@@ -46,6 +48,7 @@ import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor'
           preventDuplicates: true,
         }),
     ],
+  bootstrap: [AppComponent],
   providers: [
     SharedService,
     {
@@ -56,9 +59,10 @@ import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor'
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
-      multi: true
+      multi: true,
+      deps: [ToastrService]
     }
   ],
-  bootstrap: [AppComponent]
+
 })
 export class AppModule { }

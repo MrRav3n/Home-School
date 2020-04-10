@@ -7,6 +7,7 @@ import { NewClassromComponent } from './components/teacher/new-classrom/new-clas
 import { FriendsComponent } from './components/shared/friends/friends.component';
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
+import { MainStudentComponent } from './components/student/main-student/main-student.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'teacher', component: MainTeacherComponent},
   {path: 'teacher/create-classrom', component: NewClassromComponent},
   {path: 'friends', component: FriendsComponent},
+  {path: 'student', component: MainStudentComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'profile', component: ProfileComponent}
 

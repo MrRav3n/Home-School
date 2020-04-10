@@ -17,10 +17,9 @@ export class RegisterComponent implements OnInit {
     private main: MainService,
   ) {
     this.registerForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    code: new FormControl(),
-    role: new FormControl(this.selectedRole),
+    email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
+    password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
+    userCode: new FormControl(''),
   }); }
 
   ngOnInit(): void {
@@ -29,6 +28,9 @@ export class RegisterComponent implements OnInit {
     });
   }
   submit() {
+    this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
+    console.log(this.registerForm.value);
+    console.log(this.registerForm.valid);
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value).subscribe(res => {
         console.log(res);

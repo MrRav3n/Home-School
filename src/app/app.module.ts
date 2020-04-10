@@ -18,6 +18,7 @@ import { ContactComponent } from './components/shared/contact/contact.component'
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
+import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,11 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
     useClass: AuthInterceptor,
     multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

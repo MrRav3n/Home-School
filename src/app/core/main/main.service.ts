@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { SharedService } from '../shared/shared.service';
 import { User } from '../modals/User';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { InterceptorSkipHeader } from '../interceptor/http-error.interceptor';
+const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
+
 
   user: User;
   api = this.shared.api;
@@ -19,7 +21,7 @@ export class MainService {
     private router: Router,
   ) { }
   loginViaToken(): Observable<any> {
-    return this.http.get(`${this.api}api/userauth/loginviatoken`);
+    return this.http.get(`${this.api}api/userauth/loginviatoken`, { headers });
   }
   login(user): Observable<any> {
     return this.http.post(`${this.api}api/userauth/login` , user);
@@ -34,7 +36,9 @@ export class MainService {
   }
   async tokenLogin() {
     if (localStorage.getItem('homeschooltoken')) {
-      this.user = await this.loginViaToken().toPromise();
+      try {
+        this.user = await this.loginViaToken().toPromise();
+      } catch {}
     }
   }
   async ifUserExists() {

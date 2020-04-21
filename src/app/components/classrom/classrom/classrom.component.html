@@ -1,0 +1,27 @@
+<div class="cover">
+<div class="text-center mainDiv">
+  <h1 class="display-3 font-weight-bold pb-3">{{this.main.classrom.className}}</h1>
+  <h1 class="display-4 font-weight-bold pb-5">Jesteś
+    <span *ngIf="this.userRole === 2">założycielem klasy</span>
+    <span *ngIf="this.userRole === 0">uczniem</span>
+    <span *ngIf="this.userRole === 1">nauczycielem</span>
+  </h1>
+
+</div>
+<div class="row classrom">
+  <div class="col-lg-10 col-12">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-md-2 col-12 text-center">
+    <h1>Przedmioty</h1>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+    <div class="subjectToChoose p-3">Przedmiot 1</div>
+
+  </div>
+</div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ClassService } from '../../../core/classService/class.service';
 
 @Component({
   selector: 'app-new-classrom',
@@ -8,12 +9,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class NewClassromComponent implements OnInit {
   Classrom: FormGroup;
-  constructor() {
+  constructor(private classService: ClassService) {
     this.Classrom = new FormGroup({
-      email: new FormControl(''),
+      className: new FormControl(''),
+      schoolName: new FormControl(''),
     });
   }
-
+  addNewClass() {
+    if(this.Classrom.valid) {
+      this.classService.addNewClass(this.Classrom.value).subscribe(res => console.log(res));
+    }
+  }
   ngOnInit(): void {
   }
 

@@ -1,12 +1,15 @@
 .min {
   position: relative;
+  height: 100%;
 }
 app-navbar {
+  height: 64px !important;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 10;
 }
-router-outlet> {
+.outlet {
+  height: 100% !important;
   margin: 0px;
 }

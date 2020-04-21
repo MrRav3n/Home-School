@@ -1,6 +1,6 @@
 .mainDiv {
   background: var(--main);
-  padding:25px;
+  padding: 3px;
   clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
 }
 @media(max-width: 720px) {
@@ -8,12 +8,18 @@
     clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0) !important;
   }
 }
-.rest {
-  margin-top: -150px;
-  padding-top: 150px;
-  background: var(--danger);
+.classrom {
 
+  background: #5ca2aa;
+  margin-top: -150px;
+  flex: 1 1 auto;
+  padding-top: 150px;
+}
+.subjectToChoose {
+  background: #1b801b;
 }
 .cover {
-
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }

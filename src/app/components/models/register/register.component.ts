@@ -29,11 +29,10 @@ export class RegisterComponent implements OnInit {
   }
   submit() {
     this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
-    console.log(this.registerForm.value);
-    console.log(this.registerForm.valid);
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value).subscribe(res => {
-        console.log(res);
+        this.main.user = res;
+        this.main.ifUserExists();
       });
     } else {
 

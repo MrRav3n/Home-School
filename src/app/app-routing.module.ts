@@ -8,6 +8,7 @@ import { FriendsComponent } from './components/shared/friends/friends.component'
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { MainStudentComponent } from './components/student/main-student/main-student.component';
+import { ClassromComponent } from './components/classrom/classrom/classrom.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'friends', component: FriendsComponent},
   {path: 'student', component: MainStudentComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'classrom', component: ClassromComponent}
 
   ];
 

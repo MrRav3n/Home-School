@@ -4,7 +4,7 @@
     <form [formGroup]="Classrom" class="row justify-content-around">
 
         <div class="form__group field col-md-11 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='className' required />
+          <input type="email" class="form__field" placeholder="Name" name="name" id='className' required formControlName="className"/>
           <label for="className" class="form__label">Nazwa klasy*</label>
         </div>
 
@@ -14,16 +14,23 @@
         </div>
 
         <div class="form__group field col-md-5 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required />
+          <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="schoolName"/>
           <label for="schoolName" class="form__label">Nazwa szkoły</label>
         </div>
 
 
-      <button type="submit" class="formBtn col-4">Wyślij</button>
+      <button type="submit" class="formBtn col-4" (click)="addNewClass()">Wyślij</button>
     </form>
   </div>
   <div class="container text-center justify-content-center containerInfo">
     <h1>Jak to właściwie działa?</h1>
+    <h3>Musisz dodać klasę</h3>
+
+
+
+  </div>
+  <div class="container text-center justify-content-center">
+    <h1>Dodaj nauczyciela do istniejącej klasy?</h1>
     <h3>Musisz dodać klasę</h3>
 
 

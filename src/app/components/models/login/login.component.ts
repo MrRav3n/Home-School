@@ -28,8 +28,9 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.loginForm.valid) {
       this.main.login(this.loginForm.value).subscribe(res => {
-        this.main.user = res.userToReturn;
-        this.main.classrom = res.userClasses[0];
+        this.shared.openLoginModal();
+        this.main.user = res;
+        this.main.classrom = res.classes;
         this.main.ifUserExists();
         localStorage.setItem('homeschooltoken', res.token);
       });

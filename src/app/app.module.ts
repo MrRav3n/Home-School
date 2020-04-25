@@ -21,6 +21,8 @@ import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor';
 import { ClassromComponent } from './components/classrom/classrom/classrom.component';
+import { SubjectComponent } from './components/classrom/subject/subject.component';
+import { HomeworkComponent } from './components/classrom/homework/homework.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ClassromComponent } from './components/classrom/classrom/classrom.compo
     FriendsComponent,
     ContactComponent,
     ProfileComponent,
-    ClassromComponent
+    ClassromComponent,
+    SubjectComponent,
+    HomeworkComponent
   ],
     imports: [
         BrowserModule,

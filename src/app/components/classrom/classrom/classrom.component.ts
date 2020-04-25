@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-classrom',
@@ -8,20 +9,33 @@ import { MainService } from '../../../core/main/main.service';
 })
 export class ClassromComponent implements OnInit {
   userRole: 0 | 1 | 2;
-  constructor(public main: MainService) { }
-
+  choosedSubject = 0;
+  classrom;
+  subjects;
+  constructor(
+    public main: MainService,
+    private route: ActivatedRoute
+  ) { }
   ngOnInit(): void {
-    if (this.main.user) {
+    this.route.paramMap.subscribe(params => {
+      this.main.currentClassrom = this.main.classrom[+params.get('classID')];
+      this.classrom = this.main.currentClassrom;
+      this.subjects = this.classrom.subjects;
+      console.log(this.classrom);
+      this.setCurrentSubject(0);
       this.checkUserRole();
-    }
+    });
   }
   checkUserRole() {
-    if (this.main.user.id === this.main.classrom.creatorID) {
-      this.userRole = 2;
+    if (this.main.user.id === this.classrom.creatorID) {
+      this.main.currentRole = 2;
     } else if (this.main.user.userRole === 0) {
-      this.userRole = 0;
+      this.main.currentRole = 0;
     } else if (this.main.user.userRole === 1) {
-      this.userRole = 1;
+      this.main.currentRole = 1;
     }
+  }
+  setCurrentSubject(i) {
+    this.main.currentSubject = this.main.currentClassrom.subjects[i];
   }
 }

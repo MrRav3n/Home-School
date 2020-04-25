@@ -17,4 +17,10 @@ export class ClassService {
   addUserToClass(userToAdd) {
     return this.http.put(this.api + 'Class/addMemberToClass', userToAdd);
   }
+  addNewHomework(homework) {
+    return this.http.post(this.api + 'Homework/add', homework);
+  }
+  addNewSubject(subject) {
+    return this.http.post(this.api + 'Subject/add', subject);
+  }
 }

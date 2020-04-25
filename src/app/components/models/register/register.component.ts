@@ -32,10 +32,9 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value).subscribe(res => {
         this.main.user = res;
+        this.shared.openRegisterModal();
         this.main.ifUserExists();
       });
-    } else {
-
     }
   }
   // select you are student or teacher ( 0 - student, 1 - teacher)

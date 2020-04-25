@@ -1,7 +1,7 @@
 <div class="p-2">
   <div class="container text-center justify-content-center containerMain">
     <h1>Dodaj nową klasę!</h1>
-    <form [formGroup]="Classrom" class="row justify-content-around">
+    <form [formGroup]="addClassromForm" class="row justify-content-around">
 
         <div class="form__group field col-md-11 col-12">
           <input type="email" class="form__field" placeholder="Name" name="name" id='className' required formControlName="className"/>
@@ -19,19 +19,31 @@
         </div>
 
 
-      <button type="submit" class="formBtn col-4" (click)="addNewClass()">Wyślij</button>
+      <button type="submit" class="formBtn col-4" (click)="addNewClass()">Dodaj</button>
     </form>
   </div>
   <div class="container text-center justify-content-center containerInfo">
-    <h1>Jak to właściwie działa?</h1>
-    <h3>Musisz dodać klasę</h3>
+    <h1>Dodaj nowy przedmiot</h1>
+    <form [formGroup]="addSubjectForm" class="row justify-content-around">
+      <div class="form-group col-12 col-md-5">
+        <h3>Wybierz klasę</h3>
+        <select class="form-control" id="exampleFormControlSelect1" formControlName="classID">
+          <option *ngFor="let classrom of this.main.classrom;let indexOfelement=index;" [value]="this.main.classrom[indexOfelement].id">{{classrom.className}} {{classrom.schoolName}} {{indexOfelement}}</option>
+        </select>
+      </div>
+      <div class="row justify-content-around col-12">
+        <div class="form__group field col-md-5 col-12">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='userToAddEmail' required formControlName="userToAddEmail"/>
+          <label for="userToAddEmail" class="form__label">Email nauczyciela</label>
+        </div>
+        <div class="form__group field col-md-5 col-12">
+          <input type="email" class="form__field" placeholder="Name" name="name" id='subjectName' required formControlName="subjectName"/>
+          <label for="subjectName" class="form__label">Nazwa przedmiotu</label>
+        </div>
+      </div>
+    </form>
 
-
-
-  </div>
-  <div class="container text-center justify-content-center">
-    <h1>Dodaj nauczyciela do istniejącej klasy?</h1>
-    <h3>Musisz dodać klasę</h3>
+    <button type="submit" class="formBtn col-4" (click)="addNewSubject()">Dodaj</button>
 
 
 

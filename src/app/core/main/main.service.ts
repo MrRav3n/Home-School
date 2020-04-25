@@ -14,7 +14,9 @@ export class MainService {
   classrom;
   user: User;
   api = this.shared.api;
-
+  currentClassrom;
+  currentSubject;
+  currentRole;
   constructor(
     private shared: SharedService,
     private http: HttpClient,
@@ -39,8 +41,9 @@ export class MainService {
     if (localStorage.getItem('homeschooltoken')) {
       try {
         const data = await this.loginViaToken().toPromise();
-        this.user = data.userToReturn;
-        this.classrom = data.userClasses[0];
+        this.user = data;
+        this.classrom = data.classes;
+        console.log(data);
         console.log(this.user);
         console.log(this.classrom);
       } catch {
@@ -56,7 +59,7 @@ export class MainService {
     } else if (this.user.userRole === 0) {
       this.router.navigateByUrl('student');
     } else if (this.user.userRole === 1) {
-      this.router.navigateByUrl('classrom');
+      this.router.navigateByUrl('create-classrom');
     }
   }
 

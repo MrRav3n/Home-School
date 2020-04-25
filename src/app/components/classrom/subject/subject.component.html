@@ -1,0 +1,17 @@
+<p>{{this.main.currentSubject.name}}</p>
+<form [formGroup]="homeworkForm" class="row justify-content-around" *ngIf="main.currentRole === 1 || main.currentRole === 2">
+
+  <div class="form__group field  col-md-5 col-12">
+    <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
+    <label for="numberPeople" class="form__label">Nazwa zadania</label>
+  </div>
+
+  <div class="form__group field col-md-5 col-12">
+    <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="description"/>
+    <label for="schoolName" class="form__label">Opis</label>
+  </div>
+
+
+  <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
+</form>
+<app-homework [homeworkSet]="this.main.currentSubject.homeworks"></app-homework>

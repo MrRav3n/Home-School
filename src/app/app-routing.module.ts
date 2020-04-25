@@ -9,6 +9,7 @@ import { ContactComponent } from './components/shared/contact/contact.component'
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { MainStudentComponent } from './components/student/main-student/main-student.component';
 import { ClassromComponent } from './components/classrom/classrom/classrom.component';
+import { SubjectComponent } from './components/classrom/subject/subject.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'student', component: MainStudentComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'classrom', component: ClassromComponent}
+  {path: 'classrom/:classID', component: ClassromComponent},
 
   ];
 

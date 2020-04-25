@@ -39,10 +39,19 @@
         <a class="nav-link" routerLink="profile">Konto</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="teacher/create-classrom">Utwórz klasę</a>
+        <a class="nav-link" routerLink="teacher/create-classrom">Zarządzanie klasą</a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="classrom">Twoja klasa</a>
+      <li class="nav-item active" *ngIf="!this.main.classrom[1]">
+        <a class="nav-link" routerLink="classrom/0">Twoja klasa</a>
+      </li>
+      <li class="nav-item dropdown active" *ngIf="this.main.classrom[1]">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Twoje klasy
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *ngFor="let classrom of this.main.classrom; let i=index" [routerLink]="['classrom',i]">{{classrom.className}}</a>
+
+        </div>
       </li>
       <li class="nav-item active">
         <a class="nav-link" routerLink="contact">Kontakt</a>

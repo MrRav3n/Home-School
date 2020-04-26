@@ -2,20 +2,35 @@
   background: var(--main);
   padding: 3px;
 
-}
-@media(max-width: 720px) {
+  transition: 0.3s all;
 
+}
+.collapseClass {
+  cursor: pointer;
 }
 .classrom {
 
   flex: 1 1 auto;
-
+  position: relative;
 }
 .subjectToChoose {
-  margin: 20px;
-  border-radius: var(--rad);
-  border: 3px solid orange;
+  font-size: 25px;
 
+background: orange;
+  cursor: pointer;
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+}
+.role1 {
+  padding-right: 10px;
+  clip-path: polygon(0 0, 79% 0, 100% 100%, 0% 100%);
+}
+.role2 {
+  padding-left: 30px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 21% 100%);
+}
+
+.subjectToChoose:hover {
+  background: orange !important;
 }
 .cover {
   display: flex;
@@ -27,5 +42,7 @@
   padding: 40px !important;
 }
 .subjectsChoosing {
+  position: fixed;
+  right: 0;
   padding: 40px !important;
 }

@@ -1,17 +1,75 @@
-<p>{{this.main.currentSubject.name}}</p>
-<form [formGroup]="homeworkForm" class="row justify-content-around" *ngIf="main.currentRole === 1 || main.currentRole === 2">
+<h1 class="text-center">{{this.main.currentSubject.name}}</h1>
+<div class="row justify-content-around">
+  <h1 class="font-weight-bold pb-3 formBtn col-3" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+      *ngIf="main.currentRole === 1 || main.currentRole === 2">
+    Dodaj nowe zadanie
+  </h1>
+  <h1 class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+      *ngIf="main.currentRole === 1 || main.currentRole === 2">
+    Pokaż najnowsze zadania
+  </h1>
+  <h1 class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+      *ngIf="main.currentRole === 1 || main.currentRole === 2">
+    Pokaż listę uczniów
+  </h1>
+</div>
 
-  <div class="form__group field  col-md-5 col-12">
-    <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
-    <label for="numberPeople" class="form__label">Nazwa zadania</label>
-  </div>
 
-  <div class="form__group field col-md-5 col-12">
-    <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="description"/>
-    <label for="schoolName" class="form__label">Opis</label>
-  </div>
+<div class="addNewHomeworkForm" id="addNewHomework">
+  <form [formGroup]="homeworkForm" class="row justify-content-around p-3">
 
+    <div class="form__group field  col-md-5 col-12">
+      <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
+      <label for="numberPeople" class="form__label">Nazwa zadania</label>
+    </div>
 
-  <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
-</form>
-<app-homework [homeworkSet]="this.main.currentSubject.homeworks"></app-homework>
+    <div class="form__group field col-md-5 col-12">
+      <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="description"/>
+      <label for="schoolName" class="form__label">Opis</label>
+    </div>
+
+    <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
+  </form>
+</div>
+
+<div *ngFor="let homework of this.main.currentSubject">
+  <app-homework [homeworkSet]="homework"></app-homework>
+</div>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+<h1>123</h1>
+

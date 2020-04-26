@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'classrom/:classID', component: ClassromComponent},
+  {path: 'subject', component: SubjectComponent},
 
   ];
 

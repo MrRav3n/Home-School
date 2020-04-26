@@ -18,12 +18,10 @@ export class ClassromComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.main.currentClassrom = this.main.classrom[+params.get('classID')];
-      this.classrom = this.main.currentClassrom;
-      this.subjects = this.classrom.subjects;
-      console.log(this.classrom);
-      this.setCurrentSubject(0);
+      this.classrom = this.main.currentClassrom = this.main.classrom[+params.get('classID')];
       this.checkUserRole();
+      this.subjects = this.classrom.subjects;
+      this.setCurrentSubject(0);
     });
   }
   checkUserRole() {
@@ -36,6 +34,7 @@ export class ClassromComponent implements OnInit {
     }
   }
   setCurrentSubject(i) {
+    console.log(this.main.currentSubject);
     this.main.currentSubject = this.main.currentClassrom.subjects[i];
   }
 }

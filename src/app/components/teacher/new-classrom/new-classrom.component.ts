@@ -39,12 +39,10 @@ export class NewClassromComponent implements OnInit {
   }
 
   addNewSubject() {
-    console.log(this.selectedClassID)
-    console.log('AddingNewSubject')
-
-    console.log(this.addSubjectForm.value)
     if (this.addSubjectForm.valid) {
-      this.classService.addNewSubject(this.addSubjectForm.value).subscribe(res => console.log(res));
+      this.classService.addNewSubject(this.addSubjectForm.value).subscribe(res => {
+        this.toastr.success('Pomyślnie dodano nauczyciela do klasy', 'Udało się!');
+      });
     }
   }
   ngOnInit(): void {

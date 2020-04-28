@@ -8,3 +8,21 @@
     clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0) !important;
   }
 }
+.singleClassrom {
+  margin: 30px;
+  background: var(--submit);
+  cursor: pointer;
+}
+.classromDiv {
+  padding: 25px;
+  background: #c1c1c1;
+  margin: 40px;
+  border-radius: var(--rad);
+}
+
+.rest {
+
+  padding-top: 150px;
+  margin-top: -150px;
+  background: grey;
+}

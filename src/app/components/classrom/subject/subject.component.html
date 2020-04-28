@@ -1,15 +1,15 @@
 <h1 class="text-center subHeader">{{this.main.currentSubject.name}}</h1>
-<div class="row justify-content-around subButtons">
+<div class="row justify-content-around subButtons p-3">
 
-  <a class="font-weight-bold pb-3 col-3 example_d subBtn" data-toggle="collapse" href="#addNewHomework"
+  <a class="font-weight-bold pb-3 col-md-3 col-12 example_d subBtn mb-3" data-toggle="collapse" href="#addNewHomework"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Dodaj nowe zadanie
   </a>
-  <a class="font-weight-bold pb-3 col-3 example_d subBtn disabled" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
+  <a class="font-weight-bold pb-3 col-md-3 col-12 example_d subBtn disabled mb-3" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Najnowsze zadania
   </a>
-  <a class="font-weight-bold pb-3 col-3 example_d subBtn disabled" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
+  <a class="font-weight-bold pb-3 col-md-3 col-12 example_d subBtn disabled mb-3" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Pokaż listę uczniów
   </a>

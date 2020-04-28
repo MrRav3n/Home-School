@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-subject',
@@ -13,7 +14,8 @@ export class SubjectComponent implements OnInit {
   homeworkForm: FormGroup;
   constructor(
     public main: MainService,
-    private classService: ClassService
+    private classService: ClassService,
+    private toastr: ToastrService,
   ) {
   }
 
@@ -25,10 +27,9 @@ export class SubjectComponent implements OnInit {
     });
   }
   addNewHomework() {
-    console.log(this.homeworkForm.value);
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(this.homeworkForm.value).subscribe(res => {
-        console.log(res);
+        this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
       });
     }
   }

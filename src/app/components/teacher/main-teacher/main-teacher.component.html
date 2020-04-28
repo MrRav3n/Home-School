@@ -1,12 +1,19 @@
-<div class="text-center mainDiv">
-  <h1 class="display-3 font-weight-bold">Panel nauczyciela</h1>
-  <h1 class="mb-5 font-weight-bold">Tutaj możesz zarządzać swoimi uczniami</h1>
-</div>
-<div class="row">
-  <div class="col-lg-8 col-12 text-center p-4">
-    <h1>Twoje klasy</h1>
+<div class="d-flex h-100 flex-column">
+  <div class="text-center mainDiv">
+    <h1 class="display-3 font-weight-bold">Panel nauczyciela</h1>
+    <h1 class="mb-5 font-weight-bold">Tutaj możesz zarządzać swoimi uczniami</h1>
   </div>
-  <div class="col-md-4 col-12 p-4 text-center">
-    <h1>Ostatnie wiadomości</h1>
+  <div class="row rest h-100">
+    <div class="col-lg-8 col-12 text-center classromDiv">
+      <h1>Twoje klasy</h1>
+      <div *ngFor="let classrom of this.main.classrom; let i = index" [routerLink]="['/classrom', i]" class="singleClassrom col-11 row justify-content-between align-items-center">
+        <h1 class="col-8 d-block text-left">{{classrom.className}}</h1>
+        <h3 class="col-4 d-block text-right">{{classrom.schoolName}}</h3>
+      </div>
+    </div>
+    <div class="col-md-3 col-12 p-4 text-center classromDiv">
+      <h1>Ostatnie wiadomości</h1>
+    </div>
   </div>
+
 </div>

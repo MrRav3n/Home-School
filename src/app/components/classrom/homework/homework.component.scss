@@ -1,0 +1,16 @@
+.singeHomeworkDesc {
+  background: var(--submit);
+  border-radius: var(--rad);
+  padding: 10px;
+}
+.singeHomeworkDescFocused {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.homeworkDesc {
+  border-top: 2px solid black;
+  border-bottom-right-radius: var(--rad);
+  border-bottom-left-radius: var(--rad);
+  background: var(--main);
+}
+

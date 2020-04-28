@@ -26,9 +26,9 @@
       <h1>Przedmioty</h1>
       <div class="example_c p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
     </div>
-    <div class="col-12 d-block d-md-none text-center subjectsChoosing colu">
+    <div class="col-12 d-block d-md-none text-center subjectsChoosing">
       <h1>Przedmioty</h1>
-      <div class=" example_c p-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
+      <div class=" example_c p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
     </div>
 
   </div>

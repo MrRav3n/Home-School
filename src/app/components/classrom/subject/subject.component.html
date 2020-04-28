@@ -1,45 +1,42 @@
-<h1 class="text-center">{{this.main.currentSubject.name}}</h1>
-<div class="row justify-content-around">
+<h1 class="text-center subHeader">{{this.main.currentSubject.name}}</h1>
+<div class="row justify-content-around subButtons">
 
-
-
-  <a class="font-weight-bold pb-3 formBtn col-3" data-toggle="collapse" href="#addNewHomework"
+  <a class="font-weight-bold pb-3 col-3 example_d subBtn" data-toggle="collapse" href="#addNewHomework"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Dodaj nowe zadanie
   </a>
-  <a class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
+  <a class="font-weight-bold pb-3 col-3 example_d subBtn disabled" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
-    Pokaż najnowsze zadania
+    Najnowsze zadania
   </a>
-  <a class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
+  <a class="font-weight-bold pb-3 col-3 example_d subBtn disabled" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Pokaż listę uczniów
   </a>
 
+  <div class="addNewHomeworkForm collapse mt-3 col-12" id="addNewHomework">
+    <form [formGroup]="homeworkForm" class="row justify-content-around p-3">
+
+      <div class="form__group field col-md-5 col-12">
+        <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
+        <label for="numberPeople" class="form__label">Nazwa zadania</label>
+      </div>
+      <div class="form-group col-12">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+      </div>
+
+
+      <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
+    </form>
+  </div>
+</div>
+<div class="homeworksDiv">
+  <h1 class="text-center subHomeworks">Zadania</h1>
+  <div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">
+    <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+  </div>
 </div>
 
-
-
-
-<div class="addNewHomeworkForm collapse mt-3" id="addNewHomework">
-  <form [formGroup]="homeworkForm" class="row justify-content-around p-3">
-
-    <div class="form__group field col-md-5 col-12">
-      <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
-      <label for="numberPeople" class="form__label">Nazwa zadania</label>
-    </div>
-    <div class="form-group col-12">
-      <label for="exampleFormControlTextarea1">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
-    </div>
-
-
-    <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
-  </form>
-</div>
-
-<div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">
-  <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
-</div>
 
 

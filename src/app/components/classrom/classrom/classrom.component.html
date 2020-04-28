@@ -1,17 +1,17 @@
 <div class="cover">
-<div class="text-center mainDiv">
-  <h1 class="display-3 font-weight-bold pb-3 collapseClass" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
-    {{this.classrom.className}}
-  </h1>
-  <div class="collapse" id="collapseExample">
-    <h1 class="display-4 font-weight-bold pb-5">Jesteś
-      <span *ngIf="this.main.currentRole === 2">założycielem klasy</span>
-      <span *ngIf="this.main.currentRole === 0">uczniem</span>
-      <span *ngIf="this.main.currentRole === 1">nauczycielem</span>
+  <div class="text-center mainDiv">
+    <h1 class="display-3 font-weight-bold pb-3 collapseClass" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
+      {{this.classrom.className}}
     </h1>
+    <div class="collapse" id="collapseExample">
+      <h1 class="display-4 font-weight-bold pb-5">Jesteś
+        <span *ngIf="this.main.currentRole === 2">założycielem klasy</span>
+        <span *ngIf="this.main.currentRole === 0">uczniem</span>
+        <span *ngIf="this.main.currentRole === 1">nauczycielem</span>
+      </h1>
+    </div>
   </div>
-</div>
-<div class="row classrom">
+  <div class="row classrom">
 
     <div class="m-3 col-lg-9 col-12 d-none d-md-block">
       <div class="subject ">
@@ -19,13 +19,14 @@
       </div>
     </div>
 
-  <div class="col-md-3 d-none d-md-block text-center subjectsChoosing">
-    <h1>Przedmioty</h1>
-    <div class="subjectToChoose p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
+    <div class="col-md-3 d-none d-md-block text-center subjectsChoosing">
+      <h1>Przedmioty</h1>
+      <div class="example_c p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
+    </div>
+    <div class="col-12 d-block d-md-none text-center subjectsChoosing colu">
+      <h1>Przedmioty</h1>
+      <div class=" example_c p-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
+    </div>
+
   </div>
-  <div class="col-12 d-block d-md-none text-center subjectsChoosing">
-    <h1>Przedmioty</h1>
-    <div class="subjectToChoose p-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
-  </div>
-</div>
 </div>

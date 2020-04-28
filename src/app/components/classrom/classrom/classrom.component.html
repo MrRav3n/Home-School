@@ -1,4 +1,7 @@
-<div class="cover">
+<div *ngIf="!this.main.currentClassrom.subjects[0]">
+  <h1 class="text-center p-5">Ta klasa nie ma jescze żadnych przedmiotów</h1>
+</div>
+<div class="cover" *ngIf="this.main.currentClassrom.subjects[0]">
   <div class="text-center mainDiv">
     <h1 class="display-3 font-weight-bold pb-3 collapseClass" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
       {{this.classrom.className}}

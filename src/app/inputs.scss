@@ -13,8 +13,8 @@
 .formBtn:focus {
   outline: none;
 }
-$primary: #99332e;
-$secondary: #38ef7d;
+$primary: #f58025;
+$secondary: #09ad43;
 $white: #fff;
 $gray: #000000;
 
@@ -71,7 +71,7 @@ $gray: #000000;
   padding-bottom: 6px;
   font-weight: 700;
   border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
+  border-image: linear-gradient(to right, $primary,$primary);
   border-image-slice: 1;
 }
 /* reset input */

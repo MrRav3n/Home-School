@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-classrom',
@@ -15,6 +16,7 @@ export class NewClassromComponent implements OnInit {
   selectedClassID = 0;
   constructor(
     private classService: ClassService,
+    private toastr: ToastrService,
     public main: MainService,
   ) {
     this.addClassromForm = new FormGroup({
@@ -29,12 +31,13 @@ export class NewClassromComponent implements OnInit {
   }
   addNewClass() {
     if (this.addClassromForm.valid) {
-      this.classService.addNewClass(this.addClassromForm.value).subscribe(res => console.log(res));
+      this.classService.addNewClass(this.addClassromForm.value).subscribe(res => {
+          console.log(res);
+          this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
+      });
     }
   }
-  tellME(i) {
-    console.log(i);
-  }
+
   addNewSubject() {
     console.log(this.selectedClassID)
     console.log('AddingNewSubject')

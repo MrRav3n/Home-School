@@ -15,23 +15,29 @@
   </a>
 
   <div class="addNewHomeworkForm collapse mt-3 col-12" id="addNewHomework">
-    <form [formGroup]="homeworkForm" class="row justify-content-around p-3">
+    <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
 
-      <div class="form__group field col-md-5 col-12">
+      <div class="form__group field col-md-5 col-10">
         <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
         <label for="numberPeople" class="form__label">Nazwa zadania</label>
       </div>
-      <div class="form-group col-12">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
+
+      <div class="form-group col-10">
+        <label for="exampleFormControlTextarea1">Opis zadania</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
       </div>
-
-
+      <h1 class="col-10 display-4 d-block text-center pt-2">Dołącz plik</h1>
+      <div class="col-10 row justify-content-center">
+        <div class="custom-file col-5">
+          <input type="file" class="custom-file-input" id="customFile">
+          <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>
+        </div>
+      </div>
       <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
     </form>
   </div>
 </div>
-<div class="homeworksDiv">
+<div class="homeworksDiv ">
   <h1 class="text-center subHomeworks">Zadania</h1>
   <div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">
     <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>

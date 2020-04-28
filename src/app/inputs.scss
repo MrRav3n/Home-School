@@ -78,4 +78,11 @@ $gray: #000000;
 .form__field{
   &:required,&:invalid { box-shadow:none; }
 }
+a {
+  color: black;
+}
+a:hover {
+  text-decoration: none;
+  color: black;
+}
 

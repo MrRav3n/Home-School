@@ -7,10 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HomeworkComponent implements OnInit {
   homework;
+  iterator: number;
   constructor() { }
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     console.log(this.homework);
+  }
+  @Input() set iteratorSet(iter: number) {
+    this.iterator = iter;
   }
   ngOnInit(): void {
   }

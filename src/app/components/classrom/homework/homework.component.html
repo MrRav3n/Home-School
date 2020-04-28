@@ -1,1 +1,11 @@
-<p>{{homework.name}}</p>
+
+<div class="row justify-content-around">
+
+  <a class="font-weight-bold pb-3 formBtn col-3" data-toggle="collapse"  role="button" [href]="'#homework-'+iterator" aria-expanded="false" aria-controls="collapseExample">
+    <h1>{{homework.name}}</h1>
+  </a>
+</div>
+
+<div class="collapse" [id]="'homework-'+iterator">
+  <h1>{{homework.name}}</h1>
+</div>

@@ -1,75 +1,45 @@
 <h1 class="text-center">{{this.main.currentSubject.name}}</h1>
 <div class="row justify-content-around">
-  <h1 class="font-weight-bold pb-3 formBtn col-3" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+
+
+
+  <a class="font-weight-bold pb-3 formBtn col-3" data-toggle="collapse" href="#addNewHomework"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Dodaj nowe zadanie
-  </h1>
-  <h1 class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+  </a>
+  <a class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Pokaż najnowsze zadania
-  </h1>
-  <h1 class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework" aria-expanded="false"
+  </a>
+  <a class="font-weight-bold pb-3 formBtn col-3 disabled" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Pokaż listę uczniów
-  </h1>
+  </a>
+
 </div>
 
 
-<div class="addNewHomeworkForm" id="addNewHomework">
+
+
+<div class="addNewHomeworkForm collapse mt-3" id="addNewHomework">
   <form [formGroup]="homeworkForm" class="row justify-content-around p-3">
 
-    <div class="form__group field  col-md-5 col-12">
+    <div class="form__group field col-md-5 col-12">
       <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
       <label for="numberPeople" class="form__label">Nazwa zadania</label>
     </div>
-
-    <div class="form__group field col-md-5 col-12">
-      <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="description"/>
-      <label for="schoolName" class="form__label">Opis</label>
+    <div class="form-group col-12">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
     </div>
+
 
     <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
   </form>
 </div>
 
-<div *ngFor="let homework of this.main.currentSubject">
-  <app-homework [homeworkSet]="homework"></app-homework>
+<div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">
+  <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
 </div>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
-<h1>123</h1>
+
 

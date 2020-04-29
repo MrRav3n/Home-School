@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Homework } from '../../../core/modals/Homework';
 
 @Component({
   selector: 'app-homework',
@@ -7,14 +8,13 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./homework.component.scss']
 })
 export class HomeworkComponent implements OnInit {
-  homework;
+  homework: Homework;
   homeworkResponseForm: FormGroup;
   iterator: number;
   clickedStatus = false;
 
   @Input() set homeworkSet(hom) {
     this.homework = hom;
-    console.log(this.homework);
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;
@@ -30,7 +30,6 @@ export class HomeworkComponent implements OnInit {
     } else {
       this.clickedStatus = !this.clickedStatus;
     }
-
   }
   ngOnInit(): void {
   }

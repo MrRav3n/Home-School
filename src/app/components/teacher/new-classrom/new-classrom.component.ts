@@ -13,7 +13,6 @@ import { ToastrService } from 'ngx-toastr';
 export class NewClassromComponent implements OnInit {
   addClassromForm: FormGroup;
   addSubjectForm: FormGroup;
-  selectedClassID = 0;
   constructor(
     private classService: ClassService,
     private toastr: ToastrService,
@@ -31,18 +30,13 @@ export class NewClassromComponent implements OnInit {
   }
   addNewClass() {
     if (this.addClassromForm.valid) {
-      this.classService.addNewClass(this.addClassromForm.value).subscribe(res => {
-          console.log(res);
-          this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
-      });
+      this.classService.addNewClass(this.addClassromForm.value);
     }
   }
 
   addNewSubject() {
     if (this.addSubjectForm.valid) {
-      this.classService.addNewSubject(this.addSubjectForm.value).subscribe(res => {
-        this.toastr.success('Pomyślnie dodano nauczyciela do klasy', 'Udało się!');
-      });
+      this.classService.addNewSubject(this.addSubjectForm.value);
     }
   }
   ngOnInit(): void {

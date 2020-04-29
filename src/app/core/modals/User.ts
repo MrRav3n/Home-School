@@ -1,12 +1,10 @@
 export class User {
-  id;
-  name?: string;
-  surrname?: string;
   email: string;
-  password?: string;
-  userRole: 0|1; // 0 student 1 teacher
-  friends?: string[];
-  username?: string;
-  userCode?: string;
+  id: string;
+  name: string;
+  pendingInvitations;
+  surrname: string;
+  userCode: string;
+  userRole: 0 | 1 | 2;
 }
 

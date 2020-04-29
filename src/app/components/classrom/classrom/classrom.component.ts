@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
+import { Classrom } from '../../../core/modals/Classrom';
+import { Subject } from '../../../core/modals/Subject';
 
 @Component({
   selector: 'app-classrom',
@@ -10,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ClassromComponent implements OnInit {
   userRole: 0 | 1 | 2;
   choosedSubject = 0;
-  classrom;
-  subjects;
+  classrom: Classrom;
+  subjects: [Subject];
   constructor(
     public main: MainService,
     private route: ActivatedRoute

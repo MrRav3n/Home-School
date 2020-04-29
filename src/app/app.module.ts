@@ -13,7 +13,6 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MainTeacherComponent } from './components/teacher/main-teacher/main-teacher.component';
 import { MainStudentComponent } from './components/student/main-student/main-student.component';
 import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
-import { FriendsComponent } from './components/shared/friends/friends.component';
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -35,7 +34,6 @@ import { HomeworkComponent } from './components/classrom/homework/homework.compo
     MainTeacherComponent,
     MainStudentComponent,
     NewClassromComponent,
-    FriendsComponent,
     ContactComponent,
     ProfileComponent,
     ClassromComponent,

@@ -5,18 +5,20 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InterceptorSkipHeader } from '../interceptor/http-error.interceptor';
+import { Classrom } from '../modals/Classrom';
+import { Subject } from '../modals/Subject';
 const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
 
-  classrom;
+  classrom: [Classrom];
   user: User;
   api = this.shared.api;
-  currentClassrom;
-  currentSubject;
-  currentRole;
+  currentClassrom: Classrom;
+  currentSubject: Subject;
+  currentRole: 0 | 1 | 2;
   constructor(
     private shared: SharedService,
     private http: HttpClient,
@@ -41,11 +43,9 @@ export class MainService {
     if (localStorage.getItem('homeschooltoken')) {
       try {
         const data = await this.loginViaToken().toPromise();
-        this.user = data;
-        this.classrom = data.classes;
         console.log(data);
-        console.log(this.user);
-        console.log(this.classrom);
+        this.user = data.userToReturn;
+        this.classrom = data.classes;
       } catch {
       }
     }

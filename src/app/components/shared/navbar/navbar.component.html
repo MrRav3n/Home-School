@@ -16,37 +16,13 @@
     </ul>
 <!--    student-->
     <ng-template #elseBlock>
-    <ul class="navbar-nav ml-auto" *ngIf="this.main.user.userRole == 0">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="profile">Konto</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link">Twoja klasa</a>
-      </li>
-      <li class="nav-item active" *ngIf="!this.main.classrom[1] && this.main.classrom[0]">
-        <a class="nav-link" routerLink="classrom/0">Twoja klasa</a>
-      </li>
-      <li class="nav-item dropdown active" *ngIf="this.main.classrom[1]">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Twoje klasy
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-          <a class="dropdown-item" *ngFor="let classrom of this.main.classrom; let i=index" [routerLink]="['classrom',i]">{{classrom.className}}</a>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="contact">Kontakt</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link logout" (click)="this.main.logout()">Wyloguj się</a>
-      </li>
-    </ul>
+
 <!--    teacher-->
-    <ul class="navbar-nav ml-auto" *ngIf="this.main.user.userRole == 1">
+    <ul class="navbar-nav ml-auto" >
       <li class="nav-item active">
         <a class="nav-link" routerLink="profile">Konto</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" *ngIf="this.main.user.userRole == 1">
         <a class="nav-link" routerLink="teacher/create-classrom">Zarządzanie klasą</a>
       </li>
       <li class="nav-item active" *ngIf="!this.main.classrom[1] && this.main.classrom[0]">

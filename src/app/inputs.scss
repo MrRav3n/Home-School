@@ -2,7 +2,7 @@
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2861a8;
+  background: #4066BF;
   padding: 9px;
   border-radius: 5px;
   display: inline-block;
@@ -11,11 +11,10 @@
   font-size: 30px;
   margin-top:15px;
 }
-
-
 .formBtn:hover {
-  background: #434343;
-  letter-spacing: 4px;
+  background: #60739F;
+  letter-spacing: 6px;
+
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
   box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
@@ -97,13 +96,13 @@ a:hover {
   color: black;
 }
 .example_d {
-  color: #20bf6b !important;
+  color: var(--negative) !important;
   text-transform: uppercase;
   background: #ffffff;
   padding: 20px;
-  border: 4px solid #20bf6b !important;
+  border: 4px solid var(--negative) !important;
   border-radius: 6px;
-  display: inline-block;
+  cursor: pointer;
   transition: all 0.3s ease 0s;
 }
 .example_d:hover {
@@ -117,7 +116,8 @@ a:hover {
   text-transform: uppercase;
   text-decoration: none;
   background: #ffffff;
-  padding: 20px;
+  padding: 5px;
+  font-size:25px;
   border: 4px solid #494949 !important;
   transition: all 0.4s ease 0s;
 }

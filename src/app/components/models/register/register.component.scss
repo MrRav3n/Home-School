@@ -37,14 +37,14 @@ select {
 .role {
   text-align: center;
   font-size: 30px;
-  background: var(--dark);
+  background: var(--negative);
   transition: all 0.2s;
   cursor: pointer;
   padding: 5px;
 }
 .roleSelected {
   transform: scale(1.2);
-  background: var(--warn);
+  background: #ff7700;
 }
 .role1 {
   padding-right: 10px;

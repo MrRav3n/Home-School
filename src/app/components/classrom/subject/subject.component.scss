@@ -1,11 +1,10 @@
 .addNewHomeworkForm {
   background: white;
-
   border-radius: var(--rad);
 }
 .subHeader {
   font-size: 50px;
-  padding: 7px;
+  padding: 10px;
   border-bottom: 3px solid black;
 }
 .subHomeworks {
@@ -16,15 +15,21 @@
 .subButtons {
   padding: 10px;
   border-bottom: 3px solid black;
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
+
 }
 .homeworksDiv {
   padding: 10px;
-  background: #bfbfbf;
+  background: var(--greyLight);
   border-radius: var(--rad);
 }
 .subBtn {
 
   font-size: 20px !important;
   text-align: center !important;
+}
+.example_d {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 0;
 }

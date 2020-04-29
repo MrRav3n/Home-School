@@ -59,7 +59,7 @@ export class MainService {
     } else if (this.user.userRole === 0) {
       this.router.navigateByUrl('student');
     } else if (this.user.userRole === 1) {
-      this.router.navigateByUrl('teacher');
+      this.router.navigateByUrl('123');
     }
   }
 

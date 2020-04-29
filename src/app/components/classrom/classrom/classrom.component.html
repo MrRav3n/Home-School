@@ -14,21 +14,22 @@
       </h1>
     </div>
   </div>
-  <div class="row classrom">
+  <div class="row classrom m-0 p-0">
 
-    <div class="m-3 col-lg-9 col-12 d-none d-md-block">
+    <div class="col-lg-9 col-12 d-none d-md-block p-3">
       <div class="subject ">
         <app-subject></app-subject>
       </div>
     </div>
-
-    <div class="col-md-3 d-none d-md-block text-center subjectsChoosing">
-      <h1>Przedmioty</h1>
-      <div class="example_c p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
-    </div>
-    <div class="col-12 d-block d-md-none text-center subjectsChoosing">
-      <h1>Przedmioty</h1>
-      <div class=" example_c p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
+    <div class="p-3 col-md-3 col-12">
+      <div class="d-none d-md-block text-center subjectsChoosing">
+        <h1>Przedmioty</h1>
+        <div class="example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
+      </div>
+      <div class="d-block d-md-none text-center subjectsChoosing">
+        <h1>Przedmioty</h1>
+        <div class=" example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
+      </div>
     </div>
 
   </div>

@@ -10,13 +10,16 @@ body {
 }
 .main {
   --width: 720px;
-  --main: #4370F7; //main color
+  --main: #004DFF; //main color
+  --negative: #FFB200;
+  --greyLight: #A5A9B4;
+  --grey: #7C7F87;
   --rad: 12px; //radious
   --submit: #F2861B; //color of submit buttons
   --submitHover: #d57009; //color of submit buttons
-  --warn: #8C0C16; //color of warn buttons
+  --warn: #FF004D; //color of warn buttons
   --dark: #3F1518; //dark color
-  --green: #1b801b; //green color
+  --green: #4DFF00; //green color
 }
 ::-webkit-scrollbar-track
 {

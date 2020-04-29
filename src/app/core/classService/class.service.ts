@@ -24,7 +24,9 @@ export class ClassService {
     return this.http.put(this.api + 'Class/addMemberToClass', userToAdd);
   }
   addNewHomework(homework) {
-    return this.http.post(this.api + 'Homework/add', homework);
+    return this.http.post(this.api + 'Homework/add', homework).subscribe(res => {
+      this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
+    });
   }
   addNewSubject(subject) {
     this.http.post(this.api + 'Subject/add', subject).subscribe( res => {

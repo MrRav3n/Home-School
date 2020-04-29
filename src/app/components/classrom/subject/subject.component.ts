@@ -15,7 +15,6 @@ export class SubjectComponent implements OnInit {
   constructor(
     public main: MainService,
     private classService: ClassService,
-    private toastr: ToastrService,
   ) {
   }
 
@@ -28,9 +27,7 @@ export class SubjectComponent implements OnInit {
   }
   addNewHomework() {
     if (this.homeworkForm.valid) {
-      this.classService.addNewHomework(this.homeworkForm.value).subscribe(res => {
-        this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
-      });
+      this.classService.addNewHomework(this.homeworkForm.value);
     }
   }
 

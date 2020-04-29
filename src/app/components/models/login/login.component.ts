@@ -10,6 +10,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('openModal') openModal;
+  loginForm: FormGroup;
   constructor(
     public shared: SharedService,
     private main: MainService
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl('DAW100kr', Validators.required),
     });
   }
-  loginForm: FormGroup;
+
   ngOnInit(): void {
     this.shared.openLogin.subscribe(res => {
       this.openModal.nativeElement.click();
@@ -28,10 +29,9 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.loginForm.valid) {
       this.main.login(this.loginForm.value).subscribe(res => {
-        console.log(res);
         this.shared.openLoginModal();
         this.main.user = res.userToReturn;
-        this.main.classrom = res.userToReturn.classes;
+        this.main.classrom = res.classes;
         this.main.ifUserExists();
         localStorage.setItem('homeschooltoken', res.token);
       });

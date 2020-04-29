@@ -11,7 +11,6 @@ import { Subject } from '../../../core/modals/Subject';
 })
 export class ClassromComponent implements OnInit {
   userRole: 0 | 1 | 2;
-  choosedSubject = 0;
   classrom: Classrom;
   subjects: [Subject];
   constructor(
@@ -36,7 +35,6 @@ export class ClassromComponent implements OnInit {
     }
   }
   setCurrentSubject(i) {
-    console.log(this.main.currentSubject);
     this.main.currentSubject = this.main.currentClassrom.subjects[i];
   }
 }

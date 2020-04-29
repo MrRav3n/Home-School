@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
     email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
     password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
     userCode: new FormControl(''),
-  }); }
+    });
+  }
 
   ngOnInit(): void {
     this.shared.openRegister.subscribe(res => {
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value).subscribe(res => {
-        this.main.user = res;
+        localStorage.setItem('homeschooltoken', res.token);
+        this.main.user = res.userToReturn;
         this.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
         this.shared.openRegisterModal();
         this.main.ifUserExists();

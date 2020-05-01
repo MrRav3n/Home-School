@@ -3,7 +3,7 @@
     <h1 class="display-3 font-weight-bold">Panel nauczyciela</h1>
     <h1 class="mb-5 font-weight-bold">Tutaj możesz zarządzać swoimi uczniami</h1>
   </div>
-  <div class="row rest h-100">
+  <div class="row rest">
     <div class="col-lg-8 col-12 text-center classromDiv">
       <h1>Twoje klasy</h1>
       <div *ngFor="let classrom of this.main.classrom; let i = index" [routerLink]="['/classrom', i]" class="singleClassrom col-11 row justify-content-between align-items-center">

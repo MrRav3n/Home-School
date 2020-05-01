@@ -6,7 +6,6 @@ import { MainTeacherComponent } from './components/teacher/main-teacher/main-tea
 import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
 import { ContactComponent } from './components/shared/contact/contact.component';
 import { ProfileComponent } from './components/shared/profile/profile.component';
-import { MainStudentComponent } from './components/student/main-student/main-student.component';
 import { ClassromComponent } from './components/classrom/classrom/classrom.component';
 import { SubjectComponent } from './components/classrom/subject/subject.component';
 
@@ -14,9 +13,8 @@ import { SubjectComponent } from './components/classrom/subject/subject.componen
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'teacher', component: MainTeacherComponent},
+  {path: 'mainPage', component: MainTeacherComponent},
   {path: 'teacher/create-classrom', component: NewClassromComponent},
-  {path: 'student', component: MainStudentComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'classrom/:classID', component: ClassromComponent},

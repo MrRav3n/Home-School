@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { Classrom } from '../../../core/modals/Classrom';
@@ -13,6 +13,7 @@ export class ClassromComponent implements OnInit {
   userRole: 0 | 1 | 2;
   classrom: Classrom;
   subjects: [Subject];
+  @ViewChild('subject') subjectDiv;
   constructor(
     public main: MainService,
     private route: ActivatedRoute
@@ -35,6 +36,18 @@ export class ClassromComponent implements OnInit {
     }
   }
   setCurrentSubject(i) {
-    this.main.currentSubject = this.main.currentClassrom.subjects[i];
+    console.log(!this.subjectDiv);
+    if (this.subjectDiv) {
+      this.subjectDiv.nativeElement.classList.toggle('opacity0');
+
+      setTimeout(() => {
+        this.main.currentSubject = this.main.currentClassrom.subjects[i];
+        this.subjectDiv.nativeElement.classList.toggle('opacity0');
+        }, 200);
+    } else {
+      this.main.currentSubject = this.main.currentClassrom.subjects[i];
+    }
+
+
   }
 }

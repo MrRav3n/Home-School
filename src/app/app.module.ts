@@ -21,6 +21,7 @@ import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor'
 import { ClassromComponent } from './components/classrom/classrom/classrom.component';
 import { SubjectComponent } from './components/classrom/subject/subject.component';
 import { HomeworkComponent } from './components/classrom/homework/homework.component';
+import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomeworkComponent } from './components/classrom/homework/homework.compo
     ProfileComponent,
     ClassromComponent,
     SubjectComponent,
-    HomeworkComponent
+    HomeworkComponent,
+    SpinnerComponent
   ],
     imports: [
         BrowserModule,

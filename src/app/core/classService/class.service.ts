@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main/main.service';
 import { Homework } from '../modals/Homework';
 import { Observable } from 'rxjs';
+import { Classrom } from '../modals/Classrom';
+import { Subject } from '../modals/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,8 @@ export class ClassService {
   ) { }
 
   addNewClass(classroom) {
-    this.http.post(this.api + 'Class/create', classroom).subscribe( res => {
+    this.http.post<Classrom>(this.api + 'Class/create', classroom).subscribe( res => {
+      this.main.classrom.push(res);
       this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
     });
   }
@@ -34,7 +37,8 @@ export class ClassService {
     });
   }
   addNewSubject(subject) {
-    this.http.post(this.api + 'Subject/create', subject).subscribe( res => {
+    this.http.post<{subject: Subject}>(this.api + 'Subject/create', subject).subscribe( res => {
+      this.main.classrom.filter(value => value.id = subject.classID).map(val => val.subjects.push(res.subject));
       this.toastr.success('Pomyślnie dodano nauczyciela do klasy', 'Udało się!');
     });
   }

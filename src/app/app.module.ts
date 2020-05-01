@@ -8,7 +8,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { WelcomeComponent } from './components/welcome-page/welcome/welcome.component';
 import { LoginComponent } from './components/models/login/login.component';
 import { RegisterComponent } from './components/models/register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { MainTeacherComponent } from './components/teacher/main-teacher/main-teacher.component';
 import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
@@ -40,18 +40,19 @@ import { SpinnerComponent } from './components/shared/spinner/spinner.component'
     HomeworkComponent,
     SpinnerComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        ToastrModule.forRoot({
-          timeOut: 10000,
-          positionClass: 'toast-top-right',
-          preventDuplicates: true,
-        }),
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+    FormsModule,
+  ],
   bootstrap: [AppComponent],
   providers: [
     SharedService,

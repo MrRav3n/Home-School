@@ -53,7 +53,7 @@ export class MainService {
   async ifUserExists() {
     await this.tokenLogin();
 
-    this.shared.loading = true;
+    this.shared.loading = false;
     if (!this.user) {
       this.router.navigateByUrl('/');
     } else if (this.user.userRole === 0) {

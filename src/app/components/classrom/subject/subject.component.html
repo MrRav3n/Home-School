@@ -21,7 +21,10 @@
           <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
           <label for="numberPeople" class="form__label">Nazwa zadania</label>
         </div>
-
+        <div class="col-5 col-10">
+          <div id="picker"> </div>
+          <input type="hidden" id="result" value="" #timeValue>
+        </div>
         <div class="form-group col-10">
           <label for="exampleFormControlTextarea1">Opis zadania</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
@@ -35,10 +38,11 @@
         </div>
         <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
       </form>
-    </div>
-  </div>
-
 </div>
+  </div>
+</div>
+<div id="fullWidth"></div>
+
 <div class="homeworksDiv ">
   <h1 class="text-center subHomeworks">Zadania</h1>
   <div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">

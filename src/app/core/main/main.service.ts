@@ -25,13 +25,13 @@ export class MainService {
     private router: Router,
   ) { }
   loginViaToken(): Observable<any> {
-    return this.http.get(`${this.api}userauth/loginviatoken`, { headers });
+    return this.http.get(`${this.api}UserAuth/loginviatoken`, { headers });
   }
   login(user): Observable<any> {
-    return this.http.post(`${this.api}userauth/login` , user);
+    return this.http.post(`${this.api}UserAuth/login` , user);
   }
   register(user): Observable<any> {
-    return this.http.post(`${this.api}userauth/register`, user);
+    return this.http.post(`${this.api}UserAuth/register`, user);
   }
   logout() {
     localStorage.removeItem('homeschooltoken');

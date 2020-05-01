@@ -27,13 +27,19 @@
 .loginNav {
   background: #F8961E !important;
   padding: 10px !important;
-  border-radius: 25px;
-  border-bottom: none;
+
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 .loginNav:hover {
-  border-bottom: none !important;
+  border-bottom: 1px solid var(--main) !important;
   background: #D05B23 !important;
   color: white !important;
+}
+@media(max-width: 720px) {
+  .loginNav {
+    clip-path: none;
+    border-radius: 20px;
+  }
 }
 .navbar-brand:hover {
   cursor: pointer;

@@ -20,21 +20,21 @@ export class ClassService {
   ) { }
 
   addNewClass(classroom) {
-    this.http.post(this.api + 'Class/createClass', classroom).subscribe( res => {
+    this.http.post(this.api + 'Class/create', classroom).subscribe( res => {
       this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
     });
   }
   addUserToClass(userToAdd) {
-    return this.http.put(this.api + 'Class/addMemberToClass', userToAdd);
+    return this.http.put(this.api + 'Class/addMember', userToAdd);
   }
   addNewHomework(homework) {
-    return this.http.post<Homework>(this.api + 'Homework/add', homework).subscribe(res => {
+    return this.http.post<Homework>(this.api + 'Homework/create', homework).subscribe(res => {
       this.main.currentSubject.homeworks.push(res);
       this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
     });
   }
   addNewSubject(subject) {
-    this.http.post(this.api + 'Subject/add', subject).subscribe( res => {
+    this.http.post(this.api + 'Subject/create', subject).subscribe( res => {
       this.toastr.success('Pomyślnie dodano nauczyciela do klasy', 'Udało się!');
     });
   }

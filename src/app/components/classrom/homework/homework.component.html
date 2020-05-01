@@ -2,7 +2,7 @@
   <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
-    <div><h1>{{homework.name}}</h1></div>
+    <div><h1 class="m-0 p-1">{{homework.name}}</h1></div>
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">

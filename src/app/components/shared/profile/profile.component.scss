@@ -1,12 +1,3 @@
-.properties {
-  text-align: end;
-  color: white;
-  font-size: 25px;
-}
-.profile {
-  background: var(--dark);
-  border-radius: var(--rad);
-}
 .mainDiv {
   background: var(--main);
   padding:25px;
@@ -17,13 +8,47 @@
     clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0) !important;
   }
 }
+.contactDetails {
+  background: #E0FBFC;
+}
 .rest {
   margin-top: -150px;
   padding-top: 150px;
-  background: var(--submit);
-
+  background: var(--submit)
 }
-.cover {
-
+.contactUs {
+  background: #43AA8B;
+  border-top-left-radius: var(--rad);
+  border-top-right-radius: var(--rad);
+  text-align: center;
+  margin: 0;
+  padding:20px;
+  border-bottom: 2px solid black;
+}
+.container {
+  border-radius: var(--rad) !important;
+}
+.singeInfo {
+  padding: 10px;
+  margin-bottom: 3px;
+  border-bottom: 2px solid grey;
+  font-size: 35px;
+}
+.singeInfo:last-child {
+  border-bottom: none !important;
 }
 
+@media(min-width: 720px) {
+  .infoRow {
+    border-left: 2px solid grey;
+  }
+}
+@media(max-width: 720px) {
+  .profilePicRow {
+    border-bottom: 2px solid grey;
+  }
+}
+.img-fluid {
+  border: 4px solid grey;
+  border-radius: var(--rad);
+}

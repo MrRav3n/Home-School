@@ -1,16 +1,23 @@
 .singeHomeworkDesc {
-  background: var(--submit);
+  background: #43AA8B;
   border-radius: var(--rad);
   padding: 10px;
+  transition: 0.3s all;
+  border: 2px solid inherit;
+}
+.singeHomeworkDesc:hover {
+  -webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 10px 3px rgba(0,0,0,1);
 }
 .singeHomeworkDescFocused {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 .homeworkDesc {
-  border-top: 2px solid black;
+  border: 2px solid black;
   border-bottom-right-radius: var(--rad);
   border-bottom-left-radius: var(--rad);
-  background: var(--main);
+  background: #90BE6D;
 }
 

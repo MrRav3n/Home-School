@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared/shared.service';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { MainService } from '../main/main.service';
+import { Homework } from '../modals/Homework';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +16,7 @@ export class ClassService {
     private http: HttpClient,
     private toastr: ToastrService,
     private shared: SharedService,
+    private main: MainService
   ) { }
 
   addNewClass(classroom) {
@@ -24,7 +28,8 @@ export class ClassService {
     return this.http.put(this.api + 'Class/addMemberToClass', userToAdd);
   }
   addNewHomework(homework) {
-    return this.http.post(this.api + 'Homework/add', homework).subscribe(res => {
+    return this.http.post<Homework>(this.api + 'Homework/add', homework).subscribe(res => {
+      this.main.currentSubject.homeworks.push(res);
       this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
     });
   }

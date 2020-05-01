@@ -5,18 +5,31 @@
     <h1 class="mb-5 font-weight-bold">Tutaj możesz edytować swoje dane</h1>
   </div>
   <div class="rest h-100">
-    <div class="w-100 row justify-content-center pt-5">
-      <div class="profile col-8 row p-3">
-        <div class="col-2">
-          <img src="https://www.melbourneentertainmentco.com.au/wp-content/uploads/2018/05/Phoebe-Singer-Pianist-Profile-600x600.jpg" class="img-fluid">
+    <div class="row justify-content-center p-4">
+      <div class="container mt-4 row contactDetails p-0">
+        <h1 class="col-12 d-block contactUs">Jesteś
+          <span *ngIf="this.main.user.userRole === 1">nauczycielem</span>
+          <span *ngIf="this.main.user.userRole === 0">uczniem</span>
+        </h1>
+        <div class="col-md-3 col-12 row justify-content-center align-items-center m-0 p-0 profilePicRow">
+          <div class="col-md-10 col-lg-8 col-5 p-3">
+            <img src="https://woj-pol.pl/wp-content/uploads/2020/03/mundur-policji-2-600x600.jpg" class="img-fluid">
+          </div>
         </div>
-        <div class="col-10 row justify-content-end properties">
-          <div class="col-12">Imie {{user.name}}</div>
-          <div class="col-12">Email {{user.email}}</div>
-          <div class="col-12">Imie</div>
+        <div class="row infoRow col-md-9 col-12 p-0 m-0">
+          <div class="col-12 singeInfo row m-0 align-items-center">
+            <div class="col-md-6 col-12 text-center text-md-left">Imię i nazwisko:</div>
+            <div class="col-md-6 col-12 text-md-right text-center">{{user.name}} {{user.surrname}}</div>
+          </div>
+          <div class="col-12 singeInfo row m-0 align-items-center">
+            <div class="col-md-6 col-12 text-center text-md-left">Adres email:</div>
+            <div class="col-md-6 col-12 text-md-right text-center">{{user.email}}</div>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
+
 
 </div>

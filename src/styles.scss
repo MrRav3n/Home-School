@@ -10,33 +10,36 @@ body {
 }
 .main {
   --width: 720px;
-  --main: #004DFF; //main color
+  --main: #3D5A80; //main color
   --negative: #FFB200;
   --greyLight: #A5A9B4;
   --grey: #7C7F87;
   --rad: 12px; //radious
-  --submit: #F2861B; //color of submit buttons
+  --submit: #F8961E; //color of submit buttons
   --submitHover: #d57009; //color of submit buttons
-  --warn: #FF004D; //color of warn buttons
+  --warn: #EE6C4D; //color of warn buttons
   --dark: #3F1518; //dark color
-  --green: #4DFF00; //green color
+  --green: #43AA8B; //green color
 }
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 0;
   background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 12px;
   background-color: #F5F5F5;
 }
 
-::-webkit-scrollbar-thumb
-{
-  border-radius: 10px;
+::-webkit-scrollbar-thumb {
+
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #cc5207;
+  background-color: #F8961E;
+  transition: all 2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  padding-top: 64px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #F9C74F;
 }

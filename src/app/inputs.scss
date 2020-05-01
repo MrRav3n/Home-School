@@ -2,7 +2,7 @@
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #4066BF;
+  background: #F3722C;
   padding: 9px;
   border-radius: 5px;
   display: inline-block;
@@ -12,7 +12,7 @@
   margin-top:15px;
 }
 .formBtn:hover {
-  background: #60739F;
+  background: #D05B23;
   letter-spacing: 6px;
 
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
@@ -23,7 +23,7 @@
 .formBtn:focus {
   outline: none;
 }
-$primary: #b45305;
+$primary: #577590;
 $secondary: #09ad43;
 $white: #fff;
 $gray: #000000;
@@ -96,19 +96,19 @@ a:hover {
   color: black;
 }
 .example_d {
-  color: var(--negative) !important;
+  color: var(--negative);
   text-transform: uppercase;
   background: #ffffff;
   padding: 20px;
-  border: 4px solid var(--negative) !important;
+  border: 4px solid var(--negative);
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
 .example_d:hover {
-  color: #494949 !important;
+  color: #494949;
   border-radius: 50px;
-  border-color: #494949 !important;
+  border-color: #494949;
   transition: all 0.3s ease 0s;
 }
 .example_c {

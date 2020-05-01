@@ -8,16 +8,35 @@
     clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0) !important;
   }
 }
+.contactDetails {
+  background: #E0FBFC;
+}
 .rest {
   margin-top: -150px;
   padding-top: 150px;
   background: var(--submit)
-
+}
+.contactUs {
+  background: #43AA8B;
+  border-top-left-radius: var(--rad);
+  border-top-right-radius: var(--rad);
+  text-align: center;
+  padding:20px;
+  border-bottom: 2px solid black;
 }
 .container {
-   border-radius: var(--rad);
+   border-radius: var(--rad) !important;
 }
 .singeInfo {
   padding: 10px;
+  margin-bottom: 3px;
+  border-bottom: 2px solid grey;
   font-size: 35px;
+}
+.singeInfo:last-child {
+  border-bottom: none !important;
+}
+
+.infoRow {
+  margin: 0;
 }

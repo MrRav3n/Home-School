@@ -5,7 +5,7 @@
 }
 .nav-link {
   border-bottom: 1px solid transparent;
-  font-size: 20px;
+  font-size: 23px;
   transition: all 0.3s;
 }
 .navbar-toggler {
@@ -23,6 +23,17 @@
 .navbar-brand {
   font-size: 30px;
   font-family: "Lato Heavy";
+}
+.loginNav {
+  background: #F8961E !important;
+  padding: 10px !important;
+  border-radius: 25px;
+  border-bottom: none;
+}
+.loginNav:hover {
+  border-bottom: none !important;
+  background: #D05B23 !important;
+  color: white !important;
 }
 .navbar-brand:hover {
   cursor: pointer;

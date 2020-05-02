@@ -49,3 +49,35 @@ body {
   right: calc(50% - 312px) !important;
   margin-left:auto;
 }
+@media(max-width: 720px) {
+  .dtp_modal-content {
+    top: 3% !important;
+    width: 300px !important;
+    right: calc(50% - 150px) !important;
+  }
+  .dtp_modal-cell-date {
+    width: 300px !important;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0;
+    float: none !important;
+    border-bottom: 2px solid black;
+  }
+  .dtp_modal-calendar {
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  .dtp_modal-cell-time {
+    width: 300px !important;
+    float: none !important;
+    padding: 0;
+    border-right: none !important;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .dpt_modal-button {
+    width: 200px !important;
+    margin-left: 50px !important;
+    margin-bottom: 10px;
+  }
+}

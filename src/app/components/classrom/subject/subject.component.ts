@@ -33,7 +33,7 @@ export class SubjectComponent implements OnInit {
     })(jQuery);
   }
   addNewHomework() {
-    this.homeworkForm.addControl('time', this.timeValue.nativeElement.value);
+    this.homeworkForm.addControl('time', new FormControl(this.timeValue.nativeElement.value));
     console.log(this.timeValue.nativeElement.value);
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(this.homeworkForm.value);

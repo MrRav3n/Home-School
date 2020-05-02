@@ -32,3 +32,6 @@ border-radius: 3px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rg
 .dtp_modal-midle-dig{display: inline-block; width: 16px; text-align: center; }
 .dtp_modal-digits{ font-size: 50px; padding-left: 96px;}
 .dtp_modal-digit{  }
+.dtp_modal-content {
+  overflow-x: hidden;
+}

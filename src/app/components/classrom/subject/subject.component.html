@@ -17,11 +17,12 @@
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
 
-        <div class="form__group field col-md-5 col-10">
+        <div class="form__group field col-md-5 col-10 mb-3">
           <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
           <label for="numberPeople" class="form__label">Nazwa zadania</label>
         </div>
-        <div class="col-5 col-10">
+        <div class="col-md-5 col-10 bg-dark mb-3 row justify-content-center align-items-center pickerDiv">
+          <h3 class="text-white pr-2">Termin oddania</h3>
           <div id="picker"> </div>
           <input type="hidden" id="result" value="" #timeValue>
         </div>
@@ -38,10 +39,9 @@
         </div>
         <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
       </form>
-</div>
+    </div>
   </div>
 </div>
-<div id="fullWidth"></div>
 
 <div class="homeworksDiv ">
   <h1 class="text-center subHomeworks">Zadania</h1>

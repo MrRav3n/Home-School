@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit {
   }
   submit() {
     if (this.loginForm.valid) {
+      this.shared.loading = true;
+      this.shared.openLoginModal();
       this.main.login(this.loginForm.value).subscribe(res => {
-        this.shared.openLoginModal();
         this.main.user = res.userToReturn;
         this.main.classrom = res.classes;
         this.main.ifUserExists();
+        this.shared.loading = false;
         localStorage.setItem('homeschooltoken', res.token);
       });
     }

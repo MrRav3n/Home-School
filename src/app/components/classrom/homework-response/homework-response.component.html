@@ -1,9 +1,12 @@
 <div class="row p-0 m-0">
   <div class="col-12">
-    <h3>Imię i nazwisko: {{response.senderID}}</h3>
+    <h2 class="text-center">Imię i nazwisko: {{response.senderID}}</h2>
   </div>
-  <div class="col-12 mt-2">
+  <div class="col-12 mt-2" *ngIf="response.description">
     <h3 class="text-center">Twoja odpowiedź: {{response.description}}</h3>
+  </div>
+  <div class="col-12 mt-2" *ngIf="!response.description">
+    <h3 class="text-center">Nie udzieliłeś odpowiedzi na to pytanie</h3>
   </div>
 
 </div>

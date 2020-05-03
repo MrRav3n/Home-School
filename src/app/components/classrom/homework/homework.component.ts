@@ -14,8 +14,8 @@ export class HomeworkComponent implements OnInit {
   homeworkResponseForm: FormGroup;
   iterator: number;
   clickedStatus = false;
-  startTime: number;
-  endTime: number;
+  startTime: string;
+  endTime: string;
   leftHours: number;
   leftMinutes: number;
   @Input() set homeworkSet(hom) {

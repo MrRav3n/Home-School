@@ -14,14 +14,17 @@ export class HomeworkFinishedComponent implements OnInit {
   homework: Homework;
   iterator: number;
   clickedStatus = false;
-  startTime: number;
-  endTime: number;
+  startTime: string;
+  endTime: string;
+  sendTime: string;
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     // @ts-ignore
     this.startTime = moment(this.homework.createDate)._d.toLocaleString();
     // @ts-ignore
     this.endTime = moment(this.homework.endDate)._d.toLocaleString();
+    // @ts-ignore
+    this.sendTime = moment(this.homework.recreateDate)._d.toLocaleString();
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;

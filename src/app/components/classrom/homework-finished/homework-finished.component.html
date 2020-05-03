@@ -7,17 +7,24 @@
       <div class="row col-6 text-right">
         <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
         <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
+        <div class="m-0 p-1 col-12" *ngIf="!this.homework.responses[1]">Data odesłania:
+          <span class="text-danger">{{sendTime}}</span>
+        </div>
       </div>
     </div>
 
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
+
     <div *ngIf="this.homework.responses[0] && !this.homework.responses[1]">
-      <h1 class="text-center">Twoja odpowiedź: {{this.homework.responses[0].senderID}}</h1>
+      <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
     <div *ngIf="this.homework.responses[1]">
+      <app-homework-response *ngFor="let response of this.homework.responses; let i=index"
+                             [responseSet]="this.homework.responses[i]">
 
+      </app-homework-response>
     </div>
     <div *ngIf="!this.homework.responses[0]">
       <h1 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h1>

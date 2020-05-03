@@ -3,4 +3,6 @@ export class Response {
   sendingTime: string;
   homeworkID: string;
   classI: string;
+  sendTime: string;
+  senderID: string;
 }

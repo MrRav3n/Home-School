@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup} from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
 import * as moment from 'moment';
-import { Homework } from '../../../core/modals/Homework';
+
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -38,6 +38,7 @@ export class SubjectComponent implements OnInit {
     const currentTime = moment().toISOString();
     for(let i = 0; i < this.main.currentSubject.homeworks.length; i++) {
       const currHom = this.main.currentSubject.homeworks[i];
+
       if (currHom.endDate > currentTime && !currHom.responses[0]) {
         this.currentHomeworks.push(currHom);
       } else {
@@ -45,15 +46,9 @@ export class SubjectComponent implements OnInit {
       }
     }
   }
-  createGoodTimeType(time) {
 
-  }
-  createGoodTimeForm() {}
   addNewHomework() {
-    const timeNoUtc = this.timeValue.nativeElement.value;
-    console.log(timeNoUtc);
-    const timeUtc = moment(timeNoUtc).toISOString();
-    console.log(timeUtc);
+    const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
     this.homeworkForm.addControl('time', new FormControl(timeUtc));
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(this.homeworkForm.value);

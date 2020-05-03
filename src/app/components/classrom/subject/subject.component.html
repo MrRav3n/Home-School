@@ -1,18 +1,24 @@
 <div class="text-center subHeader">{{this.main.currentSubject.name}}</div>
 <div class="row justify-content-around subButtons p-3 m-0">
 
-  <div class="example_d p-3" data-toggle="collapse" href="#addNewHomework"
+  <div class="example_d p-3 col-5" data-toggle="collapse" href="#addNewHomework"
       *ngIf="main.currentRole === 1 || main.currentRole === 2">
     Dodaj nowe zadanie
   </div>
-  <div class="example_d p-3" data-toggle="collapse" href="#addNewHomework1" aria-expanded="false"
-      *ngIf="main.currentRole === 1 || main.currentRole === 2">
-    Najnowsze zadania
+  <div class="example_d p-3 col-5" (click)="whichHomeworks = !whichHomeworks">
+    <span *ngIf="!whichHomeworks" >
+      Najnowsze zadania
+    </span>
+    <span *ngIf="whichHomeworks" >
+     Archiwum
+    </span>
+
   </div>
-  <div class="example_d p-3" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"
-      *ngIf="main.currentRole === 1 || main.currentRole === 2">
-    Pokaż listę uczniów
-  </div>
+
+<!--  <div class="example_d p-3" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"-->
+<!--      *ngIf="main.currentRole === 1 || main.currentRole === 2">-->
+<!--    Pokaż listę uczniów-->
+<!--  </div>-->
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
@@ -43,9 +49,15 @@
   </div>
 </div>
 
-<div class="homeworksDiv ">
-  <h1 class="text-center subHomeworks">Zadania</h1>
-  <div *ngFor="let homework of this.main.currentSubject.homeworks; let i=index">
+<div class="homeworksDiv" *ngIf="whichHomeworks">
+  <h1 class="text-center subHomeworks">Zadania do zrobienia</h1>
+  <div *ngFor="let homework of this.currentHomeworks; let i=index">
+    <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+  </div>
+</div>
+<div class="homeworksDiv" *ngIf="!whichHomeworks">
+  <h1 class="text-center subHomeworks">Zakończone zadania</h1>
+  <div *ngFor="let homework of this.finishedHomeworks; let i=index">
     <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
   </div>
 </div>

@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
 import * as moment from 'moment';
+import { Homework } from '../../../core/modals/Homework';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -12,6 +13,9 @@ import * as moment from 'moment';
 export class SubjectComponent implements OnInit {
   userRole;
   homeworkForm: FormGroup;
+  currentHomeworks = [];
+  finishedHomeworks = [];
+  whichHomeworks = true;
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,
@@ -31,6 +35,15 @@ export class SubjectComponent implements OnInit {
         $('#picker').dateTimePicker();
       });
     })(jQuery);
+    const currentTime = moment().toISOString();
+    for(let i = 0; i < this.main.currentSubject.homeworks.length; i++) {
+      const currHom = this.main.currentSubject.homeworks[i];
+      if (currHom.endDate > currentTime) {
+        this.currentHomeworks.push(currHom);
+      } else {
+        this.finishedHomeworks.push(currHom);
+      }
+    }
   }
   createGoodTimeType(time) {
 

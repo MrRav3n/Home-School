@@ -5,10 +5,10 @@
     <div class="row justify-content-between m-0 p-0">
       <div  class="m-0 p-1 col-6"><h1>{{homework.name}}</h1></div>
       <div class="row col-6 text-right">
-        <div class="m-0 p-1 col-12">Data dodania: {{homework.createDate}}</div>
-        <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{homework.endDate}}</span> </div>
+        <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
+        <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
       </div>
-      <div class="col-12 m-0 p-1 ">
+      <div class="col-12 m-0 p-1" *ngIf="leftHours >= 0 ">
         <h3>Pozostało {{leftHours}} godzin i {{leftMinutes}} minut</h3>
       </div>
     </div>

@@ -12,24 +12,21 @@ export class HomeworkComponent implements OnInit {
   homeworkResponseForm: FormGroup;
   iterator: number;
   clickedStatus = false;
+  startTime: number;
+  endTime: number;
   leftHours: number;
   leftMinutes: number;
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     const endDate = moment(this.homework.endDate);
     const currentTime = moment();
-
     const timeLeft = endDate.diff(currentTime, 'minutes');
     this.leftHours = Math.floor(timeLeft / 60);
     this.leftMinutes = Math.floor(timeLeft - (this.leftHours * 60 ));
-    console.log(this.leftHours, this.leftMinutes);
-
     // @ts-ignore
-    this.homework.createDate = moment(this.homework.createDate)._d.toLocaleString();
+    this.startTime = moment(this.homework.createDate)._d.toLocaleString();
     // @ts-ignore
-    this.homework.endDate = moment(this.homework.endDate)._d.toLocaleString();
-
-
+    this.endTime = moment(this.homework.endDate)._d.toLocaleString();
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;

@@ -58,7 +58,7 @@
 <div class="homeworksDiv" *ngIf="!whichHomeworks">
   <h1 class="text-center subHomeworks">Zakończone zadania</h1>
   <div *ngFor="let homework of this.finishedHomeworks; let i=index">
-    <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+    <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
   </div>
 </div>
 

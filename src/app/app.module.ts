@@ -22,6 +22,7 @@ import { ClassromComponent } from './components/classrom/classrom/classrom.compo
 import { SubjectComponent } from './components/classrom/subject/subject.component';
 import { HomeworkComponent } from './components/classrom/homework/homework.component';
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
+import { HomeworkFinishedComponent } from './components/classrom/homework-finished/homework-finished.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SpinnerComponent } from './components/shared/spinner/spinner.component'
     ClassromComponent,
     SubjectComponent,
     HomeworkComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    HomeworkFinishedComponent
   ],
   imports: [
     BrowserModule,

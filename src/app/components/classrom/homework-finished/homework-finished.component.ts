@@ -1,30 +1,23 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Homework } from '../../../core/modals/Homework';
+import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
+
 @Component({
-  selector: 'app-homework',
-  templateUrl: './homework.component.html',
-  styleUrls: ['./homework.component.scss']
+  selector: 'app-homework-finished',
+  templateUrl: './homework-finished.component.html',
+  styleUrls: ['./homework-finished.component.scss']
 })
-export class HomeworkComponent implements OnInit {
+export class HomeworkFinishedComponent implements OnInit {
   homework: Homework;
-  homeworkResponseForm: FormGroup;
   iterator: number;
   clickedStatus = false;
   startTime: number;
   endTime: number;
-  leftHours: number;
-  leftMinutes: number;
   @Input() set homeworkSet(hom) {
     this.homework = hom;
-    const endDate = moment(this.homework.endDate);
-    const currentTime = moment();
-    const timeLeft = endDate.diff(currentTime, 'minutes');
-    this.leftHours = Math.floor(timeLeft / 60);
-    this.leftMinutes = Math.floor(timeLeft - (this.leftHours * 60 ));
     // @ts-ignore
     this.startTime = moment(this.homework.createDate)._d.toLocaleString();
     // @ts-ignore
@@ -37,13 +30,7 @@ export class HomeworkComponent implements OnInit {
   constructor(
     private main: MainService,
     private classService: ClassService
-  ) {
-    this.homeworkResponseForm = new FormGroup({
-      description: new FormControl(''),
-      classID: new FormControl(this.main.currentClassrom.id),
-
-    });
-  }
+  ) {}
   addFocusClass() {
     if (this.clickedStatus) {
       setTimeout(() => this.clickedStatus = !this.clickedStatus, 400);
@@ -53,11 +40,5 @@ export class HomeworkComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  addNewResponse() {
-    this.homeworkResponseForm.addControl('homeworkID', new FormControl(this.homework.id));
-    if (this.homeworkResponseForm.valid) {
-      this.classService.addNewResponse(this.homeworkResponseForm.value);
 
-    }
-  }
 }

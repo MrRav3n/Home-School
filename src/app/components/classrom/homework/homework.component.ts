@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Homework } from '../../../core/modals/Homework';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-homework',
   templateUrl: './homework.component.html',
@@ -15,6 +15,12 @@ export class HomeworkComponent implements OnInit {
 
   @Input() set homeworkSet(hom) {
     this.homework = hom;
+    // @ts-ignore
+    this.homework.createDate = moment(this.homework.createDate)._d.toLocaleString();
+    // @ts-ignore
+    this.homework.endDate = moment(this.homework.endDate)._d.toLocaleString();
+    console.log(this.homework.createDate, this.homework.endDate);
+    console.log(this.homework.createDate < this.homework.endDate);
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;

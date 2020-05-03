@@ -2,7 +2,15 @@
   <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
-    <div><h1 class="m-0 p-1">{{homework.name}}</h1></div>
+    <div class="row justify-content-between m-0 p-0">
+      <div  class="m-0 p-1 col-6"><h1>{{homework.name}}</h1></div>
+      <div class="row col-6 text-right">
+        <div class="m-0 p-1 col-12">Data dodania: {{homework.createDate}}</div>
+        <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{homework.createDate}}</span> </div>
+      </div>
+
+    </div>
+
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">

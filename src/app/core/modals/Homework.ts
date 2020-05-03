@@ -4,4 +4,7 @@ export class Homework {
   name: string;
   responses: [];
   subjectID: string;
+  time: string;
+  createDate: string;
+  endDate: string;
 }

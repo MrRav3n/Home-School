@@ -7,7 +7,7 @@ export class SharedService {
   openLogin = new EventEmitter();
   openRegister = new EventEmitter();
   loading = true;
-  api = 'https://homeschoolprojectapi.azurewebsites.net/api/';
+  api = 'https://homeschool-api.azurewebsites.net/api/';
   constructor() { }
   openLoginModal() {
     this.openLogin.emit();

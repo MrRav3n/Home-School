@@ -8,6 +8,7 @@ import { Homework } from '../modals/Homework';
 import { Observable } from 'rxjs';
 import { Classrom } from '../modals/Classrom';
 import { Subject } from '../modals/Subject';
+import { Response } from '../modals/Response';
 
 @Injectable({
   providedIn: 'root'
@@ -31,9 +32,14 @@ export class ClassService {
     return this.http.put(this.api + 'Class/addMember', userToAdd);
   }
   addNewHomework(homework) {
-    return this.http.post<Homework>(this.api + 'Homework/create', homework).subscribe(res => {
+    return this.http.post<Homework>(this.api + 'Homework/createHomework', homework).subscribe(res => {
       this.main.currentSubject.homeworks.push(res);
       this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
+    });
+  }
+  addNewResponse(response) {
+    return this.http.post<Response>(this.api + 'Homework/createResponse', response).subscribe(res => {
+      this.toastr.success('Pomyślnie dodano odpowiedź', 'Udało się!');
     });
   }
   addNewSubject(subject) {

@@ -3,7 +3,7 @@ import { MainService } from '../../../core/main/main.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -32,9 +32,16 @@ export class SubjectComponent implements OnInit {
       });
     })(jQuery);
   }
+  createGoodTimeType(time) {
+
+  }
+  createGoodTimeForm() {}
   addNewHomework() {
-    this.homeworkForm.addControl('time', new FormControl(this.timeValue.nativeElement.value));
-    console.log(this.timeValue.nativeElement.value);
+    const timeNoUtc = this.timeValue.nativeElement.value;
+    console.log(timeNoUtc);
+    const timeUtc = moment(timeNoUtc).toISOString();
+    console.log(timeUtc);
+    this.homeworkForm.addControl('time', new FormControl(timeUtc));
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(this.homeworkForm.value);
     }

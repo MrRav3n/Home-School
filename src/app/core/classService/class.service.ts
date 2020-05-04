@@ -25,6 +25,7 @@ export class ClassService {
   addNewClass(classroom) {
     this.http.post<Classrom>(this.api + 'Class/create', classroom).subscribe( res => {
       this.main.classrom.push(res);
+      this.shared.openCodeModal(res.id);
       this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
     });
   }
@@ -34,6 +35,7 @@ export class ClassService {
   addNewHomework(homework) {
     return this.http.post<Homework>(this.api + 'Homework/createHomework', homework).subscribe(res => {
       this.main.currentSubject.homeworks.push(res);
+
       this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
     });
   }

@@ -24,6 +24,7 @@ import { HomeworkComponent } from './components/classrom/homework/homework.compo
 import { SpinnerComponent } from './components/shared/spinner/spinner.component';
 import { HomeworkFinishedComponent } from './components/classrom/homework-finished/homework-finished.component';
 import { HomeworkResponseComponent } from './components/classrom/homework-response/homework-response.component';
+import { ShowCodeComponent } from './components/models/show-code/show-code.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { HomeworkResponseComponent } from './components/classrom/homework-respon
     HomeworkComponent,
     SpinnerComponent,
     HomeworkFinishedComponent,
-    HomeworkResponseComponent
+    HomeworkResponseComponent,
+    ShowCodeComponent
   ],
   imports: [
     BrowserModule,

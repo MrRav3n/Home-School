@@ -3,11 +3,18 @@
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
     <div class="row justify-content-between m-0 p-0">
-      <div  class="m-0 p-1 col-6"><h1>{{homework.name}}</h1></div>
+      <div  class="m-0 p-1 col-6">
+        <h1>{{homework.name}}</h1>
+        <div *ngIf="main.currentRole === 0">
+          <div class="markMarked" *ngIf="homework.mark" >Ocena: {{homework.mark}}</div>
+          <div class="markNoMarked" *ngIf="!homework.mark">Nie oceniono</div>
+        </div>
+      </div>
+
       <div class="row col-6 text-right">
         <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
         <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
-        <div class="m-0 p-1 col-12" *ngIf="!this.homework.responses[1]">Data odesłania:
+        <div class="m-0 p-1 col-12" *ngIf="main.currentRole === 0">Data odesłania:
           <span class="text-danger">{{sendTime}}</span>
         </div>
       </div>
@@ -17,16 +24,25 @@
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
 
-    <div *ngIf="this.homework.responses[0] && !this.homework.responses[1]">
+    <div *ngIf="main.currentRole === 3">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
-    <div *ngIf="this.homework.responses[1]">
-      <app-homework-response *ngFor="let response of this.homework.responses; let i=index"
-                             [responseSet]="this.homework.responses[i]">
+    <div *ngIf="main.currentRole === 2" class="homeworksList">
+      <ul class="list-group mt-3 mb-3">
+        <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
+          <div class="row p-0 m-0">
+            <div class="col-12">
+              <h2 class="text-center d-block">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>
+              <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono</h4>
+              <h4 class="text-center d-block red" *ngIf="!res.mark">Nie oceniono</h4>
+            </div>
+          </div>
+        </li>
 
-      </app-homework-response>
+      </ul>
+
     </div>
-    <div *ngIf="!this.homework.responses[0]">
+    <div *ngIf="main.currentRole === 3 && !homework.responses[0]">
       <h1 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h1>
     </div>
   </div>

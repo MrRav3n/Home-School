@@ -26,8 +26,14 @@ export class ClassService {
     this.http.post<Classrom>(this.api + 'Class/create', classroom).subscribe( res => {
       this.main.classrom.push(res);
       this.shared.openCodeModal(res.id);
-      this.toastr.success('Pomyślnie utworzono nową klasę', 'Udało się!');
+      this.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
     });
+  }
+  addNewMark(mark) {
+    this.http.post(this.api + 'Mark', mark).subscribe( res => {
+      this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
+      this.shared.openHomeworkModal('');
+    })
   }
   addUserToClass(userToAdd) {
     return this.http.put(this.api + 'Class/addMember', userToAdd);
@@ -36,18 +42,18 @@ export class ClassService {
     return this.http.post<Homework>(this.api + 'Homework/createHomework', homework).subscribe(res => {
       this.main.currentSubject.homeworks.push(res);
 
-      this.toastr.success('Pomyślnie dodano nowe zadanie', 'Udało się!');
+      this.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
     });
   }
   addNewResponse(response) {
     return this.http.post<Response>(this.api + 'Homework/createResponse', response).subscribe(res => {
-      this.toastr.success('Pomyślnie dodano odpowiedź', 'Udało się!');
+      this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
     });
   }
   addNewSubject(subject) {
     this.http.post<{subject: Subject}>(this.api + 'Subject/create', subject).subscribe( res => {
       this.main.classrom.filter(value => value.id = subject.classID).map(val => val.subjects.push(res.subject));
-      this.toastr.success('Pomyślnie dodano nauczyciela do klasy', 'Udało się!');
+      this.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
     });
   }
 }

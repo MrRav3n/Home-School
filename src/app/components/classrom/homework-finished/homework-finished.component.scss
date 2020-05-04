@@ -20,4 +20,29 @@
   border-bottom-left-radius: var(--rad);
   background: #90BE6D;
 }
-
+.markMarked {
+  color: #AA4362;
+  background: inherit;
+  font-size: 28px;
+}
+.markNoMarked {
+  background: inherit;
+  font-size: 28px;
+}
+.list-group-item {
+  transition: 0.5s all ease;
+}
+.list-group-item:hover {
+  background: blueviolet;
+  cursor: pointer;
+}
+.homeworksList {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.green {
+  color: var(--green)
+}
+.red {
+   color: var(--warn)
+}

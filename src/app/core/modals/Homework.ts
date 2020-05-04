@@ -9,4 +9,5 @@ export class Homework {
   time: string;
   createDate: string;
   endDate: string;
+  mark: number;
 }

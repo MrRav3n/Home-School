@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
+import { SharedService } from '../../../core/shared/shared.service';
 
 @Component({
   selector: 'app-homework-finished',
@@ -31,7 +32,8 @@ export class HomeworkFinishedComponent implements OnInit {
   }
 
   constructor(
-    private main: MainService,
+    public main: MainService,
+    private shared: SharedService,
     private classService: ClassService
   ) {}
   addFocusClass() {
@@ -40,6 +42,10 @@ export class HomeworkFinishedComponent implements OnInit {
     } else {
       this.clickedStatus = !this.clickedStatus;
     }
+  }
+  openHomeworkModal(response) {
+    response.homeworkID = this.homework.id;
+    this.shared.openHomeworkModal(response);
   }
   ngOnInit(): void {
   }

@@ -15,7 +15,7 @@ export class SubjectComponent implements OnInit {
   homeworkForm: FormGroup;
   currentHomeworks = [];
   finishedHomeworks = [];
-  whichHomeworks = true;
+  whichHomeworks = false;
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,

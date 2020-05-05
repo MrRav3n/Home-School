@@ -30,10 +30,10 @@ export class ClassService {
     });
   }
   addNewMark(mark) {
-    this.http.post(this.api + 'Mark', mark).subscribe( res => {
+    this.http.put(this.api + 'Mark', mark).subscribe( res => {
       this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
       this.shared.openHomeworkModal('');
-    })
+    });
   }
   addUserToClass(userToAdd) {
     return this.http.put(this.api + 'Class/addMember', userToAdd);

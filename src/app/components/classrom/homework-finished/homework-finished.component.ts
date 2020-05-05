@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { SharedService } from '../../../core/shared/shared.service';
+import { Response } from '../../../core/modals/Response';
 
 @Component({
   selector: 'app-homework-finished',
@@ -18,6 +19,8 @@ export class HomeworkFinishedComponent implements OnInit {
   startTime: string;
   endTime: string;
   sendTime: string;
+  text: string;
+  allResponses: [Response];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     // @ts-ignore
@@ -26,11 +29,17 @@ export class HomeworkFinishedComponent implements OnInit {
     this.endTime = moment(this.homework.endDate)._d.toLocaleString();
     // @ts-ignore
     this.sendTime = moment(this.homework.recreateDate)._d.toLocaleString();
+    this.allResponses = this.homework.responses;
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;
   }
-
+  filter() {
+    console.log(this.text);
+    this.homework.responses = this.allResponses.filter(v => {
+      return (v.senderName.includes(this.text) || v.senderSurname.includes(this.text));
+    }) as [Response];
+  }
   constructor(
     public main: MainService,
     private shared: SharedService,
@@ -43,8 +52,12 @@ export class HomeworkFinishedComponent implements OnInit {
       this.clickedStatus = !this.clickedStatus;
     }
   }
+  showGrades() {
+    this.shared.openMarksListModal(this.allResponses);
+  }
   openHomeworkModal(response) {
     response.homeworkID = this.homework.id;
+    response.singleHomework = true;
     this.shared.openHomeworkModal(response);
   }
   ngOnInit(): void {

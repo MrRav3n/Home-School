@@ -9,4 +9,5 @@ export class Response {
   senderID: string;
   mark: number;
   id: string;
+  singleHomework: boolean;
 }

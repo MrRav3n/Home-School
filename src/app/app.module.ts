@@ -28,6 +28,7 @@ import { ShowCodeComponent } from './components/models/show-code/show-code.compo
 import {
   HomeworkResponseModalComponent
 } from './components/models/homework-response/homework-response-modal.component';
+import { MarksListComponent } from './components/models/marks-list/marks-list.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {
     HomeworkFinishedComponent,
     HomeworkResponseComponent,
     ShowCodeComponent,
-    HomeworkResponseModalComponent
+    HomeworkResponseModalComponent,
+    MarksListComponent
   ],
   imports: [
     BrowserModule,

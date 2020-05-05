@@ -27,17 +27,17 @@
     <div *ngIf="main.currentRole === 0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
-    <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-0 justify-content-center">
-      <div class="form__group col-md-5 col-10 mb-5">
-        <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required [(ngModel)]="text" (ngModelChange)="filter()"/>
-        <label for="numberPeople" class="form__label">Filtruj listę</label>
+    <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-2 justify-content-between">
+      <div class="form__group col-md-5 col-10">
+        <input type="email" class="form__field" placeholder="Name" name="name" [id]="'homeworkInput-' + iterator" required [(ngModel)]="text" (ngModelChange)="filter()"/>
+        <label [for]="'homeworkInput-' + iterator" class="form__label">Filtruj listę</label>
       </div>
-      <div class="col-md-5 col-12 mt-2">
+      <div class="col-md-5 col-12">
         <div class="example_d p-3" (click)="showGrades()" >
           Lista ocen
         </div>
       </div>
-      <ul class="list-group mt-3 mb-3 col-12">
+      <ul class="list-group mt-5 mb-3 col-12">
         <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
           <div class="row p-0 m-0">
             <div class="col-12">

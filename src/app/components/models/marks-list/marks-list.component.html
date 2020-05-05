@@ -5,11 +5,11 @@
 <div class="modal fade" id="openMarksList" tabindex="-1" role="dialog" aria-labelledby="openMarksList" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content p-3" *ngIf="response">
-      <h1 class="text-center marksListH1">Lista ocen</h1>
+      <h1 class="text-center marksListH1 pb-2">Lista ocen</h1>
       <div *ngFor="let res of response" class="row justify-content-between studentsList">
-        <div class="col-9">{{res.senderName}} {{res.senderSurname}}</div>
-        <div class="col-3" *ngIf="res.mark">{{res.mark}}</div>
-        <div class="col-3" *ngIf="!res.mark">Brak</div>
+        <div class="col-8">{{res.senderName}} {{res.senderSurname}}</div>
+        <div class="col-4 text-left" *ngIf="res.mark">{{res.mark}}</div>
+        <div class="col-4 text-left" *ngIf="!res.mark">Brak</div>
       </div>
 
     </div>

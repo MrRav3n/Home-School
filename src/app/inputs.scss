@@ -23,7 +23,7 @@
 .formBtn:focus {
   outline: none;
 }
-$primary: #577590;
+$primary: #000000;
 $secondary: #09ad43;
 $white: #fff;
 $gray: #000000;
@@ -127,4 +127,11 @@ a:hover {
   background: #f6b93b;
   border-color: #f6b93b !important;
   transition: all 0.4s ease 0s;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  font-size: 1.3rem !important;
 }

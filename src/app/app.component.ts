@@ -46,7 +46,5 @@ export class AppComponent {
     if (!this.main.user) {
       this.main.ifUserExists();
     }
-
-
   }
 }

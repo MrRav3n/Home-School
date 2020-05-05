@@ -24,10 +24,10 @@
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
 
-    <div *ngIf="main.currentRole === 3">
+    <div *ngIf="main.currentRole === 0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
-    <div *ngIf="main.currentRole === 2" class="homeworksList">
+    <div *ngIf="main.currentRole === 1" class="homeworksList">
       <ul class="list-group mt-3 mb-3">
         <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
           <div class="row p-0 m-0">
@@ -42,7 +42,7 @@
       </ul>
 
     </div>
-    <div *ngIf="main.currentRole === 3 && !homework.responses[0]">
+    <div *ngIf="main.currentRole === 0 && !homework.responses[0]">
       <h1 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h1>
     </div>
   </div>

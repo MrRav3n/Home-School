@@ -1,5 +1,5 @@
 .addNewHomeworkForm {
-  background: white;
+  background: #43AA8B;
   border-radius: var(--rad);
 }
 .subHeader {
@@ -24,7 +24,12 @@
   text-align: center !important;
 }
 .pickerDiv {
-  border-radius: var(--rad);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.pickerDiv:hover > #picker {
+ color: var(--warn)
+
 }
 .example_d {
   font-size: 25px;

@@ -6,13 +6,15 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content p-3" *ngIf="response">
         <app-homework-response [responseSet]="response"></app-homework-response>
-      <form [formGroup]="markForm">
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="6" formControlName="mark" maxlength="1">
-        </div>
+      <div class="row m-0 p-0 justify-content-between gradeRow">
+        <form [formGroup]="markForm" class="col-6">
+          <div class="form-group">
+            <input type="email" class="form-control markInput" placeholder="6" formControlName="mark" maxlength="1">
+          </div>
+        </form>
+        <button type="submit" class="formBtn col-5" (click)="addMark()">Oceń</button>
+      </div>
 
-      </form>
-      <button type="submit" class="formBtn" (click)="addMark()">Oceń</button>
     </div>
   </div>
 </div>

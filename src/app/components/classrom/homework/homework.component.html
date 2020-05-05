@@ -16,13 +16,15 @@
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
-    <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 ">
+    <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>
+    <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
       <div class="form-group col-10">
-        <label for="exampleFormControlTextarea1">Opis zadania</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="description"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
+
+        </textarea>
       </div>
-      <h1 class="col-10 display-4 d-block text-center pt-2">Dołącz plik</h1>
-      <div class="col-10 row justify-content-center">
+
+      <div class="col-12 row justify-content-center p-3 m-0">
         <div class="custom-file col-10">
           <input type="file" class="custom-file-input" id="customFile">
           <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>

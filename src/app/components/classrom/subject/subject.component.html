@@ -22,16 +22,18 @@
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
+        <div class="col-10 row m-0 p-0 headerDiv p-3 justify-content-between">
+          <div class="form__group col-md-5 col-10 mb-5">
+            <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
+            <label for="numberPeople" class="form__label">Nazwa zadania</label>
+          </div>
+          <div class="col-md-5 col-10 mb-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
+            <h3 class="text-white termin">Termin oddania</h3>
+            <div id="picker">   </div>
+            <input type="hidden" id="result" value="" #timeValue>
+          </div>
+        </div>
 
-        <div class="form__group field col-md-5 col-10 mb-5">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
-          <label for="numberPeople" class="form__label">Nazwa zadania</label>
-        </div>
-        <div class="col-md-5 col-10 mb-5 row justify-content-center align-items-center pickerDiv">
-          <h3 class="text-white pr-2 termin">Termin oddania</h3>
-          <div id="picker">   </div>
-          <input type="hidden" id="result" value="" #timeValue>
-        </div>
         <div class="form-group col-10">
         <textarea class="form-control p-0 m-0" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
 
@@ -50,11 +52,20 @@
     </div>
   </div>
 </div>
-
+<!-- div for students -->
 <div class="homeworksDiv" *ngIf="whichHomeworks">
-  <h1 class="text-center subHomeworks">Zadania do zrobienia</h1>
-  <div *ngFor="let homework of this.currentHomeworks; let i=index">
-    <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+  <div *ngIf="this.main.currentRole === 0">
+    <h1 class="text-center subHomeworks" >Zadania do zrobienia</h1>
+    <div *ngFor="let homework of this.currentHomeworks; let i=index">
+      <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+    </div>
+  </div>
+<!-- div for teachers -->
+  <div *ngIf="this.main.currentRole !== 0">
+    <h1 class="text-center subHomeworks" >Obecnie trwające</h1>
+    <div *ngFor="let homework of this.currentHomeworks; let i=index">
+      <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
+    </div>
   </div>
 </div>
 <div class="homeworksDiv" *ngIf="!whichHomeworks">

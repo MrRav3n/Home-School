@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { InterceptorSkipHeader } from '../interceptor/http-error.interceptor';
 import { Classrom } from '../modals/Classrom';
 import { Subject } from '../modals/Subject';
+import { ToastrService } from 'ngx-toastr';
 const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,7 @@ export class MainService {
     private shared: SharedService,
     private http: HttpClient,
     private router: Router,
+    private toastr: ToastrService
   ) { }
   loginViaToken(): Observable<any> {
     return this.http.get(`${this.api}UserAuth/loginviatoken`, { headers });
@@ -38,6 +40,7 @@ export class MainService {
     this.user = undefined;
     this.classrom = undefined;
     this.ifUserExists();
+    // this.toastr.success('Pomyślnie się wylogowałeś.', 'Udało się!');
   }
   async tokenLogin() {
     if (localStorage.getItem('homeschooltoken')) {
@@ -52,6 +55,7 @@ export class MainService {
   }
   async ifUserExists() {
     await this.tokenLogin();
+
     this.shared.loading = false;
     if (!this.user) {
       this.router.navigateByUrl('/');

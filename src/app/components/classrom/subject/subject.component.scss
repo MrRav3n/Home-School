@@ -27,6 +27,13 @@
   transition: all 0.3s ease;
   cursor: pointer;
 }
+.headerDiv {
+  padding: 15px 0;
+}
+#picker {
+  text-align: center;
+  width: 100%;
+}
 .pickerDiv:hover > #picker {
  color: var(--warn)
 

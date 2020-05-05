@@ -38,12 +38,20 @@ export class SubjectComponent implements OnInit {
     const currentTime = moment().toISOString();
     for(let i = 0; i < this.main.currentSubject.homeworks.length; i++) {
       const currHom = this.main.currentSubject.homeworks[i];
-
-      if (currHom.endDate > currentTime && !currHom.responses[0]) {
-        this.currentHomeworks.push(currHom);
+      if (this.main.currentRole === 0) { // returning homeworks for student
+        if (currHom.endDate > currentTime && !currHom.responses[0]) {
+          this.currentHomeworks.push(currHom);
+        } else {
+          this.finishedHomeworks.push(currHom);
+        }
       } else {
-        this.finishedHomeworks.push(currHom);
+        if (currHom.endDate > currentTime) {
+          this.currentHomeworks.push(currHom);
+        } else {
+          this.finishedHomeworks.push(currHom);
+        }
       }
+
     }
   }
 

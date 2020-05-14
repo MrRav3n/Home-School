@@ -53,8 +53,8 @@ export class ClassService {
   returnFileFromHomework(homworkData) {
     const httpOptions = {
       responseType  : 'arraybuffer' as 'json',
-      observe: 'response'
-    }
+      observe: 'response',
+    };
     return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromHomework`, homworkData, httpOptions);
   }
   addNewFileToResponse(classID, homeworkID, fileToSend): Observable<any> {

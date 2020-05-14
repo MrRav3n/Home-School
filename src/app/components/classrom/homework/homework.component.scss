@@ -20,4 +20,11 @@
   border-bottom-left-radius: var(--rad);
   background: #90BE6D;
 }
-
+.iframeWrapper{
+  display:inline-block;
+  position:relative;
+}
+.iframeWrapper iframe{
+  vertical-align:top;
+  pointer-events: none; /* let any clicks go trough me */
+}

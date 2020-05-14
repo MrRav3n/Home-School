@@ -1,4 +1,4 @@
-<div class="row justify-content-around m-3">
+<div class="row justify-content-center m-3">
   <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
@@ -15,10 +15,16 @@
 
   </a>
 
-  <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
+  <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'homework-' + iterator">
     <div class="col-12 row justify-content-center p-0">
       <h2 class="text-center pt-2 col-12">{{homework.description}}</h2>
       <button class="formBtn" (click)="downloadAllFiles()">Pobierz plik do zadania</button>
+      <div class="col-12" *ngFor="let srcItem of src; let i=index">
+        <button class="formBtn col-12" (click)="openWindow(i)">Otwórz w przeglądarce</button>
+        <div class="embed-responsive embed-responsive-16by9"   >
+          <iframe class="embed-responsive-item" [src]="getSrc(i)"  allowfullscreen [id]="srcItem"></iframe>
+        </div>
+      </div>
     </div>
     <div class="col-12">
       <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>

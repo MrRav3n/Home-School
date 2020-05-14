@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Homework } from '../../../core/modals/Homework';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
+import { DomSanitizer } from '@angular/platform-browser';
+declare var jQuery: any;
 @Component({
   selector: 'app-homework',
   templateUrl: './homework.component.html',
@@ -18,6 +20,7 @@ export class HomeworkComponent implements OnInit {
   endTime: string;
   leftHours: number;
   leftMinutes: number;
+  src = [];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     const endDate = moment(this.homework.endDate);
@@ -36,7 +39,8 @@ export class HomeworkComponent implements OnInit {
 
   constructor(
     private main: MainService,
-    private classService: ClassService
+    private classService: ClassService,
+    private sanitizer: DomSanitizer
   ) {
     this.homeworkResponseForm = new FormGroup({
       description: new FormControl(''),
@@ -44,21 +48,23 @@ export class HomeworkComponent implements OnInit {
 
     });
   }
+  getSrc(i) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.src[i]);
+  }
+  openWindow(i) {
+   window.open(this.src[i]);
+  }
+
   downloadAllFiles() {
     const fileData = {homeworkID: this.homework.id,
       classID: this.main.currentClassrom.id,
-      fileID: this.homework.files[0]};
-    console.log(fileData);
+      fileID: this.homework.files[0]
+    };
     this.classService.returnFileFromHomework(fileData).subscribe(res => {
-      console.log('Working!');
-      console.log(res.body);
       const type = res.headers.get('Content-Type');
-      console.log(type);
-      const file = new Blob([res.body],
-        { type });
-      console.log(file);
+      const file = new Blob([res.body], {type});
       const fileURL = URL.createObjectURL(file);
-      window.open(fileURL);
+      this.src.push(fileURL);
     });
   }
   addFocusClass() {
@@ -74,7 +80,6 @@ export class HomeworkComponent implements OnInit {
     this.homeworkResponseForm.addControl('homeworkID', new FormControl(this.homework.id));
     if (this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(this.homeworkResponseForm.value);
-
     }
   }
 }

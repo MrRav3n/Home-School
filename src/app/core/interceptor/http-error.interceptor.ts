@@ -9,10 +9,14 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { SharedService } from '../shared/shared.service';
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private toastr: ToastrService) {
+  constructor(
+    private toastr: ToastrService,
+    private shared: SharedService
+  ) {
   }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.headers.has(InterceptorSkipHeader)) {
@@ -26,6 +30,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           let errorTitle = '';
           let errorMessage = '';
+
           if (error.error) {
             errorTitle = error.error.err;
             errorMessage = error.error.desc;

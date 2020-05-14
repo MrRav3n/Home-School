@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { FormControl, FormGroup} from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
 import * as moment from 'moment';
-
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -15,7 +17,10 @@ export class SubjectComponent implements OnInit {
   homeworkForm: FormGroup;
   currentHomeworks = [];
   finishedHomeworks = [];
+  uploadForm: FormGroup;
   whichHomeworks = true;
+  files = [];
+  filesID = [];
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,
@@ -25,6 +30,10 @@ export class SubjectComponent implements OnInit {
       classID: new FormControl(this.main.currentClassrom.id),
       name: new FormControl(''),
       description: new FormControl(''),
+      files: new FormControl(''),
+    });
+    this.uploadForm = new FormGroup({
+      profile: new FormControl(''),
     });
   }
 
@@ -54,12 +63,45 @@ export class SubjectComponent implements OnInit {
 
     }
   }
-
+  onFileSelect(event) {
+    console.log(event);
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('profile').setValue(file);
+      this.uploadFile();
+    }
+  }
+  uploadFile() {
+    const formData = new FormData();
+    const file = this.uploadForm.get('profile').value;
+    this.files.push(file);
+    formData.append('file', file);
+    file.inProgress = true;
+    this.classService.addNewFileToHomework(this.main.currentClassrom.id, formData).pipe(
+      map(event => {
+        switch (event.type) {
+          case HttpEventType.UploadProgress:
+            const index = this.files.findIndex(v => v.name === file.name);
+            this.files[index].progress = Math.round(event.loaded * 100 / event.total);
+            console.log(this.files[index].progress);
+            break;
+          case HttpEventType.Response:
+            this.filesID.push(event.body.fileID);
+            break;
+        }
+      }),
+      ).subscribe(res => {
+    });
+  }
   addNewHomework() {
     const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
+    console.log(timeUtc);
     this.homeworkForm.addControl('time', new FormControl(timeUtc));
+    const bodyToSend = this.homeworkForm.value;
+    bodyToSend.filesID = this.filesID;
+    console.log(bodyToSend);
     if (this.homeworkForm.valid) {
-      this.classService.addNewHomework(this.homeworkForm.value);
+      this.classService.addNewHomework(bodyToSend);
     }
   }
 

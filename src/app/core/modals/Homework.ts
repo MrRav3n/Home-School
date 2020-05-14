@@ -10,4 +10,5 @@ export class Homework {
   createDate: string;
   endDate: string;
   mark: number;
+  files;
 }

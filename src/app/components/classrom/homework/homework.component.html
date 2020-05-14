@@ -16,22 +16,29 @@
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
-    <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>
-    <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
-      <div class="form-group col-10">
+    <div class="col-12 row justify-content-center p-0">
+      <h2 class="text-center pt-2 col-12">{{homework.description}}</h2>
+      <button class="formBtn" (click)="downloadAllFiles()">Pobierz plik do zadania</button>
+    </div>
+    <div class="col-12">
+      <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>
+      <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
+        <div class="form-group col-10">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
 
         </textarea>
-      </div>
-
-      <div class="col-12 row justify-content-center p-3 m-0">
-        <div class="custom-file col-10">
-          <input type="file" class="custom-file-input" id="customFile">
-          <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>
         </div>
-      </div>
-      <button type="submit" class="formBtn col-4" (click)="addNewResponse()">Dodaj</button>
-    </form>
+
+        <div class="col-12 row justify-content-center p-3 m-0">
+          <div class="custom-file col-10">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>
+          </div>
+        </div>
+        <button type="submit" class="formBtn col-4" (click)="addNewResponse()">Dodaj</button>
+      </form>
+    </div>
+
   </div>
 
 </div>

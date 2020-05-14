@@ -44,6 +44,23 @@ export class HomeworkComponent implements OnInit {
 
     });
   }
+  downloadAllFiles() {
+    const fileData = {homeworkID: this.homework.id,
+      classID: this.main.currentClassrom.id,
+      fileID: this.homework.files[0]};
+    console.log(fileData);
+    this.classService.returnFileFromHomework(fileData).subscribe(res => {
+      console.log('Working!');
+      console.log(res.body);
+      const type = res.headers.get('Content-Type');
+      console.log(type);
+      const file = new Blob([res.body],
+        { type });
+      console.log(file);
+      const fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+    });
+  }
   addFocusClass() {
     if (this.clickedStatus) {
       setTimeout(() => this.clickedStatus = !this.clickedStatus, 400);

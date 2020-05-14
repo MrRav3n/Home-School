@@ -41,9 +41,24 @@ export class ClassService {
   addNewHomework(homework) {
     return this.http.post<Homework>(this.api + 'Homework/createHomework', homework).subscribe(res => {
       this.main.currentSubject.homeworks.push(res);
-
       this.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
     });
+  }
+  addNewFileToHomework(classID, fileToSend): Observable<any> {
+    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/uploadToHomework/${classID}`, fileToSend, {
+        reportProgress: true,
+        observe: 'events'
+    });
+  }
+  returnFileFromHomework(homworkData) {
+    const httpOptions = {
+      responseType  : 'arraybuffer' as 'json',
+      observe: 'response'
+    }
+    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromHomework`, homworkData, httpOptions);
+  }
+  addNewFileToResponse(classID, homeworkID, fileToSend): Observable<any> {
+    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/uploadToResponse/${classID}/${homeworkID}`, fileToSend);
   }
   addNewResponse(response) {
     return this.http.post<Response>(this.api + 'Homework/createResponse', response).subscribe(res => {

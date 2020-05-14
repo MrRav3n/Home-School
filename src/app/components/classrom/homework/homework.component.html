@@ -17,16 +17,20 @@
 
   <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'homework-' + iterator">
     <div class="col-12 row justify-content-center p-0">
-      <h2 class="text-center pt-2 col-12">{{homework.description}}</h2>
-      <button class="formBtn" (click)="downloadAllFiles()">Pobierz plik do zadania</button>
-      <div class="col-12" *ngFor="let srcItem of src; let i=index">
-        <button class="formBtn col-12" (click)="openWindow(i)">Otwórz w przeglądarce</button>
-        <div class="embed-responsive embed-responsive-16by9"   >
-          <iframe class="embed-responsive-item" [src]="getSrc(i)"  allowfullscreen [id]="srcItem"></iframe>
+      <h2 class=" pt-2 col-12 description">Opis zadania: {{homework.description}}</h2>
+      <div class="col-12 files row justify-content-center" *ngIf="homework.files[0]">
+        <button class="formBtn" (click)="downloadAllFiles()" >Pobierz pliki</button>
+        <div class="col-12 mt-2 mb-2 p-1" *ngFor="let srcItem of src; let i=index">
+          <button class="formBtn col-12 " (click)="openWindow(i)">Otwórz w przeglądarce</button>
+          <div class="embed-responsive embed-responsive-16by9"   >
+
+            <iframe class="embed-responsive-item" [src]="getSrc(i)"  allowfullscreen></iframe>
+          </div>
         </div>
       </div>
+
     </div>
-    <div class="col-12">
+    <div class="col-12 answear">
       <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>
       <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
         <div class="form-group col-10">

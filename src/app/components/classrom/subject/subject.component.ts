@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -25,6 +26,7 @@ export class SubjectComponent implements OnInit {
   constructor(
     public main: MainService,
     private classService: ClassService,
+    private toastr: ToastrService
   ) {
     this.homeworkForm = new FormGroup({
       classID: new FormControl(this.main.currentClassrom.id),
@@ -101,7 +103,15 @@ export class SubjectComponent implements OnInit {
     bodyToSend.filesID = this.filesID;
     console.log(bodyToSend);
     if (this.homeworkForm.valid) {
-      this.classService.addNewHomework(bodyToSend);
+      this.classService.addNewHomework(bodyToSend).subscribe(res => {
+        this.homeworkForm.reset();
+        this.files = [];
+        this.filesID = [];
+        this.currentHomeworks.push(res);
+        this.main.currentSubject.homeworks.push(res);
+        this.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
+      });
+
     }
   }
 

@@ -5,6 +5,9 @@ import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Mimes } from '../../../core/modals/mimeTypes';
+import { ToastrService } from 'ngx-toastr';
+
 declare var jQuery: any;
 @Component({
   selector: 'app-homework',
@@ -21,6 +24,12 @@ export class HomeworkComponent implements OnInit {
   leftHours: number;
   leftMinutes: number;
   src = [];
+  mimes = [
+    'application/pdf',
+    'image/jpeg',
+    'image/png',
+    'image/jpg',
+  ];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     const endDate = moment(this.homework.endDate);
@@ -40,7 +49,8 @@ export class HomeworkComponent implements OnInit {
   constructor(
     private main: MainService,
     private classService: ClassService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private toastr: ToastrService
   ) {
     this.homeworkResponseForm = new FormGroup({
       description: new FormControl(''),
@@ -52,19 +62,34 @@ export class HomeworkComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.src[i]);
   }
   openWindow(i) {
-   window.open(this.src[i]);
+    window.open(this.src[i]);
   }
 
   downloadAllFiles() {
-    const fileData = {homeworkID: this.homework.id,
+    const fileData = {
+      homeworkID: this.homework.id,
       classID: this.main.currentClassrom.id,
       fileID: this.homework.files[0]
     };
+
     this.classService.returnFileFromHomework(fileData).subscribe(res => {
+      console.log(res.headers);
       const type = res.headers.get('Content-Type');
+      const fileName = res.headers.get('filename');
       const file = new Blob([res.body], {type});
       const fileURL = URL.createObjectURL(file);
-      this.src.push(fileURL);
+      if (!this.mimes.includes(type)) {
+        const a = document.createElement('a');
+        document.body.appendChild(a);
+        // @ts-ignore
+        a.style = 'display: none';
+        a.href = fileURL;
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(fileURL);
+      } else {
+        this.src.push(fileURL);
+      }
     });
   }
   addFocusClass() {

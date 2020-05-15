@@ -66,10 +66,8 @@ export class SubjectComponent implements OnInit {
     }
   }
   onFileSelect(event) {
-    console.log(event);
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.uploadForm.get('profile').setValue(file);
       this.uploadFile();
     }
   }
@@ -85,7 +83,6 @@ export class SubjectComponent implements OnInit {
           case HttpEventType.UploadProgress:
             const index = this.files.findIndex(v => v.name === file.name);
             this.files[index].progress = Math.round(event.loaded * 100 / event.total);
-            console.log(this.files[index].progress);
             break;
           case HttpEventType.Response:
             this.filesID.push(event.body.fileID);

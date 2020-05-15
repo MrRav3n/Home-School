@@ -10,4 +10,5 @@ export class Response {
   mark: number;
   id: string;
   singleHomework: boolean;
+  filesID;
 }

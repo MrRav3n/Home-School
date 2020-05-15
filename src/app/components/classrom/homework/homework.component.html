@@ -19,9 +19,10 @@
     <div class="col-12 row justify-content-center p-0">
       <h2 class=" pt-2 col-12 description">Opis zadania: {{homework.description}}</h2>
       <div class="col-12 files row justify-content-center" *ngIf="homework.files[0]">
+        <h2 class="text-center pt-2">Pobierz pliki załączone do zadania</h2>
         <button class="formBtn" (click)="downloadAllFiles()" >Pobierz pliki</button>
         <div class="col-12 mt-2 mb-2 p-1" *ngFor="let srcItem of src; let i=index">
-          <button class="formBtn col-12 " (click)="openWindow(i)">Otwórz w przeglądarce</button>
+          <button class="formBtn openInBrowserBtn col-12 " (click)="openWindow(i)">Pobierz na dysk</button>
           <div class="embed-responsive embed-responsive-16by9"   >
 
             <iframe class="embed-responsive-item" [src]="getSrc(i)"  allowfullscreen></iframe>
@@ -31,18 +32,26 @@
 
     </div>
     <div class="col-12 answear">
-      <h1 class="text-center pt-2">Dodaj odpowiedź do zadania</h1>
+      <h2 class="text-center pt-2">Dodaj odpowiedź do zadania</h2>
       <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
-        <div class="form-group col-10">
+        <div class="form-group col-12">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
 
         </textarea>
         </div>
 
-        <div class="col-12 row justify-content-center p-3 m-0">
-          <div class="custom-file col-10">
-            <input type="file" class="custom-file-input" id="customFile">
+        <div class="col-12 row justify-content-center m-0">
+          <div class="custom-file col-12">
+            <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelect($event)">
             <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>
+          </div>
+
+          <div class="col-12 mt-3 p-0" *ngIf="files">
+            <div class="progress mt-2 mr-0 ml-0" *ngFor="let file of files" >
+              <div class="progress-bar" role="progressbar" [style]="{'width': file.progress + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                {{file.name}}
+              </div>
+            </div>
           </div>
         </div>
         <button type="submit" class="formBtn col-4" (click)="addNewResponse()">Dodaj</button>

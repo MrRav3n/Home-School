@@ -4,18 +4,24 @@
     <form [formGroup]="addClassromForm" class="row justify-content-around">
 
         <div class="form__group field col-md-11 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='className' required formControlName="className"/>
+          <input type="email" class="form__field" placeholder="Name" name="name" id='className' formControlName="className"/>
           <label for="className" class="form__label">Nazwa klasy*</label>
+          <div *ngIf="addClassromForm.controls.className.invalid && submittedFirstPart" class="alert alert-danger">
+            Podaj nazwę klasy.
+          </div>
         </div>
 
         <div class="form__group field  col-md-5 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required />
-          <label for="numberPeople" class="form__label">Ilość osób*</label>
+          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' />
+          <label for="numberPeople" class="form__label">Ilość osób</label>
         </div>
 
         <div class="form__group field col-md-5 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' required formControlName="schoolName"/>
-          <label for="schoolName" class="form__label">Nazwa szkoły</label>
+          <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' formControlName="schoolName"/>
+          <label for="schoolName" class="form__label">Nazwa szkoły*</label>
+          <div *ngIf="addClassromForm.controls.schoolName.invalid && submittedFirstPart" class="alert alert-danger">
+            Podaj nazwę szkoły.
+          </div>
         </div>
 
 
@@ -28,17 +34,26 @@
       <div class="form-group col-12 col-md-5">
         <h3>Wybierz klasę</h3>
         <select class="form-control" id="exampleFormControlSelect1" formControlName="classID">
-          <option *ngFor="let classrom of this.main.classrom;let indexOfelement=index;" [value]="this.main.classrom[indexOfelement].id">{{classrom.className}} {{classrom.schoolName}} {{indexOfelement}}</option>
+          <option *ngFor="let classrom of this.main.classrom;let indexOfelement=index;" [value]="this.main.classrom[indexOfelement].id">{{classrom.className}} - {{classrom.schoolName}} </option>
         </select>
+        <div *ngIf="addSubjectForm.controls.classID.invalid && submittedFirstPart" class="alert alert-danger">
+          Wybierz klasę.
+        </div>
       </div>
       <div class="row justify-content-around col-12">
         <div class="form__group field col-md-5 col-12">
-          <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='userToAddEmail' required formControlName="userToAddEmail"/>
+          <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='userToAddEmail' formControlName="userToAddEmail"/>
           <label for="userToAddEmail" class="form__label">Email nauczyciela</label>
+          <div *ngIf="addSubjectForm.controls.userToAddEmail.invalid && submittedFirstPart" class="alert alert-danger">
+            Podaj poprawny email.
+          </div>
         </div>
         <div class="form__group field col-md-5 col-12">
-          <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='subjectName' required formControlName="subjectName"/>
+          <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='subjectName' formControlName="subjectName"/>
           <label for="subjectName" class="form__label">Nazwa przedmiotu</label>
+          <div *ngIf="addSubjectForm.controls.subjectName.invalid && submittedFirstPart" class="alert alert-danger">
+            Podaj nazwę przedmiotu.
+          </div>
         </div>
       </div>
     </form>

@@ -11,13 +11,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   @ViewChild('openModal') openModal;
   loginForm: FormGroup;
+  submitted = false;
   constructor(
     public shared: SharedService,
     private main: MainService
   ) {
     this.loginForm = new FormGroup({
-      email: new FormControl('dawid@wp.pl', Validators.required),
-      password: new FormControl('DAW100kr', Validators.required),
+      email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
+      password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
     });
   }
 
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     });
   }
   submit() {
+    this.submitted = true;
     if (this.loginForm.valid) {
       this.shared.loading = true;
       this.shared.openLoginModal();

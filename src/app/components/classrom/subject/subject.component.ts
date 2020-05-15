@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
-import { FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
 import * as moment from 'moment';
@@ -22,6 +22,7 @@ export class SubjectComponent implements OnInit {
   whichHomeworks = true;
   files = [];
   filesID = [];
+  submitted = false;
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,
@@ -30,9 +31,10 @@ export class SubjectComponent implements OnInit {
   ) {
     this.homeworkForm = new FormGroup({
       classID: new FormControl(this.main.currentClassrom.id),
-      name: new FormControl(''),
+      name: new FormControl('', Validators.required),
       description: new FormControl(''),
       files: new FormControl(''),
+      time: new FormControl('', Validators.required),
     });
     this.uploadForm = new FormGroup({
       profile: new FormControl(''),
@@ -93,9 +95,13 @@ export class SubjectComponent implements OnInit {
     });
   }
   addNewHomework() {
+    this.submitted = true;
     const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
     console.log(timeUtc);
-    this.homeworkForm.addControl('time', new FormControl(timeUtc));
+
+    this.homeworkForm.patchValue({time: timeUtc});
+    console.log(this.homeworkForm.controls.time.valid);
+    console.log(this.homeworkForm.controls.time.value);
     const bodyToSend = this.homeworkForm.value;
     bodyToSend.filesID = this.filesID;
     console.log(bodyToSend);

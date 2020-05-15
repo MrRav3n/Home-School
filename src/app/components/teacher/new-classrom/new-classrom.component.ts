@@ -13,28 +13,32 @@ import { ToastrService } from 'ngx-toastr';
 export class NewClassromComponent implements OnInit {
   addClassromForm: FormGroup;
   addSubjectForm: FormGroup;
+  submittedFirstPart = false;
+  submittedSecondPart = false;
   constructor(
     private classService: ClassService,
     private toastr: ToastrService,
     public main: MainService,
   ) {
     this.addClassromForm = new FormGroup({
-      className: new FormControl(''),
-      schoolName: new FormControl(''),
+      className: new FormControl('', [Validators.required]),
+      schoolName: new FormControl('', [Validators.required]),
     });
     this.addSubjectForm = new FormGroup({
-      userToAddEmail: new FormControl('', Validators.required),
-      classID: new FormControl('', Validators.required),
+      userToAddEmail: new FormControl('', [Validators.required, Validators.email]),
+      classID: new FormControl('', [Validators.required, Validators.minLength(22)]),
       subjectName: new FormControl('', Validators.required),
     });
   }
   addNewClass() {
+    this.submittedFirstPart = true;
     if (this.addClassromForm.valid) {
       this.classService.addNewClass(this.addClassromForm.value);
     }
   }
 
   addNewSubject() {
+    this.submittedSecondPart = true;
     if (this.addSubjectForm.valid) {
       this.classService.addNewSubject(this.addSubjectForm.value);
     }

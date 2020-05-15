@@ -26,12 +26,19 @@
           <div class="form__group col-md-5 col-10 mb-5">
             <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
             <label for="numberPeople" class="form__label">Nazwa zadania</label>
+            <div *ngIf="homeworkForm.controls.name.invalid && submitted" class="alert alert-danger">
+              Podaj nazwę zadania.
+            </div>
           </div>
           <div class="col-md-5 col-10 mb-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
             <h3 class="text-white termin">Termin oddania</h3>
             <div id="picker">   </div>
             <input type="hidden" id="result" value="" #timeValue>
+            <div *ngIf="homeworkForm.controls.time.invalid && submitted" class="alert alert-danger">
+              Podaj termin odddania zadania.
+            </div>
           </div>
+
         </div>
 
         <div class="form-group col-10">

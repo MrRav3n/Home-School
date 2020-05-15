@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('openRegister') openRegister;
   registerForm: FormGroup;
   selectedRole = 0;
+  submitted = false;
   constructor(
     public shared: SharedService,
     private main: MainService,
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
     email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
     password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
-    userCode: new FormControl(''),
+    userCode: new FormControl('', [Validators.required, Validators.minLength(22)]),
     });
   }
 
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   submit() {
+    this.submitted = true;
     this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
     if (this.registerForm.valid) {
       this.main.register(this.registerForm.value).subscribe(res => {

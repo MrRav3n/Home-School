@@ -10,13 +10,19 @@
       <h5 class="modal-title" id="exampleModalCenterTitle">Zaloguj się</h5>
       <form [formGroup]="loginForm">
         <div class="form__group field">
-          <input type="text" class="form__field" formControlName="email" placeholder="Name" name="name" id='emailLogin' required />
+          <input type="text" class="form__field" formControlName="email" placeholder="Name" name="name" id='emailLogin' />
           <label for="emailLogin" class="form__label">Nazwa użytkownika</label>
+          <div *ngIf="loginForm.controls.email.invalid && submitted" class="alert alert-danger">
+            Podaj poprawny email.
+          </div>
         </div>
 
         <div class="form__group field">
-          <input type="password" class="form__field" formControlName="password" placeholder="Name" name="name" id='passwordLogin' required />
+          <input type="password" class="form__field" formControlName="password" placeholder="Name" name="name" id='passwordLogin' />
           <label for="passwordLogin" class="form__label">Hasło</label>
+          <div *ngIf="loginForm.controls.password.invalid && submitted" class="alert alert-danger">
+            Podaj poprawne hasło. Minimum 5 znaków.
+          </div>
         </div>
 
         <div class="row justify-content-center">

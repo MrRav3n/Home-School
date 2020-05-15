@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
     email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
     password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
-    userCode: new FormControl('', [Validators.required, Validators.minLength(22)]),
+    userCode: new FormControl(''),
     });
   }
 

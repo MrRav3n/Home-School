@@ -22,6 +22,7 @@ export class SubjectComponent implements OnInit {
   whichHomeworks = true;
   files = [];
   filesID = [];
+  linksHrefs = [];
   submitted = false;
   @ViewChild('timeValue') timeValue;
   constructor(
@@ -33,7 +34,6 @@ export class SubjectComponent implements OnInit {
       classID: new FormControl(this.main.currentClassrom.id),
       name: new FormControl('', Validators.required),
       description: new FormControl(''),
-      files: new FormControl(''),
       time: new FormControl('', Validators.required),
     });
     this.uploadForm = new FormGroup({
@@ -70,6 +70,7 @@ export class SubjectComponent implements OnInit {
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      this.uploadForm.get('profile').setValue(file);
       this.uploadFile();
     }
   }
@@ -91,20 +92,15 @@ export class SubjectComponent implements OnInit {
             break;
         }
       }),
-      ).subscribe(res => {
-    });
+    ).subscribe(res => {});
   }
   addNewHomework() {
     this.submitted = true;
     const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
-    console.log(timeUtc);
-
     this.homeworkForm.patchValue({time: timeUtc});
-    console.log(this.homeworkForm.controls.time.valid);
-    console.log(this.homeworkForm.controls.time.value);
     const bodyToSend = this.homeworkForm.value;
     bodyToSend.filesID = this.filesID;
-    console.log(bodyToSend);
+    bodyToSend.linkHrefs = this.linksHrefs;
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(bodyToSend).subscribe(res => {
         this.homeworkForm.reset();

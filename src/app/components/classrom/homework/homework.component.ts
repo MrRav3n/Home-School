@@ -53,7 +53,6 @@ export class HomeworkComponent implements OnInit {
     this.homeworkResponseForm = new FormGroup({
       description: new FormControl(''),
       classID: new FormControl(this.main.currentClassrom.id),
-
     });
     this.uploadForm = new FormGroup({
       profile: new FormControl(''),
@@ -67,7 +66,6 @@ export class HomeworkComponent implements OnInit {
     }
   }
   onFileSelect(event) {
-    console.log(event);
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('profile').setValue(file);
@@ -86,16 +84,14 @@ export class HomeworkComponent implements OnInit {
           case HttpEventType.UploadProgress:
             const index = this.files.findIndex(v => v.name === file.name);
             this.files[index].progress = Math.round(event.loaded * 100 / event.total);
-            console.log(this.files[index].progress);
             break;
           case HttpEventType.Response:
-            console.log(event.body.fileID);
             this.filesID.push(event.body.fileID);
+            console.log(event.body.fileID);
             break;
         }
       }),
-    ).subscribe(res => {
-    });
+    ).subscribe();
   }
   ngOnInit(): void {
   }
@@ -103,7 +99,7 @@ export class HomeworkComponent implements OnInit {
     this.homeworkResponseForm.addControl('homeworkID', new FormControl(this.homework.id));
     const body = this.homeworkResponseForm.value;
     body.filesID = this.filesID;
-    console.log(body);
+    body.linkHrefs = [];
     if (!this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(body).subscribe(res => {
         this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');

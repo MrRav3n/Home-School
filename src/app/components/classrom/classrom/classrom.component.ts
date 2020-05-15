@@ -36,18 +36,14 @@ export class ClassromComponent implements OnInit {
     }
   }
   setCurrentSubject(i) {
-    console.log(!this.subjectDiv);
     if (this.subjectDiv) {
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
-
       setTimeout(() => {
         this.main.currentSubject = this.main.currentClassrom.subjects[i];
         this.subjectDiv.nativeElement.classList.toggle('opacity0');
-        }, 200);
+      }, 200);
     } else {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
     }
-
-
   }
 }

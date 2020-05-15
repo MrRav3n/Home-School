@@ -36,7 +36,7 @@
         <select class="form-control" id="exampleFormControlSelect1" formControlName="classID">
           <option *ngFor="let classrom of this.main.classrom;let indexOfelement=index;" [value]="this.main.classrom[indexOfelement].id">{{classrom.className}} - {{classrom.schoolName}} </option>
         </select>
-        <div *ngIf="addSubjectForm.controls.classID.invalid && submittedFirstPart" class="alert alert-danger">
+        <div *ngIf="addSubjectForm.controls.classID.invalid && submittedSecondPart" class="alert alert-danger">
           Wybierz klasę.
         </div>
       </div>
@@ -44,14 +44,14 @@
         <div class="form__group field col-md-5 col-12">
           <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='userToAddEmail' formControlName="userToAddEmail"/>
           <label for="userToAddEmail" class="form__label">Email nauczyciela</label>
-          <div *ngIf="addSubjectForm.controls.userToAddEmail.invalid && submittedFirstPart" class="alert alert-danger">
+          <div *ngIf="addSubjectForm.controls.userToAddEmail.invalid && submittedSecondPart" class="alert alert-danger">
             Podaj poprawny email.
           </div>
         </div>
         <div class="form__group field col-md-5 col-12">
           <input type="email" class="form__field yellowInput" placeholder="Name" name="name" id='subjectName' formControlName="subjectName"/>
           <label for="subjectName" class="form__label">Nazwa przedmiotu</label>
-          <div *ngIf="addSubjectForm.controls.subjectName.invalid && submittedFirstPart" class="alert alert-danger">
+          <div *ngIf="addSubjectForm.controls.subjectName.invalid && submittedSecondPart" class="alert alert-danger">
             Podaj nazwę przedmiotu.
           </div>
         </div>

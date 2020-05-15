@@ -25,14 +25,6 @@ export class HomeworkComponent implements OnInit {
   endTime: string;
   leftHours: number;
   leftMinutes: number;
-  src = [];
-  names = [];
-  mimes = [
-    'application/pdf',
-    'image/jpeg',
-    'image/png',
-    'image/jpg',
-  ];
   files = [];
   filesID = [];
   uploadForm: FormGroup;
@@ -66,46 +58,6 @@ export class HomeworkComponent implements OnInit {
     this.uploadForm = new FormGroup({
       profile: new FormControl(''),
     });
-  }
-  getSrc(i) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.src[i]);
-  }
-  openWindow(i) {
-    this.downloadFile(this.src[i], this.names[i]);
-  }
-  downloadFile(url, fileName) {
-    const file = fileName.split('.');
-    const finalFileName = this.homework.name + '.' + file[file.length - 1];
-    const a = document.createElement('a');
-    document.body.appendChild(a);
-    // @ts-ignore
-    a.style = 'display: none';
-    a.href = url;
-    a.download = finalFileName;
-    a.click();
-    window.URL.revokeObjectURL(fileName);
-  }
-  downloadAllFiles() {
-    for(let i = 0; i < this.homework.files.length; i++) {
-      const fileData = {
-        homeworkID: this.homework.id,
-        classID: this.main.currentClassrom.id,
-        fileID: this.homework.files[i]
-      };
-      this.classService.returnFileFromHomework(fileData).subscribe(res => {
-        console.log(res.headers);
-        const type = res.headers.get('Content-Type');
-        const fileName = res.headers.get('filename');
-        this.names.push(fileName);
-        const file = new Blob([res.body], {type});
-        const fileURL = URL.createObjectURL(file);
-        if (!this.mimes.includes(type)) {
-          this.downloadFile(fileURL, fileName);
-        } else {
-          this.src.push(fileURL);
-        }
-      });
-    }
   }
   addFocusClass() {
     if (this.clickedStatus) {

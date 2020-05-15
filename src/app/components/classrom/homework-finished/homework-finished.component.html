@@ -19,11 +19,10 @@
         </div>
       </div>
     </div>
-
   </a>
 
   <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
-
+    <app-show-homework-file [homeworkSet]="homework"></app-show-homework-file>
     <div *ngIf="main.currentRole === 0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>

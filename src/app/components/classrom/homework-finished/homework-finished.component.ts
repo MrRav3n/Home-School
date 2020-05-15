@@ -6,6 +6,7 @@ import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { SharedService } from '../../../core/shared/shared.service';
 import { Response } from '../../../core/modals/Response';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-homework-finished',
@@ -35,7 +36,6 @@ export class HomeworkFinishedComponent implements OnInit {
     this.iterator = iter;
   }
   filter() {
-    console.log(this.text);
     this.homework.responses = this.allResponses.filter(v => {
       return (v.senderName.includes(this.text) || v.senderSurname.includes(this.text));
     }) as [Response];
@@ -43,7 +43,6 @@ export class HomeworkFinishedComponent implements OnInit {
   constructor(
     public main: MainService,
     private shared: SharedService,
-    private classService: ClassService
   ) {}
   addFocusClass() {
     if (this.clickedStatus) {
@@ -60,6 +59,7 @@ export class HomeworkFinishedComponent implements OnInit {
     response.singleHomework = true;
     this.shared.openHomeworkModal(response);
   }
+
   ngOnInit(): void {
   }
 

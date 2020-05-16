@@ -30,13 +30,30 @@
 }
 .descriptionText {
   background: #DADDE5;
-  padding: 100px;
+  padding: 40px;
 }
 .descriptionImg {
-  background-image: url("https://www.kuchniaplus.pl/img/artykuly/pszczoly.jpg");
+  min-height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+@media(min-width: 992px) {
+  .descriptionImg {
+    height: 100% !important;
+  }
+  .descriptionText {
+    padding: 100px !important;
+  }
+}
+.descriptionImg1 {
+  background-image: url("./../../../../img/studingfromhome1.jpg");
+}
+.descriptionImg2 {
+  background-image: url("./../../../../img/studingfromhome2.jpg");
+}
+.descriptionImg3 {
+  background-image: url("./../../../../img/studingfromhome3.jpg");
 }
 .buyDiv {
   padding: 50px;
@@ -59,5 +76,11 @@
   height: 296px;
 }
 .descriptionDiv {
-  margin-bottom: 100px;
+  margin-bottom: 10px;
+}
+.footer {
+  background: var(--main);
+
+  width: 100%;
+  min-height: 64px;
 }

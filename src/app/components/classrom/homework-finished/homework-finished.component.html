@@ -43,7 +43,7 @@
             <div class="row p-0 m-0">
               <div class="col-12">
                 <h2 class="text-center d-block">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>
-                <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono</h4>
+                <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono - {{res.mark}}</h4>
                 <h4 class="text-center d-block red" *ngIf="!res.mark">Nie oceniono</h4>
               </div>
             </div>

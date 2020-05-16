@@ -82,12 +82,13 @@ export class SubjectComponent implements OnInit {
     file.inProgress = true;
     this.classService.addNewFileToHomework(this.main.currentClassrom.id, formData).pipe(
       map(event => {
+        const index = this.files.findIndex(v => v.name === file.name);
         switch (event.type) {
           case HttpEventType.UploadProgress:
-            const index = this.files.findIndex(v => v.name === file.name);
             this.files[index].progress = Math.round(event.loaded * 100 / event.total);
             break;
           case HttpEventType.Response:
+            this.files[index].finished = true;
             this.filesID.push(event.body.fileID);
             break;
         }
@@ -103,6 +104,7 @@ export class SubjectComponent implements OnInit {
     bodyToSend.linkHrefs = this.linksHrefs;
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(bodyToSend).subscribe(res => {
+        this.submitted = false  ;
         this.homeworkForm.reset();
         this.files = [];
         this.filesID = [];

@@ -1,6 +1,6 @@
-<div class="col-12 files row justify-content-center p-0 m-0" *ngIf="homework.files[0]">
-  <h2 class="text-center pt-2">Pobierz pliki załączone do zadania</h2>
-  <button class="formBtn" (click)="downloadAllFiles()" >Pobierz pliki</button>
+<div class="col-12 files row justify-content-center p-0 m-0 mainDiv" *ngIf="homework.files[0]">
+  <h2 class="text-center pt-2 d-block col-12">Pobierz pliki załączone do zadania</h2>
+  <button class="formBtn mb-2" (click)="downloadAllFiles()" >Pobierz pliki</button>
   <div class="col-12 mt-2 mb-2 p-1" *ngFor="let srcItem of src; let i=index">
     <button class="formBtn openInBrowserBtn col-12 " (click)="openWindow(i)">Pobierz na dysk</button>
     <div class="embed-responsive embed-responsive-16by9"   >

@@ -55,6 +55,14 @@ export class ClassService {
     // @ts-ignore
     return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromHomework`, homworkData, httpOptions);
   }
+  returnFileFromResponse(responseData) {
+    const httpOptions = {
+      responseType  : 'arraybuffer' as 'json',
+      observe: 'response',
+    };
+    // @ts-ignore
+    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromResponse`, responseData, httpOptions);
+  }
   addNewFileToResponse(classID, homeworkID, fileToSend): Observable<any> {
     return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/uploadToResponse/${classID}/${homeworkID}`, fileToSend, {
       reportProgress: true,

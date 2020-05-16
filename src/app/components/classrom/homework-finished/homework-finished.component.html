@@ -21,38 +21,44 @@
     </div>
   </a>
 
-  <div class="collapse homeworkDesc col-11" [id]="'homework-' + iterator">
-    <app-show-homework-file [homeworkSet]="homework"></app-show-homework-file>
-    <div *ngIf="main.currentRole === 0">
+  <div class="collapse homeworkDesc col-11 p-0 row justify-content-center" [id]="'homework-' + iterator">
+    <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
+    <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
+    <div *ngIf="main.currentRole === 0" class="col-12 p-0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
-    <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-2 justify-content-between">
-      <div class="form__group col-md-5 col-10">
-        <input type="email" class="form__field" placeholder="Name" name="name" [id]="'homeworkInput-' + iterator" required [(ngModel)]="text" (ngModelChange)="filter()"/>
-        <label [for]="'homeworkInput-' + iterator" class="form__label">Filtruj listę</label>
-      </div>
-      <div class="col-md-5 col-12">
-        <div class="example_d p-3" (click)="showGrades()" >
-          Lista ocen
+<!--    teacher -->
+    <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-3 justify-content-center col-12">
+
+      <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">
+        <div class="form__group col-md-5 col-10">
+          <input type="email" class="form__field" placeholder="Name" name="name" [id]="'homeworkInput-' + iterator" required [(ngModel)]="text" (ngModelChange)="filter()"/>
+          <label [for]="'homeworkInput-' + iterator" class="form__label">Filtruj listę</label>
         </div>
-      </div>
-      <ul class="list-group mt-5 mb-3 col-12">
-        <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
-          <div class="row p-0 m-0">
-            <div class="col-12">
-              <h2 class="text-center d-block">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>
-              <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono</h4>
-              <h4 class="text-center d-block red" *ngIf="!res.mark">Nie oceniono</h4>
+        <div class="col-md-5 col-12 row pb-2 justify-content-center">
+          <button class="formBtn" (click)="showGrades()">Lista ocen</button>
+        </div>
+        <ul class="list-group mt-5 mb-3 col-12">
+          <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
+            <div class="row p-0 m-0">
+              <div class="col-12">
+                <h2 class="text-center d-block">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>
+                <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono</h4>
+                <h4 class="text-center d-block red" *ngIf="!res.mark">Nie oceniono</h4>
+              </div>
             </div>
-          </div>
-        </li>
-
-      </ul>
-
+          </li>
+        </ul>
+      </div>
+      <div class="col-12"  *ngIf="!homework.responses[0]">
+        <h2 class="text-center">Nikt jeszcze nie odpowiedział na to zadanie.</h2>
+      </div>
     </div>
-    <div *ngIf="main.currentRole === 0 && !homework.responses[0]">
-      <h1 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h1>
+<!--    student doesn't answear -->
+    <div *ngIf="main.currentRole === 0 && !homework.responses[0]" class="p-3">
+      <h2 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>
     </div>
+
   </div>
 
 </div>

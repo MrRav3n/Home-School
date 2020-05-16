@@ -32,9 +32,7 @@
   padding: 20px 0;
   border-top: 2px solid black;
 }
-.answear {
-  border-top: 2px solid black;
-}
+
 .openInBrowserBtn {
   border-bottom-right-radius: 0;
   color: grey;
@@ -43,4 +41,10 @@
 .progress {
   height: 35px;
   font-size:20px;
+}
+.green {
+  background: green;
+}
+.description {
+  border-bottom: 2px solid black;
 }

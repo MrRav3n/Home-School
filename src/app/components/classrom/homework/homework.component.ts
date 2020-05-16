@@ -80,14 +80,14 @@ export class HomeworkComponent implements OnInit {
     file.inProgress = true;
     this.classService.addNewFileToResponse(this.main.currentClassrom.id, this.homework.id, formData).pipe(
       map(event => {
+        const index = this.files.findIndex(v => v.name === file.name);
         switch (event.type) {
           case HttpEventType.UploadProgress:
-            const index = this.files.findIndex(v => v.name === file.name);
             this.files[index].progress = Math.round(event.loaded * 100 / event.total);
             break;
           case HttpEventType.Response:
+            this.files[index].finished = true;
             this.filesID.push(event.body.fileID);
-            console.log(event.body.fileID);
             break;
         }
       }),
@@ -100,7 +100,7 @@ export class HomeworkComponent implements OnInit {
     const body = this.homeworkResponseForm.value;
     body.filesID = this.filesID;
     body.linkHrefs = [];
-    if (!this.homeworkResponseForm.valid) {
+    if (this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(body).subscribe(res => {
         this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
       });

@@ -11,4 +11,6 @@ export class Response {
   id: string;
   singleHomework: boolean;
   filesID;
+  files;
+  linkHrefs;
 }

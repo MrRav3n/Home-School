@@ -40,9 +40,6 @@
   background: #F9C74F;
   cursor: pointer;
 }
-.homeworksList {
-
-}
 .green {
   color: var(--green)
 }
@@ -54,4 +51,7 @@
   font-weight: bold;
   padding: 0;
   color: #F8961E;
+}
+.description {
+  border-bottom: 2px solid black;
 }

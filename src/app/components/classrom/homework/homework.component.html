@@ -17,10 +17,10 @@
 
   <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'homework-' + iterator">
     <div class="col-12 row justify-content-center p-0">
-      <h2 class=" pt-2 col-12 description">Opis zadania: {{homework.description}}</h2>
-      <app-show-homework-file [homeworkSet]="homework"></app-show-homework-file>
+      <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
+      <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
     </div>
-    <div class="col-12 answear">
+    <div class="col-12">
       <h2 class="text-center pt-2">Dodaj odpowiedź do zadania</h2>
       <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
         <div class="form-group col-12">
@@ -37,7 +37,7 @@
 
           <div class="col-12 mt-3 p-0" *ngIf="files">
             <div class="progress mt-2 mr-0 ml-0" *ngFor="let file of files" >
-              <div class="progress-bar" role="progressbar" [style]="{'width': file.progress + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" role="progressbar" [style]="{'width': file.progress + '%'}" [ngClass]="{'green': file.finished}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                 {{file.name}}
               </div>
             </div>

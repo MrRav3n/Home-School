@@ -37,6 +37,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 0;
+  height: 296px;
 }
 @media(min-width: 992px) {
   .descriptionImg {
@@ -47,13 +49,13 @@
   }
 }
 .descriptionImg1 {
-  background-image: url("./../../../../img/studingfromhome1.jpg");
+  background-image: url("../../../../assets/img/studingfromhome1.jpg");
 }
 .descriptionImg2 {
-  background-image: url("./../../../../img/studingfromhome2.jpg");
+  background-image: url("../../../../assets/img/studingfromhome2.jpg");
 }
 .descriptionImg3 {
-  background-image: url("./../../../../img/studingfromhome3.jpg");
+  background-image: url("../../../../assets/img/studingfromhome3.jpg");
 }
 .buyDiv {
   padding: 50px;
@@ -71,9 +73,11 @@
   margin: 0;
   padding: 0;
 }
-.img-fluid {
-  padding: 0;
-  height: 296px;
+.personIMG {
+  width: 300px !important;
+  height: 300px !important;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .descriptionDiv {
   margin-bottom: 10px;

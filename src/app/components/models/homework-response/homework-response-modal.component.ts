@@ -37,6 +37,7 @@ export class HomeworkResponseModalComponent implements OnInit {
     this.markForm.addControl('responseID', new FormControl(this.response.id));
     this.markForm.addControl('homeworkID', new FormControl(this.response.homeworkID));
     this.markForm.addControl('classID', new FormControl(this.main.currentClassrom.id));
+    this.markForm.addControl('subjectID', new FormControl(this.main.currentSubject.id));
     if (this.markForm.valid) {
       this.classService.addNewMark(this.markForm.value);
     }

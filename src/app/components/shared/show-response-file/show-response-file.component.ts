@@ -55,10 +55,10 @@ export class ShowResponseFileComponent implements OnInit {
     for(let i = 0; i < this.response.files.length; i++) {
       const fileData = {
         homeworkID: this.response.homeworkID,
+        subjectID: this.main.currentSubject.id,
         fileID: this.response.files[i]
       };
       this.classService.returnFileFromResponse(fileData).subscribe(res => {
-        console.log(res.headers);
         const type = res.headers.get('Content-Type');
         const fileName = res.headers.get('filename');
         this.names.push(fileName);

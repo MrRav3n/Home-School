@@ -35,7 +35,6 @@ export class SubjectComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.homeworkForm = new FormGroup({
-      classID: new FormControl(this.main.currentClassrom.id),
       name: new FormControl('', Validators.required),
       description: new FormControl(''),
       time: new FormControl('', Validators.required),
@@ -86,7 +85,7 @@ export class SubjectComponent implements OnInit {
     this.files.push(file);
     formData.append('file', file);
     file.inProgress = true;
-    this.classService.addNewFileToHomework(this.main.currentClassrom.id, formData).pipe(
+    this.classService.addNewFileToHomework(this.main.currentClassrom.id, this.main.currentSubject.id, formData).pipe(
       map(event => {
         const index = this.files.findIndex(v => v.name === file.name);
         switch (event.type) {
@@ -108,6 +107,9 @@ export class SubjectComponent implements OnInit {
     const bodyToSend = this.homeworkForm.value;
     bodyToSend.filesID = this.filesID;
     bodyToSend.linkHrefs = this.linksHrefs;
+    bodyToSend.subjectID = this.main.currentSubject.id;
+    bodyToSend.classID = this.main.currentClassrom.id;
+    console.log(bodyToSend);
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(bodyToSend).subscribe(res => {
         this.submitted = false  ;

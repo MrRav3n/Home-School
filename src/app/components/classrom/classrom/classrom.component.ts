@@ -24,8 +24,6 @@ export class ClassromComponent implements OnInit {
       this.classrom = this.main.currentClassrom;
       this.subjects = this.classrom.subjects;
       this.main.isEducator = this.main.user.id === this.classrom.creatorID;
-      console.log(this.main.user.id === this.classrom.creatorID);
-      console.log(this.main.isEducator);
       this.setCurrentSubject(0);
     });
   }
@@ -39,7 +37,6 @@ export class ClassromComponent implements OnInit {
         this.main.currentRole = 2;
       }
     }
-    console.log(this.main.currentRole)
   }
   async setCurrentSubject(i) {
     if (this.subjectDiv) {
@@ -50,7 +47,6 @@ export class ClassromComponent implements OnInit {
       await timeout(200);
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
-
     } else {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
     }

@@ -26,7 +26,6 @@ export class SubjectComponent implements OnInit {
   submitted = false;
   currentTime;
   @Input() set currentSubSet(sub) {
-    console.log(this.main.currentSubject.name)
     this.sortHomeworks(this.currentTime);
   }
   @ViewChild('timeValue') timeValue;
@@ -72,7 +71,6 @@ export class SubjectComponent implements OnInit {
           this.finishedHomeworks.push(currHom);
         }
       }
-
     }
   }
   onFileSelect(event) {

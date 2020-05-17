@@ -20,6 +20,7 @@ export class MainService {
   api = this.shared.api;
   currentClassrom: Classrom;
   currentSubject: Subject;
+  isEducator;
   currentRole: 0 | 1 | 2;
   constructor(
     private shared: SharedService,

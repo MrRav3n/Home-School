@@ -22,30 +22,39 @@ export class ClassromComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.main.currentClassrom = this.main.classrom[+params.get('classID')];
       this.classrom = this.main.currentClassrom;
-      console.log(this.classrom);
-      this.checkUserRole();
       this.subjects = this.classrom.subjects;
+      this.main.isEducator = this.main.user.id === this.classrom.creatorID;
+      console.log(this.main.user.id === this.classrom.creatorID);
+      console.log(this.main.isEducator);
       this.setCurrentSubject(0);
     });
   }
   checkUserRole() {
-    if (this.main.user.id === this.classrom.creatorID) {
-      this.main.currentRole = 2;
-    } else if (this.main.user.userRole === 0) {
-      this.main.currentRole = 0;
-    } else if (this.main.user.userRole === 1) {
-      this.main.currentRole = 1;
+    if (this.main.currentSubject) {
+      if (this.main.user.id === this.main.currentSubject.teacherID) {
+        this.main.currentRole = 1;
+      } else if (this.main.user.userRole === 0) {
+        this.main.currentRole = 0;
+      } else if (this.main.user.userRole === 1) {
+        this.main.currentRole = 2;
+      }
     }
+    console.log(this.main.currentRole)
   }
-  setCurrentSubject(i) {
+  async setCurrentSubject(i) {
     if (this.subjectDiv) {
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
-      setTimeout(() => {
-        this.main.currentSubject = this.main.currentClassrom.subjects[i];
-        this.subjectDiv.nativeElement.classList.toggle('opacity0');
-      }, 200);
+      function timeout(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      await timeout(200);
+      this.main.currentSubject = this.main.currentClassrom.subjects[i];
+      this.subjectDiv.nativeElement.classList.toggle('opacity0');
+
     } else {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
     }
+
+    this.checkUserRole();
   }
 }

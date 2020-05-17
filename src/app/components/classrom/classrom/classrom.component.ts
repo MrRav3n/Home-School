@@ -20,7 +20,9 @@ export class ClassromComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.classrom = this.main.currentClassrom = this.main.classrom[+params.get('classID')];
+      this.main.currentClassrom = this.main.classrom[+params.get('classID')];
+      this.classrom = this.main.currentClassrom;
+      console.log(this.classrom);
       this.checkUserRole();
       this.subjects = this.classrom.subjects;
       this.setCurrentSubject(0);

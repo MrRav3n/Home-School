@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
@@ -24,6 +24,11 @@ export class SubjectComponent implements OnInit {
   filesID = [];
   linksHrefs = [];
   submitted = false;
+  currentTime;
+  @Input() set currentSubSet(sub) {
+    console.log(this.main.currentSubject.name)
+    this.sortHomeworks(this.currentTime);
+  }
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,
@@ -40,16 +45,19 @@ export class SubjectComponent implements OnInit {
       profile: new FormControl(''),
     });
   }
-
-
   ngOnInit(): void {
     (($) => {
       $(document).ready(() => {
         $('#picker').dateTimePicker();
       });
     })(jQuery);
-    const currentTime = moment().toISOString();
-    for(let i = 0; i < this.main.currentSubject.homeworks.length; i++) {
+    this.currentTime = moment().toISOString();
+    this.sortHomeworks(this.currentTime);
+  }
+  sortHomeworks(currentTime) {
+    this.currentHomeworks = [];
+    this.finishedHomeworks = [];
+    for (let i = 0; i < this.main.currentSubject.homeworks.length; i++) {
       const currHom = this.main.currentSubject.homeworks[i];
       if (this.main.currentRole === 0) { // returning homeworks for student
         if (currHom.endDate > currentTime && !currHom.responses[0]) {

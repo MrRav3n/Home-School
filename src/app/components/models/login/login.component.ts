@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
         this.main.user = res.userToReturn;
         this.main.classrom = res.classes;
         this.main.ifUserExists();
-        this.shared.loading = false;
         localStorage.setItem('homeschooltoken', res.token);
+      }, err => {
+        this.shared.loading = false;
       });
     }
   }

@@ -3,6 +3,7 @@ import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { Classrom } from '../../../core/modals/Classrom';
 import { Subject } from '../../../core/modals/Subject';
+import { SharedService } from '../../../core/shared/shared.service';
 
 @Component({
   selector: 'app-classrom',
@@ -16,7 +17,8 @@ export class ClassromComponent implements OnInit {
   @ViewChild('subject') subjectDiv;
   constructor(
     public main: MainService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private shared: SharedService
   ) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -52,5 +54,10 @@ export class ClassromComponent implements OnInit {
     }
 
     this.checkUserRole();
+  }
+  showCode(e, id) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.shared.openCodeModal(id);
   }
 }

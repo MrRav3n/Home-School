@@ -3,17 +3,23 @@
 </div>
 <div class="cover" *ngIf="this.main.currentClassrom.subjects[0]">
   <div class="p-3">
-    <div class="text-center mainDiv">
-      <h1 class="display-3 font-weight-bold pb-3 collapseClass" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
+    <div class="text-center mainDiv row p-0 justify-content-center align-items-center">
+      <h1 class="display-3 font-weight-bold pb-3 collapseClass d-block col-12" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
         {{this.classrom.className}}
       </h1>
-      <div class="collapse" id="collapseExample">
-        <h1 class="display-4 font-weight-bold pb-5">Jesteś
-          <span *ngIf="this.main.isEducator">założycielem klasy</span>
-          <span *ngIf="this.main.currentRole === 0">uczniem</span>
-          <span *ngIf="this.main.currentRole === 1 && !this.main.isEducator">nauczycielem</span>
-        </h1>
+      <h1 class="d-block showCode text-center d-block pb-3 col-lg-4 col-11" (click)="this.showCode($event, classrom.id)" *ngIf="this.main.isEducator">Kod dostępu</h1>
+      <div class="col-12">
+        <div class="collapse collapseClassInfo" id="collapseExample">
+          <div class="pb-3 pt-3">
+            <h1 class="display-4 font-weight-bold">Jesteś
+              <span *ngIf="this.main.isEducator">założycielem klasy</span>
+              <span *ngIf="this.main.currentRole === 0">uczniem</span>
+              <span *ngIf="this.main.currentRole === 1 && !this.main.isEducator">nauczycielem</span>
+            </h1>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
   <div class="row classrom m-0 p-0">

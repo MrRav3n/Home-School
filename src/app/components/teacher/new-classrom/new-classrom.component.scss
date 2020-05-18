@@ -7,6 +7,7 @@
 }
 .containerInfo {
   margin-top: -150px;
+  margin-bottom: 50px;
   background: var(--submit);
   padding-top: 150px;
   padding-bottom: 25px;
@@ -16,4 +17,14 @@
 .form {
   padding: 10px;
   background: white;
+}
+.mainDiv {
+  background: #E0FBFC;
+}
+.iconsP {
+  padding: 20px;
+  font-size: 27px;
+}
+.red {
+  color: var(--warn) !important;
 }

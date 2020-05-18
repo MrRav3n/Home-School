@@ -33,3 +33,14 @@
   margin-top: -150px;
   background: #E0FBFC;
 }
+.showCode {
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  background: var(--warn);
+  border-radius: var(--rad);
+  transition: all 0.3s;
+}
+.showCode:hover {
+  background: #ff8e00;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
+import { SharedService } from '../../../core/shared/shared.service';
 
 @Component({
   selector: 'app-main-teacher',
@@ -8,11 +9,16 @@ import { MainService } from '../../../core/main/main.service';
 })
 export class MainTeacherComponent implements OnInit {
   constructor(
-    public main: MainService
+    public main: MainService,
+    public shared: SharedService
   ) { }
 
   ngOnInit(): void {
 
   }
-
+  showCode(e, id) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.shared.openCodeModal(id);
+  }
 }

@@ -1,4 +1,4 @@
-<div class="d-flex flex-column h-100 mainDiv">
+<div class="d-flex flex-column h-100 mainDiv p-2">
   <div class="container text-center justify-content-center containerMain">
     <h1>Dodaj nową klasę!</h1>
     <p class="iconsP">Po dodaniu nowej klasy wyświetli Ci się kod dostępu.
@@ -16,12 +16,12 @@
           </div>
         </div>
 
-        <div class="form__group field  col-md-5 col-12">
-          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' />
-          <label for="numberPeople" class="form__label">Ilość osób</label>
-        </div>
+<!--        <div class="form__group field  col-md-5 col-12">-->
+<!--          <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' />-->
+<!--          <label for="numberPeople" class="form__label">Ilość osób</label>-->
+<!--        </div>-->
 
-        <div class="form__group field col-md-5 col-12">
+        <div class="form__group field col-md-11 col-12">
           <input type="email" class="form__field" placeholder="Name" name="name" id='schoolName' formControlName="schoolName"/>
           <label for="schoolName" class="form__label">Nazwa szkoły*</label>
           <div *ngIf="addClassromForm.controls.schoolName.invalid && submittedFirstPart" class="alert alert-danger">

@@ -42,6 +42,11 @@ select {
   cursor: pointer;
   padding: 5px;
 }
+@media(max-width: 992px) {
+  .role {
+    font-size: 22px;
+  }
+}
 .roleSelected {
   transform: scale(1.2);
   background: #ff7700;

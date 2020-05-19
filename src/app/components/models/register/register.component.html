@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="form__group field" *ngIf="!selectedRole">
-          <input type="password" class="form__field" placeholder="Name" name="name" id='studentCode' formControlName="userCode"/>
+          <input type="text" class="form__field" placeholder="Name" name="name" id='studentCode' formControlName="userCode"/>
           <label for="studentCode" class="form__label">Kod dostępu</label>
           <div *ngIf="registerForm.controls.userCode.invalid && submitted" class="alert alert-danger">
             Podaj poprawny kod.

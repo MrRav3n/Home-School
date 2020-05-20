@@ -48,7 +48,10 @@ export class ClassService {
       observe: 'response',
     };
     // @ts-ignore
-    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromHomework`, homworkData, httpOptions);
+    return this.http.post(`${this.shared.apiFiles}HomeworkFiles/returnFileFromHomework`, homworkData, httpOptions);
+  }
+  returnClassromNames(classId) {
+    return this.http.post(`${this.shared.apiNames}ReturnNames`, classId);
   }
   returnFileFromResponse(responseData) {
     const httpOptions = {
@@ -56,16 +59,16 @@ export class ClassService {
       observe: 'response',
     };
     // @ts-ignore
-    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/returnFileFromResponse`, responseData, httpOptions);
+    return this.http.post(`${this.shared.apiFiles}HomeworkFiles/returnFileFromResponse`, responseData, httpOptions);
   }
   addNewFileToResponse(classID, homeworkID, fileToSend): Observable<any> {
-    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/uploadToResponse/${classID}/${homeworkID}`, fileToSend, {
+    return this.http.post(`${this.shared.apiFiles}HomeworkFiles/uploadToResponse/${classID}/${homeworkID}`, fileToSend, {
       reportProgress: true,
       observe: 'events'
     });
   }
   addNewFileToHomework(classID: string, subjectID: string, fileToSend): Observable<any> {
-    return this.http.post(`https://filestorage-api.azurewebsites.net/api/HomeworkFiles/uploadToHomework/${classID}/${subjectID}`, fileToSend, {
+    return this.http.post(`${this.shared.apiFiles}HomeworkFiles/uploadToHomework/${classID}/${subjectID}`, fileToSend, {
       reportProgress: true,
       observe: 'events'
     });
@@ -77,6 +80,27 @@ export class ClassService {
     this.http.post<{subject: Subject}>(this.api + 'Subject/create', subject).subscribe( res => {
       this.main.classrom.filter(value => value.id = subject.classID).map(val => val.subjects.push(res.subject));
       this.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
+    });
+  }
+  deleteHomework(homework) {
+    return this.http.put(this.api + 'Homework/deleteHomework', homework).subscribe(res => {
+      this.toastr.success('Usunięto zadanie.', 'Udało się!');
+      console.log(res);
+    });
+  }
+  deleteClassMember(member) {
+    return this.http.put(this.api + 'Class/deleteMember', member).subscribe(res => {
+      this.toastr.success('Usunięto użytkownika.', 'Udało się!');
+      console.log(res);
+    });
+  }
+  showClassromMembers(classID) {
+    return this.http.post(this.shared.apiNames + 'ReturnNames', classID);
+  }
+  deleteSubject(subject) {
+    return this.http.put(this.api + 'Class/deleteSubject', subject).subscribe(res => {
+      this.toastr.success('Usunięto zadanie.', 'Udało się!');
+      console.log(res);
     });
   }
 }

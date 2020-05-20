@@ -55,6 +55,7 @@ export class ShowHomeworkFileComponent implements OnInit {
       const fileData = {
         homeworkID: this.homework.id,
         classID: this.main.currentClassrom.id,
+        subjectID: this.main.currentSubject.id,
         fileID: this.homework.files[i]
       };
       this.classService.returnFileFromHomework(fileData).subscribe(res => {

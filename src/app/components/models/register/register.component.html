@@ -11,6 +11,22 @@
           <div class="role role1 col-5" (click)="select(0)" [ngClass]="{'roleSelected': selectedRole === 0}">Uczeń</div>
           <div class="role role2 col-5" (click)="select(1)" [ngClass]="{'roleSelected': selectedRole === 1}">Nauczyciel</div>
         </div>
+        <div class="row p-0 justify-content-between col-12 m-0">
+          <div class="form__group field col-md-5 col-12 ">
+            <input type="email" class="form__field" formControlName="name" placeholder="Name" name="name" id='name'/>
+            <label for="emailRegister" class="form__label">Imię</label>
+            <div *ngIf="registerForm.controls.email.invalid && submitted" class="alert alert-danger">
+              Podaj imię.
+            </div>
+          </div>
+          <div class="form__group field col-md-5 col-12 ">
+            <input type="email" class="form__field" formControlName="surname" placeholder="Name" name="name" id='surname'/>
+            <label for="emailRegister" class="form__label">Nazwisko</label>
+            <div *ngIf="registerForm.controls.email.invalid && submitted" class="alert alert-danger">
+              Podaj nazwisko.
+            </div>
+          </div>
+        </div>
         <div class="form__group field">
           <input type="email" class="form__field" formControlName="email" placeholder="Name" name="name" id='emailRegister'/>
           <label for="emailRegister" class="form__label">Email</label>

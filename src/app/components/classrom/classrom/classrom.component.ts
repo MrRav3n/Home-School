@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Classrom } from '../../../core/modals/Classrom';
 import { Subject } from '../../../core/modals/Subject';
 import { SharedService } from '../../../core/shared/shared.service';
+import { ClassService } from '../../../core/classService/class.service';
 
 @Component({
   selector: 'app-classrom',
@@ -18,7 +19,8 @@ export class ClassromComponent implements OnInit {
   constructor(
     public main: MainService,
     private route: ActivatedRoute,
-    private shared: SharedService
+    private shared: SharedService,
+    private classService: ClassService,
   ) { }
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -29,6 +31,7 @@ export class ClassromComponent implements OnInit {
       this.setCurrentSubject(0);
     });
   }
+
   checkUserRole() {
     if (this.main.currentSubject) {
       if (this.main.user.id === this.main.currentSubject.teacherID) {
@@ -39,6 +42,11 @@ export class ClassromComponent implements OnInit {
         this.main.currentRole = 2;
       }
     }
+  }
+  showMembers() {
+    this.classService.showClassromMembers({classID: this.main.currentClassrom.id}).subscribe(res => {
+      this.shared.openMembersModal(res);
+    });
   }
   async setCurrentSubject(i) {
     if (this.subjectDiv) {

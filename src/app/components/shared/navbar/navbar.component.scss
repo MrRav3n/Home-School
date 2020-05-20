@@ -1,10 +1,9 @@
 .nav-link:hover {
-  cursor: pointer;
   color: #ff8e00 !important;
-  border-bottom: 1px solid !important;
 }
 .nav-link {
-  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  color: white !important;
   font-size: 23px;
   transition: all 0.3s;
 }
@@ -65,4 +64,11 @@
 }
 .dropdown-item:hover {
   background: var(--submit);
+}
+.active .nav-link{
+  color : #ff8e00 !important;
+}
+
+.activeBrand {
+  color:  #ff8e00 !important;
 }

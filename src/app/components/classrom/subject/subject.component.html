@@ -22,10 +22,10 @@
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
-        <div class="col-10 row m-0 p-0 headerDiv p-3 justify-content-between">
-          <div class="form__group col-md-5 col-10 mb-5">
-            <input type="email" class="form__field" placeholder="Name" name="name" id='numberPeople' required formControlName="name"/>
-            <label for="numberPeople" class="form__label">Nazwa zadania</label>
+        <div class="col-10 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
+          <div class="form-group col-md-5 col-10 mb-5 p-0">
+            <h3 class="text-white termin">Nazwa zadania</h3>
+            <input type="email" class="form-control" placeholder="Nazwa" name="name" id='numberPeople' required formControlName="name"/>
             <div *ngIf="homeworkForm.controls.name.invalid && submitted" class="alert alert-danger">
               Podaj nazwę zadania.
             </div>
@@ -42,7 +42,8 @@
         </div>
 
         <div class="form-group col-10">
-        <textarea class="form-control p-0 m-0" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
+          <h3 class="text-white termin">Treść zadania</h3>
+        <textarea class="form-control p-2 m-0" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść">
 
         </textarea>
         </div>

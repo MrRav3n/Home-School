@@ -41,7 +41,7 @@ export class ShowResponseFileComponent implements OnInit {
   }
   downloadFile(url, fileName) {
     const file = fileName.split('.');
-    const finalFileName = this.response.senderSurname + '_' + this.response.senderName + '.' + file[file.length - 1];
+    const finalFileName = this.response.homeworkName + this.response.senderSurname + '_' + this.response.senderName + '.' + file[file.length - 1];
     const a = document.createElement('a');
     document.body.appendChild(a);
     // @ts-ignore
@@ -55,6 +55,7 @@ export class ShowResponseFileComponent implements OnInit {
     for(let i = 0; i < this.response.files.length; i++) {
       const fileData = {
         homeworkID: this.response.homeworkID,
+        classID: this.main.currentClassrom.id,
         subjectID: this.main.currentSubject.id,
         fileID: this.response.files[i]
       };

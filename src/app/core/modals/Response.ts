@@ -13,4 +13,5 @@ export class Response {
   filesID;
   files;
   linkHrefs;
+  homeworkName: string;
 }

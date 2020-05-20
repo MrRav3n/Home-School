@@ -25,20 +25,22 @@
 
   <div class="collapse homeworkDesc col-11 p-0 row justify-content-center" [id]="'homework-' + iterator">
     <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
+
     <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
     <div *ngIf="main.currentRole === 0 && homework.responses[0]" class="col-12 p-0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
 <!--    teacher -->
     <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-3 justify-content-center col-12">
-
       <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">
-        <div class="form__group col-md-5 col-10">
-          <input type="email" class="form__field" placeholder="Name" name="name" [id]="'homeworkInput-' + iterator" required [(ngModel)]="text" (ngModelChange)="filter()"/>
-          <label [for]="'homeworkInput-' + iterator" class="form__label">Filtruj listę</label>
+        <div class="form-group col-md-4 col-10 row align-items-end">
+          <input type="email" class="form-control" placeholder="Filtruj listę" name="name" required [(ngModel)]="text" (ngModelChange)="filter()"/>
         </div>
-        <div class="col-md-5 col-12 row pb-2 justify-content-center">
+        <div class="col-md-6 col-10 row pb-2 justify-content-center">
           <button class="formBtn" (click)="showGrades()">Lista ocen</button>
+        </div>
+        <div class="col-md-2">
+          <i class="fas fa-trash" (click)="deleteHomework()"></i>
         </div>
         <ul class="list-group mt-5 mb-3 col-12">
           <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
@@ -52,8 +54,11 @@
           </li>
         </ul>
       </div>
-      <div class="col-12"  *ngIf="!homework.responses[0]">
-        <h2 class="text-center">Nikt jeszcze nie odpowiedział na to zadanie.</h2>
+      <div class="col-12 row p-0"  *ngIf="!homework.responses[0]">
+        <h2 class="col-10 p-0">Nikt jeszcze nie odpowiedział na to zadanie.</h2>
+        <div class="col-2">
+          <i class="fas fa-trash" (click)="deleteHomework()"></i>
+        </div>
       </div>
     </div>
 <!--    student doesn't answear -->

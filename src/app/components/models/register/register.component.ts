@@ -22,6 +22,8 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
     email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
     password: new FormControl('DAW100kr', [Validators.required, Validators.minLength(5)]),
+    name: new FormControl('Dawid', Validators.required),
+    surname: new FormControl('Kruk', Validators.required),
     userCode: new FormControl(''),
     });
   }

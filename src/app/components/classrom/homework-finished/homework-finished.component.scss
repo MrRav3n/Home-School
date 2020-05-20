@@ -55,3 +55,19 @@
 .description {
   border-bottom: 2px solid black;
 }
+.fa-trash {
+  cursor: pointer;
+  padding: 15px;
+  text-align: center;
+  color: rgb(21, 21, 21);
+  background: var(--warn);
+  border-radius: var(--rad);
+  font-size: 45px;
+  transition: all 0.3s ;
+}
+.fa-trash:hover {
+  -webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
+  background: #f16127;
+}

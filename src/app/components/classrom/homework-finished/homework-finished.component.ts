@@ -1,12 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Homework } from '../../../core/modals/Homework';
-import { FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
-import { ClassService } from '../../../core/classService/class.service';
 import { SharedService } from '../../../core/shared/shared.service';
 import { Response } from '../../../core/modals/Response';
-import { DomSanitizer } from '@angular/platform-browser';
+import { ClassService } from '../../../core/classService/class.service';
 
 @Component({
   selector: 'app-homework-finished',
@@ -42,6 +40,7 @@ export class HomeworkFinishedComponent implements OnInit {
   }
   constructor(
     public main: MainService,
+    private classService: ClassService,
     private shared: SharedService,
   ) {}
   addFocusClass() {
@@ -53,6 +52,14 @@ export class HomeworkFinishedComponent implements OnInit {
   }
   showGrades() {
     this.shared.openMarksListModal(this.allResponses);
+  }
+  deleteHomework() {
+    const bodyToSend = {
+      classID: this.main.currentClassrom.id,
+      homeworkID: this.homework.id,
+      subjectID: this.main.currentSubject.id,
+    };
+    this.classService.deleteHomework(bodyToSend);
   }
   openHomeworkModal(response) {
     response.homeworkID = this.homework.id;

@@ -31,6 +31,7 @@ import {
 import { MarksListComponent } from './components/models/marks-list/marks-list.component';
 import { ShowHomeworkFileComponent } from './components/shared/show-homework-file/show-homework-file.component';
 import { ShowResponseFileComponent } from './components/shared/show-response-file/show-response-file.component';
+import { ShowMembersComponent } from './components/models/show-members/show-members.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { ShowResponseFileComponent } from './components/shared/show-response-fil
     MarksListComponent,
     ShowHomeworkFileComponent,
     ShowResponseFileComponent,
+    ShowMembersComponent,
   ],
   imports: [
     BrowserModule,

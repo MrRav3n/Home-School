@@ -8,7 +8,7 @@ import { InterceptorSkipHeader } from '../interceptor/http-error.interceptor';
 import { Classrom } from '../modals/Classrom';
 import { Subject } from '../modals/Subject';
 import { ToastrService } from 'ngx-toastr';
-import { map } from 'rxjs/operators';
+
 const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'

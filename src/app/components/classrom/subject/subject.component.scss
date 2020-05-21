@@ -2,6 +2,9 @@
   background: #43AA8B;
   border-radius: var(--rad);
 }
+.button_cont {
+  background: red;
+}
 .subHeader {
   font-size: 75px;
 }
@@ -65,4 +68,8 @@
   top:0;
   left:0;
 
+}
+.example_f {
+  border-radius: 40px;
+  font-weight: bold;
 }

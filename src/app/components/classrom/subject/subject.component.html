@@ -1,24 +1,11 @@
 <div class="text-center subHeader">{{this.main.currentSubject.name}}</div>
 <div class="row justify-content-around subButtons p-3 m-0">
 
-  <div class="example_d p-3 col-5" data-toggle="collapse" href="#addNewHomework"
-      *ngIf="main.currentRole === 1 || main.currentRole === 2">
-    Dodaj nowe zadanie
-  </div>
-  <div class="example_d p-3 col-5" (click)="whichHomeworks = !whichHomeworks">
-    <span *ngIf="!whichHomeworks" >
-      Najnowsze zadania
-    </span>
-    <span *ngIf="whichHomeworks" >
-     Archiwum
-    </span>
+  <a class="example_f col-12 col-md-3" *ngIf="main.currentRole === 1 || main.currentRole === 2" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
+  <a class="example_f col-12 col-md-4" *ngIf="whichHomeworks === 0" (click)="whichHomeworks = 1"><span>Pokaż najnowsze zadania</span></a>
+  <a class="example_f col-12 col-md-4" *ngIf="whichHomeworks === 1" (click)="whichHomeworks = 0"><span>Przejdź do archiwum</span></a>
+  <a class="example_f col-12 col-md-3" (click)="showChat = !showChat"><span>Otwórz chat</span></a>
 
-  </div>
-
-<!--  <div class="example_d p-3" data-toggle="collapse" href="#addNewHomework2" aria-expanded="false"-->
-<!--      *ngIf="main.currentRole === 1 || main.currentRole === 2">-->
-<!--    Pokaż listę uczniów-->
-<!--  </div>-->
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
@@ -68,7 +55,7 @@
   </div>
 </div>
 <!-- div for students -->
-<div class="homeworksDiv" *ngIf="whichHomeworks">
+<div class="homeworksDiv" *ngIf="whichHomeworks === 1  && !showChat">
   <div *ngIf="this.main.currentRole === 0">
     <h1 class="text-center subHomeworks" >Zadania do zrobienia</h1>
     <div *ngFor="let homework of this.currentHomeworks; let i=index">
@@ -83,12 +70,15 @@
     </div>
   </div>
 </div>
-<div class="homeworksDiv" *ngIf="!whichHomeworks">
+<div class="homeworksDiv" *ngIf="whichHomeworks === 0 && !showChat">
   <h1 class="text-center subHomeworks">Zakończone zadania</h1>
   <div *ngFor="let homework of this.finishedHomeworks; let i=index">
     <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
   </div>
 </div>
-
+<div class="homeworksDiv" *ngIf="showChat">
+  <h1 class="text-center subHomeworks">Chat</h1>
+  <app-text-chat></app-text-chat>
+</div>
 
 

@@ -2,12 +2,12 @@
 <button type="button" #showMembers class="d-none" data-toggle="modal" data-target="#openMembersModal"></button>
 
 <!-- Modal -->
-<div class="modal fade" id="openMembersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
+<div class="modal fade" id="openMembersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content p-3" *ngIf="members">
-      <h1 class="text-center marksListH1 pb-2">Lista ocen</h1>
-      <div *ngFor="let res of members; let i=index" class="row justify-content-between studentsList">
-        <div class="col-8">{{res}}</div>
+      <h1 class="text-center marksListH1 pb-2">Lista osób należących do klasy</h1>
+      <div *ngFor="let res of members; let i=index" class="row justify-content-between studentsList m-2">
+        <div class="col-8 personData">{{res}}</div>
         <div class="col-md-4">
           <i class="fas fa-trash" (click)="deleteUser(i)"></i>
         </div>

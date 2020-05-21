@@ -20,7 +20,7 @@ export class ShowMembersComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.shared.openMembers.subscribe(res => {
-      this.members = res;
+      this.members = res.users;
       console.log(res);
       this.showMembers.nativeElement.click();
     });
@@ -31,6 +31,6 @@ export class ShowMembersComponent implements OnInit {
       userToDeleteID: this.main.currentClassrom.members[i],
       classID: this.main.currentClassrom.id,
     };
-    //this.classService.deleteClassMember(bodyToSend);
+    this.classService.deleteClassMember(bodyToSend);
   }
 }

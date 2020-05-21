@@ -32,6 +32,7 @@ import { MarksListComponent } from './components/models/marks-list/marks-list.co
 import { ShowHomeworkFileComponent } from './components/shared/show-homework-file/show-homework-file.component';
 import { ShowResponseFileComponent } from './components/shared/show-response-file/show-response-file.component';
 import { ShowMembersComponent } from './components/models/show-members/show-members.component';
+import { TextChatComponent } from './components/classrom/text-chat/text-chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { ShowMembersComponent } from './components/models/show-members/show-memb
     ShowHomeworkFileComponent,
     ShowResponseFileComponent,
     ShowMembersComponent,
+    TextChatComponent,
   ],
   imports: [
     BrowserModule,

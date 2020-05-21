@@ -19,7 +19,8 @@ export class SubjectComponent implements OnInit {
   currentHomeworks = [];
   finishedHomeworks = [];
   uploadForm: FormGroup;
-  whichHomeworks = true;
+  whichHomeworks = 1;
+  showChat = true;
   files = [];
   filesID = [];
   linksHrefs = [];

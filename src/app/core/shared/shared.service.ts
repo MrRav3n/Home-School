@@ -14,6 +14,7 @@ export class SharedService {
   api = 'https://homeschool-api.azurewebsites.net/api/';
   apiFiles = 'https://filestorage-api.azurewebsites.net/api/';
   apiNames = 'https://returnusernamesapi.azurewebsites.net/api/';
+  apiText = 'https://textchatapi.azurewebsites.net/api/';
   constructor() { }
   openLoginModal() {
     this.openLogin.emit();

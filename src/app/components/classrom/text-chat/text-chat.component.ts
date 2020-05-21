@@ -32,7 +32,7 @@ export class TextChatComponent implements OnInit {
     this.messageForm.setControl('classID', new FormControl(this.main.currentClassrom.id));
     if (this.messageForm.valid) {
       this.tcService.sendMessage(this.messageForm.value).subscribe(res => {
-        this.messages.push(res);
+        this.messages.unshift(res);
       });
     }
   }

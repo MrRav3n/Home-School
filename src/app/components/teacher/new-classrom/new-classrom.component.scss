@@ -13,6 +13,14 @@
   padding-bottom: 25px;
   border-bottom-left-radius:  var(--rad);
   border-bottom-right-radius:  var(--rad);
+
+}
+.containerDelete {
+  margin-top: -100px;
+  margin-bottom: 50px;
+  background: var(--main);
+  padding-top: 100px;
+  padding-bottom: 25px;
 }
 @media(max-width: 992px) {
   .containerMain {
@@ -33,4 +41,7 @@
 }
 .red {
   color: var(--warn) !important;
+}
+.redBg {
+  background: var(--warn) !important;
 }

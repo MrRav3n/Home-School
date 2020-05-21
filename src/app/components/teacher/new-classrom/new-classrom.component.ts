@@ -4,6 +4,7 @@ import { ClassService } from '../../../core/classService/class.service';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Classrom } from '../../../core/modals/Classrom';
 
 @Component({
   selector: 'app-new-classrom',
@@ -13,8 +14,10 @@ import { ToastrService } from 'ngx-toastr';
 export class NewClassromComponent implements OnInit {
   addClassromForm: FormGroup;
   addSubjectForm: FormGroup;
+  deleteSubjectForm: FormGroup;
   submittedFirstPart = false;
   submittedSecondPart = false;
+  classrom: Classrom;
   constructor(
     private classService: ClassService,
     private toastr: ToastrService,
@@ -28,6 +31,10 @@ export class NewClassromComponent implements OnInit {
       userToAddEmail: new FormControl('', [Validators.required, Validators.email]),
       classID: new FormControl('', [Validators.required, Validators.minLength(22)]),
       subjectName: new FormControl('', Validators.required),
+    });
+    this.deleteSubjectForm = new FormGroup({
+      classID: new FormControl('', [Validators.required, Validators.minLength(22)]),
+      subjectID: new FormControl('', Validators.required),
     });
   }
   addNewClass() {
@@ -44,6 +51,15 @@ export class NewClassromComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.deleteSubjectForm.get('classID').valueChanges.subscribe(val => {
+      this.classrom = this.main.classrom.find(v => v.id === val);
+      console.log(this.classrom);
+    });
+  }
+  deleteSubject() {
+    if (this.deleteSubjectForm.valid) {
+      this.classService.deleteSubject(this.deleteSubjectForm.value);
+    }
   }
 
 }

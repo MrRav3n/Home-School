@@ -16,15 +16,15 @@ export class TextChatService {
     private shared: SharedService
   ) { }
   sendMessage(messageObj): Observable<any> {
-    return this.http.post(this.api + 'TextChat/sendMessage', messageObj).pipe(
+    return this.http.post<any>(this.api + 'TextChat/sendMessage', messageObj).pipe(
       map(v => {
         v.sendTime = moment()._d.toLocaleString();
         return v;
       })
     );
   }
-  getLastMessages(): Observable<any> {
-    return this.http.get(this.api + `TextChat/getLastMessages/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
+  getLastMessages(): Observable<Array<any>> {
+    return this.http.get<any>(this.api + `TextChat/getLastMessages/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
         for(let i = 0; i < v.messages.length; i++) {
           v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
@@ -35,24 +35,23 @@ export class TextChatService {
     );
   }
   getNewerMessages(messageID): Observable<any> {
-    return this.http.get(this.api + `TextChat/getNewerMessages/${messageID}/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
+    return this.http.get<any>(this.api + `TextChat/getNewerMessages/${messageID}/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
         if (v.messages) {
-          for(let i = 0; i < v.messages.length; i++) {
+          for (let i = 0; i < v.messages.length; i++) {
             v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
           }
-
           return v;
-        }})
+        }}
+      )
     );
   }
   getOlderMessages(messageID): Observable<any> {
-    return this.http.get(this.api + `TextChat/getOlderMessages/${messageID}/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
+    return this.http.get<any>(this.api + `TextChat/getOlderMessages/${messageID}/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
         for(let i = 0; i < v.messages.length; i++) {
           v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
         }
-
         return v;
       })
     );

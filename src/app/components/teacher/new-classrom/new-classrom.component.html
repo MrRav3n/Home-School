@@ -64,10 +64,31 @@
     </form>
 
     <button type="submit" class="formBtn col-4" (click)="addNewSubject()">Dodaj</button>
+    <h1>Usuń przedmiot</h1>
+    <form [formGroup]="deleteSubjectForm" class="row justify-content-around">
+      <div class="form-group col-12 col-md-5">
+        <h3>Wybierz klasę</h3>
+        <select class="form-control"  formControlName="classID">
+          <option *ngFor="let classrom of this.main.classrom;let indexOfelement=index;" [value]="this.main.classrom[indexOfelement].id">{{classrom.className}} - {{classrom.schoolName}} </option>
+        </select>
+        <div *ngIf="this.classrom">
+          <h3>Wybierz przedmiot</h3>
+          <select class="form-control"  formControlName="subjectID">
+            <option *ngFor="let subject of this.classrom.subjects" [value]="subject.id">{{subject.name}}</option>
+          </select>
+        </div>
 
+        <div *ngIf="addSubjectForm.controls.classID.invalid && submittedSecondPart" class="alert alert-danger">
+          Wybierz klasę.
+        </div>
+      </div>
 
+    </form>
+
+    <button type="submit" class="formBtn col-4 redBg" (click)="deleteSubject()">Usuń</button>
 
   </div>
+
 </div>
 
 

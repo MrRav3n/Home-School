@@ -35,10 +35,8 @@ export class HomeworkComponent implements OnInit {
     const timeLeft = endDate.diff(currentTime, 'minutes');
     this.leftHours = Math.floor(timeLeft / 60);
     this.leftMinutes = Math.floor(timeLeft - (this.leftHours * 60 ));
-    // @ts-ignore
-    this.startTime = moment(this.homework.createDate)._d.toLocaleString();
-    // @ts-ignore
-    this.endTime = moment(this.homework.endDate)._d.toLocaleString();
+    this.startTime = moment(this.homework.createDate).format('YYYY-MM-DD HH:mm:ss');
+    this.endTime = moment(this.homework.endDate).format('YYYY-MM-DD HH:mm:ss');
   }
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;

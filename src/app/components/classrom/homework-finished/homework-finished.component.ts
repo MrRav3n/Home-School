@@ -22,12 +22,12 @@ export class HomeworkFinishedComponent implements OnInit {
   allResponses: [Response];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
-    // @ts-ignore
-    this.startTime = moment(this.homework.createDate)._d.toLocaleString();
-    // @ts-ignore
-    this.endTime = moment(this.homework.endDate)._d.toLocaleString();
-    // @ts-ignore
-    this.sendTime = moment(this.homework.recreateDate)._d.toLocaleString();
+
+    this.startTime = moment(this.homework.createDate).format('YYYY-MM-DD HH:mm:ss');
+
+    this.endTime = moment(this.homework.endDate).format('YYYY-MM-DD HH:mm:ss');
+
+    this.sendTime = moment(this.homework.createDate).format('YYYY-MM-DD HH:mm:ss');
     this.allResponses = this.homework.responses;
   }
   @Input() set iteratorSet(iter: number) {

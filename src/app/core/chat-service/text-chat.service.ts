@@ -18,7 +18,9 @@ export class TextChatService {
   sendMessage(messageObj): Observable<any> {
     return this.http.post<any>(this.api + 'TextChat/sendMessage', messageObj).pipe(
       map(v => {
-        v.sendTime = moment()._d.toLocaleString();
+        console.log(v.sendTime);
+        v.sendTime = moment().format('YYYY-MM-DD HH:mm:ss');
+        console.log(v.sendTime);
         return v;
       })
     );
@@ -27,7 +29,7 @@ export class TextChatService {
     return this.http.get<any>(this.api + `TextChat/getLastMessages/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
         for(let i = 0; i < v.messages.length; i++) {
-          v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
+          v.messages[i].sendTime = moment(v.messages[i].sendTime).format('YYYY-MM-DD HH:mm:ss');
         }
 
         return v;
@@ -39,7 +41,7 @@ export class TextChatService {
       map(v => {
         if (v.messages) {
           for (let i = 0; i < v.messages.length; i++) {
-            v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
+            v.messages[i].sendTime = moment(v.messages[i].sendTime).format('YYYY-MM-DD HH:mm:ss');
           }
           return v;
         }}
@@ -49,8 +51,8 @@ export class TextChatService {
   getOlderMessages(messageID): Observable<any> {
     return this.http.get<any>(this.api + `TextChat/getOlderMessages/${messageID}/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
-        for(let i = 0; i < v.messages.length; i++) {
-          v.messages[i].sendTime = moment(v.messages[i].sendTime)._d.toLocaleString();
+        for (let i = 0; i < v.messages.length; i++) {
+          v.messages[i].sendTime = moment(v.messages[i].sendTime).format('YYYY-MM-DD HH:mm:ss');
         }
         return v;
       })

@@ -56,10 +56,8 @@ export class SubjectComponent implements OnInit {
         $('#picker').dateTimePicker();
       });
     })(jQuery);
-    if (!this.main.currentSubject || this.main.currentClassrom) {
-      this.main.currentClassrom = this.main.classrom[0];
-      this.main.currentSubject = this.main.currentClassrom.subjects[0];
-      // this.router.navigateByUrl('classrom/0');
+    if (!this.main.currentClassrom) {
+      this.router.navigateByUrl('classrom/0');
     }
     this.currentTime = moment().toISOString();
     this.sortHomeworks(this.currentTime);

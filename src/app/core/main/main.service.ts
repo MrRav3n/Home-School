@@ -65,6 +65,8 @@ export class MainService {
     } else if (this.user.userRole === 1) {
       this.router.navigateByUrl('123');
     }
+    console.log(this.user);
+    console.log(this.classrom);
   }
 
 }

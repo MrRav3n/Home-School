@@ -29,6 +29,8 @@ export class HomeworkComponent implements OnInit {
   files = [];
   filesID = [];
   uploadForm: FormGroup;
+  linksIterator = [];
+  linkHrefs = [];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
     const endDate = moment(this.homework.endDate);
@@ -95,11 +97,14 @@ export class HomeworkComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+  addLink() {
+    this.linksIterator.push(this.linksIterator.length);
+  }
   addNewResponse() {
     this.homeworkResponseForm.addControl('homeworkID', new FormControl(this.homework.id));
     const body = this.homeworkResponseForm.value;
     body.filesID = this.filesID;
-    body.linkHrefs = [];
+    body.linkHrefs = this.linkHrefs;
     if (this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(body).subscribe(res => {
         this.shared.switchHomeworkEmit(res.responseObj.homeworkID);

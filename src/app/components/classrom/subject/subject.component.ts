@@ -26,9 +26,10 @@ export class SubjectComponent implements OnInit {
   showChat = false;
   files = [];
   filesID = [];
-  linksHrefs = [];
+  linkHrefs = [];
   submitted = false;
   currentTime;
+  linksIterator = [];
   @Input() set currentSubSet(sub) {
     this.showChat = false;
     this.sortHomeworks(this.currentTime);
@@ -46,7 +47,6 @@ export class SubjectComponent implements OnInit {
       name: new FormControl('', Validators.required),
       description: new FormControl(''),
       time: new FormControl('', Validators.required),
-
     });
     this.uploadForm = new FormGroup({
       profile: new FormControl(''),
@@ -74,6 +74,9 @@ export class SubjectComponent implements OnInit {
   }
   goBack() {
     this.location.back();
+  }
+  addLink() {
+    this.linksIterator.push(this.linksIterator.length);
   }
   sortHomeworks(currentTime) {
     this.currentHomeworks = [];
@@ -123,15 +126,19 @@ export class SubjectComponent implements OnInit {
       }),
     ).subscribe(res => {});
   }
+  show(i) {
+    console.log(this.linksHrefs[i]);
+  }
   addNewHomework() {
     this.submitted = true;
     const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
     this.homeworkForm.patchValue({time: timeUtc});
     const bodyToSend = this.homeworkForm.value;
     bodyToSend.filesID = this.filesID;
-    bodyToSend.linkHrefs = this.linksHrefs;
+    bodyToSend.linkHrefs = this.linkHrefs;
     bodyToSend.subjectID = this.main.currentSubject.id;
     bodyToSend.classID = this.main.currentClassrom.id;
+
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(bodyToSend).subscribe(res => {
         this.submitted = false  ;

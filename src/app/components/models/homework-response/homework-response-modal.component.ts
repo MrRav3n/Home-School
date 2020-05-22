@@ -29,7 +29,6 @@ export class HomeworkResponseModalComponent implements OnInit {
   ngOnInit(): void {
     this.shared.openHomework.subscribe(res => {
       this.response = res;
-      console.log(res);
       this.showHomework.nativeElement.click();
     });
   }

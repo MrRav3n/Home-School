@@ -85,13 +85,11 @@ export class ClassService {
   deleteHomework(homework) {
     return this.http.put(this.api + 'Homework/deleteHomework', homework).subscribe(res => {
       this.toastr.success('Usunięto zadanie.', 'Udało się!');
-      console.log(res);
     });
   }
   deleteClassMember(member) {
     return this.http.put(this.api + 'Class/deleteMember', member).subscribe(res => {
       this.toastr.success('Usunięto użytkownika.', 'Udało się!');
-      console.log(res);
     });
   }
   showClassromMembers(classID) {
@@ -100,7 +98,7 @@ export class ClassService {
   deleteSubject(subject) {
     return this.http.put(this.api + 'Class/deleteSubject', subject).subscribe(res => {
       this.toastr.success('Usunięto zadanie.', 'Udało się!');
-      console.log(res);
+
     });
   }
 }

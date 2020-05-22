@@ -53,7 +53,6 @@ export class NewClassromComponent implements OnInit {
   ngOnInit(): void {
     this.deleteSubjectForm.get('classID').valueChanges.subscribe(val => {
       this.classrom = this.main.classrom.find(v => v.id === val);
-      console.log(this.classrom);
     });
   }
   deleteSubject() {

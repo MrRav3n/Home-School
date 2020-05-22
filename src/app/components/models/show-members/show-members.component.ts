@@ -21,12 +21,10 @@ export class ShowMembersComponent implements OnInit {
   ngOnInit(): void {
     this.shared.openMembers.subscribe(res => {
       this.members = res.users;
-      console.log(res);
       this.showMembers.nativeElement.click();
     });
   }
   deleteUser(i) {
-    console.log(i);
     const bodyToSend = {
       userToDeleteID: this.main.currentClassrom.members[i],
       classID: this.main.currentClassrom.id,

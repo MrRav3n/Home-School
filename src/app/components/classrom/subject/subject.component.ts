@@ -61,7 +61,6 @@ export class SubjectComponent implements OnInit {
     }
     this.currentTime = moment().toISOString();
     this.sortHomeworks(this.currentTime);
-    console.log(this.main.currentSubject)
   }
   goBack() {
     this.location.back();
@@ -123,7 +122,6 @@ export class SubjectComponent implements OnInit {
     bodyToSend.linkHrefs = this.linksHrefs;
     bodyToSend.subjectID = this.main.currentSubject.id;
     bodyToSend.classID = this.main.currentClassrom.id;
-    console.log(bodyToSend);
     if (this.homeworkForm.valid) {
       this.classService.addNewHomework(bodyToSend).subscribe(res => {
         this.submitted = false  ;

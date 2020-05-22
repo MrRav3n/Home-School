@@ -9,7 +9,6 @@ import { Response } from '../../../core/modals/Response';
 export class HomeworkResponseComponent implements OnInit {
   response: Response;
   @Input() set responseSet(response: Response)  {
-    console.log(response);
     this.response = response;
   }
   constructor() { }

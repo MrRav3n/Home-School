@@ -14,15 +14,17 @@
 }
 .transformUnder {
   height: 50px;
-  background: var(--green);
+  background: var(--submit);
   border-radius: 0 0 var(--rad) var(--rad);
   padding: 10px;
   font-size: 20px;
   transform: translateY(50px);
+  transition: all 0.3s;
   text-align: center;
+  cursor: pointer;
 }
 .transformUnder:hover {
-  cursor: pointer;
+  background: var(--submitHover);
 }
 .transformUnder:focus {
   outline: none;

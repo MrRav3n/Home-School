@@ -48,7 +48,6 @@ export class MainService {
     if (localStorage.getItem('homeschooltoken')) {
       try {
         const data = await this.loginViaToken().toPromise();
-        console.log(data);
         this.user = data.userToReturn;
         this.classrom = data.classes;
       } catch {

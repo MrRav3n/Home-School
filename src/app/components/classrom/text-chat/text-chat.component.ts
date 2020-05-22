@@ -60,16 +60,13 @@ export class TextChatComponent implements OnInit {
     });
   }
   getOlderMessages() {
-    console.log(this.messages[0].messageID);
     this.loadingMessages = true;
     this.tcService.getOlderMessages(this.messages[this.messages.length - 1].messageID).subscribe(res => {
-      console.log(res);
       if (res.messages) {
         for (const message of res.messages) {
           this.messages.push(message);
         }
       }
-      console.log(this.messages);
       this.loadingMessages = false;
     });
   }

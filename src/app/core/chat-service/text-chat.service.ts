@@ -18,9 +18,7 @@ export class TextChatService {
   sendMessage(messageObj): Observable<any> {
     return this.http.post<any>(this.api + 'TextChat/sendMessage', messageObj).pipe(
       map(v => {
-        console.log(v.sendTime);
         v.sendTime = moment().format('YYYY-MM-DD HH:mm:ss');
-        console.log(v.sendTime);
         return v;
       })
     );

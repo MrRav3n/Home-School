@@ -61,7 +61,7 @@ export class SubjectComponent implements OnInit {
     }
     this.currentTime = moment().toISOString();
     this.sortHomeworks(this.currentTime);
-
+    console.log(this.main.currentSubject)
   }
   goBack() {
     this.location.back();

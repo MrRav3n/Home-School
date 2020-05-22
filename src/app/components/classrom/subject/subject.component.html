@@ -1,4 +1,8 @@
 <div class="goBackDiv d-block d-md-none" (click)="goBack()">Wybierz przedmiot</div>
+<div class="col-12 pt-5 pt-md-0" *ngIf="this.main.currentRole === 2">
+    <h1 class="text-center">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>
+</div>
+<div *ngIf="this.main.currentRole !== 2">
 <div class="text-center subHeader pt-5 pt-md-0 text-wrap">{{this.main.currentSubject.name}}</div>
 <div class="row justify-content-around subButtons p-3 m-0 mb-5">
 
@@ -81,5 +85,5 @@
   <h1 class="text-center subHomeworks">Chat</h1>
   <app-text-chat></app-text-chat>
 </div>
-
+</div>
 

@@ -25,7 +25,7 @@ export class TextChatService {
       })
     );
   }
-  getLastMessages(): Observable<Array<any>> {
+  getLastMessages(): Observable<any> {
     return this.http.get<any>(this.api + `TextChat/getLastMessages/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
         for(let i = 0; i < v.messages.length; i++) {

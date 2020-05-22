@@ -49,6 +49,7 @@ export class ClassromComponent implements OnInit {
     });
   }
   async setCurrentSubject(i) {
+
     if (this.subjectDiv) {
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
       function timeout(ms) {
@@ -61,6 +62,10 @@ export class ClassromComponent implements OnInit {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
     }
 
+    this.checkUserRole();
+  }
+  setCurrentSubjectNotAsync(i) {
+    this.main.currentSubject = this.main.currentClassrom.subjects[i];
     this.checkUserRole();
   }
   showCode(e, id) {

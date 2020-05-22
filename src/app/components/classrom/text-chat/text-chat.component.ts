@@ -10,7 +10,7 @@ import { MainService } from '../../../core/main/main.service';
 })
 export class TextChatComponent implements OnInit {
   messageForm: FormGroup;
-  messages = [];
+  messages;
   loadingMessages = true;
   constructor(
     private tcService: TextChatService,

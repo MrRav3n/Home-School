@@ -25,16 +25,12 @@
   </div>
   <div class="row classrom m-0 p-0">
 
-    <div class="col-lg-9 col-12 d-none d-md-block p-3" *ngIf="this.main.currentRole !== 2">
+    <div class="col-lg-9 col-12 d-none d-md-block p-3">
       <div class="subject" #subject>
         <app-subject [currentSubSet]="this.main.currentSubject"></app-subject>
       </div>
     </div>
-    <div class="col-lg-9 col-12 d-none d-md-block p-3" *ngIf="this.main.currentRole === 2">
-      <div class="subject">
-        <h1 class="text-center">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>
-      </div>
-    </div>
+
     <div class="p-3 col-md-3 col-12" >
       <div class="d-none d-md-block text-center subjectsChoosing">
         <h1>Przedmioty</h1>
@@ -42,7 +38,7 @@
       </div>
       <div class="d-block d-md-none text-center subjectsChoosing">
         <h1>Przedmioty</h1>
-        <div class=" example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)" routerLink="/subject">{{subject.name}}</div>
+        <div class=" example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubjectNotAsync(i)" routerLink="/subject">{{subject.name}}</div>
       </div>
     </div>
   </div>

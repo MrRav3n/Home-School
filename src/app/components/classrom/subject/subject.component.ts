@@ -3,11 +3,13 @@ import { MainService } from '../../../core/main/main.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClassService } from '../../../core/classService/class.service';
 declare var jQuery: any;
+import { Location } from '@angular/common';
 import * as moment from 'moment';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -20,25 +22,29 @@ export class SubjectComponent implements OnInit {
   finishedHomeworks = [];
   uploadForm: FormGroup;
   whichHomeworks = 1;
-  showChat = true;
+  showChat = false;
   files = [];
   filesID = [];
   linksHrefs = [];
   submitted = false;
   currentTime;
   @Input() set currentSubSet(sub) {
+    this.showChat = false;
     this.sortHomeworks(this.currentTime);
   }
   @ViewChild('timeValue') timeValue;
   constructor(
     public main: MainService,
     private classService: ClassService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router,
+    private location: Location
   ) {
     this.homeworkForm = new FormGroup({
       name: new FormControl('', Validators.required),
       description: new FormControl(''),
       time: new FormControl('', Validators.required),
+
     });
     this.uploadForm = new FormGroup({
       profile: new FormControl(''),
@@ -50,8 +56,17 @@ export class SubjectComponent implements OnInit {
         $('#picker').dateTimePicker();
       });
     })(jQuery);
+    if (!this.main.currentSubject || this.main.currentClassrom) {
+      this.main.currentClassrom = this.main.classrom[0];
+      this.main.currentSubject = this.main.currentClassrom.subjects[0];
+      // this.router.navigateByUrl('classrom/0');
+    }
     this.currentTime = moment().toISOString();
     this.sortHomeworks(this.currentTime);
+
+  }
+  goBack() {
+    this.location.back();
   }
   sortHomeworks(currentTime) {
     this.currentHomeworks = [];

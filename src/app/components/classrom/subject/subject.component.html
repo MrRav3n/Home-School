@@ -1,5 +1,6 @@
-<div class="text-center subHeader">{{this.main.currentSubject.name}}</div>
-<div class="row justify-content-around subButtons p-3 m-0">
+<div class="goBackDiv d-block d-md-none" (click)="goBack()">Wybierz przedmiot</div>
+<div class="text-center subHeader pt-5 pt-md-0 text-wrap">{{this.main.currentSubject.name}}</div>
+<div class="row justify-content-around subButtons p-3 m-0 mb-5">
 
   <a class="example_f col-12 col-md-3" *ngIf="main.currentRole === 1 || main.currentRole === 2" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
   <a class="example_f col-12 col-md-4" *ngIf="whichHomeworks === 0" (click)="whichHomeworks = 1; showChat = false"><span>Pokaż najnowsze zadania</span></a>
@@ -8,7 +9,7 @@
 
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
-      <form [formGroup]="homeworkForm" class="row justify-content-around p-3 ">
+      <form [formGroup]="homeworkForm" class="row justify-content-around p-md-3 p-0">
         <div class="col-10 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
           <div class="form-group col-md-5 col-10 mb-5 p-0">
             <h3 class="text-white termin">Nazwa zadania</h3>
@@ -38,7 +39,7 @@
         <div class="col-12 row justify-content-center p-3 m-0">
           <div class="custom-file col-10">
             <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelect($event)">
-            <label class="custom-file-label" for="customFile">Dołącz plik do zadania</label>
+            <label class="custom-file-label" for="customFile">Dołącz plik</label>
           </div>
 
           <div class="col-10 mt-3 p-0" *ngIf="files">
@@ -49,7 +50,7 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="formBtn col-4" (click)="addNewHomework()">Dodaj</button>
+        <button type="submit" class="formBtn col-6 mb-1 col-md-4" (click)="addNewHomework()">Dodaj</button>
       </form>
     </div>
   </div>

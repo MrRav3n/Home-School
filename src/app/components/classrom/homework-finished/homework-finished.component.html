@@ -3,7 +3,7 @@
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
     <div class="row justify-content-between m-0 p-0">
-      <div  class="m-0 p-1 col-6">
+      <div  class="m-0 p-1 col-md-6 col-12">
         <h1>{{homework.name}}</h1>
         <div *ngIf="main.currentRole === 0">
           <div *ngIf="homework.responses[0]">
@@ -12,7 +12,7 @@
           </div>
         </div>
       </div>
-      <div class="row col-6 text-right">
+      <div class="row col-md-6 text-right col-12">
         <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
         <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
         <div class="m-0 p-1 col-12" *ngIf="main.currentRole === 0">Data odesłania:

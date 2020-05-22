@@ -73,3 +73,18 @@
   border-radius: 40px;
   font-weight: bold;
 }
+.goBackDiv {
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  z-index: 5;
+  background: #90BE6D;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.goBackDiv:hover {
+  background: #739754;
+}

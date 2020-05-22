@@ -3,8 +3,8 @@
      (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
     <div class="row justify-content-between m-0 p-0">
-      <div  class="m-0 p-1 col-6"><h1>{{homework.name}}</h1></div>
-      <div class="row col-6 text-right">
+      <div  class="m-0 p-1 col-md-6 col-12"><h1>{{homework.name}}</h1></div>
+      <div class="row col-md-6 col-12 text-md-right">
         <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
         <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
       </div>
@@ -20,9 +20,9 @@
       <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
       <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
     </div>
-    <div class="col-12">
-      <h2 class="text-center p-2">Treść odpowiedzi</h2>
-      <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-3 m-0">
+    <div class="col-12 p-0">
+      <h2 class="text-center p-md-2 p-1">Treść odpowiedzi</h2>
+      <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-md-3 p-0 m-0">
         <div class="form-group col-12">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
 
@@ -43,7 +43,7 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="formBtn col-4" (click)="addNewResponse()">Dodaj</button>
+        <button type="submit" class="formBtn col-md-4 col-8 mb-2 mb-md-0" (click)="addNewResponse()">Dodaj</button>
       </form>
     </div>
 

@@ -4,10 +4,14 @@ body, html {
   height: 100%;
   font-family: Lato, serif;
   overflow-x: hidden;
+  scroll-padding-top: 500px;
+  scroll-behavior: smooth;
 }
 body {
   padding-top: 71px;
+
 }
+
 .main {
   --width: 720px;
   --main: #3D5A80; //main color

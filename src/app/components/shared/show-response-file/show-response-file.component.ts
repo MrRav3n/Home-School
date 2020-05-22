@@ -41,7 +41,7 @@ export class ShowResponseFileComponent implements OnInit {
   }
   downloadFile(url, fileName) {
     const file = fileName.split('.');
-    const finalFileName = this.response.homeworkName + this.response.senderSurname + '_' + this.response.senderName + '.' + file[file.length - 1];
+    const finalFileName = this.response.homeworkName + '_' + this.response.senderSurname + '_' + this.response.senderName + '.' + file[file.length - 1];
     const a = document.createElement('a');
     document.body.appendChild(a);
     // @ts-ignore

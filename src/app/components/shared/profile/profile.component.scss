@@ -14,12 +14,10 @@
 .cover {
   height: 100%;
 }
-
 @media (max-width: 992px) {
   .cover {
-    min-height: 100% !important;
+    height: auto !important;
   }
-
 }
 .rest {
   margin-top: -150px;

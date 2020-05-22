@@ -14,16 +14,16 @@
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
       <form [formGroup]="homeworkForm" class="row justify-content-around p-md-3 p-0">
-        <div class="col-10 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
-          <div class="form-group col-md-5 col-10 mb-5 p-0">
+        <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
+          <div class="form-group col-md-5 col-12 mb-md-5 p-0">
             <h3 class="text-white termin">Nazwa zadania</h3>
             <input type="email" class="form-control" placeholder="Nazwa" name="name" id='numberPeople' required formControlName="name"/>
             <div *ngIf="homeworkForm.controls.name.invalid && submitted" class="alert alert-danger">
               Podaj nazwę zadania.
             </div>
           </div>
-          <div class="col-md-5 col-10 mb-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
-            <h3 class="text-white termin">Termin oddania</h3>
+          <div class="col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
+            <h3 class="text-white termin text-left">Termin oddania</h3>
             <div id="picker">   </div>
             <input type="hidden" id="result" value="" #timeValue>
             <div *ngIf="homeworkForm.controls.time.invalid && submitted" class="alert alert-danger">
@@ -33,7 +33,7 @@
 
         </div>
 
-        <div class="form-group col-10">
+        <div class="form-group col-12">
           <h3 class="text-white termin">Treść zadania</h3>
         <textarea class="form-control p-2 m-0" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść">
 
@@ -41,7 +41,7 @@
         </div>
 
         <div class="col-12 row justify-content-center p-3 m-0">
-          <div class="custom-file col-10">
+          <div class="custom-file col-12">
             <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelect($event)">
             <label class="custom-file-label" for="customFile">Dołącz plik</label>
           </div>
@@ -54,7 +54,7 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="formBtn col-6 mb-1 col-md-4" (click)="addNewHomework()">Dodaj</button>
+        <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewHomework()">Dodaj</button>
       </form>
     </div>
   </div>

@@ -10,6 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { SharedService } from '../../../core/shared/shared.service';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -38,7 +39,8 @@ export class SubjectComponent implements OnInit {
     private classService: ClassService,
     private toastr: ToastrService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private shared: SharedService
   ) {
     this.homeworkForm = new FormGroup({
       name: new FormControl('', Validators.required),
@@ -61,6 +63,14 @@ export class SubjectComponent implements OnInit {
     }
     this.currentTime = moment().toISOString();
     this.sortHomeworks(this.currentTime);
+    this.shared.switchHomework.subscribe(res => {
+      const index = this.currentHomeworks.findIndex(v => v.id === res);
+      if (index > -1) {
+        this.currentHomeworks.splice(index, 1);
+        this.finishedHomeworks.push(this.currentHomeworks[index]);
+      }
+
+    });
   }
   goBack() {
     this.location.back();

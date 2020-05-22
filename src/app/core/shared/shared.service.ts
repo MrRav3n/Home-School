@@ -9,6 +9,7 @@ export class SharedService {
   openCode = new EventEmitter();
   openMembers = new EventEmitter();
   openMarksList = new EventEmitter();
+  switchHomework = new EventEmitter();
   loading = true;
   openHomework = new EventEmitter();
   api = 'https://homeschool-api.azurewebsites.net/api/';
@@ -18,6 +19,9 @@ export class SharedService {
   constructor() { }
   openLoginModal() {
     this.openLogin.emit();
+  }
+  switchHomeworkEmit(res) {
+    this.switchHomework.emit(res);
   }
   openMembersModal(res) {
     this.openMembers.emit(res);

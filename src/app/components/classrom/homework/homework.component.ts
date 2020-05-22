@@ -9,6 +9,7 @@ import { Mimes } from '../../../core/modals/mimeTypes';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
 import { HttpEventType } from '@angular/common/http';
+import { SharedService } from '../../../core/shared/shared.service';
 
 declare var jQuery: any;
 @Component({
@@ -46,7 +47,8 @@ export class HomeworkComponent implements OnInit {
     private main: MainService,
     private classService: ClassService,
     private sanitizer: DomSanitizer,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private shared: SharedService
   ) {
     this.homeworkResponseForm = new FormGroup({
       description: new FormControl(''),
@@ -100,6 +102,8 @@ export class HomeworkComponent implements OnInit {
     body.linkHrefs = [];
     if (this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(body).subscribe(res => {
+        this.shared.switchHomeworkEmit(res.responseObj.homeworkID);
+        this.main.currentSubject.homeworks.filter(v => v.id === res.responseObj.homeworkID).map(v => v.responses.push(res.responseObj));
         this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
       });
     }

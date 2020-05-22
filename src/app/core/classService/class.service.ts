@@ -73,12 +73,12 @@ export class ClassService {
       observe: 'events'
     });
   }
-  addNewResponse(response) {
-    return this.http.post<Response>(this.api + 'Homework/createResponse', response);
+  addNewResponse(response): Observable<any> {
+    return this.http.post<any>(this.api + 'Homework/createResponse', response);
   }
   addNewSubject(subject) {
     this.http.post<{subject: Subject}>(this.api + 'Subject/create', subject).subscribe( res => {
-      this.main.classrom.filter(value => value.id = subject.classID).map(val => val.subjects.push(res.subject));
+      this.main.classrom.filter(value => value.id === subject.classID).map(val => val.subjects.push(res.subject));
       this.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
     });
   }

@@ -365,7 +365,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-center\" [id]=\"'homework-' + iterator\">\n    <h2 class=\"p-3 col-12 description\">Opis zadania: {{homework.description}}</h2>\n\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n";
+    __webpack_exports__["default"] = "<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n";
     /***/
   },
 
@@ -385,7 +385,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"row p-0 m-0\">\n  <app-show-response-file [responseSet]=\"response\" class=\"col-12 p-0\"></app-show-response-file>\n  <div class=\"col-12\">\n    <h2 class=\"text-center d-block\">Imię i nazwisko: {{response.senderName}} {{response.senderSurname}}</h2>\n  </div>\n  <div class=\"col-12 mt-2\" *ngIf=\"response.description\">\n    <h3 class=\"text-center\">Odpowiedź: {{response.description}}</h3>\n  </div>\n  <div class=\"col-12 mt-2\" *ngIf=\"!response.description\">\n    <h3 class=\"text-center\">Nie udzieliłeś odpowiedzi na to pytanie</h3>\n  </div>\n\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"row p-0 m-0\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Odpowiedź ucznia {{response.senderName}} {{response.senderSurname}} </span>\n  </div>\n  <div class=\"col-12 mt-2 pb-3\" *ngIf=\"response.description\">\n    <h2>{{response.description}}</h2>\n  </div>\n  <div class=\"col-12 mt-2 pb-3\" *ngIf=\"!response.description\">\n    <h2>Nie udzieliłeś odpowiedzi na to pytanie</h2>\n  </div>\n  <app-show-response-file [responseSet]=\"response\" class=\"col-12 p-0\"></app-show-response-file>\n</div>\n";
     /***/
   },
 
@@ -405,7 +405,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"row justify-content-center m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\"><h1>{{homework.name}}</h1></div>\n      <div class=\"row col-md-6 col-12 text-md-right\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n      </div>\n      <div class=\"col-12 m-0 p-1\">\n        <h3>Pozostało {{leftHours}} godzin i {{leftMinutes}} minut</h3>\n      </div>\n    </div>\n\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 row justify-content-center p-0\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 row justify-content-center p-0\">\n      <h2 class=\"p-3 col-12 description\">Opis zadania: {{homework.description}}</h2>\n      <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    </div>\n    <div class=\"col-12 p-0\">\n      <h2 class=\"text-center p-md-2 p-1\">Treść odpowiedzi</h2>\n      <form [formGroup]=\"homeworkResponseForm\" class=\"row justify-content-around p-md-3 p-0 m-0\">\n        <div class=\"form-group col-12\">\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść odpowiedzi\">\n\n        </textarea>\n        </div>\n\n        <div class=\"col-12 row justify-content-center m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik do zadania</label>\n          </div>\n\n          <div class=\"col-12 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-md-4 col-8 mb-2 mb-md-0\" (click)=\"addNewResponse()\">Dodaj</button>\n      </form>\n    </div>\n\n  </div>\n\n</div>\n\n";
+    __webpack_exports__["default"] = "<div class=\"row justify-content-center m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\"><h1>{{homework.name}}</h1></div>\n      <div class=\"row col-md-6 col-12 text-md-right\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n      </div>\n      <div class=\"col-12 m-0 p-1\">\n        <h3>Pozostało {{leftHours}} godzin i {{leftMinutes}} minut</h3>\n      </div>\n    </div>\n\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 row justify-content-center p-0\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 row justify-content-center p-0\">\n      <div class=\"col-12 p-3\">\n        <span class=\"infoSpan\">Opis zadania</span>\n      </div>\n      <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n      <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    </div>\n    <div class=\"col-12 p-0\">\n      <div class=\"col-12 p-3\">\n        <span class=\"infoSpan\">Twoja odpowiedź</span>\n      </div>\n      <form [formGroup]=\"homeworkResponseForm\" class=\"row justify-content-around p-md-3 p-0 m-0\">\n        <div class=\"form-group col-12\">\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść odpowiedzi\">\n\n        </textarea>\n        </div>\n        <div class=\"form-group col-12 row p-0 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"addLink()\">Dodaj link</button>\n          <input *ngFor=\"let iter of linksIterator; let i = index\" type=\"text\"  class=\"form-control col-12 mt-2 mb-2\"  [(ngModel)]=\"linkHrefs[i]\" [ngModelOptions]=\"{standalone: true}\" (ngModelChange)=\"this.show(i)\">\n        </div>\n        <div class=\"col-12 row justify-content-center m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik do zadania</label>\n          </div>\n\n          <div class=\"col-12 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-md-4 col-8 mb-2 mb-md-0\" (click)=\"addNewResponse()\">Dodaj</button>\n      </form>\n    </div>\n\n  </div>\n\n</div>\n\n";
     /***/
   },
 
@@ -425,7 +425,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"goBackDiv d-block d-md-none\" (click)=\"goBack()\">Wybierz przedmiot</div>\n<div class=\"col-12 pt-5 pt-md-0\" *ngIf=\"this.main.currentRole === 2\">\n    <h1 class=\"text-center\">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>\n</div>\n<div *ngIf=\"this.main.currentRole !== 2\">\n<div class=\"text-center subHeader pt-5 pt-md-0 text-wrap\">{{this.main.currentSubject.name}}</div>\n<div class=\"row justify-content-around subButtons p-3 m-0 mb-5\">\n\n  <a class=\"example_f col-12 col-md-3\" *ngIf=\"main.currentRole === 1 || main.currentRole === 2\" data-toggle=\"collapse\" href=\"#addNewHomework\"><span>Dodaj zadanie</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 0\" (click)=\"whichHomeworks = 1; showChat = false\"><span>Pokaż najnowsze zadania</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 1\" (click)=\"whichHomeworks = 0; showChat = false\"><span>Przejdź do archiwum</span></a>\n  <a class=\"example_f col-12 col-md-3\" (click)=\"showChat = !showChat\"><span>Otwórz chat</span></a>\n\n  <div class=\"col-12 pt-3\">\n    <div class=\"addNewHomeworkForm collapse col-12\" id=\"addNewHomework\">\n      <form [formGroup]=\"homeworkForm\" class=\"row justify-content-around p-md-3 p-0\">\n        <div class=\"col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end\">\n          <div class=\"form-group col-md-5 col-12 mb-md-5 p-0\">\n            <h3 class=\"text-white termin\">Nazwa zadania</h3>\n            <input type=\"email\" class=\"form-control\" placeholder=\"Nazwa\" name=\"name\" id='numberPeople' required formControlName=\"name\"/>\n            <div *ngIf=\"homeworkForm.controls.name.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj nazwę zadania.\n            </div>\n          </div>\n          <div class=\"col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0\">\n            <h3 class=\"text-white termin text-left\">Termin oddania</h3>\n            <div id=\"picker\">   </div>\n            <input type=\"hidden\" id=\"result\" value=\"\" #timeValue>\n            <div *ngIf=\"homeworkForm.controls.time.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj termin odddania zadania.\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"form-group col-12\">\n          <h3 class=\"text-white termin\">Treść zadania</h3>\n        <textarea class=\"form-control p-2 m-0\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść\">\n\n        </textarea>\n        </div>\n\n        <div class=\"col-12 row justify-content-center p-3 m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik</label>\n          </div>\n\n          <div class=\"col-10 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-6 mb-2 mb-md-0 col-md-4\" (click)=\"addNewHomework()\">Dodaj</button>\n      </form>\n    </div>\n  </div>\n</div>\n<!-- div for students -->\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 1  && !showChat\">\n  <div *ngIf=\"this.main.currentRole === 0\">\n    <h1 class=\"text-center subHomeworks\" >Zadania do zrobienia</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework>\n    </div>\n  </div>\n<!-- div for teachers -->\n  <div *ngIf=\"this.main.currentRole !== 0\">\n    <h1 class=\"text-center subHomeworks\" >Obecnie trwające</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n    </div>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 0 && !showChat\">\n  <h1 class=\"text-center subHomeworks\">Zakończone zadania</h1>\n  <div *ngFor=\"let homework of this.finishedHomeworks; let i=index\">\n    <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"showChat\">\n  <h1 class=\"text-center subHomeworks\">Chat</h1>\n  <app-text-chat></app-text-chat>\n</div>\n</div>\n\n";
+    __webpack_exports__["default"] = "<div class=\"goBackDiv d-block d-md-none\" (click)=\"goBack()\">Wybierz przedmiot</div>\n<div class=\"col-12 pt-5 pt-md-0\" *ngIf=\"this.main.currentRole === 2\">\n    <h1 class=\"text-center\">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>\n</div>\n<div *ngIf=\"this.main.currentRole !== 2\">\n<div class=\"text-center subHeader pt-5 pt-md-0 text-wrap\">{{this.main.currentSubject.name}}</div>\n<div class=\"row justify-content-around subButtons p-3 m-0 mb-5\">\n\n  <a class=\"example_f col-12 col-md-3\" *ngIf=\"main.currentRole === 1 || main.currentRole === 2\" data-toggle=\"collapse\" href=\"#addNewHomework\"><span>Dodaj zadanie</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 0\" (click)=\"whichHomeworks = 1; showChat = false\"><span>Pokaż najnowsze zadania</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 1\" (click)=\"whichHomeworks = 0; showChat = false\"><span>Przejdź do archiwum</span></a>\n  <a class=\"example_f col-12 col-md-3\" (click)=\"showChat = !showChat\"><span>Otwórz chat</span></a>\n\n  <div class=\"col-12 pt-3\">\n    <div class=\"addNewHomeworkForm collapse col-12\" id=\"addNewHomework\">\n      <form [formGroup]=\"homeworkForm\" class=\"row justify-content-around p-md-3 p-0\">\n        <div class=\"col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end\">\n          <div class=\"form-group col-md-5 col-12 mb-md-5 p-0\">\n            <h3 class=\"text-white termin\">Nazwa zadania</h3>\n            <input type=\"email\" class=\"form-control\" placeholder=\"Nazwa\" name=\"name\" id='numberPeople' required formControlName=\"name\"/>\n            <div *ngIf=\"homeworkForm.controls.name.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj nazwę zadania.\n            </div>\n          </div>\n          <div class=\"col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0\">\n            <h3 class=\"text-white termin text-left\">Termin oddania</h3>\n            <div id=\"picker\">   </div>\n            <input type=\"hidden\" id=\"result\" value=\"\" #timeValue>\n            <div *ngIf=\"homeworkForm.controls.time.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj termin odddania zadania.\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"form-group col-12\">\n          <h3 class=\"text-white termin\">Treść zadania</h3>\n        <textarea class=\"form-control p-2 m-0\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść\">\n\n        </textarea>\n        </div>\n        <div class=\"form-group col-12 row p-0 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"addLink()\">Dodaj link</button>\n          <input *ngFor=\"let iter of linksIterator; let i = index\" type=\"text\" class=\"form-control col-12 mt-2 mb-2\" [(ngModel)]=\"linkHrefs[i]\" [ngModelOptions]=\"{standalone: true}\">\n        </div>\n        <div class=\"col-12 row justify-content-center p-3 m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik</label>\n          </div>\n\n          <div class=\"col-10 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-6 mb-2 mb-md-0 col-md-4\" (click)=\"addNewHomework()\">Dodaj</button>\n      </form>\n    </div>\n  </div>\n</div>\n<!-- div for students -->\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 1  && !showChat\">\n  <div *ngIf=\"this.main.currentRole === 0\">\n    <h1 class=\"text-center subHomeworks\" >Zadania do zrobienia</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework>\n    </div>\n  </div>\n<!-- div for teachers -->\n  <div *ngIf=\"this.main.currentRole !== 0\">\n    <h1 class=\"text-center subHomeworks\" >Obecnie trwające</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n    </div>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 0 && !showChat\">\n  <h1 class=\"text-center subHomeworks\">Zakończone zadania</h1>\n  <div *ngFor=\"let homework of this.finishedHomeworks; let i=index\">\n    <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"showChat\">\n  <h1 class=\"text-center subHomeworks\">Chat</h1>\n  <app-text-chat></app-text-chat>\n</div>\n</div>\n\n";
     /***/
   },
 
@@ -665,7 +665,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"col-12 files row justify-content-center p-0 m-0 mainDiv\" *ngIf=\"homework.files[0]\">\n  <h2 class=\"text-center pt-2 d-block col-12\">Pobierz pliki załączone do zadania</h2>\n  <button class=\"formBtn mb-2\" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  <div class=\"col-12 mt-2 mb-2 p-1\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"homework.files[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Pliki do zadania</span>\n  </div>\n  <div class=\"col-12 p-0 m-0 row justify-content-start p-3\">\n    <button class=\"formBtn pr-3 pl-3 pb-3 \" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  </div>\n\n  <div class=\"col-12 mt-2 mb-2 p-3\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"homework.linkHrefs[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Linki do zadania</span>\n  </div>\n  <div class=\"pb-2 pr-3 pl-3 \">\n    <div *ngFor=\"let link of homework.linkHrefs\" class=\"col-12 mb-2 text-center p-0\">\n      <a [href]=\"link\" target=\"_blank\" class=\"linkHref\">{{link}}</a>\n    </div>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -685,7 +685,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"col-12 files row justify-content-center p-0 m-0 mainDiv\" *ngIf=\"response.files[0]\">\n  <h2 class=\"text-center pt-2 d-block col-12\">Pobierz pliki załączone do odpowiedzi</h2>\n  <button class=\"formBtn mb-2\" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  <div class=\"col-12 mt-2 mb-2 p-1\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n";
+    __webpack_exports__["default"] = "<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"response.files[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Pliki do odpowiedzi</span>\n  </div>\n  <div class=\"col-12 p-0 m-0 row justify-content-start p-3\">\n    <button class=\"formBtn pr-3 pl-3 pb-3 \" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  </div>\n\n  <div class=\"col-12 mt-2 mb-2 p-3\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"response.linkHrefs[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Linki do odpowiedzi</span>\n  </div>\n  <div class=\"pb-2 pr-3 pl-3 \">\n    <div *ngFor=\"let link of response.linkHrefs\" class=\"col-12 mb-2 text-center p-0\">\n      <a [href]=\"link\" target=\"_blank\" class=\"linkHref\">{{link}}</a>\n    </div>\n  </div>\n</div>\n";
     /***/
   },
 
@@ -2281,7 +2281,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MifQ== */";
+    __webpack_exports__["default"] = ".infoSpan {\n  display: block;\n  float: left;\n  clear: both;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jbGFzc3JvbS9ob21ld29yay1yZXNwb25zZS9FOlxcSG9tZS1TY2hvb2wvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGNsYXNzcm9tXFxob21ld29yay1yZXNwb25zZVxcaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5mb1NwYW4ge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIGNsZWFyOiBib3RoO1xyXG59XHJcbiIsIi5pbmZvU3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmbG9hdDogbGVmdDtcbiAgY2xlYXI6IGJvdGg7XG59Il19 */";
     /***/
   },
 
@@ -2451,18 +2451,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ../../../core/shared/shared.service */
+    "./src/app/core/shared/shared.service.ts");
 
     var HomeworkComponent = /*#__PURE__*/function () {
-      function HomeworkComponent(main, classService, sanitizer, toastr) {
+      function HomeworkComponent(main, classService, sanitizer, toastr, shared) {
         _classCallCheck(this, HomeworkComponent);
 
         this.main = main;
         this.classService = classService;
         this.sanitizer = sanitizer;
         this.toastr = toastr;
+        this.shared = shared;
         this.clickedStatus = false;
         this.files = [];
         this.filesID = [];
+        this.linksIterator = [];
+        this.linkHrefs = [];
         this.homeworkResponseForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
           description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
           classID: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.main.currentClassrom.id)
@@ -2527,6 +2536,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
+        key: "addLink",
+        value: function addLink() {
+          this.linksIterator.push(this.linksIterator.length);
+        }
+      }, {
         key: "addNewResponse",
         value: function addNewResponse() {
           var _this7 = this;
@@ -2534,10 +2548,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.homeworkResponseForm.addControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.homework.id));
           var body = this.homeworkResponseForm.value;
           body.filesID = this.filesID;
-          body.linkHrefs = [];
+          body.linkHrefs = this.linkHrefs;
 
           if (this.homeworkResponseForm.valid) {
             this.classService.addNewResponse(body).subscribe(function (res) {
+              _this7.shared.switchHomeworkEmit(res.responseObj.homeworkID);
+
+              _this7.linksIterator = [];
+              _this7.linkHrefs = [];
+              _this7.files = [];
+              _this7.filesID = [];
+
+              _this7.main.currentSubject.homeworks.filter(function (v) {
+                return v.id === res.responseObj.homeworkID;
+              }).map(function (v) {
+                return v.responses.push(res.responseObj);
+              });
+
               _this7.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
             });
           }
@@ -2573,6 +2600,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["DomSanitizer"]
       }, {
         type: ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"]
+      }, {
+        type: _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_10__["SharedService"]
       }];
     };
 
@@ -2699,9 +2728,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ../../../core/shared/shared.service */
+    "./src/app/core/shared/shared.service.ts");
 
     var SubjectComponent = /*#__PURE__*/function () {
-      function SubjectComponent(main, classService, toastr, router, location) {
+      function SubjectComponent(main, classService, toastr, router, location, shared) {
         _classCallCheck(this, SubjectComponent);
 
         this.main = main;
@@ -2709,14 +2744,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.toastr = toastr;
         this.router = router;
         this.location = location;
+        this.shared = shared;
         this.currentHomeworks = [];
         this.finishedHomeworks = [];
         this.whichHomeworks = 1;
         this.showChat = false;
         this.files = [];
         this.filesID = [];
-        this.linksHrefs = [];
+        this.linkHrefs = [];
         this.submitted = false;
+        this.linksIterator = [];
         this.homeworkForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
           name: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required),
           description: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
@@ -2730,6 +2767,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(SubjectComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this8 = this;
+
           (function ($) {
             $(document).ready(function () {
               $('#picker').dateTimePicker();
@@ -2742,11 +2781,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.currentTime = moment__WEBPACK_IMPORTED_MODULE_6__().toISOString();
           this.sortHomeworks(this.currentTime);
+          this.shared.switchHomework.subscribe(function (res) {
+            var index = _this8.currentHomeworks.findIndex(function (v) {
+              return v.id === res;
+            });
+
+            if (index > -1) {
+              _this8.currentHomeworks.splice(index, 1);
+
+              _this8.finishedHomeworks.push(_this8.currentHomeworks[index]);
+            }
+          });
         }
       }, {
         key: "goBack",
         value: function goBack() {
           this.location.back();
+        }
+      }, {
+        key: "addLink",
+        value: function addLink() {
+          this.linksIterator.push(this.linksIterator.length);
         }
       }, {
         key: "sortHomeworks",
@@ -2785,7 +2840,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "uploadFile",
         value: function uploadFile() {
-          var _this8 = this;
+          var _this9 = this;
 
           var formData = new FormData();
           var file = this.uploadForm.get('profile').value;
@@ -2793,19 +2848,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           formData.append('file', file);
           file.inProgress = true;
           this.classService.addNewFileToHomework(this.main.currentClassrom.id, this.main.currentSubject.id, formData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (event) {
-            var index = _this8.files.findIndex(function (v) {
+            var index = _this9.files.findIndex(function (v) {
               return v.name === file.name;
             });
 
             switch (event.type) {
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpEventType"].UploadProgress:
-                _this8.files[index].progress = Math.round(event.loaded * 100 / event.total);
+                _this9.files[index].progress = Math.round(event.loaded * 100 / event.total);
                 break;
 
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpEventType"].Response:
-                _this8.files[index].finished = true;
+                _this9.files[index].finished = true;
 
-                _this8.filesID.push(event.body.fileID);
+                _this9.filesID.push(event.body.fileID);
 
                 break;
             }
@@ -2814,7 +2869,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addNewHomework",
         value: function addNewHomework() {
-          var _this9 = this;
+          var _this10 = this;
 
           this.submitted = true;
           var timeUtc = moment__WEBPACK_IMPORTED_MODULE_6__(this.timeValue.nativeElement.value).toISOString();
@@ -2823,24 +2878,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
           var bodyToSend = this.homeworkForm.value;
           bodyToSend.filesID = this.filesID;
-          bodyToSend.linkHrefs = this.linksHrefs;
+          bodyToSend.linkHrefs = this.linkHrefs;
           bodyToSend.subjectID = this.main.currentSubject.id;
           bodyToSend.classID = this.main.currentClassrom.id;
 
           if (this.homeworkForm.valid) {
             this.classService.addNewHomework(bodyToSend).subscribe(function (res) {
-              _this9.submitted = false;
+              _this10.submitted = false;
 
-              _this9.homeworkForm.reset();
+              _this10.homeworkForm.reset();
 
-              _this9.files = [];
-              _this9.filesID = [];
+              _this10.files = [];
+              _this10.linksIterator = [];
+              _this10.linkHrefs = [];
+              _this10.filesID = [];
 
-              _this9.currentHomeworks.push(res);
+              _this10.currentHomeworks.push(res);
 
-              _this9.main.currentSubject.homeworks.push(res);
+              _this10.main.currentSubject.homeworks.push(res);
 
-              _this9.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
+              _this10.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
             });
           }
         }
@@ -2866,6 +2923,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"]
       }, {
         type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]
+      }, {
+        type: _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_11__["SharedService"]
       }];
     };
 
@@ -2968,31 +3027,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(TextChatComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this10 = this;
+          var _this11 = this;
 
           this.getLastMessages();
           setInterval(function () {
-            _this10.getNewerMessages();
+            _this11.getNewerMessages();
           }, 5000);
         }
       }, {
         key: "sendMessage",
         value: function sendMessage() {
-          var _this11 = this;
+          var _this12 = this;
 
           this.messageForm.setControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.main.currentSubject.id));
           this.messageForm.setControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.main.currentClassrom.id));
 
           if (this.messageForm.valid) {
             this.tcService.sendMessage(this.messageForm.value).subscribe(function (res) {
-              _this11.messages.unshift(res);
+              _this12.messages.unshift(res);
             });
           }
         }
       }, {
         key: "getNewerMessages",
         value: function getNewerMessages() {
-          var _this12 = this;
+          var _this13 = this;
 
           this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(function (res) {
             if (res) {
@@ -3003,7 +3062,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 for (_iterator.s(); !(_step = _iterator.n()).done;) {
                   var message = _step.value;
 
-                  _this12.messages.push(message);
+                  _this13.messages.push(message);
                 }
               } catch (err) {
                 _iterator.e(err);
@@ -3016,15 +3075,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLastMessages",
         value: function getLastMessages() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.tcService.getLastMessages().subscribe(function (res) {
-            _this13.loadingMessages = false;
-            _this13.messages = res.messages;
+            _this14.loadingMessages = false;
+            _this14.messages = res.messages;
             var objDiv = document.getElementById('chatDiv');
             objDiv.addEventListener('scroll', function (e) {
-              if (objDiv.scrollTop < 5 && !_this13.loadingMessages) {
-                _this13.getOlderMessages();
+              if (objDiv.scrollTop < 5 && !_this14.loadingMessages) {
+                _this14.getOlderMessages();
               }
             });
           });
@@ -3032,7 +3091,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOlderMessages",
         value: function getOlderMessages() {
-          var _this14 = this;
+          var _this15 = this;
 
           this.loadingMessages = true;
           this.tcService.getOlderMessages(this.messages[this.messages.length - 1].messageID).subscribe(function (res) {
@@ -3044,7 +3103,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                   var message = _step2.value;
 
-                  _this14.messages.push(message);
+                  _this15.messages.push(message);
                 }
               } catch (err) {
                 _iterator2.e(err);
@@ -3053,7 +3112,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             }
 
-            _this14.loadingMessages = false;
+            _this15.loadingMessages = false;
           });
         }
       }]);
@@ -3179,12 +3238,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeworkResponseModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this15 = this;
+          var _this16 = this;
 
           this.shared.openHomework.subscribe(function (res) {
-            _this15.response = res;
+            _this16.response = res;
 
-            _this15.showHomework.nativeElement.click();
+            _this16.showHomework.nativeElement.click();
           });
         }
       }, {
@@ -3315,16 +3374,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(LoginComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this16 = this;
+          var _this17 = this;
 
           this.shared.openLogin.subscribe(function (res) {
-            _this16.openModal.nativeElement.click();
+            _this17.openModal.nativeElement.click();
           });
         }
       }, {
         key: "submit",
         value: function submit() {
-          var _this17 = this;
+          var _this18 = this;
 
           this.submitted = true;
 
@@ -3332,14 +3391,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.shared.loading = true;
             this.shared.openLoginModal();
             this.main.login(this.loginForm.value).subscribe(function (res) {
-              _this17.main.user = res.userToReturn;
-              _this17.main.classrom = res.classes;
+              _this18.main.user = res.userToReturn;
+              _this18.main.classrom = res.classes;
 
-              _this17.main.ifUserExists();
+              _this18.main.ifUserExists();
 
               localStorage.setItem('homeschooltoken', res.token);
             }, function (err) {
-              _this17.shared.loading = false;
+              _this18.shared.loading = false;
             });
           }
         }
@@ -3437,12 +3496,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MarksListComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this18 = this;
+          var _this19 = this;
 
           this.shared.openMarksList.subscribe(function (res) {
-            _this18.response = res;
+            _this19.response = res;
 
-            _this18.showMarksList.nativeElement.click();
+            _this19.showMarksList.nativeElement.click();
           });
         }
       }]);
@@ -3566,16 +3625,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this19 = this;
+          var _this20 = this;
 
           this.shared.openRegister.subscribe(function (res) {
-            _this19.openRegister.nativeElement.click();
+            _this20.openRegister.nativeElement.click();
           });
         }
       }, {
         key: "submit",
         value: function submit() {
-          var _this20 = this;
+          var _this21 = this;
 
           this.submitted = true;
           this.registerForm.setControl('userRole', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.selectedRole));
@@ -3583,13 +3642,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.registerForm.valid) {
             this.main.register(this.registerForm.value).subscribe(function (res) {
               localStorage.setItem('homeschooltoken', res.token);
-              _this20.main.user = res.userToReturn;
+              _this21.main.user = res.userToReturn;
 
-              _this20.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
+              _this21.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
 
-              _this20.shared.openRegisterModal();
+              _this21.shared.openRegisterModal();
 
-              _this20.main.ifUserExists();
+              _this21.main.ifUserExists();
             });
           }
         } // select you are student or teacher ( 0 - student, 1 - teacher)
@@ -3702,10 +3761,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ShowCodeComponent, [{
         key: "copyCodeFunc",
         value: function copyCodeFunc() {
-          var _this21 = this;
+          var _this22 = this;
 
           document.addEventListener('copy', function (e) {
-            e.clipboardData.setData('text/plain', _this21.codeCopy.nativeElement.textContent);
+            e.clipboardData.setData('text/plain', _this22.codeCopy.nativeElement.textContent);
             e.preventDefault();
           });
           document.execCommand('copy');
@@ -3715,12 +3774,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this22 = this;
+          var _this23 = this;
 
           this.shared.openCode.subscribe(function (res) {
-            _this22.code = res;
+            _this23.code = res;
 
-            _this22.showCode.nativeElement.click();
+            _this23.showCode.nativeElement.click();
           });
         }
       }]);
@@ -3839,12 +3898,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ShowMembersComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this23 = this;
+          var _this24 = this;
 
           this.shared.openMembers.subscribe(function (res) {
-            _this23.members = res.users;
+            _this24.members = res.users;
 
-            _this23.showMembers.nativeElement.click();
+            _this24.showMembers.nativeElement.click();
           });
         }
       }, {
@@ -4258,7 +4317,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".mainDiv {\n  border-bottom: 2px solid black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LWhvbWV3b3JrLWZpbGVcXHNob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NoYXJlZC9zaG93LWhvbWV3b3JrLWZpbGUvc2hvdy1ob21ld29yay1maWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW5EaXYge1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcclxufVxyXG4iLCIubWFpbkRpdiB7XG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcbn0iXX0= */";
+    __webpack_exports__["default"] = ".mainDiv {\n  border-bottom: 2px solid black;\n}\n\n.linkHref {\n  color: #4e4eb1;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LWhvbWV3b3JrLWZpbGVcXHNob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxjQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluRGl2IHtcclxuICBib3JkZXItYm90dG9tOiAycHggc29saWQgYmxhY2s7XHJcbn1cclxuLmxpbmtIcmVmIHtcclxuICBjb2xvcjogIzRlNGViMTtcclxuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG59XHJcbiIsIi5tYWluRGl2IHtcbiAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkIGJsYWNrO1xufVxuXG4ubGlua0hyZWYge1xuICBjb2xvcjogIzRlNGViMTtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZm9udC1zaXplOiAyNXB4O1xufSJdfQ== */";
     /***/
   },
 
@@ -4356,7 +4415,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "downloadAllFiles",
         value: function downloadAllFiles() {
-          var _this24 = this;
+          var _this25 = this;
 
           for (var i = 0; i < this.homework.files.length; i++) {
             var fileData = {
@@ -4369,17 +4428,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var type = res.headers.get('Content-Type');
               var fileName = res.headers.get('filename');
 
-              _this24.names.push(fileName);
+              _this25.names.push(fileName);
 
               var file = new Blob([res.body], {
                 type: type
               });
               var fileURL = URL.createObjectURL(file);
 
-              if (!_this24.mimes.includes(type)) {
-                _this24.downloadFile(fileURL, fileName);
+              if (!_this25.mimes.includes(type)) {
+                _this25.downloadFile(fileURL, fileName);
               } else {
-                _this24.src.push(fileURL);
+                _this25.src.push(fileURL);
               }
             });
           }
@@ -4433,7 +4492,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".mainDiv {\n  border-bottom: 2px solid black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LXJlc3BvbnNlLWZpbGVcXHNob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NoYXJlZC9zaG93LXJlc3BvbnNlLWZpbGUvc2hvdy1yZXNwb25zZS1maWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW5EaXYge1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcclxufVxyXG4iLCIubWFpbkRpdiB7XG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcbn0iXX0= */";
+    __webpack_exports__["default"] = ".mainDiv {\n  border-top: 2px solid black;\n}\n\n.linkHref {\n  color: #4e4eb1;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LXJlc3BvbnNlLWZpbGVcXHNob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxjQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluRGl2IHtcclxuICBib3JkZXItdG9wOiAycHggc29saWQgYmxhY2s7XHJcbn1cclxuLmxpbmtIcmVmIHtcclxuICBjb2xvcjogIzRlNGViMTtcclxuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG59XHJcbiIsIi5tYWluRGl2IHtcbiAgYm9yZGVyLXRvcDogMnB4IHNvbGlkIGJsYWNrO1xufVxuXG4ubGlua0hyZWYge1xuICBjb2xvcjogIzRlNGViMTtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZm9udC1zaXplOiAyNXB4O1xufSJdfQ== */";
     /***/
   },
 
@@ -4531,7 +4590,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "downloadAllFiles",
         value: function downloadAllFiles() {
-          var _this25 = this;
+          var _this26 = this;
 
           for (var i = 0; i < this.response.files.length; i++) {
             var fileData = {
@@ -4544,17 +4603,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var type = res.headers.get('Content-Type');
               var fileName = res.headers.get('filename');
 
-              _this25.names.push(fileName);
+              _this26.names.push(fileName);
 
               var file = new Blob([res.body], {
                 type: type
               });
               var fileURL = URL.createObjectURL(file);
 
-              if (!_this25.mimes.includes(type)) {
-                _this25.downloadFile(fileURL, fileName);
+              if (!_this26.mimes.includes(type)) {
+                _this26.downloadFile(fileURL, fileName);
               } else {
-                _this25.src.push(fileURL);
+                _this26.src.push(fileURL);
               }
             });
           }
@@ -4897,10 +4956,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this26 = this;
+          var _this27 = this;
 
           this.deleteSubjectForm.get('classID').valueChanges.subscribe(function (val) {
-            _this26.classrom = _this26.main.classrom.find(function (v) {
+            _this27.classrom = _this27.main.classrom.find(function (v) {
               return v.id === val;
             });
           });
@@ -5286,25 +5345,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ClassService, [{
         key: "addNewClass",
         value: function addNewClass(classroom) {
-          var _this27 = this;
+          var _this28 = this;
 
           this.http.post(this.api + 'Class/create', classroom).subscribe(function (res) {
-            _this27.main.classrom.push(res);
+            _this28.main.classrom.push(res);
 
-            _this27.shared.openCodeModal(res.id);
+            _this28.shared.openCodeModal(res.id);
 
-            _this27.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
+            _this28.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
           });
         }
       }, {
         key: "addNewMark",
         value: function addNewMark(mark) {
-          var _this28 = this;
+          var _this29 = this;
 
           this.http.put(this.api + 'Mark', mark).subscribe(function (res) {
-            _this28.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
+            _this29.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
 
-            _this28.shared.openHomeworkModal('');
+            _this29.shared.openHomeworkModal('');
           });
         }
       }, {
@@ -5366,34 +5425,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addNewSubject",
         value: function addNewSubject(subject) {
-          var _this29 = this;
+          var _this30 = this;
 
           this.http.post(this.api + 'Subject/create', subject).subscribe(function (res) {
-            _this29.main.classrom.filter(function (value) {
-              return value.id = subject.classID;
+            _this30.main.classrom.filter(function (value) {
+              return value.id === subject.classID;
             }).map(function (val) {
               return val.subjects.push(res.subject);
             });
 
-            _this29.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
+            _this30.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
           });
         }
       }, {
         key: "deleteHomework",
         value: function deleteHomework(homework) {
-          var _this30 = this;
+          var _this31 = this;
 
           return this.http.put(this.api + 'Homework/deleteHomework', homework).subscribe(function (res) {
-            _this30.toastr.success('Usunięto zadanie.', 'Udało się!');
+            _this31.toastr.success('Usunięto zadanie.', 'Udało się!');
           });
         }
       }, {
         key: "deleteClassMember",
         value: function deleteClassMember(member) {
-          var _this31 = this;
+          var _this32 = this;
 
           return this.http.put(this.api + 'Class/deleteMember', member).subscribe(function (res) {
-            _this31.toastr.success('Usunięto użytkownika.', 'Udało się!');
+            _this32.toastr.success('Usunięto użytkownika.', 'Udało się!');
           });
         }
       }, {
@@ -5404,10 +5463,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteSubject",
         value: function deleteSubject(subject) {
-          var _this32 = this;
+          var _this33 = this;
 
           return this.http.put(this.api + 'Class/deleteSubject', subject).subscribe(function (res) {
-            _this32.toastr.success('Usunięto zadanie.', 'Udało się!');
+            _this33.toastr.success('Usunięto zadanie.', 'Udało się!');
           });
         }
       }]);
@@ -5490,7 +5549,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HttpErrorInterceptor, [{
         key: "intercept",
         value: function intercept(request, next) {
-          var _this33 = this;
+          var _this34 = this;
 
           if (request.headers.has(InterceptorSkipHeader)) {
             var headers = request.headers["delete"](InterceptorSkipHeader);
@@ -5507,12 +5566,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               errorTitle = error.error.err;
               errorMessage = error.error.desc;
 
-              _this33.toastr.error(errorMessage, errorTitle);
+              _this34.toastr.error(errorMessage, errorTitle);
             } else {
               errorTitle = "Kod b\u0142\u0119du: ".concat(error.status);
               errorMessage = "Wiadomo\u015B\u0107: ".concat(error.message);
 
-              _this33.toastr.error(errorMessage, errorTitle);
+              _this34.toastr.error(errorMessage, errorTitle);
             }
 
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(errorMessage);
@@ -5685,7 +5744,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       this.router.navigateByUrl('123');
                     }
 
-                  case 4:
+                    console.log(this.user);
+                    console.log(this.classrom);
+
+                  case 6:
                   case "end":
                     return _context3.stop();
                 }
@@ -5757,6 +5819,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.openCode = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.openMembers = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.openMarksList = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.switchHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.loading = true;
         this.openHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.api = 'https://homeschool-api.azurewebsites.net/api/';
@@ -5769,6 +5832,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "openLoginModal",
         value: function openLoginModal() {
           this.openLogin.emit();
+        }
+      }, {
+        key: "switchHomeworkEmit",
+        value: function switchHomeworkEmit(res) {
+          this.switchHomework.emit(res);
         }
       }, {
         key: "openMembersModal",

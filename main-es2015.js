@@ -320,7 +320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-center\" [id]=\"'homework-' + iterator\">\n    <h2 class=\"p-3 col-12 description\">Opis zadania: {{homework.description}}</h2>\n\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n");
 
 /***/ }),
 
@@ -333,7 +333,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row p-0 m-0\">\n  <app-show-response-file [responseSet]=\"response\" class=\"col-12 p-0\"></app-show-response-file>\n  <div class=\"col-12\">\n    <h2 class=\"text-center d-block\">Imię i nazwisko: {{response.senderName}} {{response.senderSurname}}</h2>\n  </div>\n  <div class=\"col-12 mt-2\" *ngIf=\"response.description\">\n    <h3 class=\"text-center\">Odpowiedź: {{response.description}}</h3>\n  </div>\n  <div class=\"col-12 mt-2\" *ngIf=\"!response.description\">\n    <h3 class=\"text-center\">Nie udzieliłeś odpowiedzi na to pytanie</h3>\n  </div>\n\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row p-0 m-0\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Odpowiedź ucznia {{response.senderName}} {{response.senderSurname}} </span>\n  </div>\n  <div class=\"col-12 mt-2 pb-3\" *ngIf=\"response.description\">\n    <h2>{{response.description}}</h2>\n  </div>\n  <div class=\"col-12 mt-2 pb-3\" *ngIf=\"!response.description\">\n    <h2>Nie udzieliłeś odpowiedzi na to pytanie</h2>\n  </div>\n  <app-show-response-file [responseSet]=\"response\" class=\"col-12 p-0\"></app-show-response-file>\n</div>\n");
 
 /***/ }),
 
@@ -346,7 +346,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\"><h1>{{homework.name}}</h1></div>\n      <div class=\"row col-md-6 col-12 text-md-right\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n      </div>\n      <div class=\"col-12 m-0 p-1\">\n        <h3>Pozostało {{leftHours}} godzin i {{leftMinutes}} minut</h3>\n      </div>\n    </div>\n\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 row justify-content-center p-0\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 row justify-content-center p-0\">\n      <h2 class=\"p-3 col-12 description\">Opis zadania: {{homework.description}}</h2>\n      <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    </div>\n    <div class=\"col-12 p-0\">\n      <h2 class=\"text-center p-md-2 p-1\">Treść odpowiedzi</h2>\n      <form [formGroup]=\"homeworkResponseForm\" class=\"row justify-content-around p-md-3 p-0 m-0\">\n        <div class=\"form-group col-12\">\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść odpowiedzi\">\n\n        </textarea>\n        </div>\n\n        <div class=\"col-12 row justify-content-center m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik do zadania</label>\n          </div>\n\n          <div class=\"col-12 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-md-4 col-8 mb-2 mb-md-0\" (click)=\"addNewResponse()\">Dodaj</button>\n      </form>\n    </div>\n\n  </div>\n\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-center m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\"><h1>{{homework.name}}</h1></div>\n      <div class=\"row col-md-6 col-12 text-md-right\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n      </div>\n      <div class=\"col-12 m-0 p-1\">\n        <h3>Pozostało {{leftHours}} godzin i {{leftMinutes}} minut</h3>\n      </div>\n    </div>\n\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 row justify-content-center p-0\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 row justify-content-center p-0\">\n      <div class=\"col-12 p-3\">\n        <span class=\"infoSpan\">Opis zadania</span>\n      </div>\n      <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n      <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n    </div>\n    <div class=\"col-12 p-0\">\n      <div class=\"col-12 p-3\">\n        <span class=\"infoSpan\">Twoja odpowiedź</span>\n      </div>\n      <form [formGroup]=\"homeworkResponseForm\" class=\"row justify-content-around p-md-3 p-0 m-0\">\n        <div class=\"form-group col-12\">\n        <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść odpowiedzi\">\n\n        </textarea>\n        </div>\n        <div class=\"form-group col-12 row p-0 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"addLink()\">Dodaj link</button>\n          <input *ngFor=\"let iter of linksIterator; let i = index\" type=\"text\"  class=\"form-control col-12 mt-2 mb-2\"  [(ngModel)]=\"linkHrefs[i]\" [ngModelOptions]=\"{standalone: true}\" (ngModelChange)=\"this.show(i)\">\n        </div>\n        <div class=\"col-12 row justify-content-center m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik do zadania</label>\n          </div>\n\n          <div class=\"col-12 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-md-4 col-8 mb-2 mb-md-0\" (click)=\"addNewResponse()\">Dodaj</button>\n      </form>\n    </div>\n\n  </div>\n\n</div>\n\n");
 
 /***/ }),
 
@@ -359,7 +359,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"goBackDiv d-block d-md-none\" (click)=\"goBack()\">Wybierz przedmiot</div>\n<div class=\"col-12 pt-5 pt-md-0\" *ngIf=\"this.main.currentRole === 2\">\n    <h1 class=\"text-center\">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>\n</div>\n<div *ngIf=\"this.main.currentRole !== 2\">\n<div class=\"text-center subHeader pt-5 pt-md-0 text-wrap\">{{this.main.currentSubject.name}}</div>\n<div class=\"row justify-content-around subButtons p-3 m-0 mb-5\">\n\n  <a class=\"example_f col-12 col-md-3\" *ngIf=\"main.currentRole === 1 || main.currentRole === 2\" data-toggle=\"collapse\" href=\"#addNewHomework\"><span>Dodaj zadanie</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 0\" (click)=\"whichHomeworks = 1; showChat = false\"><span>Pokaż najnowsze zadania</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 1\" (click)=\"whichHomeworks = 0; showChat = false\"><span>Przejdź do archiwum</span></a>\n  <a class=\"example_f col-12 col-md-3\" (click)=\"showChat = !showChat\"><span>Otwórz chat</span></a>\n\n  <div class=\"col-12 pt-3\">\n    <div class=\"addNewHomeworkForm collapse col-12\" id=\"addNewHomework\">\n      <form [formGroup]=\"homeworkForm\" class=\"row justify-content-around p-md-3 p-0\">\n        <div class=\"col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end\">\n          <div class=\"form-group col-md-5 col-12 mb-md-5 p-0\">\n            <h3 class=\"text-white termin\">Nazwa zadania</h3>\n            <input type=\"email\" class=\"form-control\" placeholder=\"Nazwa\" name=\"name\" id='numberPeople' required formControlName=\"name\"/>\n            <div *ngIf=\"homeworkForm.controls.name.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj nazwę zadania.\n            </div>\n          </div>\n          <div class=\"col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0\">\n            <h3 class=\"text-white termin text-left\">Termin oddania</h3>\n            <div id=\"picker\">   </div>\n            <input type=\"hidden\" id=\"result\" value=\"\" #timeValue>\n            <div *ngIf=\"homeworkForm.controls.time.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj termin odddania zadania.\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"form-group col-12\">\n          <h3 class=\"text-white termin\">Treść zadania</h3>\n        <textarea class=\"form-control p-2 m-0\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść\">\n\n        </textarea>\n        </div>\n\n        <div class=\"col-12 row justify-content-center p-3 m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik</label>\n          </div>\n\n          <div class=\"col-10 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-6 mb-2 mb-md-0 col-md-4\" (click)=\"addNewHomework()\">Dodaj</button>\n      </form>\n    </div>\n  </div>\n</div>\n<!-- div for students -->\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 1  && !showChat\">\n  <div *ngIf=\"this.main.currentRole === 0\">\n    <h1 class=\"text-center subHomeworks\" >Zadania do zrobienia</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework>\n    </div>\n  </div>\n<!-- div for teachers -->\n  <div *ngIf=\"this.main.currentRole !== 0\">\n    <h1 class=\"text-center subHomeworks\" >Obecnie trwające</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n    </div>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 0 && !showChat\">\n  <h1 class=\"text-center subHomeworks\">Zakończone zadania</h1>\n  <div *ngFor=\"let homework of this.finishedHomeworks; let i=index\">\n    <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"showChat\">\n  <h1 class=\"text-center subHomeworks\">Chat</h1>\n  <app-text-chat></app-text-chat>\n</div>\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"goBackDiv d-block d-md-none\" (click)=\"goBack()\">Wybierz przedmiot</div>\n<div class=\"col-12 pt-5 pt-md-0\" *ngIf=\"this.main.currentRole === 2\">\n    <h1 class=\"text-center\">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>\n</div>\n<div *ngIf=\"this.main.currentRole !== 2\">\n<div class=\"text-center subHeader pt-5 pt-md-0 text-wrap\">{{this.main.currentSubject.name}}</div>\n<div class=\"row justify-content-around subButtons p-3 m-0 mb-5\">\n\n  <a class=\"example_f col-12 col-md-3\" *ngIf=\"main.currentRole === 1 || main.currentRole === 2\" data-toggle=\"collapse\" href=\"#addNewHomework\"><span>Dodaj zadanie</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 0\" (click)=\"whichHomeworks = 1; showChat = false\"><span>Pokaż najnowsze zadania</span></a>\n  <a class=\"example_f col-12 col-md-4\" *ngIf=\"whichHomeworks === 1\" (click)=\"whichHomeworks = 0; showChat = false\"><span>Przejdź do archiwum</span></a>\n  <a class=\"example_f col-12 col-md-3\" (click)=\"showChat = !showChat\"><span>Otwórz chat</span></a>\n\n  <div class=\"col-12 pt-3\">\n    <div class=\"addNewHomeworkForm collapse col-12\" id=\"addNewHomework\">\n      <form [formGroup]=\"homeworkForm\" class=\"row justify-content-around p-md-3 p-0\">\n        <div class=\"col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end\">\n          <div class=\"form-group col-md-5 col-12 mb-md-5 p-0\">\n            <h3 class=\"text-white termin\">Nazwa zadania</h3>\n            <input type=\"email\" class=\"form-control\" placeholder=\"Nazwa\" name=\"name\" id='numberPeople' required formControlName=\"name\"/>\n            <div *ngIf=\"homeworkForm.controls.name.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj nazwę zadania.\n            </div>\n          </div>\n          <div class=\"col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0\">\n            <h3 class=\"text-white termin text-left\">Termin oddania</h3>\n            <div id=\"picker\">   </div>\n            <input type=\"hidden\" id=\"result\" value=\"\" #timeValue>\n            <div *ngIf=\"homeworkForm.controls.time.invalid && submitted\" class=\"alert alert-danger\">\n              Podaj termin odddania zadania.\n            </div>\n          </div>\n\n        </div>\n\n        <div class=\"form-group col-12\">\n          <h3 class=\"text-white termin\">Treść zadania</h3>\n        <textarea class=\"form-control p-2 m-0\" id=\"exampleFormControlTextarea1\" rows=\"4\" formControlName=\"description\" placeholder=\"Treść\">\n\n        </textarea>\n        </div>\n        <div class=\"form-group col-12 row p-0 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"addLink()\">Dodaj link</button>\n          <input *ngFor=\"let iter of linksIterator; let i = index\" type=\"text\" class=\"form-control col-12 mt-2 mb-2\" [(ngModel)]=\"linkHrefs[i]\" [ngModelOptions]=\"{standalone: true}\">\n        </div>\n        <div class=\"col-12 row justify-content-center p-3 m-0\">\n          <div class=\"custom-file col-12\">\n            <input type=\"file\" class=\"custom-file-input\" id=\"customFile\" (change)=\"onFileSelect($event)\">\n            <label class=\"custom-file-label\" for=\"customFile\">Dołącz plik</label>\n          </div>\n\n          <div class=\"col-10 mt-3 p-0\" *ngIf=\"files\">\n            <div class=\"progress mt-2 mr-0 ml-0\" *ngFor=\"let file of files\" >\n              <div class=\"progress-bar\" role=\"progressbar\" [style]=\"{'width': file.progress + '%'}\" [ngClass]=\"{'green': file.finished}\" aria-valuenow=\"25\" aria-valuemin=\"0\" aria-valuemax=\"100\">\n                {{file.name}}\n              </div>\n            </div>\n          </div>\n        </div>\n        <button type=\"submit\" class=\"formBtn col-6 mb-2 mb-md-0 col-md-4\" (click)=\"addNewHomework()\">Dodaj</button>\n      </form>\n    </div>\n  </div>\n</div>\n<!-- div for students -->\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 1  && !showChat\">\n  <div *ngIf=\"this.main.currentRole === 0\">\n    <h1 class=\"text-center subHomeworks\" >Zadania do zrobienia</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework>\n    </div>\n  </div>\n<!-- div for teachers -->\n  <div *ngIf=\"this.main.currentRole !== 0\">\n    <h1 class=\"text-center subHomeworks\" >Obecnie trwające</h1>\n    <div *ngFor=\"let homework of this.currentHomeworks; let i=index\">\n      <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n    </div>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"whichHomeworks === 0 && !showChat\">\n  <h1 class=\"text-center subHomeworks\">Zakończone zadania</h1>\n  <div *ngFor=\"let homework of this.finishedHomeworks; let i=index\">\n    <app-homework-finished [homeworkSet]=\"homework\" [iteratorSet]=\"i\"></app-homework-finished>\n  </div>\n</div>\n<div class=\"homeworksDiv\" *ngIf=\"showChat\">\n  <h1 class=\"text-center subHomeworks\">Chat</h1>\n  <app-text-chat></app-text-chat>\n</div>\n</div>\n\n");
 
 /***/ }),
 
@@ -515,7 +515,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-12 files row justify-content-center p-0 m-0 mainDiv\" *ngIf=\"homework.files[0]\">\n  <h2 class=\"text-center pt-2 d-block col-12\">Pobierz pliki załączone do zadania</h2>\n  <button class=\"formBtn mb-2\" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  <div class=\"col-12 mt-2 mb-2 p-1\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"homework.files[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Pliki do zadania</span>\n  </div>\n  <div class=\"col-12 p-0 m-0 row justify-content-start p-3\">\n    <button class=\"formBtn pr-3 pl-3 pb-3 \" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  </div>\n\n  <div class=\"col-12 mt-2 mb-2 p-3\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"homework.linkHrefs[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Linki do zadania</span>\n  </div>\n  <div class=\"pb-2 pr-3 pl-3 \">\n    <div *ngFor=\"let link of homework.linkHrefs\" class=\"col-12 mb-2 text-center p-0\">\n      <a [href]=\"link\" target=\"_blank\" class=\"linkHref\">{{link}}</a>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -528,7 +528,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-12 files row justify-content-center p-0 m-0 mainDiv\" *ngIf=\"response.files[0]\">\n  <h2 class=\"text-center pt-2 d-block col-12\">Pobierz pliki załączone do odpowiedzi</h2>\n  <button class=\"formBtn mb-2\" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  <div class=\"col-12 mt-2 mb-2 p-1\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"response.files[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Pliki do odpowiedzi</span>\n  </div>\n  <div class=\"col-12 p-0 m-0 row justify-content-start p-3\">\n    <button class=\"formBtn pr-3 pl-3 pb-3 \" (click)=\"downloadAllFiles()\" >Pobierz pliki</button>\n  </div>\n\n  <div class=\"col-12 mt-2 mb-2 p-3\" *ngFor=\"let srcItem of src; let i=index\">\n    <button class=\"formBtn openInBrowserBtn col-12 \" (click)=\"openWindow(i)\">Pobierz na dysk</button>\n    <div class=\"embed-responsive embed-responsive-16by9\"   >\n\n      <iframe class=\"embed-responsive-item\" [src]=\"getSrc(i)\"  allowfullscreen></iframe>\n    </div>\n  </div>\n</div>\n<div class=\"col-12 files row justify-content-start p-0 m-0 mainDiv\" *ngIf=\"response.linkHrefs[0]\">\n  <div class=\"col-12 p-3\">\n    <span class=\"infoSpan\">Linki do odpowiedzi</span>\n  </div>\n  <div class=\"pb-2 pr-3 pl-3 \">\n    <div *ngFor=\"let link of response.linkHrefs\" class=\"col-12 mb-2 text-center p-0\">\n      <a [href]=\"link\" target=\"_blank\" class=\"linkHref\">{{link}}</a>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -1347,7 +1347,7 @@ HomeworkFinishedComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".infoSpan {\n  display: block;\n  float: left;\n  clear: both;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jbGFzc3JvbS9ob21ld29yay1yZXNwb25zZS9FOlxcSG9tZS1TY2hvb2wvc3JjXFxhcHBcXGNvbXBvbmVudHNcXGNsYXNzcm9tXFxob21ld29yay1yZXNwb25zZVxcaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvY2xhc3Nyb20vaG9tZXdvcmstcmVzcG9uc2UvaG9tZXdvcmstcmVzcG9uc2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5mb1NwYW4ge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIGZsb2F0OiBsZWZ0O1xyXG4gIGNsZWFyOiBib3RoO1xyXG59XHJcbiIsIi5pbmZvU3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBmbG9hdDogbGVmdDtcbiAgY2xlYXI6IGJvdGg7XG59Il19 */");
 
 /***/ }),
 
@@ -1422,6 +1422,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../core/shared/shared.service */ "./src/app/core/shared/shared.service.ts");
+
 
 
 
@@ -1433,14 +1435,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomeworkComponent = class HomeworkComponent {
-    constructor(main, classService, sanitizer, toastr) {
+    constructor(main, classService, sanitizer, toastr, shared) {
         this.main = main;
         this.classService = classService;
         this.sanitizer = sanitizer;
         this.toastr = toastr;
+        this.shared = shared;
         this.clickedStatus = false;
         this.files = [];
         this.filesID = [];
+        this.linksIterator = [];
+        this.linkHrefs = [];
         this.homeworkResponseForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             description: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
             classID: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.main.currentClassrom.id),
@@ -1498,13 +1503,22 @@ let HomeworkComponent = class HomeworkComponent {
     }
     ngOnInit() {
     }
+    addLink() {
+        this.linksIterator.push(this.linksIterator.length);
+    }
     addNewResponse() {
         this.homeworkResponseForm.addControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.homework.id));
         const body = this.homeworkResponseForm.value;
         body.filesID = this.filesID;
-        body.linkHrefs = [];
+        body.linkHrefs = this.linkHrefs;
         if (this.homeworkResponseForm.valid) {
             this.classService.addNewResponse(body).subscribe(res => {
+                this.shared.switchHomeworkEmit(res.responseObj.homeworkID);
+                this.linksIterator = [];
+                this.linkHrefs = [];
+                this.files = [];
+                this.filesID = [];
+                this.main.currentSubject.homeworks.filter(v => v.id === res.responseObj.homeworkID).map(v => v.responses.push(res.responseObj));
                 this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
             });
         }
@@ -1514,7 +1528,8 @@ HomeworkComponent.ctorParameters = () => [
     { type: _core_main_main_service__WEBPACK_IMPORTED_MODULE_4__["MainService"] },
     { type: _core_classService_class_service__WEBPACK_IMPORTED_MODULE_5__["ClassService"] },
     { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_6__["DomSanitizer"] },
-    { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"] }
+    { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_7__["ToastrService"] },
+    { type: _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_10__["SharedService"] }
 ];
 Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -1569,6 +1584,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/__ivy_ngcc__/fesm2015/ngx-toastr.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../core/shared/shared.service */ "./src/app/core/shared/shared.service.ts");
+
 
 
 
@@ -1581,20 +1598,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SubjectComponent = class SubjectComponent {
-    constructor(main, classService, toastr, router, location) {
+    constructor(main, classService, toastr, router, location, shared) {
         this.main = main;
         this.classService = classService;
         this.toastr = toastr;
         this.router = router;
         this.location = location;
+        this.shared = shared;
         this.currentHomeworks = [];
         this.finishedHomeworks = [];
         this.whichHomeworks = 1;
         this.showChat = false;
         this.files = [];
         this.filesID = [];
-        this.linksHrefs = [];
+        this.linkHrefs = [];
         this.submitted = false;
+        this.linksIterator = [];
         this.homeworkForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required),
             description: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](''),
@@ -1619,9 +1638,19 @@ let SubjectComponent = class SubjectComponent {
         }
         this.currentTime = moment__WEBPACK_IMPORTED_MODULE_6__().toISOString();
         this.sortHomeworks(this.currentTime);
+        this.shared.switchHomework.subscribe(res => {
+            const index = this.currentHomeworks.findIndex(v => v.id === res);
+            if (index > -1) {
+                this.currentHomeworks.splice(index, 1);
+                this.finishedHomeworks.push(this.currentHomeworks[index]);
+            }
+        });
     }
     goBack() {
         this.location.back();
+    }
+    addLink() {
+        this.linksIterator.push(this.linksIterator.length);
     }
     sortHomeworks(currentTime) {
         this.currentHomeworks = [];
@@ -1678,7 +1707,7 @@ let SubjectComponent = class SubjectComponent {
         this.homeworkForm.patchValue({ time: timeUtc });
         const bodyToSend = this.homeworkForm.value;
         bodyToSend.filesID = this.filesID;
-        bodyToSend.linkHrefs = this.linksHrefs;
+        bodyToSend.linkHrefs = this.linkHrefs;
         bodyToSend.subjectID = this.main.currentSubject.id;
         bodyToSend.classID = this.main.currentClassrom.id;
         if (this.homeworkForm.valid) {
@@ -1686,6 +1715,8 @@ let SubjectComponent = class SubjectComponent {
                 this.submitted = false;
                 this.homeworkForm.reset();
                 this.files = [];
+                this.linksIterator = [];
+                this.linkHrefs = [];
                 this.filesID = [];
                 this.currentHomeworks.push(res);
                 this.main.currentSubject.homeworks.push(res);
@@ -1699,7 +1730,8 @@ SubjectComponent.ctorParameters = () => [
     { type: _core_classService_class_service__WEBPACK_IMPORTED_MODULE_4__["ClassService"] },
     { type: ngx_toastr__WEBPACK_IMPORTED_MODULE_9__["ToastrService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_10__["Router"] },
-    { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"] }
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"] },
+    { type: _core_shared_shared_service__WEBPACK_IMPORTED_MODULE_11__["SharedService"] }
 ];
 Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
@@ -2504,7 +2536,7 @@ ProfileComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mainDiv {\n  border-bottom: 2px solid black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LWhvbWV3b3JrLWZpbGVcXHNob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NoYXJlZC9zaG93LWhvbWV3b3JrLWZpbGUvc2hvdy1ob21ld29yay1maWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW5EaXYge1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcclxufVxyXG4iLCIubWFpbkRpdiB7XG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".mainDiv {\n  border-bottom: 2px solid black;\n}\n\n.linkHref {\n  color: #4e4eb1;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LWhvbWV3b3JrLWZpbGVcXHNob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxjQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1ob21ld29yay1maWxlL3Nob3ctaG9tZXdvcmstZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluRGl2IHtcclxuICBib3JkZXItYm90dG9tOiAycHggc29saWQgYmxhY2s7XHJcbn1cclxuLmxpbmtIcmVmIHtcclxuICBjb2xvcjogIzRlNGViMTtcclxuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG59XHJcbiIsIi5tYWluRGl2IHtcbiAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkIGJsYWNrO1xufVxuXG4ubGlua0hyZWYge1xuICBjb2xvcjogIzRlNGViMTtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZm9udC1zaXplOiAyNXB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -2620,7 +2652,7 @@ ShowHomeworkFileComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorat
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".mainDiv {\n  border-bottom: 2px solid black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LXJlc3BvbnNlLWZpbGVcXHNob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDhCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NoYXJlZC9zaG93LXJlc3BvbnNlLWZpbGUvc2hvdy1yZXNwb25zZS1maWxlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1haW5EaXYge1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcclxufVxyXG4iLCIubWFpbkRpdiB7XG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCBibGFjaztcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".mainDiv {\n  border-top: 2px solid black;\n}\n\n.linkHref {\n  color: #4e4eb1;\n  text-decoration: underline;\n  cursor: pointer;\n  font-size: 25px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL0U6XFxIb21lLVNjaG9vbC9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2hhcmVkXFxzaG93LXJlc3BvbnNlLWZpbGVcXHNob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJCQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxjQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zaGFyZWQvc2hvdy1yZXNwb25zZS1maWxlL3Nob3ctcmVzcG9uc2UtZmlsZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluRGl2IHtcclxuICBib3JkZXItdG9wOiAycHggc29saWQgYmxhY2s7XHJcbn1cclxuLmxpbmtIcmVmIHtcclxuICBjb2xvcjogIzRlNGViMTtcclxuICB0ZXh0LWRlY29yYXRpb246IHVuZGVybGluZTtcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgZm9udC1zaXplOiAyNXB4O1xyXG59XHJcbiIsIi5tYWluRGl2IHtcbiAgYm9yZGVyLXRvcDogMnB4IHNvbGlkIGJsYWNrO1xufVxuXG4ubGlua0hyZWYge1xuICBjb2xvcjogIzRlNGViMTtcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgZm9udC1zaXplOiAyNXB4O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -3173,7 +3205,7 @@ let ClassService = class ClassService {
     }
     addNewSubject(subject) {
         this.http.post(this.api + 'Subject/create', subject).subscribe(res => {
-            this.main.classrom.filter(value => value.id = subject.classID).map(val => val.subjects.push(res.subject));
+            this.main.classrom.filter(value => value.id === subject.classID).map(val => val.subjects.push(res.subject));
             this.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
         });
     }
@@ -3337,6 +3369,8 @@ let MainService = class MainService {
             else if (this.user.userRole === 1) {
                 this.router.navigateByUrl('123');
             }
+            console.log(this.user);
+            console.log(this.classrom);
         });
     }
 };
@@ -3377,6 +3411,7 @@ let SharedService = class SharedService {
         this.openCode = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.openMembers = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.openMarksList = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.switchHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.loading = true;
         this.openHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.api = 'https://homeschool-api.azurewebsites.net/api/';
@@ -3386,6 +3421,9 @@ let SharedService = class SharedService {
     }
     openLoginModal() {
         this.openLogin.emit();
+    }
+    switchHomeworkEmit(res) {
+        this.switchHomework.emit(res);
     }
     openMembersModal(res) {
         this.openMembers.emit(res);

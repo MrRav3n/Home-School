@@ -23,13 +23,17 @@
     </div>
   </a>
 
-  <div class="collapse homeworkDesc col-11 p-0 row justify-content-center" [id]="'homework-' + iterator">
-    <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
-
+  <div class="collapse homeworkDesc col-11 p-0 row justify-content-start" [id]="'homework-' + iterator">
+    <div class="col-12 p-3">
+      <span class="infoSpan">Opis zadania</span>
+    </div>
+    <h2 class="pr-3 pl-3 pb-3 col-12 m-0 description">{{homework.description}}</h2>
     <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
+
     <div *ngIf="main.currentRole === 0 && homework.responses[0]" class="col-12 p-0">
       <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
     </div>
+
 <!--    teacher -->
     <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-3 justify-content-center col-12">
       <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">

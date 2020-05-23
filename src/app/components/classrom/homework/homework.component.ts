@@ -108,6 +108,10 @@ export class HomeworkComponent implements OnInit {
     if (this.homeworkResponseForm.valid) {
       this.classService.addNewResponse(body).subscribe(res => {
         this.shared.switchHomeworkEmit(res.responseObj.homeworkID);
+        this.linksIterator = [];
+        this.linkHrefs = [];
+        this.files = [];
+        this.filesID = [];
         this.main.currentSubject.homeworks.filter(v => v.id === res.responseObj.homeworkID).map(v => v.responses.push(res.responseObj));
         this.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
       });

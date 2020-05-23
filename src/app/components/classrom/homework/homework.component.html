@@ -17,18 +17,23 @@
 
   <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'homework-' + iterator">
     <div class="col-12 row justify-content-center p-0">
-      <h2 class="p-3 col-12 description">Opis zadania: {{homework.description}}</h2>
+      <div class="col-12 p-3">
+        <span class="infoSpan">Opis zadania</span>
+      </div>
+      <h2 class="pr-3 pl-3 pb-3 col-12 m-0 description">{{homework.description}}</h2>
       <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
     </div>
     <div class="col-12 p-0">
-      <h2 class="text-center p-md-2 p-1">Treść odpowiedzi</h2>
+      <div class="col-12 p-3">
+        <span class="infoSpan">Twoja odpowiedź</span>
+      </div>
       <form [formGroup]="homeworkResponseForm" class="row justify-content-around p-md-3 p-0 m-0">
         <div class="form-group col-12">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść odpowiedzi">
 
         </textarea>
         </div>
-        <div class="form-group col-12">
+        <div class="form-group col-12 row p-0 justify-content-center">
           <button class="formBtn" (click)="addLink()">Dodaj link</button>
           <input *ngFor="let iter of linksIterator; let i = index" type="text"  class="form-control col-12 mt-2 mb-2"  [(ngModel)]="linkHrefs[i]" [ngModelOptions]="{standalone: true}" (ngModelChange)="this.show(i)">
         </div>

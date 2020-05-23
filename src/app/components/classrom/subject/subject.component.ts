@@ -126,9 +126,7 @@ export class SubjectComponent implements OnInit {
       }),
     ).subscribe(res => {});
   }
-  show(i) {
-    console.log(this.linksHrefs[i]);
-  }
+
   addNewHomework() {
     this.submitted = true;
     const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
@@ -144,6 +142,8 @@ export class SubjectComponent implements OnInit {
         this.submitted = false  ;
         this.homeworkForm.reset();
         this.files = [];
+        this.linksIterator = [];
+        this.linkHrefs = [];
         this.filesID = [];
         this.currentHomeworks.push(res);
         this.main.currentSubject.homeworks.push(res);

@@ -1,13 +1,12 @@
 <div class="row p-0 m-0">
+  <div class="col-12 p-3">
+    <span class="infoSpan">Odpowiedź ucznia {{response.senderName}} {{response.senderSurname}} </span>
+  </div>
+  <div class="col-12 mt-2 pb-3" *ngIf="response.description">
+    <h2>{{response.description}}</h2>
+  </div>
+  <div class="col-12 mt-2 pb-3" *ngIf="!response.description">
+    <h2>Nie udzieliłeś odpowiedzi na to pytanie</h2>
+  </div>
   <app-show-response-file [responseSet]="response" class="col-12 p-0"></app-show-response-file>
-  <div class="col-12">
-    <h2 class="text-center d-block">Imię i nazwisko: {{response.senderName}} {{response.senderSurname}}</h2>
-  </div>
-  <div class="col-12 mt-2" *ngIf="response.description">
-    <h3 class="text-center">Odpowiedź: {{response.description}}</h3>
-  </div>
-  <div class="col-12 mt-2" *ngIf="!response.description">
-    <h3 class="text-center">Nie udzieliłeś odpowiedzi na to pytanie</h3>
-  </div>
-
 </div>

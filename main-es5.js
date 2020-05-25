@@ -365,7 +365,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n";
+    __webpack_exports__["default"] = "<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n\n        <ul class=\"list-group mt-5 mb-3 col-12\" *ngIf=\"this.homework.responses[0]\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n";
     /***/
   },
 
@@ -2173,25 +2173,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.classService = classService;
         this.shared = shared;
         this.clickedStatus = false;
+        this.text = '';
       }
 
       _createClass(HomeworkFinishedComponent, [{
-        key: "filter",
-        value: function filter() {
+        key: "ngOnInit",
+        value: function ngOnInit() {
           var _this3 = this;
 
+          this.shared.openHomework.subscribe(function (res) {
+            if (res.mark) {
+              for (var i = 0; i < _this3.allResponses.length; i++) {
+                if (_this3.allResponses[i].id === res.id) {
+                  _this3.allResponses[i].mark = res.mark;
+
+                  _this3.filter();
+
+                  break;
+                }
+              }
+            }
+          });
+        }
+      }, {
+        key: "filter",
+        value: function filter() {
+          var _this4 = this;
+
           this.homework.responses = this.allResponses.filter(function (v) {
-            return v.senderName.includes(_this3.text) || v.senderSurname.includes(_this3.text);
+            return v.senderName.toLocaleLowerCase().includes(_this4.text.toLocaleLowerCase()) || v.senderSurname.toLocaleLowerCase().includes(_this4.text.toLocaleLowerCase());
           });
         }
       }, {
         key: "addFocusClass",
         value: function addFocusClass() {
-          var _this4 = this;
+          var _this5 = this;
 
           if (this.clickedStatus) {
             setTimeout(function () {
-              return _this4.clickedStatus = !_this4.clickedStatus;
+              return _this5.clickedStatus = !_this5.clickedStatus;
             }, 400);
           } else {
             this.clickedStatus = !this.clickedStatus;
@@ -2219,9 +2239,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           response.singleHomework = true;
           this.shared.openHomeworkModal(response);
         }
-      }, {
-        key: "ngOnInit",
-        value: function ngOnInit() {}
       }, {
         key: "homeworkSet",
         set: function set(hom) {
@@ -2484,11 +2501,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeworkComponent, [{
         key: "addFocusClass",
         value: function addFocusClass() {
-          var _this5 = this;
+          var _this6 = this;
 
           if (this.clickedStatus) {
             setTimeout(function () {
-              return _this5.clickedStatus = !_this5.clickedStatus;
+              return _this6.clickedStatus = !_this6.clickedStatus;
             }, 400);
           } else {
             this.clickedStatus = !this.clickedStatus;
@@ -2506,7 +2523,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "uploadFile",
         value: function uploadFile() {
-          var _this6 = this;
+          var _this7 = this;
 
           var formData = new FormData();
           var file = this.uploadForm.get('profile').value;
@@ -2514,19 +2531,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           formData.append('file', file);
           file.inProgress = true;
           this.classService.addNewFileToResponse(this.main.currentClassrom.id, this.homework.id, formData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["map"])(function (event) {
-            var index = _this6.files.findIndex(function (v) {
+            var index = _this7.files.findIndex(function (v) {
               return v.name === file.name;
             });
 
             switch (event.type) {
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpEventType"].UploadProgress:
-                _this6.files[index].progress = Math.round(event.loaded * 100 / event.total);
+                _this7.files[index].progress = Math.round(event.loaded * 100 / event.total);
                 break;
 
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpEventType"].Response:
-                _this6.files[index].finished = true;
+                _this7.files[index].finished = true;
 
-                _this6.filesID.push(event.body.fileID);
+                _this7.filesID.push(event.body.fileID);
 
                 break;
             }
@@ -2543,7 +2560,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addNewResponse",
         value: function addNewResponse() {
-          var _this7 = this;
+          var _this8 = this;
 
           this.homeworkResponseForm.addControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](this.homework.id));
           var body = this.homeworkResponseForm.value;
@@ -2552,20 +2569,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (this.homeworkResponseForm.valid) {
             this.classService.addNewResponse(body).subscribe(function (res) {
-              _this7.shared.switchHomeworkEmit(res.responseObj.homeworkID);
+              _this8.shared.switchHomeworkEmit(res.responseObj.homeworkID);
 
-              _this7.linksIterator = [];
-              _this7.linkHrefs = [];
-              _this7.files = [];
-              _this7.filesID = [];
+              _this8.linksIterator = [];
+              _this8.linkHrefs = [];
+              _this8.files = [];
+              _this8.filesID = [];
 
-              _this7.main.currentSubject.homeworks.filter(function (v) {
+              _this8.main.currentSubject.homeworks.filter(function (v) {
                 return v.id === res.responseObj.homeworkID;
               }).map(function (v) {
                 return v.responses.push(res.responseObj);
               });
 
-              _this7.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
+              _this8.toastr.success('Pomyślnie dodano odpowiedź.', 'Udało się!');
             });
           }
         }
@@ -2767,7 +2784,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(SubjectComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this8 = this;
+          var _this9 = this;
 
           (function ($) {
             $(document).ready(function () {
@@ -2782,14 +2799,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.currentTime = moment__WEBPACK_IMPORTED_MODULE_6__().toISOString();
           this.sortHomeworks(this.currentTime);
           this.shared.switchHomework.subscribe(function (res) {
-            var index = _this8.currentHomeworks.findIndex(function (v) {
+            var index = _this9.currentHomeworks.findIndex(function (v) {
               return v.id === res;
             });
 
             if (index > -1) {
-              _this8.currentHomeworks.splice(index, 1);
+              _this9.currentHomeworks.splice(index, 1);
 
-              _this8.finishedHomeworks.push(_this8.currentHomeworks[index]);
+              _this9.finishedHomeworks.push(_this9.currentHomeworks[index]);
             }
           });
         }
@@ -2840,7 +2857,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "uploadFile",
         value: function uploadFile() {
-          var _this9 = this;
+          var _this10 = this;
 
           var formData = new FormData();
           var file = this.uploadForm.get('profile').value;
@@ -2848,19 +2865,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           formData.append('file', file);
           file.inProgress = true;
           this.classService.addNewFileToHomework(this.main.currentClassrom.id, this.main.currentSubject.id, formData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["map"])(function (event) {
-            var index = _this9.files.findIndex(function (v) {
+            var index = _this10.files.findIndex(function (v) {
               return v.name === file.name;
             });
 
             switch (event.type) {
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpEventType"].UploadProgress:
-                _this9.files[index].progress = Math.round(event.loaded * 100 / event.total);
+                _this10.files[index].progress = Math.round(event.loaded * 100 / event.total);
                 break;
 
               case _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpEventType"].Response:
-                _this9.files[index].finished = true;
+                _this10.files[index].finished = true;
 
-                _this9.filesID.push(event.body.fileID);
+                _this10.filesID.push(event.body.fileID);
 
                 break;
             }
@@ -2869,7 +2886,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addNewHomework",
         value: function addNewHomework() {
-          var _this10 = this;
+          var _this11 = this;
 
           this.submitted = true;
           var timeUtc = moment__WEBPACK_IMPORTED_MODULE_6__(this.timeValue.nativeElement.value).toISOString();
@@ -2884,20 +2901,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (this.homeworkForm.valid) {
             this.classService.addNewHomework(bodyToSend).subscribe(function (res) {
-              _this10.submitted = false;
+              _this11.submitted = false;
 
-              _this10.homeworkForm.reset();
+              _this11.homeworkForm.reset();
 
-              _this10.files = [];
-              _this10.linksIterator = [];
-              _this10.linkHrefs = [];
-              _this10.filesID = [];
+              _this11.files = [];
+              _this11.linksIterator = [];
+              _this11.linkHrefs = [];
+              _this11.filesID = [];
 
-              _this10.currentHomeworks.push(res);
+              _this11.currentHomeworks.push(res);
 
-              _this10.main.currentSubject.homeworks.push(res);
+              _this11.main.currentSubject.homeworks.push(res);
 
-              _this10.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
+              _this11.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
             });
           }
         }
@@ -3027,31 +3044,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(TextChatComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this11 = this;
+          var _this12 = this;
 
           this.getLastMessages();
-          setInterval(function () {
-            _this11.getNewerMessages();
+          this.timer = setInterval(function () {
+            _this12.getNewerMessages();
           }, 5000);
         }
       }, {
         key: "sendMessage",
         value: function sendMessage() {
-          var _this12 = this;
+          var _this13 = this;
 
           this.messageForm.setControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.main.currentSubject.id));
           this.messageForm.setControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.main.currentClassrom.id));
 
           if (this.messageForm.valid) {
             this.tcService.sendMessage(this.messageForm.value).subscribe(function (res) {
-              _this12.messages.unshift(res);
+              _this13.messages.unshift(res);
             });
           }
         }
       }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          clearInterval(this.timer);
+        }
+      }, {
         key: "getNewerMessages",
         value: function getNewerMessages() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(function (res) {
             if (res) {
@@ -3062,7 +3084,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 for (_iterator.s(); !(_step = _iterator.n()).done;) {
                   var message = _step.value;
 
-                  _this13.messages.push(message);
+                  _this14.messages.push(message);
                 }
               } catch (err) {
                 _iterator.e(err);
@@ -3075,15 +3097,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLastMessages",
         value: function getLastMessages() {
-          var _this14 = this;
+          var _this15 = this;
 
           this.tcService.getLastMessages().subscribe(function (res) {
-            _this14.loadingMessages = false;
-            _this14.messages = res.messages;
+            _this15.loadingMessages = false;
+            _this15.messages = res.messages;
             var objDiv = document.getElementById('chatDiv');
             objDiv.addEventListener('scroll', function (e) {
-              if (objDiv.scrollTop < 5 && !_this14.loadingMessages) {
-                _this14.getOlderMessages();
+              if (objDiv.scrollTop < 5 && !_this15.loadingMessages) {
+                _this15.getOlderMessages();
               }
             });
           });
@@ -3091,7 +3113,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOlderMessages",
         value: function getOlderMessages() {
-          var _this15 = this;
+          var _this16 = this;
 
           this.loadingMessages = true;
           this.tcService.getOlderMessages(this.messages[this.messages.length - 1].messageID).subscribe(function (res) {
@@ -3103,7 +3125,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                   var message = _step2.value;
 
-                  _this15.messages.push(message);
+                  _this16.messages.push(message);
                 }
               } catch (err) {
                 _iterator2.e(err);
@@ -3112,7 +3134,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             }
 
-            _this15.loadingMessages = false;
+            _this16.loadingMessages = false;
           });
         }
       }]);
@@ -3238,24 +3260,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeworkResponseModalComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this16 = this;
+          var _this17 = this;
 
           this.shared.openHomework.subscribe(function (res) {
-            _this16.response = res;
+            _this17.response = res;
 
-            _this16.showHomework.nativeElement.click();
+            _this17.showHomework.nativeElement.click();
           });
         }
       }, {
         key: "addMark",
         value: function addMark() {
-          this.markForm.addControl('responseID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.id));
-          this.markForm.addControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.homeworkID));
-          this.markForm.addControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentClassrom.id));
-          this.markForm.addControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentSubject.id));
+          var _this18 = this;
+
+          this.markForm.setControl('responseID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.id));
+          this.markForm.setControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.homeworkID));
+          this.markForm.setControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentClassrom.id));
+          this.markForm.setControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentSubject.id));
 
           if (this.markForm.valid) {
-            this.classService.addNewMark(this.markForm.value);
+            this.classService.addNewMark(this.markForm.value).subscribe(function (res) {
+              _this18.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
+
+              _this18.shared.openHomeworkModal(res);
+            });
           }
         }
       }]);
@@ -3374,16 +3402,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(LoginComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this17 = this;
+          var _this19 = this;
 
           this.shared.openLogin.subscribe(function (res) {
-            _this17.openModal.nativeElement.click();
+            _this19.openModal.nativeElement.click();
           });
         }
       }, {
         key: "submit",
         value: function submit() {
-          var _this18 = this;
+          var _this20 = this;
 
           this.submitted = true;
 
@@ -3391,14 +3419,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.shared.loading = true;
             this.shared.openLoginModal();
             this.main.login(this.loginForm.value).subscribe(function (res) {
-              _this18.main.user = res.userToReturn;
-              _this18.main.classrom = res.classes;
+              _this20.main.user = res.userToReturn;
+              _this20.main.classrom = res.classes;
 
-              _this18.main.ifUserExists();
+              _this20.main.ifUserExists();
 
               localStorage.setItem('homeschooltoken', res.token);
             }, function (err) {
-              _this18.shared.loading = false;
+              _this20.shared.loading = false;
             });
           }
         }
@@ -3496,12 +3524,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MarksListComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this19 = this;
+          var _this21 = this;
 
           this.shared.openMarksList.subscribe(function (res) {
-            _this19.response = res;
+            _this21.response = res;
 
-            _this19.showMarksList.nativeElement.click();
+            _this21.showMarksList.nativeElement.click();
           });
         }
       }]);
@@ -3625,16 +3653,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RegisterComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this20 = this;
+          var _this22 = this;
 
           this.shared.openRegister.subscribe(function (res) {
-            _this20.openRegister.nativeElement.click();
+            _this22.openRegister.nativeElement.click();
           });
         }
       }, {
         key: "submit",
         value: function submit() {
-          var _this21 = this;
+          var _this23 = this;
 
           this.submitted = true;
           this.registerForm.setControl('userRole', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.selectedRole));
@@ -3642,13 +3670,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.registerForm.valid) {
             this.main.register(this.registerForm.value).subscribe(function (res) {
               localStorage.setItem('homeschooltoken', res.token);
-              _this21.main.user = res.userToReturn;
+              _this23.main.user = res.userToReturn;
 
-              _this21.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
+              _this23.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
 
-              _this21.shared.openRegisterModal();
+              _this23.shared.openRegisterModal();
 
-              _this21.main.ifUserExists();
+              _this23.main.ifUserExists();
             });
           }
         } // select you are student or teacher ( 0 - student, 1 - teacher)
@@ -3761,10 +3789,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ShowCodeComponent, [{
         key: "copyCodeFunc",
         value: function copyCodeFunc() {
-          var _this22 = this;
+          var _this24 = this;
 
           document.addEventListener('copy', function (e) {
-            e.clipboardData.setData('text/plain', _this22.codeCopy.nativeElement.textContent);
+            e.clipboardData.setData('text/plain', _this24.codeCopy.nativeElement.textContent);
             e.preventDefault();
           });
           document.execCommand('copy');
@@ -3774,12 +3802,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this23 = this;
+          var _this25 = this;
 
           this.shared.openCode.subscribe(function (res) {
-            _this23.code = res;
+            _this25.code = res;
 
-            _this23.showCode.nativeElement.click();
+            _this25.showCode.nativeElement.click();
           });
         }
       }]);
@@ -3898,12 +3926,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ShowMembersComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this24 = this;
+          var _this26 = this;
 
           this.shared.openMembers.subscribe(function (res) {
-            _this24.members = res.users;
+            _this26.members = res.users;
 
-            _this24.showMembers.nativeElement.click();
+            _this26.showMembers.nativeElement.click();
           });
         }
       }, {
@@ -4415,7 +4443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "downloadAllFiles",
         value: function downloadAllFiles() {
-          var _this25 = this;
+          var _this27 = this;
 
           for (var i = 0; i < this.homework.files.length; i++) {
             var fileData = {
@@ -4428,17 +4456,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var type = res.headers.get('Content-Type');
               var fileName = res.headers.get('filename');
 
-              _this25.names.push(fileName);
+              _this27.names.push(fileName);
 
               var file = new Blob([res.body], {
                 type: type
               });
               var fileURL = URL.createObjectURL(file);
 
-              if (!_this25.mimes.includes(type)) {
-                _this25.downloadFile(fileURL, fileName);
+              if (!_this27.mimes.includes(type)) {
+                _this27.downloadFile(fileURL, fileName);
               } else {
-                _this25.src.push(fileURL);
+                _this27.src.push(fileURL);
               }
             });
           }
@@ -4590,7 +4618,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "downloadAllFiles",
         value: function downloadAllFiles() {
-          var _this26 = this;
+          var _this28 = this;
 
           for (var i = 0; i < this.response.files.length; i++) {
             var fileData = {
@@ -4603,17 +4631,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var type = res.headers.get('Content-Type');
               var fileName = res.headers.get('filename');
 
-              _this26.names.push(fileName);
+              _this28.names.push(fileName);
 
               var file = new Blob([res.body], {
                 type: type
               });
               var fileURL = URL.createObjectURL(file);
 
-              if (!_this26.mimes.includes(type)) {
-                _this26.downloadFile(fileURL, fileName);
+              if (!_this28.mimes.includes(type)) {
+                _this28.downloadFile(fileURL, fileName);
               } else {
-                _this26.src.push(fileURL);
+                _this28.src.push(fileURL);
               }
             });
           }
@@ -4956,10 +4984,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this27 = this;
+          var _this29 = this;
 
           this.deleteSubjectForm.get('classID').valueChanges.subscribe(function (val) {
-            _this27.classrom = _this27.main.classrom.find(function (v) {
+            _this29.classrom = _this29.main.classrom.find(function (v) {
               return v.id === val;
             });
           });
@@ -5345,26 +5373,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ClassService, [{
         key: "addNewClass",
         value: function addNewClass(classroom) {
-          var _this28 = this;
+          var _this30 = this;
 
           this.http.post(this.api + 'Class/create', classroom).subscribe(function (res) {
-            _this28.main.classrom.push(res);
+            _this30.main.classrom.push(res);
 
-            _this28.shared.openCodeModal(res.id);
+            _this30.shared.openCodeModal(res.id);
 
-            _this28.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
+            _this30.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
           });
         }
       }, {
         key: "addNewMark",
         value: function addNewMark(mark) {
-          var _this29 = this;
-
-          this.http.put(this.api + 'Mark', mark).subscribe(function (res) {
-            _this29.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
-
-            _this29.shared.openHomeworkModal('');
-          });
+          return this.http.put(this.api + 'Mark', mark);
         }
       }, {
         key: "addUserToClass",
@@ -5425,34 +5447,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addNewSubject",
         value: function addNewSubject(subject) {
-          var _this30 = this;
+          var _this31 = this;
 
           this.http.post(this.api + 'Subject/create', subject).subscribe(function (res) {
-            _this30.main.classrom.filter(function (value) {
+            _this31.main.classrom.filter(function (value) {
               return value.id === subject.classID;
             }).map(function (val) {
               return val.subjects.push(res.subject);
             });
 
-            _this30.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
+            _this31.toastr.success('Pomyślnie dodano nauczyciela do klasy.', 'Udało się!');
           });
         }
       }, {
         key: "deleteHomework",
         value: function deleteHomework(homework) {
-          var _this31 = this;
+          var _this32 = this;
 
           return this.http.put(this.api + 'Homework/deleteHomework', homework).subscribe(function (res) {
-            _this31.toastr.success('Usunięto zadanie.', 'Udało się!');
+            _this32.toastr.success('Usunięto zadanie.', 'Udało się!');
           });
         }
       }, {
         key: "deleteClassMember",
         value: function deleteClassMember(member) {
-          var _this32 = this;
+          var _this33 = this;
 
           return this.http.put(this.api + 'Class/deleteMember', member).subscribe(function (res) {
-            _this32.toastr.success('Usunięto użytkownika.', 'Udało się!');
+            _this33.toastr.success('Usunięto użytkownika.', 'Udało się!');
           });
         }
       }, {
@@ -5463,10 +5485,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteSubject",
         value: function deleteSubject(subject) {
-          var _this33 = this;
+          var _this34 = this;
 
           return this.http.put(this.api + 'Class/deleteSubject', subject).subscribe(function (res) {
-            _this33.toastr.success('Usunięto zadanie.', 'Udało się!');
+            _this34.toastr.success('Usunięto zadanie.', 'Udało się!');
           });
         }
       }]);
@@ -5549,7 +5571,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HttpErrorInterceptor, [{
         key: "intercept",
         value: function intercept(request, next) {
-          var _this34 = this;
+          var _this35 = this;
 
           if (request.headers.has(InterceptorSkipHeader)) {
             var headers = request.headers["delete"](InterceptorSkipHeader);
@@ -5566,12 +5588,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               errorTitle = error.error.err;
               errorMessage = error.error.desc;
 
-              _this34.toastr.error(errorMessage, errorTitle);
+              _this35.toastr.error(errorMessage, errorTitle);
             } else {
               errorTitle = "Kod b\u0142\u0119du: ".concat(error.status);
               errorMessage = "Wiadomo\u015B\u0107: ".concat(error.message);
 
-              _this34.toastr.error(errorMessage, errorTitle);
+              _this35.toastr.error(errorMessage, errorTitle);
             }
 
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["throwError"])(errorMessage);

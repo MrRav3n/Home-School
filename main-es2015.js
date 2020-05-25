@@ -320,7 +320,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n        <ul class=\"list-group mt-5 mb-3 col-12\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"row justify-content-around m-3\">\n  <a class=\"font-weight-bold pb-3 col-11 singeHomeworkDesc\" data-toggle=\"collapse\"\n     (click)=\"addFocusClass()\" role=\"button\" [href]=\"'#homework-'+iterator\"\n     aria-expanded=\"false\" aria-controls=\"collapseExample\" [ngClass]=\"{'singeHomeworkDescFocused': clickedStatus}\">\n    <div class=\"row justify-content-between m-0 p-0\">\n      <div  class=\"m-0 p-1 col-md-6 col-12\">\n        <h1>{{homework.name}}</h1>\n        <div *ngIf=\"main.currentRole === 0\">\n          <div *ngIf=\"homework.responses[0]\">\n            <div class=\"markMarked\" *ngIf=\"homework.responses[0].mark\" >Ocena: {{homework.responses[0].mark}}</div>\n            <div class=\"markNoMarked\" *ngIf=\"!homework.responses[0].mark\">Nie oceniono</div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row col-md-6 text-md-right col-12\">\n        <div class=\"m-0 p-1 col-12\">Data dodania: {{startTime}}</div>\n        <div class=\"m-0 p-1 col-12\">Termin: <span class=\"text-danger\">{{endTime}}</span> </div>\n        <div class=\"m-0 p-1 col-12\" *ngIf=\"main.currentRole === 0\">Data odesłania:\n          <span class=\"text-danger\" *ngIf=\"homework.responses[0]\">{{sendTime}}</span>\n          <span class=\"text-danger\" *ngIf=\"!homework.responses[0]\">---------</span>\n        </div>\n      </div>\n    </div>\n  </a>\n\n  <div class=\"collapse homeworkDesc col-11 p-0 row justify-content-start\" [id]=\"'homework-' + iterator\">\n    <div class=\"col-12 p-3\">\n      <span class=\"infoSpan\">Opis zadania</span>\n    </div>\n    <h2 class=\"pr-3 pl-3 pb-3 col-12 m-0 description\">{{homework.description}}</h2>\n    <app-show-homework-file [homeworkSet]=\"homework\" class=\"col-12 p-0\"></app-show-homework-file>\n\n    <div *ngIf=\"main.currentRole === 0 && homework.responses[0]\" class=\"col-12 p-0\">\n      <app-homework-response [responseSet]=\"this.homework.responses[0]\"></app-homework-response>\n    </div>\n\n<!--    teacher -->\n    <div *ngIf=\"main.currentRole === 1\" class=\"homeworksList row m-0 p-3 justify-content-center col-12\">\n      <div class=\"row p-0 justify-content-between col-12\">\n        <div class=\"form-group col-md-4 col-10 row align-items-end\">\n          <input type=\"email\" class=\"form-control\" placeholder=\"Filtruj listę\" name=\"name\" required [(ngModel)]=\"text\" (ngModelChange)=\"filter()\"/>\n        </div>\n        <div class=\"col-md-6 col-10 row pb-2 justify-content-center\">\n          <button class=\"formBtn\" (click)=\"showGrades()\">Lista ocen</button>\n        </div>\n        <div class=\"col-md-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n      <div class=\"row p-0 justify-content-between col-12\" *ngIf=\"homework.responses[0]\">\n\n        <ul class=\"list-group mt-5 mb-3 col-12\" *ngIf=\"this.homework.responses[0]\">\n          <li class=\"list-group-item m-1\" *ngFor=\"let res of this.homework.responses; let i=index\" (click)=\"openHomeworkModal(res)\">\n            <div class=\"row p-0 m-0\">\n              <div class=\"col-12\">\n                <h2 class=\"text-center d-block\">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>\n                <h4 class=\"text-center d-block green\" *ngIf=\"res.mark\">Oceniono - {{res.mark}}</h4>\n                <h4 class=\"text-center d-block red\" *ngIf=\"!res.mark\">Nie oceniono</h4>\n              </div>\n            </div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"col-12 row p-0\"  *ngIf=\"!homework.responses[0]\">\n        <h2 class=\"col-10 p-0\">Nikt jeszcze nie odpowiedział na to zadanie.</h2>\n        <div class=\"col-2\">\n          <i class=\"fas fa-trash\" (click)=\"deleteHomework()\"></i>\n        </div>\n      </div>\n    </div>\n<!--    student doesn't answear -->\n    <div *ngIf=\"main.currentRole === 0 && !homework.responses[0]\" class=\"p-3\">\n      <h2 class=\"text-center\">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>\n    </div>\n\n  </div>\n\n</div>\n\n");
 
 /***/ }),
 
@@ -1272,6 +1272,7 @@ let HomeworkFinishedComponent = class HomeworkFinishedComponent {
         this.classService = classService;
         this.shared = shared;
         this.clickedStatus = false;
+        this.text = '';
     }
     set homeworkSet(hom) {
         this.homework = hom;
@@ -1283,9 +1284,23 @@ let HomeworkFinishedComponent = class HomeworkFinishedComponent {
     set iteratorSet(iter) {
         this.iterator = iter;
     }
+    ngOnInit() {
+        this.shared.openHomework.subscribe(res => {
+            if (res.mark) {
+                for (let i = 0; i < this.allResponses.length; i++) {
+                    if (this.allResponses[i].id === res.id) {
+                        this.allResponses[i].mark = res.mark;
+                        this.filter();
+                        break;
+                    }
+                }
+            }
+        });
+    }
     filter() {
         this.homework.responses = this.allResponses.filter(v => {
-            return (v.senderName.includes(this.text) || v.senderSurname.includes(this.text));
+            return (v.senderName.toLocaleLowerCase().includes(this.text.toLocaleLowerCase()) ||
+                v.senderSurname.toLocaleLowerCase().includes(this.text.toLocaleLowerCase()));
         });
     }
     addFocusClass() {
@@ -1311,8 +1326,6 @@ let HomeworkFinishedComponent = class HomeworkFinishedComponent {
         response.homeworkID = this.homework.id;
         response.singleHomework = true;
         this.shared.openHomeworkModal(response);
-    }
-    ngOnInit() {
     }
 };
 HomeworkFinishedComponent.ctorParameters = () => [
@@ -1795,7 +1808,7 @@ let TextChatComponent = class TextChatComponent {
     }
     ngOnInit() {
         this.getLastMessages();
-        setInterval(() => {
+        this.timer = setInterval(() => {
             this.getNewerMessages();
         }, 5000);
     }
@@ -1807,6 +1820,9 @@ let TextChatComponent = class TextChatComponent {
                 this.messages.unshift(res);
             });
         }
+    }
+    ngOnDestroy() {
+        clearInterval(this.timer);
     }
     getNewerMessages() {
         this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(res => {
@@ -1911,12 +1927,15 @@ let HomeworkResponseModalComponent = class HomeworkResponseModalComponent {
         });
     }
     addMark() {
-        this.markForm.addControl('responseID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.id));
-        this.markForm.addControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.homeworkID));
-        this.markForm.addControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentClassrom.id));
-        this.markForm.addControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentSubject.id));
+        this.markForm.setControl('responseID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.id));
+        this.markForm.setControl('homeworkID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.response.homeworkID));
+        this.markForm.setControl('classID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentClassrom.id));
+        this.markForm.setControl('subjectID', new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.main.currentSubject.id));
         if (this.markForm.valid) {
-            this.classService.addNewMark(this.markForm.value);
+            this.classService.addNewMark(this.markForm.value).subscribe(res => {
+                this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
+                this.shared.openHomeworkModal(res);
+            });
         }
     }
 };
@@ -3158,10 +3177,7 @@ let ClassService = class ClassService {
         });
     }
     addNewMark(mark) {
-        this.http.put(this.api + 'Mark', mark).subscribe(res => {
-            this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
-            this.shared.openHomeworkModal('');
-        });
+        return this.http.put(this.api + 'Mark', mark);
     }
     addUserToClass(userToAdd) {
         return this.http.put(this.api + 'Class/addMember', userToAdd);

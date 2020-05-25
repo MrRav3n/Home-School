@@ -29,11 +29,8 @@ export class ClassService {
       this.toastr.success('Pomyślnie utworzono nową klasę.', 'Udało się!');
     });
   }
-  addNewMark(mark) {
-    this.http.put(this.api + 'Mark', mark).subscribe( res => {
-      this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
-      this.shared.openHomeworkModal('');
-    });
+  addNewMark(mark): Observable<any> {
+    return this.http.put(this.api + 'Mark', mark);
   }
   addUserToClass(userToAdd) {
     return this.http.put(this.api + 'Class/addMember', userToAdd);

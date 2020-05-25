@@ -12,6 +12,7 @@ export class TextChatComponent implements OnInit {
   messageForm: FormGroup;
   messages;
   loadingMessages = true;
+  timer;
   constructor(
     private tcService: TextChatService,
     private main: MainService
@@ -23,7 +24,7 @@ export class TextChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLastMessages();
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getNewerMessages();
     }, 5000);
   }
@@ -35,6 +36,9 @@ export class TextChatComponent implements OnInit {
         this.messages.unshift(res);
       });
     }
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
   }
   getNewerMessages() {
     this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(res => {

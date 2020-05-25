@@ -33,12 +33,15 @@ export class HomeworkResponseModalComponent implements OnInit {
     });
   }
   addMark() {
-    this.markForm.addControl('responseID', new FormControl(this.response.id));
-    this.markForm.addControl('homeworkID', new FormControl(this.response.homeworkID));
-    this.markForm.addControl('classID', new FormControl(this.main.currentClassrom.id));
-    this.markForm.addControl('subjectID', new FormControl(this.main.currentSubject.id));
+    this.markForm.setControl('responseID', new FormControl(this.response.id));
+    this.markForm.setControl('homeworkID', new FormControl(this.response.homeworkID));
+    this.markForm.setControl('classID', new FormControl(this.main.currentClassrom.id));
+    this.markForm.setControl('subjectID', new FormControl(this.main.currentSubject.id));
     if (this.markForm.valid) {
-      this.classService.addNewMark(this.markForm.value);
+      this.classService.addNewMark(this.markForm.value).subscribe( res => {
+        this.toastr.success('Pomyślnie dodano nową ocenę.', 'Udało się!');
+        this.shared.openHomeworkModal(res);
+      });
     }
   }
 

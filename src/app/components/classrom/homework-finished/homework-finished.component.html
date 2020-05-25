@@ -36,7 +36,7 @@
 
 <!--    teacher -->
     <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-3 justify-content-center col-12">
-      <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">
+      <div class="row p-0 justify-content-between col-12">
         <div class="form-group col-md-4 col-10 row align-items-end">
           <input type="email" class="form-control" placeholder="Filtruj listę" name="name" required [(ngModel)]="text" (ngModelChange)="filter()"/>
         </div>
@@ -46,7 +46,10 @@
         <div class="col-md-2">
           <i class="fas fa-trash" (click)="deleteHomework()"></i>
         </div>
-        <ul class="list-group mt-5 mb-3 col-12">
+      </div>
+      <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">
+
+        <ul class="list-group mt-5 mb-3 col-12" *ngIf="this.homework.responses[0]">
           <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
             <div class="row p-0 m-0">
               <div class="col-12">

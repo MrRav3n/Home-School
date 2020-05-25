@@ -18,7 +18,7 @@ export class HomeworkFinishedComponent implements OnInit {
   startTime: string;
   endTime: string;
   sendTime: string;
-  text: string;
+  text = '';
   allResponses: [Response];
   @Input() set homeworkSet(hom) {
     this.homework = hom;
@@ -33,16 +33,36 @@ export class HomeworkFinishedComponent implements OnInit {
   @Input() set iteratorSet(iter: number) {
     this.iterator = iter;
   }
-  filter() {
-    this.homework.responses = this.allResponses.filter(v => {
-      return (v.senderName.includes(this.text) || v.senderSurname.includes(this.text));
-    }) as [Response];
-  }
+
   constructor(
     public main: MainService,
     private classService: ClassService,
     private shared: SharedService,
   ) {}
+
+  ngOnInit(): void {
+
+    this.shared.openHomework.subscribe(res => {
+      if (res.mark) {
+        for (let i = 0; i < this.allResponses.length; i++) {
+          if (this.allResponses[i].id === res.id) {
+            this.allResponses[i].mark = res.mark;
+            this.filter();
+            break;
+          }
+        }
+      }
+    });
+  }
+
+  filter() {
+    this.homework.responses = this.allResponses.filter(v => {
+      return (
+        v.senderName.toLocaleLowerCase().includes(this.text.toLocaleLowerCase()) ||
+        v.senderSurname.toLocaleLowerCase().includes(this.text.toLocaleLowerCase())
+      );
+    }) as [Response];
+  }
   addFocusClass() {
     if (this.clickedStatus) {
       setTimeout(() => this.clickedStatus = !this.clickedStatus, 400);
@@ -67,7 +87,5 @@ export class HomeworkFinishedComponent implements OnInit {
     this.shared.openHomeworkModal(response);
   }
 
-  ngOnInit(): void {
-  }
 
 }

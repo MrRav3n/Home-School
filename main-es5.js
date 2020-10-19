@@ -5143,7 +5143,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AuthInterceptor, [{
         key: "intercept",
         value: function intercept(req, next) {
-          var idToken = localStorage.getItem('homeschooltoken');
+          var idToken = localStorage.getItem('token');
 
           if (idToken) {
             var cloned = req.clone({
@@ -5844,10 +5844,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.switchHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.loading = true;
         this.openHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.api = 'https://homeschool-api.azurewebsites.net/api/';
-        this.apiFiles = 'https://filestorage-api.azurewebsites.net/api/';
-        this.apiNames = 'https://returnusernamesapi.azurewebsites.net/api/';
-        this.apiText = 'https://textchatapi.azurewebsites.net/api/';
+        this.api = 'https://homeschoolapi.herokuapp.com/api/';
+        this.apiFiles = 'https://filestorageapi.herokuapp.com/api/';
+        this.apiNames = 'https://returnusernamesapi.herokuapp.com/api/';
+        this.apiText = 'https://textchatapi.herokuapp.com/api/';
       }
 
       _createClass(SharedService, [{

@@ -3039,7 +3039,7 @@ __webpack_require__.r(__webpack_exports__);
 let AuthInterceptor = class AuthInterceptor {
     constructor() { }
     intercept(req, next) {
-        const idToken = localStorage.getItem('homeschooltoken');
+        const idToken = localStorage.getItem('token');
         if (idToken) {
             const cloned = req.clone({
                 headers: req.headers.set('Authorization', 'Bearer ' + idToken)
@@ -3430,10 +3430,10 @@ let SharedService = class SharedService {
         this.switchHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.loading = true;
         this.openHomework = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.api = 'https://homeschool-api.azurewebsites.net/api/';
-        this.apiFiles = 'https://filestorage-api.azurewebsites.net/api/';
-        this.apiNames = 'https://returnusernamesapi.azurewebsites.net/api/';
-        this.apiText = 'https://textchatapi.azurewebsites.net/api/';
+        this.api = 'https://homeschoolapi.herokuapp.com/api/';
+        this.apiFiles = 'https://filestorageapi.herokuapp.com/api/';
+        this.apiNames = 'https://returnusernamesapi.herokuapp.com/api/';
+        this.apiText = 'https://textchatapi.herokuapp.com/api/';
     }
     openLoginModal() {
         this.openLogin.emit();

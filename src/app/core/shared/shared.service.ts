@@ -12,10 +12,10 @@ export class SharedService {
   switchHomework = new EventEmitter();
   loading = true;
   openHomework = new EventEmitter();
-  api = 'https://homeschool-api.azurewebsites.net/api/';
-  apiFiles = 'https://filestorage-api.azurewebsites.net/api/';
-  apiNames = 'https://returnusernamesapi.azurewebsites.net/api/';
-  apiText = 'https://textchatapi.azurewebsites.net/api/';
+  api = 'https://homeschoolapi.herokuapp.com/api/';
+  apiFiles = 'https://filestorageapi.herokuapp.com/api/';
+  apiNames = 'https://returnusernamesapi.herokuapp.com/api/';
+  apiText = 'https://textchatapi.herokuapp.com/api/';
   constructor() { }
   openLoginModal() {
     this.openLogin.emit();

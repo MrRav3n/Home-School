@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Response } from '../../../core/modals/Response';
+import { Response } from '../../../core/models/Response';
 import { FormControl, FormGroup } from '@angular/forms';
 import { SharedService } from '../../../core/shared/shared.service';
 import { ToastrService } from 'ngx-toastr';

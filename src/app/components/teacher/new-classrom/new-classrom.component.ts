@@ -4,7 +4,7 @@ import { ClassService } from '../../../core/classService/class.service';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Classrom } from '../../../core/modals/Classrom';
+import { Classrom } from '../../../core/models/Classrom';
 
 @Component({
   selector: 'app-new-classrom',

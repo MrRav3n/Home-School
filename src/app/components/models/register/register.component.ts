@@ -37,13 +37,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
     this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
     if (this.registerForm.valid) {
-      this.main.register(this.registerForm.value).subscribe(res => {
-        localStorage.setItem('homeschooltoken', res.token);
-        this.main.user = res.userToReturn;
-        this.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
-        this.shared.openRegisterModal();
-        this.main.ifUserExists();
-      });
+      this.main.register(this.registerForm.value);
     }
   }
   // select you are student or teacher ( 0 - student, 1 - teacher)

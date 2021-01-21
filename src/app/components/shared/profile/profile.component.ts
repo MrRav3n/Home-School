@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
-import { User } from '../../../core/modals/User';
+import { User } from '../../../core/models/User';
 
 @Component({
   selector: 'app-profile',

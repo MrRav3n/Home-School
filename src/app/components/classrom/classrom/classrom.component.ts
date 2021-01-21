@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MainService } from '../../../core/main/main.service';
 import { ActivatedRoute } from '@angular/router';
-import { Classrom } from '../../../core/modals/Classrom';
-import { Subject } from '../../../core/modals/Subject';
+import { Classrom } from '../../../core/models/Classrom';
+import { Subject } from '../../../core/models/Subject';
 import { SharedService } from '../../../core/shared/shared.service';
 import { ClassService } from '../../../core/classService/class.service';
 
@@ -43,13 +43,15 @@ export class ClassromComponent implements OnInit {
       }
     }
   }
+  checkIfSubjectsExists() {
+    return !!this.main.currentClassrom.subjects[0];
+  }
   showMembers() {
     this.classService.showClassromMembers({classID: this.main.currentClassrom.id}).subscribe(res => {
       this.shared.openMembersModal(res);
     });
   }
   async setCurrentSubject(i) {
-
     if (this.subjectDiv) {
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
       function timeout(ms) {
@@ -61,7 +63,6 @@ export class ClassromComponent implements OnInit {
     } else {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
     }
-
     this.checkUserRole();
   }
   setCurrentSubjectNotAsync(i) {

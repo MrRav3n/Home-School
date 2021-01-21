@@ -1,69 +1,23 @@
 <div class="goBackDiv d-block d-md-none" (click)="goBack()">Wybierz przedmiot</div>
-<div class="col-12 pt-5 pt-md-0" *ngIf="this.main.currentRole === 2">
+<div class="col-12 pt-5 pt-md-0" *ngIf="checkIfEducator()">
     <h1 class="text-center">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>
 </div>
-<div *ngIf="this.main.currentRole !== 2">
+<div *ngIf="!checkIfEducator()">
 <div class="text-center subHeader pt-5 pt-md-0 text-wrap">{{this.main.currentSubject.name}}</div>
 <div class="row justify-content-around subButtons p-3 m-0 mb-5">
-
-  <a class="example_f col-12 col-md-3" *ngIf="main.currentRole === 1 || main.currentRole === 2" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
-  <a class="example_f col-12 col-md-4" *ngIf="whichHomeworks === 0" (click)="whichHomeworks = 1; showChat = false"><span>Pokaż najnowsze zadania</span></a>
-  <a class="example_f col-12 col-md-4" *ngIf="whichHomeworks === 1" (click)="whichHomeworks = 0; showChat = false"><span>Przejdź do archiwum</span></a>
-  <a class="example_f col-12 col-md-3" (click)="showChat = !showChat"><span>Otwórz chat</span></a>
+  <a class="example_f col-12 col-md-3" *ngIf="checkIfEducator() || checkIfTeacher()" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
+  <a class="example_f col-12 col-md-4" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks' || whatIsCurrentlyShowed() === 'chat'" (click)="navigateOverSubject('liveHomeworks')"><span>Pokaż najnowsze zadania</span></a>
+  <a class="example_f col-12 col-md-4" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'" (click)="navigateOverSubject('finishedHomeworks')"><span>Przejdź do archiwum</span></a>
+  <a class="example_f col-12 col-md-3" (click)="navigateOverSubject('chat')"><span>Otwórz chat</span></a>
 
   <div class="col-12 pt-3">
     <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
-      <form [formGroup]="homeworkForm" class="row justify-content-around p-md-3 p-0">
-        <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
-          <div class="form-group col-md-5 col-12 mb-md-5 p-0">
-            <h3 class="text-white termin">Nazwa zadania</h3>
-            <input type="email" class="form-control" placeholder="Nazwa" name="name" id='numberPeople' required formControlName="name"/>
-            <div *ngIf="homeworkForm.controls.name.invalid && submitted" class="alert alert-danger">
-              Podaj nazwę zadania.
-            </div>
-          </div>
-          <div class="col-md-5 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
-            <h3 class="text-white termin text-left">Termin oddania</h3>
-            <div id="picker">   </div>
-            <input type="hidden" id="result" value="" #timeValue>
-            <div *ngIf="homeworkForm.controls.time.invalid && submitted" class="alert alert-danger">
-              Podaj termin odddania zadania.
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form-group col-12">
-          <h3 class="text-white termin">Treść zadania</h3>
-        <textarea class="form-control p-2 m-0" id="exampleFormControlTextarea1" rows="4" formControlName="description" placeholder="Treść">
-
-        </textarea>
-        </div>
-        <div class="form-group col-12 row p-0 justify-content-center">
-          <button class="formBtn" (click)="addLink()">Dodaj link</button>
-          <input *ngFor="let iter of linksIterator; let i = index" type="text" class="form-control col-12 mt-2 mb-2" [(ngModel)]="linkHrefs[i]" [ngModelOptions]="{standalone: true}">
-        </div>
-        <div class="col-12 row justify-content-center p-3 m-0">
-          <div class="custom-file col-12">
-            <input type="file" class="custom-file-input" id="customFile" (change)="onFileSelect($event)">
-            <label class="custom-file-label" for="customFile">Dołącz plik</label>
-          </div>
-
-          <div class="col-10 mt-3 p-0" *ngIf="files">
-            <div class="progress mt-2 mr-0 ml-0" *ngFor="let file of files" >
-              <div class="progress-bar" role="progressbar" [style]="{'width': file.progress + '%'}" [ngClass]="{'green': file.finished}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                {{file.name}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewHomework()">Dodaj</button>
-      </form>
+      <app-add-homework (newHomework)="outputNewHomework($event)"></app-add-homework>
     </div>
   </div>
 </div>
 <!-- div for students -->
-<div class="homeworksDiv" *ngIf="whichHomeworks === 1  && !showChat">
+<div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'">
   <div *ngIf="this.main.currentRole === 0">
     <h1 class="text-center subHomeworks" >Zadania do zrobienia</h1>
     <div *ngFor="let homework of this.currentHomeworks; let i=index">
@@ -71,20 +25,20 @@
     </div>
   </div>
 <!-- div for teachers -->
-  <div *ngIf="this.main.currentRole !== 0">
+  <div *ngIf="!checkIfStudent()">
     <h1 class="text-center subHomeworks" >Obecnie trwające</h1>
     <div *ngFor="let homework of this.currentHomeworks; let i=index">
       <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
     </div>
   </div>
 </div>
-<div class="homeworksDiv" *ngIf="whichHomeworks === 0 && !showChat">
+<div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks'">
   <h1 class="text-center subHomeworks">Zakończone zadania</h1>
   <div *ngFor="let homework of this.finishedHomeworks; let i=index">
     <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
   </div>
 </div>
-<div class="homeworksDiv" *ngIf="showChat">
+<div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'chat'">
   <h1 class="text-center subHomeworks">Chat</h1>
   <app-text-chat></app-text-chat>
 </div>

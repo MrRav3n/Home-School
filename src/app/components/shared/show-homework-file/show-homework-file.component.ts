@@ -3,7 +3,7 @@ import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import { Homework } from '../../../core/modals/Homework';
+import { Homework } from '../../../core/models/Homework';
 
 @Component({
   selector: 'app-show-homework-file',
@@ -58,7 +58,7 @@ export class ShowHomeworkFileComponent implements OnInit {
         subjectID: this.main.currentSubject.id,
         fileID: this.homework.files[i]
       };
-      this.classService.returnFileFromHomework(fileData).subscribe(res => {
+      this.classService.returnFileFromHomework(fileData).subscribe((res: any) => {
         const type = res.headers.get('Content-Type');
         const fileName = res.headers.get('filename');
         this.names.push(fileName);

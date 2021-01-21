@@ -1,11 +1,11 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Homework } from '../../../core/modals/Homework';
+import { Homework } from '../../../core/models/Homework';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Mimes } from '../../../core/modals/mimeTypes';
+import { Mimes } from '../../../core/models/mimeTypes';
 import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
 import { HttpEventType } from '@angular/common/http';

@@ -33,6 +33,7 @@ import { ShowHomeworkFileComponent } from './components/shared/show-homework-fil
 import { ShowResponseFileComponent } from './components/shared/show-response-file/show-response-file.component';
 import { ShowMembersComponent } from './components/models/show-members/show-members.component';
 import { TextChatComponent } from './components/classrom/text-chat/text-chat.component';
+import { AddHomeworkComponent } from './components/classrom/subject/add-homework/add-homework.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { TextChatComponent } from './components/classrom/text-chat/text-chat.com
     ShowResponseFileComponent,
     ShowMembersComponent,
     TextChatComponent,
+    AddHomeworkComponent,
   ],
   imports: [
     BrowserModule,

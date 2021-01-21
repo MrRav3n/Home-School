@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Homework } from '../../../core/modals/Homework';
+import { Homework } from '../../../core/models/Homework';
 import * as moment from 'moment';
 import { MainService } from '../../../core/main/main.service';
 import { SharedService } from '../../../core/shared/shared.service';
-import { Response } from '../../../core/modals/Response';
+import { Response } from '../../../core/models/Response';
 import { ClassService } from '../../../core/classService/class.service';
 
 @Component({

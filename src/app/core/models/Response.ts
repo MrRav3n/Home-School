@@ -2,7 +2,7 @@ export class Response {
   description: string;
   sendingTime: string;
   homeworkID: string;
-  classI: string;
+  classID: string;
   sendTime: string;
   senderSurname: string;
   senderName: string;

@@ -26,21 +26,6 @@
   font-size: 20px !important;
   text-align: center !important;
 }
-.pickerDiv {
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.headerDiv {
-  padding: 15px 0;
-}
-#picker {
-  text-align: center;
-  width: 100%;
-}
-.pickerDiv:hover > #picker {
- color: var(--warn)
-
-}
 .example_d {
   font-size: 25px;
   font-weight: bold;
@@ -55,19 +40,11 @@
   box-shadow: 0px 0px 10px 3px rgba(87,84,87,1);
 }
 
-.progress {
-  height: 35px;
-  font-size:20px;
-}
-.green {
-  background: green;
-}
 .fullWidth {
   width: 100vh;
   height: 100vh;
   top:0;
   left:0;
-
 }
 .example_f {
   border-radius: 40px;

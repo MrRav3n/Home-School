@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Response } from '../../../core/modals/Response';
+import { Response } from '../../../core/models/Response';
 
 @Component({
   selector: 'app-homework-response',

@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shared.openLogin.subscribe(res => {
+    this.shared.openLogin.subscribe(() => {
       this.openModal.nativeElement.click();
     });
   }
@@ -32,14 +32,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.shared.loading = true;
       this.shared.openLoginModal();
-      this.main.login(this.loginForm.value).subscribe(res => {
-        this.main.user = res.userToReturn;
-        this.main.classrom = res.classes;
-        this.main.ifUserExists();
-        localStorage.setItem('homeschooltoken', res.token);
-      }, err => {
-        this.shared.loading = false;
-      });
+      this.main.login(this.loginForm.value);
     }
   }
 }

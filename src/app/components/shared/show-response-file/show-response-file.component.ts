@@ -3,8 +3,8 @@ import { MainService } from '../../../core/main/main.service';
 import { ClassService } from '../../../core/classService/class.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import { Homework } from '../../../core/modals/Homework';
-import { Response } from '../../../core/modals/Response';
+import { Homework } from '../../../core/models/Homework';
+import { Response } from '../../../core/models/Response';
 
 @Component({
   selector: 'app-show-response-file',
@@ -60,9 +60,13 @@ export class ShowResponseFileComponent implements OnInit {
         fileID: this.response.files[i]
       };
       this.classService.returnFileFromResponse(fileData).subscribe(res => {
+        // TODO: fix it!
+        // @ts-ignore
         const type = res.headers.get('Content-Type');
+        // @ts-ignore
         const fileName = res.headers.get('filename');
         this.names.push(fileName);
+        // @ts-ignore
         const file = new Blob([res.body], {type});
         const fileURL = URL.createObjectURL(file);
         if (!this.mimes.includes(type)) {

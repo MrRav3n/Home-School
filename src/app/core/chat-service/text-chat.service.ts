@@ -26,7 +26,7 @@ export class TextChatService {
   getLastMessages(): Observable<any> {
     return this.http.get<any>(this.api + `TextChat/getLastMessages/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`).pipe(
       map(v => {
-        for(let i = 0; i < v.messages.length; i++) {
+        for (let i = 0; i < v.messages.length; i++) {
           v.messages[i].sendTime = moment(v.messages[i].sendTime).format('YYYY-MM-DD HH:mm:ss');
         }
 

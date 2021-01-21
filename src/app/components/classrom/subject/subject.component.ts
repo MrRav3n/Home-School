@@ -11,6 +11,7 @@ import { HttpEventType, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../core/shared/shared.service';
+import { Homework } from '../../../core/models/Homework';
 @Component({
   selector: 'app-subject',
   templateUrl: './subject.component.html',
@@ -18,18 +19,12 @@ import { SharedService } from '../../../core/shared/shared.service';
 })
 export class SubjectComponent implements OnInit {
   userRole;
-  homeworkForm: FormGroup;
   currentHomeworks = [];
   finishedHomeworks = [];
-  uploadForm: FormGroup;
+  currentlyShowed: 'liveHomeworks' | 'finishedHomeworks' | 'chat' = 'liveHomeworks';
   whichHomeworks = 1;
   showChat = false;
-  files = [];
-  filesID = [];
-  linkHrefs = [];
-  submitted = false;
   currentTime;
-  linksIterator = [];
   @Input() set currentSubSet(sub) {
     this.showChat = false;
     this.sortHomeworks(this.currentTime);
@@ -43,21 +38,8 @@ export class SubjectComponent implements OnInit {
     private location: Location,
     private shared: SharedService
   ) {
-    this.homeworkForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl(''),
-      time: new FormControl('', Validators.required),
-    });
-    this.uploadForm = new FormGroup({
-      profile: new FormControl(''),
-    });
   }
   ngOnInit(): void {
-    (($) => {
-      $(document).ready(() => {
-        $('#picker').dateTimePicker();
-      });
-    })(jQuery);
     if (!this.main.currentClassrom) {
       this.router.navigateByUrl('classrom/0');
     }
@@ -69,14 +51,19 @@ export class SubjectComponent implements OnInit {
         this.currentHomeworks.splice(index, 1);
         this.finishedHomeworks.push(this.currentHomeworks[index]);
       }
-
     });
+  }
+  navigateOverSubject(whereToGo: 'liveHomeworks' | 'finishedHomeworks' | 'chat') {
+    this.currentlyShowed = whereToGo;
+  }
+  whatIsCurrentlyShowed() {
+    return this.currentlyShowed;
   }
   goBack() {
     this.location.back();
   }
-  addLink() {
-    this.linksIterator.push(this.linksIterator.length);
+  outputNewHomework(homework: Homework) {
+    this.currentHomeworks.push(homework);
   }
   sortHomeworks(currentTime) {
     this.currentHomeworks = [];
@@ -98,59 +85,19 @@ export class SubjectComponent implements OnInit {
       }
     }
   }
-  onFileSelect(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.uploadForm.get('profile').setValue(file);
-      this.uploadFile();
+  checkIfStudent() {
+    if (this.main.currentRole === 0) {
+      return true;
     }
   }
-  uploadFile() {
-    const formData = new FormData();
-    const file = this.uploadForm.get('profile').value;
-    this.files.push(file);
-    formData.append('file', file);
-    file.inProgress = true;
-    this.classService.addNewFileToHomework(this.main.currentClassrom.id, this.main.currentSubject.id, formData).pipe(
-      map(event => {
-        const index = this.files.findIndex(v => v.name === file.name);
-        switch (event.type) {
-          case HttpEventType.UploadProgress:
-            this.files[index].progress = Math.round(event.loaded * 100 / event.total);
-            break;
-          case HttpEventType.Response:
-            this.files[index].finished = true;
-            this.filesID.push(event.body.fileID);
-            break;
-        }
-      }),
-    ).subscribe(res => {});
-  }
-
-  addNewHomework() {
-    this.submitted = true;
-    const timeUtc = moment(this.timeValue.nativeElement.value).toISOString();
-    this.homeworkForm.patchValue({time: timeUtc});
-    const bodyToSend = this.homeworkForm.value;
-    bodyToSend.filesID = this.filesID;
-    bodyToSend.linkHrefs = this.linkHrefs;
-    bodyToSend.subjectID = this.main.currentSubject.id;
-    bodyToSend.classID = this.main.currentClassrom.id;
-
-    if (this.homeworkForm.valid) {
-      this.classService.addNewHomework(bodyToSend).subscribe(res => {
-        this.submitted = false  ;
-        this.homeworkForm.reset();
-        this.files = [];
-        this.linksIterator = [];
-        this.linkHrefs = [];
-        this.filesID = [];
-        this.currentHomeworks.push(res);
-        this.main.currentSubject.homeworks.push(res);
-        this.toastr.success('Pomyślnie dodano nowe zadanie.', 'Udało się!');
-      });
-
+  checkIfTeacher() {
+    if (this.main.currentRole === 1) {
+      return true;
     }
   }
-
+  checkIfEducator() {
+    if (this.main.currentRole === 2) {
+      return true;
+    }
+  }
 }

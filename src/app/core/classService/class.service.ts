@@ -4,11 +4,11 @@ import { SharedService } from '../shared/shared.service';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main/main.service';
-import { Homework } from '../modals/Homework';
+import { Homework } from '../models/Homework';
 import { Observable } from 'rxjs';
-import { Classrom } from '../modals/Classrom';
-import { Subject } from '../modals/Subject';
-import { Response } from '../modals/Response';
+import { Classrom } from '../models/Classrom';
+import { Subject } from '../models/Subject';
+import { Response } from '../models/Response';
 
 @Injectable({
   providedIn: 'root'

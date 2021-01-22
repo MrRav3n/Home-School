@@ -5,8 +5,8 @@
 <div class="cover p-3" *ngIf="checkIfSubjectsExists">
   <div class="">
     <div class="text-center mainDiv row p-0 justify-content-center align-items-center">
-      <div class="display-4 pb-3 collapseClass col-12 row justify-content-center" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
-        <div>
+      <div class="pb-3 collapseClass col-12 row justify-content-center" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
+        <div class="fontBigger">
           {{this.classrom.className}}
         </div>
       </div>
@@ -14,13 +14,13 @@
       <div class="col-12">
         <div class="collapse collapseClassInfo" id="collapseExample">
           <div class="pb-3 pt-3">
-            <h1 class="display-5">Jesteś
+            <div class="fontMedium">Jesteś
               <span *ngIf="this.main.isEducator">założycielem klasy</span>
               <span *ngIf="this.main.currentRole === 0">uczniem</span>
               <span *ngIf="this.main.currentRole === 1 && !this.main.isEducator">nauczycielem</span>
-            </h1>
+            </div>
           </div>
-          <div class="row p-0 m-0 justify-content-center">
+          <div class="row p-0 m-0 justify-content-center fontMedium">
             <div class="d-block showCode text-center col-lg-3 col-12 pb-3 m-2" (click)="this.showCode($event, classrom.id)" *ngIf="this.main.isEducator"><h2>Kod dostępu</h2></div>
             <div class="d-block showCode text-center col-lg-3 col-12 pb-3 m-2" (click)="this.showMembers()" *ngIf="this.main.isEducator"><h2>Lista członków klasy</h2></div>
           </div>
@@ -39,12 +39,12 @@
 
     <div class="p-3 col-md-3 col-12" >
       <div class="d-none d-md-block text-center subjectsChoosing">
-        <h2>Przedmioty</h2>
-        <div class="example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
+        <h2 class="fontMedium">Przedmioty</h2>
+        <div class="example_d p-3 mb-3 fontNormal" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubject(i)">{{subject.name}}</div>
       </div>
       <div class="d-block d-md-none text-center subjectsChoosing">
-        <h2>Przedmioty</h2>
-        <div class="example_d p-3 mb-3" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubjectNotAsync(i)" routerLink="/subject">{{subject.name}}</div>
+        <h2 class="fontMedium">Przedmioty</h2>
+        <div class="example_d p-3 mb-3 fontNormal" *ngFor="let subject of subjects; let i=index" (click)="setCurrentSubjectNotAsync(i)" routerLink="/subject">{{subject.name}}</div>
       </div>
     </div>
   </div>

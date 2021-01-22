@@ -1,6 +1,5 @@
 <div *ngIf="this.shared.loading" class="h-100 w-100 row justify-content-center align-items-center">
   <app-spinner class="h-100 w-100"></app-spinner>
-
 </div>
 <div *ngIf="!this.shared.loading" class="min">
   <app-navbar></app-navbar>
@@ -9,6 +8,7 @@
   </div>
 </div>
 
+<!-- Modals -->
 <app-login></app-login>
 <app-register></app-register>
 <app-show-code></app-show-code>

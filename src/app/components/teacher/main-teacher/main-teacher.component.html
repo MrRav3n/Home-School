@@ -1,22 +1,22 @@
 <div class="d-flex h-100 flex-column">
   <div class="text-center mainDiv">
-    <h1 class="display-3 font-weight-bold">Strona główna</h1>
-    <h1 class="mb-5 font-weight-bold">Najnowsze informacje</h1>
+    <div class="fontBigger">Strona główna</div>
+    <div class="mb-5 fontMedium ">Najnowsze informacje</div>
   </div>
   <div class="row rest justify-content-around align-items-start">
     <div class="col-lg-8 col-12 ">
       <div class="text-center classromDiv row p-0 justify-content-center">
-        <h1 class="mb-2">Twoje klasy</h1>
+        <div class="mb-2 fontMedium">Twoje klasy</div>
         <div *ngFor="let classrom of this.main.classrom; let i = index" [routerLink]="['/classrom', i]" class="singleClassrom col-11 row justify-content-center align-items-center mb-3">
-          <h1 class="col-lg-9 col-12 d-block text-center text-lg-left">{{classrom.className}} - {{classrom.schoolName}}</h1>
-          <h3 class="col-lg-3 col-12 d-block text-right showCode text-center mb-2 mb-lg-0" (click)="this.showCode($event, classrom.id)">Kod dostępu</h3>
+          <div class="col-lg-9 col-12 d-block text-center text-lg-left fontNormal">{{classrom.className}} - {{classrom.schoolName}}</div>
+          <div class="col-lg-3 col-12 d-block text-right showCode text-center mb-2 mb-lg-0 fontNormal" (click)="this.showCode($event, classrom.id)">Kod dostępu</div>
         </div>
       </div>
     </div>
     <div class="col-md-3 col-12">
       <div class="classromDiv text-center row p-0 justify-content-center">
-        <h1>Ostatnie wiadomości</h1>
-        <h3>Wkrótce!</h3>
+        <div class="fontMedium">Ostatnie wiadomości</div>
+        <div class="fontMedium">Wkrótce!</div>
       </div>
     </div>
   </div>

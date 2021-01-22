@@ -12,10 +12,10 @@ import { ClassService } from '../../../core/classService/class.service';
   styleUrls: ['./classrom.component.scss']
 })
 export class ClassromComponent implements OnInit {
+  @ViewChild('subject') subjectDiv;
   userRole: 0 | 1 | 2;
   classrom: Classrom;
   subjects: [Subject];
-  @ViewChild('subject') subjectDiv;
   constructor(
     public main: MainService,
     private route: ActivatedRoute,

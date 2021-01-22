@@ -32,7 +32,7 @@ export class MainService {
   loginViaToken() {
     return this.http.get(this.api + 'UserAuth/loginviatoken', { headers }).subscribe((res: UserServerResponse) => {
       this.shared.loading = false;
-      this.setUserData(res);
+      this.setUserDataAndToken(res);
       this.redirect();
     }, () => {
       this.shared.loading = false;
@@ -41,14 +41,16 @@ export class MainService {
 
   login(user: User) {
     return this.http.post(this.api + 'UserAuth/login' , user).subscribe((res: UserServerResponse) => {
-      this.setUserData(res);
+      this.shared.loading = false;
+      this.setUserDataAndToken(res);
       this.redirect();
     });
   }
 
   register(user) {
     return this.http.post(this.api + 'UserAuth/register', user).subscribe((res: UserServerResponse) => {
-      this.setUserData(res);
+      this.shared.loading = false;
+      this.setUserDataAndToken(res);
       this.toastr.success('Rejestracja przebiegła pomyślnie', 'Udało się!');
       this.shared.openRegisterModal();
       this.redirect();
@@ -62,7 +64,7 @@ export class MainService {
     this.redirect();
   }
 
-  setUserData(res: UserServerResponse) {
+  setUserDataAndToken(res: UserServerResponse) {
     this.user = res.userToReturn;
     this.classrom = res.classes;
     if (res.token) {

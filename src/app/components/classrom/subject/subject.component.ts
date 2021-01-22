@@ -18,18 +18,18 @@ import { Homework } from '../../../core/models/Homework';
   styleUrls: ['./subject.component.scss']
 })
 export class SubjectComponent implements OnInit {
-  userRole;
-  currentHomeworks = [];
-  finishedHomeworks = [];
-  currentlyShowed: 'liveHomeworks' | 'finishedHomeworks' | 'chat' = 'liveHomeworks';
-  whichHomeworks = 1;
-  showChat = false;
-  currentTime;
   @Input() set currentSubSet(sub) {
     this.showChat = false;
     this.sortHomeworks(this.currentTime);
   }
   @ViewChild('timeValue') timeValue;
+  userRole;
+  currentHomeworks = [];
+  finishedHomeworks = [];
+  currentlyShowed: 'liveHomeworks' | 'finishedHomeworks' | 'chat' = 'liveHomeworks';
+  showChat = false;
+  currentTime;
+
   constructor(
     public main: MainService,
     private classService: ClassService,
@@ -37,8 +37,7 @@ export class SubjectComponent implements OnInit {
     private router: Router,
     private location: Location,
     private shared: SharedService
-  ) {
-  }
+  ) {}
   ngOnInit(): void {
     if (!this.main.currentClassrom) {
       this.router.navigateByUrl('classrom/0');

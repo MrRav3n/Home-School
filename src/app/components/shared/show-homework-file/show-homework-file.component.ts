@@ -11,6 +11,9 @@ import { Homework } from '../../../core/models/Homework';
   styleUrls: ['./show-homework-file.component.scss']
 })
 export class ShowHomeworkFileComponent implements OnInit {
+  @Input() set homeworkSet(hom) {
+    this.homework = hom;
+  }
   src = [];
   homework: Homework;
   names = [];
@@ -27,9 +30,7 @@ export class ShowHomeworkFileComponent implements OnInit {
     private classService: ClassService,
     private sanitizer: DomSanitizer,
   ) { }
-  @Input() set homeworkSet(hom) {
-    this.homework = hom;
-}
+
   ngOnInit(): void {
   }
   getSrc(i) {
@@ -41,9 +42,8 @@ export class ShowHomeworkFileComponent implements OnInit {
   downloadFile(url, fileName) {
     const file = fileName.split('.');
     const finalFileName = this.homework.name + '.' + file[file.length - 1];
-    const a = document.createElement('a');
+    const a: any = document.createElement('a');
     document.body.appendChild(a);
-    // @ts-ignore
     a.style = 'display: none';
     a.href = url;
     a.download = finalFileName;

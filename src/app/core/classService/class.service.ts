@@ -95,7 +95,6 @@ export class ClassService {
   deleteSubject(subject) {
     return this.http.put(this.api + 'Class/deleteSubject', subject).subscribe(res => {
       this.toastr.success('Usunięto zadanie.', 'Udało się!');
-
     });
   }
 }

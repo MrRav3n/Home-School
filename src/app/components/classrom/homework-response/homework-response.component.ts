@@ -6,14 +6,9 @@ import { Response } from '../../../core/models/Response';
   templateUrl: './homework-response.component.html',
   styleUrls: ['./homework-response.component.scss']
 })
-export class HomeworkResponseComponent implements OnInit {
+export class HomeworkResponseComponent {
   response: Response;
   @Input() set responseSet(response: Response)  {
     this.response = response;
   }
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -34,6 +34,7 @@ import { ShowResponseFileComponent } from './components/shared/show-response-fil
 import { ShowMembersComponent } from './components/models/show-members/show-members.component';
 import { TextChatComponent } from './components/classrom/text-chat/text-chat.component';
 import { AddHomeworkComponent } from './components/classrom/subject/add-homework/add-homework.component';
+import { AddHomeworkResponseComponent } from './components/classrom/homework/add-homework-response/add-homework-response.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { AddHomeworkComponent } from './components/classrom/subject/add-homework
     ShowMembersComponent,
     TextChatComponent,
     AddHomeworkComponent,
+    AddHomeworkResponseComponent,
   ],
   imports: [
     BrowserModule,

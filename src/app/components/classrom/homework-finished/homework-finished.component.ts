@@ -12,6 +12,12 @@ import { ClassService } from '../../../core/classService/class.service';
   styleUrls: ['./homework-finished.component.scss']
 })
 export class HomeworkFinishedComponent implements OnInit {
+  @Input() set homeworkSet(homework) {
+    this.setHomeworkData(homework);
+  }
+  @Input() set iteratorSet(iter: number) {
+    this.iterator = iter;
+  }
   homework: Homework;
   iterator: number;
   clickedStatus = false;
@@ -20,18 +26,12 @@ export class HomeworkFinishedComponent implements OnInit {
   sendTime: string;
   text = '';
   allResponses: [Response];
-  @Input() set homeworkSet(hom) {
-    this.homework = hom;
-
-    this.startTime = moment(this.homework.createDate).format('YYYY-MM-DD HH:mm:ss');
-
-    this.endTime = moment(this.homework.endDate).format('YYYY-MM-DD HH:mm:ss');
-
-    this.sendTime = moment(this.homework.createDate).format('YYYY-MM-DD HH:mm:ss');
-    this.allResponses = this.homework.responses;
-  }
-  @Input() set iteratorSet(iter: number) {
-    this.iterator = iter;
+  setHomeworkData(homework: Homework) {
+    this.homework = homework;
+    this.startTime = moment(homework.createDate).format('YYYY-MM-DD HH:mm:ss');
+    this.endTime = moment(homework.endDate).format('YYYY-MM-DD HH:mm:ss');
+    this.sendTime = moment(homework.createDate).format('YYYY-MM-DD HH:mm:ss');
+    this.allResponses = homework.responses;
   }
 
   constructor(
@@ -41,15 +41,13 @@ export class HomeworkFinishedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.shared.openHomework.subscribe(res => {
-      if (res.mark) {
-        for (let i = 0; i < this.allResponses.length; i++) {
-          if (this.allResponses[i].id === res.id) {
-            this.allResponses[i].mark = res.mark;
-            this.filter();
-            break;
-          }
+      if (!res.mark) { return; }
+      for (let i = 0; i < this.allResponses.length; i++) {
+        if (this.allResponses[i].id === res.id) {
+          this.allResponses[i].mark = res.mark;
+          this.filter();
+          break;
         }
       }
     });
@@ -63,6 +61,7 @@ export class HomeworkFinishedComponent implements OnInit {
       );
     }) as [Response];
   }
+
   addFocusClass() {
     if (this.clickedStatus) {
       setTimeout(() => this.clickedStatus = !this.clickedStatus, 400);
@@ -70,9 +69,11 @@ export class HomeworkFinishedComponent implements OnInit {
       this.clickedStatus = !this.clickedStatus;
     }
   }
+
   showGrades() {
     this.shared.openMarksListModal(this.allResponses);
   }
+
   deleteHomework() {
     const bodyToSend = {
       classID: this.main.currentClassrom.id,
@@ -81,11 +82,10 @@ export class HomeworkFinishedComponent implements OnInit {
     };
     this.classService.deleteHomework(bodyToSend);
   }
+
   openHomeworkModal(response) {
     response.homeworkID = this.homework.id;
     response.singleHomework = true;
     this.shared.openHomeworkModal(response);
   }
-
-
 }

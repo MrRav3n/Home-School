@@ -15,21 +15,25 @@ export class ShowCodeComponent implements OnInit {
     private shared: SharedService,
     private toastr: ToastrService
   ) { }
-  copyCodeFunc() {
-    document.addEventListener('copy', (e) => {
-      e.clipboardData.setData('text/plain', this.codeCopy.nativeElement.textContent);
-      e.preventDefault();
-    });
-    document.execCommand('copy');
-    this.shared.openCodeModal('');
-    this.toastr.success('Możesz go teraz łatwo wysłać swoim uczniom.', 'Skopiowano kod!');
 
-  }
   ngOnInit(): void {
     this.shared.openCode.subscribe(res => {
       this.code = res;
       this.showCode.nativeElement.click();
     });
+  }
+
+  copyCodeFunc() {
+    document.addEventListener('copy', (e) => {
+      this.clipboardDataSet(e);
+    });
+    document.execCommand('copy');
+    this.shared.openCodeModal('');
+    this.toastr.success('Możesz go teraz łatwo wysłać swoim uczniom.', 'Skopiowano kod!');
+  }
+  clipboardDataSet(e: ClipboardEvent) {
+    e.clipboardData.setData('text/plain', this.codeCopy.nativeElement.textContent);
+    e.preventDefault();
   }
 
 }

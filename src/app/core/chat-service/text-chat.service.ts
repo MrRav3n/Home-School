@@ -9,7 +9,7 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class TextChatService {
-  api = this.shared.apiText;
+  api = this.shared.apiChatUrl;
   constructor(
     private http: HttpClient,
     private main: MainService,

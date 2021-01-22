@@ -14,11 +14,5 @@ export class NavbarComponent implements OnInit {
     public shared: SharedService,
     public main: MainService,
   ) { }
-  ngOnInit(): void {
-  }
-  ngAfterViewInit() {
-    // this.shared.openRegisterModal();
-  }
-
-
+  ngOnInit(): void {}
 }

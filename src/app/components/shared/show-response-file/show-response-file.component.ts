@@ -60,13 +60,9 @@ export class ShowResponseFileComponent implements OnInit {
         fileID: this.response.files[i]
       };
       this.classService.returnFileFromResponse(fileData).subscribe(res => {
-        // TODO: fix it!
-        // @ts-ignore
         const type = res.headers.get('Content-Type');
-        // @ts-ignore
         const fileName = res.headers.get('filename');
         this.names.push(fileName);
-        // @ts-ignore
         const file = new Blob([res.body], {type});
         const fileURL = URL.createObjectURL(file);
         if (!this.mimes.includes(type)) {

@@ -17,7 +17,6 @@ export class RegisterComponent implements OnInit {
   constructor(
     public shared: SharedService,
     private main: MainService,
-    private toastr: ToastrService
   ) {
     this.registerForm = new FormGroup({
     email: new FormControl('dawid@wp.pl', [Validators.required, Validators.email]),
@@ -40,7 +39,6 @@ export class RegisterComponent implements OnInit {
       this.main.register(this.registerForm.value);
     }
   }
-  // select you are student or teacher ( 0 - student, 1 - teacher)
   select(select: number) {
     this.selectedRole = select;
   }

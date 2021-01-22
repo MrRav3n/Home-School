@@ -1,7 +1,5 @@
-<!-- Button trigger modal -->
 <button type="button" #showCode class="d-none" data-toggle="modal" data-target="#openCodeModal"></button>
 
-<!-- Modal -->
 <div class="modal fade" id="openCodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" (click)="copyCodeFunc()">
@@ -10,8 +8,6 @@
         <h4 class="text-center d-block col-12">Wyślij ten kod do wszystkich uczniów którzy chcą dołączyć do tej klasy.</h4>
         <div class="code col-12" #codeCopy>{{code}}</div>
       </div>
-
-
     </div>
   </div>
 </div>

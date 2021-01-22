@@ -13,9 +13,7 @@ export class MainTeacherComponent implements OnInit {
     public shared: SharedService
   ) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   showCode(e, id) {
     e.stopPropagation();
     e.preventDefault();

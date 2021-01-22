@@ -10,13 +10,13 @@ import { User } from '../../../core/models/User';
 export class ProfileComponent implements OnInit {
   user: User;
   constructor(
-    private main: MainService
+    public main: MainService
   ) { }
+  ngOnInit(): void {
+    this.getUser();
+  }
   getUser() {
     this.user = this.main.user;
-  }
-  ngOnInit(): void {
-  this.getUser();
   }
 
 }

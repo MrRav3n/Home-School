@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedService } from './core/shared/shared.service';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
 import { WelcomeComponent } from './components/welcome-page/welcome/welcome.component';
 import { LoginComponent } from './components/models/login/login.component';
 import { RegisterComponent } from './components/models/register/register.component';
@@ -39,7 +38,6 @@ import { AddHomeworkResponseComponent } from './components/classrom/homework/add
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent,
     WelcomeComponent,
     LoginComponent,
     RegisterComponent,

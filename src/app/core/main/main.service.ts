@@ -16,7 +16,7 @@ const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 export class MainService {
   classrom: [Classrom];
   user: User;
-  api = this.shared.api;
+  api = this.shared.apiUrl;
   currentClassrom: Classrom;
   currentSubject: Subject;
   isEducator;

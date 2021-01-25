@@ -2,10 +2,10 @@
   <h1 class="text-center p-5">Ta klasa nie ma jescze żadnych przedmiotów</h1>
 </div>
 
-<div class="cover p-3" *ngIf="checkIfSubjectsExists">
+<div class="cover p-3" *ngIf="checkIfSubjectsExists()">
   <div class="">
     <div class="text-center mainDiv row p-0 justify-content-center align-items-center">
-      <div class="pb-3 collapseClass col-12 row justify-content-center" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
+      <div class="collapseClass col-12 row justify-content-center" data-toggle="collapse" href="#collapseExample" aria-expanded="false">
         <div class="fontBigger">
           {{this.classrom.className}}
         </div>

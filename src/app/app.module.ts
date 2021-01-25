@@ -86,7 +86,7 @@ import { AddHomeworkResponseComponent } from './components/classrom/homework/add
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
       multi: true,
-      deps: [ToastrService]
+      deps: [ToastrService, SharedService]
     }
   ],
 

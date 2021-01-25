@@ -9,7 +9,7 @@ import { Subject } from '../models/Subject';
 import { ToastrService } from 'ngx-toastr';
 import { UserServerResponse } from '../models/UserServerResponse';
 
-const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+const errorInterceptorSkip = new HttpHeaders().set(InterceptorSkipHeader, '');
 @Injectable({
   providedIn: 'root'
 })
@@ -30,7 +30,7 @@ export class MainService {
   ) { }
 
   loginViaToken() {
-    return this.http.get(this.api + 'UserAuth/loginviatoken', { headers }).subscribe((res: UserServerResponse) => {
+    return this.http.get(this.api + 'UserAuth/loginviatoken', { headers: errorInterceptorSkip }).subscribe((res: UserServerResponse) => {
       this.shared.loading = false;
       this.setUserDataAndToken(res);
       this.redirect();

@@ -29,7 +29,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           this.shared.loading = false;
           let errorTitle = '';
           let errorMessage = '';
-
           if (error.error) {
             errorTitle = error.error.err;
             errorMessage = error.error.desc;

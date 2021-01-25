@@ -13,16 +13,14 @@ export class AuthInterceptor implements HttpInterceptor {
             next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idToken = localStorage.getItem('homeschooltoken');
-
-    if (idToken) {
-      const cloned = req.clone({
-        headers: req.headers.set('Authorization',
-          'Bearer ' + idToken)
-      });
-
-      return next.handle(cloned);
-    } else {
+    if (!idToken) {
       return next.handle(req);
     }
+    const cloned = req.clone({
+      headers: req.headers.set('Authorization',
+        'Bearer ' + idToken)
+    });
+    return next.handle(cloned);
+
   }
 }

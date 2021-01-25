@@ -25,9 +25,11 @@ export class ClassromComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.main.currentClassrom = this.main.classrom[+params.get('classID')];
-      this.classrom = this.main.currentClassrom;
-      this.subjects = this.classrom.subjects;
-      this.main.isEducator = this.main.user.id === this.classrom.creatorID;
+      if (this.main.currentClassrom) {
+        this.classrom = this.main.currentClassrom;
+        this.subjects = this.classrom?.subjects;
+        this.main.isEducator = this.main.user.id === this.classrom.creatorID;
+      }
       this.setCurrentSubject(0);
     });
   }
@@ -44,7 +46,7 @@ export class ClassromComponent implements OnInit {
     }
   }
   checkIfSubjectsExists() {
-    return !!this.main.currentClassrom.subjects[0];
+    return !!this.main.currentClassrom?.subjects[0];
   }
   showMembers() {
     this.classService.showClassromMembers({classID: this.main.currentClassrom.id}).subscribe(res => {
@@ -61,7 +63,7 @@ export class ClassromComponent implements OnInit {
       this.main.currentSubject = this.main.currentClassrom.subjects[i];
       this.subjectDiv.nativeElement.classList.toggle('opacity0');
     } else {
-      this.main.currentSubject = this.main.currentClassrom.subjects[i];
+      this.main.currentSubject = this.main.currentClassrom?.subjects[i];
     }
     this.checkUserRole();
   }

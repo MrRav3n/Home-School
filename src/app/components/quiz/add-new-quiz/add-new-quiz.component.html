@@ -1,0 +1,34 @@
+<form [formGroup]="quizForm" class="row justify-content-around p-md-3 p-0">
+  <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
+    <div class="form-group col-md-4 col-12 mb-md-5 p-0">
+      <h3 class="text-white termin">Nazwa zadania</h3>
+      <label for='numberPeople'></label><input type="email" class="form-control" placeholder="Nazwa" name="name" id='numberPeople' required formControlName="name"/>
+      <div *ngIf="quizForm.controls.name.invalid && submitted" class="alert alert-danger">
+        Podaj nazwę zadania.
+      </div>
+    </div>
+    <div class="col-md-4 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
+      <h3 class="text-white termin text-left">Termin rozpoczęcia testu</h3>
+      <div id="startDatePicker">   </div>
+      <input type="hidden" id="startDate" value="" #startDate>
+      <div *ngIf="quizForm.controls.time.invalid && submitted" class="alert alert-danger">
+        Podaj termin rozpoczęcia testu.
+      </div>
+    </div>
+    <div class="col-md-4 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
+      <h3 class="text-white termin text-left">Termin zakończenia testu</h3>
+      <div id="finishDatePicker">   </div>
+      <input type="hidden" id="endDate" value="" #finishDate>
+      <div *ngIf="quizForm.controls.time.invalid && submitted" class="alert alert-danger">
+        Podaj termin zakończenia testu.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group col-12">
+    <h3 class="text-white termin">Dodaj pytanie</h3>
+    <button class="formBtn" (click)="addQuestion()">Dodaj link</button>
+  </div>
+
+  <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewHomework()">Dodaj</button>
+</form>

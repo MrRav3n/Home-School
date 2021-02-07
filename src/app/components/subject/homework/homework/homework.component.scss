@@ -1,0 +1,50 @@
+.singeHomeworkDesc {
+  background: #43AA8B;
+  border-radius: var(--rad);
+  padding: 10px;
+  transition: 0.3s all;
+  border: 2px solid inherit;
+}
+.singeHomeworkDesc:hover {
+  -webkit-box-shadow: 0 0 10px 3px rgba(0,0,0,1);
+  -moz-box-shadow: 0 0 10px 3px rgba(0,0,0,1);
+  box-shadow: 0 0 10px 3px rgba(0,0,0,1);
+}
+.singeHomeworkDescFocused {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.homeworkDesc {
+  border: 2px solid black;
+  border-bottom-right-radius: var(--rad);
+  border-bottom-left-radius: var(--rad);
+  background: #90BE6D;
+}
+.iframeWrapper{
+  display:inline-block;
+  position:relative;
+}
+.iframeWrapper iframe{
+  vertical-align:top;
+  pointer-events: none; /* let any clicks go trough me */
+}
+.files {
+  padding: 20px 0;
+  border-top: 2px solid black;
+}
+
+.openInBrowserBtn {
+  border-bottom-right-radius: 0;
+  color: grey;
+  border-bottom-left-radius: 0;
+}
+.progress {
+  height: 35px;
+  font-size:20px;
+}
+.green {
+  background: green;
+}
+.description {
+  border-bottom: 2px solid black;
+}

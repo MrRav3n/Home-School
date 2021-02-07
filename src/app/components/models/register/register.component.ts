@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SharedService } from '../../../core/shared/shared.service';
-import { MainService } from '../../../core/main/main.service';
+import { SharedService } from '../../../core/services/shared.service';
+import { MainService } from '../../../core/services/main.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-register',
@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   selectedRole = 0;
   submitted = false;
+
   constructor(
     public shared: SharedService,
     private main: MainService,
@@ -28,10 +29,11 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shared.openRegister.subscribe(res => {
+    this.shared.openRegister.subscribe(() => {
       this.openRegister.nativeElement.click();
     });
   }
+
   submit() {
     this.submitted = true;
     this.registerForm.setControl('userRole',  new FormControl(this.selectedRole));
@@ -39,6 +41,7 @@ export class RegisterComponent implements OnInit {
       this.main.register(this.registerForm.value);
     }
   }
+
   select(select: number) {
     this.selectedRole = select;
   }

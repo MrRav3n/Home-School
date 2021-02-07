@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MainService } from './core/main/main.service';
-import { SharedService } from './core/shared/shared.service';
+import { MainService } from './core/services/main.service';
+import { SharedService } from './core/services/shared.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

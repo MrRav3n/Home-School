@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SharedService } from '../../../core/shared/shared.service';
-import { MainService } from '../../../core/main/main.service';
+import { SharedService } from '../../../core/services/shared.service';
+import { MainService } from '../../../core/services/main.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   @ViewChild('openModal') openModal;
   loginForm: FormGroup;
   submitted = false;
+
   constructor(
     public shared: SharedService,
     private main: MainService
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
       this.openModal.nativeElement.click();
     });
   }
+
   submit() {
     this.submitted = true;
     if (this.loginForm.valid) {

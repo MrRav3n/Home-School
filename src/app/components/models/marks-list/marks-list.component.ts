@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Response } from '../../../core/models/Response';
-import { SharedService } from '../../../core/shared/shared.service';
+import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
   selector: 'app-marks-list',
@@ -9,7 +9,7 @@ import { SharedService } from '../../../core/shared/shared.service';
 })
 export class MarksListComponent implements OnInit  {
   @ViewChild('showMarksList') showMarksList;
-  response: [Response];
+  response: Response[];
   constructor(
     private shared: SharedService,
   ) {}
@@ -17,7 +17,7 @@ export class MarksListComponent implements OnInit  {
   ngOnInit(): void {
     this.shared.openMarksList.subscribe(res => {
       this.response = res;
-      this.showMarksList.nativeElement.click()
+      this.showMarksList.nativeElement.click();
     });
   }
 }

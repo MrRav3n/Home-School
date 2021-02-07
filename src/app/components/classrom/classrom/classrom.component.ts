@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MainService } from '../../../core/main/main.service';
+import { MainService } from '../../../core/services/main.service';
 import { ActivatedRoute } from '@angular/router';
 import { Classrom } from '../../../core/models/Classrom';
 import { Subject } from '../../../core/models/Subject';
-import { SharedService } from '../../../core/shared/shared.service';
-import { ClassService } from '../../../core/classService/class.service';
+import { SharedService } from '../../../core/services/shared.service';
+import { ClassService } from '../../../core/services/class.service';
 
 @Component({
   selector: 'app-classrom',
@@ -15,7 +15,7 @@ export class ClassromComponent implements OnInit {
   @ViewChild('subject') subjectDiv;
   userRole: 0 | 1 | 2;
   classrom: Classrom;
-  subjects: [Subject];
+  subjects: Subject[];
   constructor(
     public main: MainService,
     private route: ActivatedRoute,

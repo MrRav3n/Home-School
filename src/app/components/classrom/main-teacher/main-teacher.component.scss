@@ -1,0 +1,46 @@
+.mainDiv {
+  background: var(--main);
+  padding:25px;
+  clip-path: polygon(50% 0%, 100% 0, 100% 65%, 50% 100%, 0 65%, 0 0);
+}
+@media(max-width: 720px) {
+  .mainDiv {
+    clip-path: polygon(50% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0) !important;
+  }
+}
+.singleClassrom {
+
+  background: var(--submit);
+  cursor: pointer;
+  border-radius: var(--rad);
+  transition: 0.5s all ease;
+}
+.singleClassrom:hover {
+  -webkit-box-shadow: 0 0 14px 6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0 0 14px 6px rgba(0,0,0,0.75);
+  box-shadow: 0 0 14px 6px rgba(0,0,0,0.75);
+}
+.classromDiv {
+
+  background: #577590;
+  border-radius: var(--rad);
+  margin-top:40px;
+}
+
+.rest {
+  min-height: 100%;
+  padding-top: 150px;
+  margin-top: -150px;
+  background: #E0FBFC;
+}
+.showCode {
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  background: var(--warn);
+  border-radius: var(--rad);
+  transition: all 0.3s;
+}
+.showCode:hover {
+  background: #ff8e00;
+}

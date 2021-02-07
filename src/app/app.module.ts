@@ -2,38 +2,42 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedService } from './core/shared/shared.service';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { WelcomeComponent } from './components/welcome-page/welcome/welcome.component';
+import { SharedService } from './core/services/shared.service';
+import { NavbarComponent } from './components/static-pages/navbar/navbar.component';
+import { WelcomeComponent } from './components/static-pages/welcome/welcome.component';
 import { LoginComponent } from './components/models/login/login.component';
 import { RegisterComponent } from './components/models/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { MainTeacherComponent } from './components/teacher/main-teacher/main-teacher.component';
-import { NewClassromComponent } from './components/teacher/new-classrom/new-classrom.component';
-import { ContactComponent } from './components/shared/contact/contact.component';
-import { ProfileComponent } from './components/shared/profile/profile.component';
+import { MainTeacherComponent } from './components/classrom/main-teacher/main-teacher.component';
+import { ManageClassromComponent } from './components/classrom/manage-classrom/manage-classrom.component';
+import { ContactComponent } from './components/static-pages/contact/contact.component';
+import { ProfileComponent } from './components/static-pages/profile/profile.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from './core/auth/auth.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpErrorInterceptor } from './core/interceptor/http-error.interceptor';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { ClassromComponent } from './components/classrom/classrom/classrom.component';
-import { SubjectComponent } from './components/classrom/subject/subject.component';
-import { HomeworkComponent } from './components/classrom/homework/homework.component';
-import { SpinnerComponent } from './components/shared/spinner/spinner.component';
-import { HomeworkFinishedComponent } from './components/classrom/homework-finished/homework-finished.component';
-import { HomeworkResponseComponent } from './components/classrom/homework-response/homework-response.component';
+import { SubjectComponent } from './components/subject/subject/subject.component';
+import { HomeworkComponent } from './components/subject/homework/homework/homework.component';
+import { SpinnerComponent } from './components/static-pages/spinner/spinner.component';
+import { HomeworkFinishedComponent } from './components/subject/homework/homework-finished/homework-finished.component';
+import { HomeworkResponseComponent } from './components/subject/homework/homework-response/homework-response.component';
 import { ShowCodeComponent } from './components/models/show-code/show-code.component';
 import {
   HomeworkResponseModalComponent
 } from './components/models/homework-response/homework-response-modal.component';
 import { MarksListComponent } from './components/models/marks-list/marks-list.component';
-import { ShowHomeworkFileComponent } from './components/shared/show-homework-file/show-homework-file.component';
-import { ShowResponseFileComponent } from './components/shared/show-response-file/show-response-file.component';
+// tslint:disable-next-line:max-line-length
+import { ShowHomeworkFileComponent } from './components/subject/homework/show-homework-data/show-homework-file/show-homework-file.component';
+// tslint:disable-next-line:max-line-length
+import { ShowResponseFileComponent } from './components/subject/homework/show-homework-data/show-response-file/show-response-file.component';
 import { ShowMembersComponent } from './components/models/show-members/show-members.component';
-import { TextChatComponent } from './components/classrom/text-chat/text-chat.component';
-import { AddHomeworkComponent } from './components/classrom/subject/add-homework/add-homework.component';
-import { AddHomeworkResponseComponent } from './components/classrom/homework/add-homework-response/add-homework-response.component';
+import { TextChatComponent } from './components/subject/text-chat/text-chat.component';
+import { AddHomeworkComponent } from './components/subject/homework/add-homework/add-homework.component';
+import { AddHomeworkResponseComponent } from './components/subject/homework/add-homework-response/add-homework-response.component';
+import { AddNewQuizComponent } from './components/quiz/add-new-quiz/add-new-quiz.component';
+import { AddQuestionToQuizComponent } from './components/quiz/add-question-to-quiz/add-question-to-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,7 @@ import { AddHomeworkResponseComponent } from './components/classrom/homework/add
     LoginComponent,
     RegisterComponent,
     MainTeacherComponent,
-    NewClassromComponent,
+    ManageClassromComponent,
     ContactComponent,
     ProfileComponent,
     ClassromComponent,
@@ -60,6 +64,8 @@ import { AddHomeworkResponseComponent } from './components/classrom/homework/add
     TextChatComponent,
     AddHomeworkComponent,
     AddHomeworkResponseComponent,
+    AddNewQuizComponent,
+    AddQuestionToQuizComponent,
   ],
   imports: [
     BrowserModule,

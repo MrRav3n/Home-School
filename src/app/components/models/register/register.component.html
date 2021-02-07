@@ -1,7 +1,5 @@
-<!-- Button trigger modal -->
 <button type="button" #openRegister class="d-none" data-toggle="modal" data-target="#registerModal"></button>
 
-<!-- Modal -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -13,14 +11,14 @@
         </div>
         <div class="row p-0 justify-content-between col-12 m-0">
           <div class="form__group field col-md-5 col-12 ">
-            <input type="email" class="form__field" formControlName="name" placeholder="Name" name="name" id='name'/>
+            <label for='name'></label><input type="email" class="form__field" formControlName="name" placeholder="Name" name="name" id='name'/>
             <label for="emailRegister" class="form__label">Imię</label>
             <div *ngIf="registerForm.controls.email.invalid && submitted" class="alert alert-danger">
               Podaj imię.
             </div>
           </div>
           <div class="form__group field col-md-5 col-12 ">
-            <input type="email" class="form__field" formControlName="surname" placeholder="Name" name="name" id='surname'/>
+            <label for='surname'></label><input type="email" class="form__field" formControlName="surname" placeholder="Name" name="name" id='surname'/>
             <label for="emailRegister" class="form__label">Nazwisko</label>
             <div *ngIf="registerForm.controls.email.invalid && submitted" class="alert alert-danger">
               Podaj nazwisko.

@@ -1,0 +1,79 @@
+<div class="row justify-content-around m-3">
+  <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
+     (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
+     aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
+    <div class="row justify-content-between m-0 p-0">
+      <div  class="m-0 p-1 col-md-6 col-12">
+        <h1>{{homework.name}}</h1>
+        <div *ngIf="main.currentRole === 0">
+          <div *ngIf="homework.responses[0]">
+            <div class="markMarked" *ngIf="homework.responses[0].mark" >Ocena: {{homework.responses[0].mark}}</div>
+            <div class="markNoMarked" *ngIf="!homework.responses[0].mark">Nie oceniono</div>
+          </div>
+        </div>
+      </div>
+      <div class="row col-md-6 text-md-right col-12">
+        <div class="m-0 p-1 col-12">Data dodania: {{startTime}}</div>
+        <div class="m-0 p-1 col-12">Termin: <span class="text-danger">{{endTime}}</span> </div>
+        <div class="m-0 p-1 col-12" *ngIf="main.currentRole === 0">Data odesłania:
+          <span class="text-danger" *ngIf="homework.responses[0]">{{sendTime}}</span>
+          <span class="text-danger" *ngIf="!homework.responses[0]">---------</span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <div class="collapse homeworkDesc col-11 p-0 row justify-content-start" [id]="'homework-' + iterator">
+    <div class="col-12 p-3">
+      <span class="infoSpan">Opis zadania</span>
+    </div>
+    <h2 class="pr-3 pl-3 pb-3 col-12 m-0 description">{{homework.description}}</h2>
+    <app-show-homework-file [homeworkSet]="homework" class="col-12 p-0"></app-show-homework-file>
+
+    <div *ngIf="main.currentRole === 0 && homework.responses[0]" class="col-12 p-0">
+      <app-homework-response [responseSet]="this.homework.responses[0]"></app-homework-response>
+    </div>
+
+<!--    teacher -->
+    <div *ngIf="main.currentRole === 1" class="homeworksList row m-0 p-3 justify-content-center col-12">
+      <div class="row p-0 justify-content-between col-12">
+        <div class="form-group col-md-4 col-10 row align-items-end">
+          <label>
+            <input type="email" class="form-control" placeholder="Filtruj listę" name="name" required [(ngModel)]="text" (ngModelChange)="filter()"/>
+          </label>
+        </div>
+        <div class="col-md-6 col-10 row pb-2 justify-content-center">
+          <button class="formBtn" (click)="showGrades()">Lista ocen</button>
+        </div>
+        <div class="col-md-2">
+          <i class="fas fa-trash" (click)="deleteHomework()"></i>
+        </div>
+      </div>
+      <div class="row p-0 justify-content-between col-12" *ngIf="homework.responses[0]">
+
+        <ul class="list-group mt-5 mb-3 col-12" *ngIf="this.homework.responses[0]">
+          <li class="list-group-item m-1" *ngFor="let res of this.homework.responses; let i=index" (click)="openHomeworkModal(res)">
+            <div class="row p-0 m-0">
+              <div class="col-12">
+                <h2 class="text-center d-block">Imię i nazwisko: {{res.senderName}} {{res.senderSurname}}</h2>
+                <h4 class="text-center d-block green" *ngIf="res.mark">Oceniono - {{res.mark}}</h4>
+                <h4 class="text-center d-block red" *ngIf="!res.mark">Nie oceniono</h4>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 row p-0"  *ngIf="!homework.responses[0]">
+        <h2 class="col-10 p-0">Nikt jeszcze nie odpowiedział na to zadanie.</h2>
+        <div class="col-2">
+          <i class="fas fa-trash" (click)="deleteHomework()"></i>
+        </div>
+      </div>
+    </div>
+<!--    student doesn't answear -->
+    <div *ngIf="main.currentRole === 0 && !homework.responses[0]" class="p-3">
+      <h2 class="text-center">Niestety nie zdążyłeś odpowiedzieć na to pytanie</h2>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,51 @@
+<div class="goBackDiv d-block d-md-none" (click)="goBack()">Wybierz przedmiot</div>
+<div class="col-12 pt-5 pt-md-0" *ngIf="checkIfEducator()">
+    <h1 class="text-center">Brak dostępu do danych przedmiotu. Nie jesteś jego nauczycielem</h1>
+</div>
+<div *ngIf="!checkIfEducator()">
+  <div class="text-center subHeader pt-5 pt-md-0 text-wrap fontBigger">{{this.main.currentSubject.name}}</div>
+  <div class="row justify-content-around subButtons p-3 m-0 mb-5">
+    <a class="example_f col-12 col-md-3 fontNormal" *ngIf="checkIfEducator() || checkIfTeacher()" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
+    <a class="example_f col-12 col-md-3 fontNormal" *ngIf="checkIfEducator() || checkIfTeacher()" data-toggle="collapse" href="#addNewQuiz"><span>Dodaj test</span></a>
+    <a class="example_f col-12 col-md-3 fontNormal" (click)="navigateOverSubject('chat')"><span>Otwórz chat</span></a>
+    <a class="example_f col-12 col-md-5 fontNormal" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks' || whatIsCurrentlyShowed() === 'chat'" (click)="navigateOverSubject('liveHomeworks')"><span>Pokaż najnowsze zadania</span></a>
+    <a class="example_f col-12 col-md-5 fontNormal" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'" (click)="navigateOverSubject('finishedHomeworks')"><span>Przejdź do archiwum</span></a>
+    <div class="col-12 pt-3">
+      <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
+        <app-add-homework (newHomework)="outputNewHomework($event)"></app-add-homework>
+      </div>
+    </div>
+    <div class="col-12 pt-3">
+      <div class="addNewHomeworkForm collapse col-12" id="addNewQuiz">
+        <app-add-new-quiz></app-add-new-quiz>
+      </div>
+    </div>
+  </div>
+  <!-- div for students -->
+  <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'">
+    <div *ngIf="this.main.currentRole === 0">
+      <h1 class="text-center subHomeworks fontMedium" >Zadania do zrobienia</h1>
+      <div *ngFor="let homework of this.currentHomeworks; let i=index">
+        <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
+      </div>
+    </div>
+  <!-- div for teachers -->
+    <div *ngIf="!checkIfStudent()">
+      <h1 class="text-center subHomeworks" >Obecnie trwające</h1>
+      <div *ngFor="let homework of this.currentHomeworks; let i=index">
+        <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
+      </div>
+    </div>
+  </div>
+  <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks'">
+    <h1 class="text-center subHomeworks">Zakończone zadania</h1>
+    <div *ngFor="let homework of this.finishedHomeworks; let i=index">
+      <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
+    </div>
+  </div>
+  <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'chat'">
+    <h1 class="text-center subHomeworks">Chat</h1>
+    <app-text-chat></app-text-chat>
+  </div>
+</div>
+

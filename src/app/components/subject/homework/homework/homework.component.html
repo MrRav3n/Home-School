@@ -1,6 +1,6 @@
 <div class="row justify-content-center m-3">
   <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
-     (click)="addFocusClass()" role="button" [href]="'#homework-'+iterator"
+     (click)="addFocusClass()" role="button" [href]="'#quiz-'+iterator"
      aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
     <div class="row justify-content-between m-0 p-0">
       <div  class="m-0 p-1 col-md-6 col-12"><div class="fontMedium">{{homework.name}}</div></div>
@@ -14,7 +14,7 @@
     </div>
   </a>
 
-  <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'homework-' + iterator">
+  <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'quiz-' + iterator">
     <div class="col-12 row justify-content-center p-0">
       <div class="col-12 p-3">
         <span class="infoSpan">Opis zadania</span>

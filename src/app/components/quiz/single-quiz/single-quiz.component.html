@@ -1,0 +1,56 @@
+<div class="row justify-content-center m-3">
+  <a class="font-weight-bold pb-3 col-11 singeHomeworkDesc" data-toggle="collapse"
+     (click)="addFocusClass()" role="button" [href]="'#quiz-'+iterator"
+     aria-expanded="false" aria-controls="collapseExample" [ngClass]="{'singeHomeworkDescFocused': clickedStatus}">
+    <div class="row justify-content-between m-0 p-0">
+      <div  class="m-0 p-1 col-md-6 col-12"><div class="fontMedium">{{quiz.name}}</div></div>
+      <div class="row col-md-6 col-12 text-md-right">
+        <div class="m-0 p-1 col-12">Data rozpoczęcia: {{startTime}}</div>
+        <div class="m-0 p-1 col-12">Data zakończenia: <span class="text-danger">{{endTime}}</span> </div>
+      </div>
+      <div class="col-12 m-0 p-1">
+        <h3 *ngIf="quiz.status === 'ACTIVE'">Aktywny</h3>
+        <h3 *ngIf="quiz.status !== 'ACTIVE'">Wygasł</h3>
+      </div>
+    </div>
+  </a>
+
+  <div class="collapse homeworkDesc col-11 row justify-content-center p-0" [id]="'quiz-' + iterator">
+    <div class="col-12 row justify-content-center p-0" *ngIf="this.main.currentRole === 0">
+      <div class="col-12 p-3">
+        <div class="infoSpan text-center col-12" (click)="startTest()">Przystąp do testu</div>
+      </div>
+      <div *ngFor="let question of questions; let i = index" class="col-10">
+        <h3>{{question.question}}</h3>
+        <ol type="a">
+          <li class="answerLi" *ngFor="let answer of question.answers" (click)="selectAnswer(answer, i)">
+            <span class="answer" [ngClass]="{'bg-green': this.selectedAnswers[i] === answer}">
+              {{answer}}
+            </span>
+          </li>
+        </ol>
+      </div>
+      <button *ngIf="questions" (click)="completeQuiz()" class="formBtn col-6 mb-2 mb-md-0 col-md-6">Zakończ test</button>
+    </div>
+    <div class="col-12 row justify-content-center p-0" *ngIf="this.main.currentRole !== 0">
+      <div class="col-12 p-3">
+        <div class="infoSpan text-center col-12" (click)="startTest()">Pokaż pytania</div>
+        <div *ngFor="let question of questions;" class="col-10">
+          <h3>{{question.question}}</h3>
+          <ol type="a">
+            <li class="answerLi" *ngFor="let answer of question.answers">
+            <span class="answerLi">
+              {{answer}}
+            </span>
+            </li>
+          </ol>
+        </div>
+        <div class="infoSpan text-center col-12" (click)="startTest()">Pokaż odpowiedzi</div>
+        <div *ngFor="let answers of answers;" class="col-10">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -76,7 +76,7 @@ export class MainService {
     if (!this.user) {
       this.router.navigateByUrl('');
     } else if (this.user.userRole === 0) {
-      this.router.navigateByUrl('student');
+      this.router.navigateByUrl('/classrom/0');
     } else if (this.user.userRole === 1) {
       this.router.navigateByUrl('/classrom/0');
     }

@@ -53,10 +53,14 @@ export class AddNewQuizComponent implements OnInit {
     if (this.quizForm.valid) {
       this.quizForm.addControl('questions', new FormControl(this.questions));
       this.quizService.createQuiz(this.quizForm.value);
-      this.quizForm.reset();
-      this.questions = [];
+      this.resetForm();
     }
-    return;
+  }
+
+  resetForm() {
+    this.quizForm.reset();
+    this.questions = [];
+    this.submitted = false;
   }
 
   addQuestion() {

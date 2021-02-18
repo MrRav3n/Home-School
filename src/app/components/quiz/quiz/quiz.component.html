@@ -1,1 +1,3 @@
-<p>quiz works!</p>
+<div *ngFor="let quiz of this.quizes; let i=index">
+  <app-single-quiz [quizSet]="quiz" [iteratorSet]="i"></app-single-quiz>
+</div>

@@ -8,8 +8,9 @@
     <a class="example_f col-12 col-md-3 fontNormal" *ngIf="checkIfEducator() || checkIfTeacher()" data-toggle="collapse" href="#addNewHomework"><span>Dodaj zadanie</span></a>
     <a class="example_f col-12 col-md-3 fontNormal" *ngIf="checkIfEducator() || checkIfTeacher()" data-toggle="collapse" href="#addNewQuiz"><span>Dodaj test</span></a>
     <a class="example_f col-12 col-md-3 fontNormal" (click)="navigateOverSubject('chat')"><span>Otwórz chat</span></a>
-    <a class="example_f col-12 col-md-5 fontNormal" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks' || whatIsCurrentlyShowed() === 'chat'" (click)="navigateOverSubject('liveHomeworks')"><span>Pokaż najnowsze zadania</span></a>
+    <a class="example_f col-12 col-md-5 fontNormal" *ngIf="whatIsCurrentlyShowed() !== 'liveHomeworks'" (click)="navigateOverSubject('liveHomeworks')"><span>Pokaż najnowsze zadania</span></a>
     <a class="example_f col-12 col-md-5 fontNormal" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'" (click)="navigateOverSubject('finishedHomeworks')"><span>Przejdź do archiwum</span></a>
+    <a class="example_f col-12 col-md-5 fontNormal" (click)="navigateOverSubject('quizes')"><span>Pokaż quizy</span></a>
     <div class="col-12 pt-3">
       <div class="addNewHomeworkForm collapse col-12" id="addNewHomework">
         <app-add-homework (newHomework)="outputNewHomework($event)"></app-add-homework>
@@ -42,6 +43,10 @@
     <div *ngFor="let homework of this.finishedHomeworks; let i=index">
       <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
     </div>
+  </div>
+  <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'quizes'">
+    <h1 class="text-center subHomeworks">Quizy</h1>
+    <app-quiz></app-quiz>
   </div>
   <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'chat'">
     <h1 class="text-center subHomeworks">Chat</h1>

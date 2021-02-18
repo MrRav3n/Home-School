@@ -1,6 +1,6 @@
 # HomeSchool
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.22.
+Home-School is a web application created for everyone by people exhausted by current educational solutions. Being able to take quizzes, submit tasks in the form of files or descriptions and communication with students in one place is a big advantage of this project.
 
 ## Development server
 

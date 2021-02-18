@@ -64,7 +64,7 @@ export class ClassService {
   addNewFileToHomework(classID: string, subjectID: string, fileToSend): Observable<any> {
     return this.http.post(this.shared.apiFilesUrl + 'HomeworkFiles/uploadToHomework/${classID}/${subjectID}', fileToSend, {
       reportProgress: true,
-      observe: 'events'
+      observe: 'events',
     });
   }
 

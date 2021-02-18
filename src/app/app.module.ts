@@ -38,6 +38,7 @@ import { AddHomeworkComponent } from './components/subject/homework/add-homework
 import { AddHomeworkResponseComponent } from './components/subject/homework/add-homework-response/add-homework-response.component';
 import { AddNewQuizComponent } from './components/quiz/add-new-quiz/add-new-quiz.component';
 import { AddQuestionToQuizComponent } from './components/quiz/add-question-to-quiz/add-question-to-quiz.component';
+import { QuizComponent } from './components/quiz/quiz/quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +67,7 @@ import { AddQuestionToQuizComponent } from './components/quiz/add-question-to-qu
     AddHomeworkResponseComponent,
     AddNewQuizComponent,
     AddQuestionToQuizComponent,
+    QuizComponent,
   ],
   imports: [
     BrowserModule,

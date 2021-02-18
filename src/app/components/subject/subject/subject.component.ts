@@ -23,7 +23,8 @@ export class SubjectComponent implements OnInit {
   userRole;
   currentHomeworks = [];
   finishedHomeworks = [];
-  currentlyShowed: 'liveHomeworks' | 'finishedHomeworks' | 'chat' = 'liveHomeworks';
+  currentlyShowed: 'liveHomeworks' | 'finishedHomeworks' | 'quizes' | 'chat' = 'liveHomeworks';
+
   showChat = false;
   currentTime;
 
@@ -51,7 +52,7 @@ export class SubjectComponent implements OnInit {
     });
   }
 
-  navigateOverSubject(whereToGo: 'liveHomeworks' | 'finishedHomeworks' | 'chat') {
+  navigateOverSubject(whereToGo: 'liveHomeworks' | 'finishedHomeworks' | 'chat' | 'quizes') {
     this.currentlyShowed = whereToGo;
   }
 

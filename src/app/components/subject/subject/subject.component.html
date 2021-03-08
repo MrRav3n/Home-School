@@ -26,21 +26,21 @@
   <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'liveHomeworks'">
     <div *ngIf="this.main.currentRole === 0">
       <h1 class="text-center subHomeworks fontMedium" >Zadania do zrobienia</h1>
-      <div *ngFor="let quiz of this.currentHomeworks; let i=index">
+      <div *ngFor="let homework of this.currentHomeworks; let i=index">
         <app-homework [homeworkSet]="homework" [iteratorSet]="i"></app-homework>
       </div>
     </div>
   <!-- div for teachers -->
     <div *ngIf="!checkIfStudent()">
       <h1 class="text-center subHomeworks" >Obecnie trwające</h1>
-      <div *ngFor="let quiz of this.currentHomeworks; let i=index">
+      <div *ngFor="let homework of this.currentHomeworks; let i=index">
         <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
       </div>
     </div>
   </div>
   <div class="homeworksDiv" *ngIf="whatIsCurrentlyShowed() === 'finishedHomeworks'">
     <h1 class="text-center subHomeworks">Zakończone zadania</h1>
-    <div *ngFor="let quiz of this.finishedHomeworks; let i=index">
+    <div *ngFor="let homework of this.finishedHomeworks; let i=index">
       <app-homework-finished [homeworkSet]="homework" [iteratorSet]="i"></app-homework-finished>
     </div>
   </div>

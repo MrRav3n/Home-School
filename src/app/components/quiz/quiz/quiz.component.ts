@@ -16,15 +16,10 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizService.getAllQuizes().subscribe(res => {
-      this.quizes = res.quizes;
-      this.quizService.getQUizAnswers(this.quizes[0].id).subscribe(res2 => {
-        console.log(res2);
-      });
       console.log(res);
+      this.quizes = res;
     });
-
-
   }
-
-
 }
+
+

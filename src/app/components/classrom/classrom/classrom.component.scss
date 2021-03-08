@@ -19,7 +19,7 @@
   position: relative;
 }
 .subjectToChoose {
-  font-size: 22px;
+  font-size: 18px;
   background: orange;
   cursor: pointer;
   clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
@@ -53,7 +53,7 @@
   transition: all 0.3s;
 }
 .showCode h2 {
-  font-size: 29px;
+  font-size: 25px;
 }
 .showCode:hover {
   background: #ff8e00;

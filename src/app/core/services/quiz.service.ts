@@ -18,26 +18,25 @@ export class QuizService {
   ) { }
 
   createQuiz(quiz) {
-    this.http.post(this.api + 'Quizes/create', quiz).subscribe( () => {
+    this.http.post(this.api + 'Quizes/createQuiz', quiz).subscribe( () => {
       this.toastr.success('Pomyślnie dodano nowy quiz', 'Udało się!');
     });
   }
+
   getAllQuizes(): Observable<any> {
-    return this.http.get(this.api + `Quizes/getAllQuizes/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`);
+    return this.http.get(this.api + `Quizes/getAllQuizesForSubject/${this.main.currentClassrom.id}/${this.main.currentSubject.id}`);
   }
 
   getQuizQuestions(quizID): Observable<any> {
-    return this.http.get(this.api + `Quizes/getAllQuizes/${this.main.currentClassrom.id}/${quizID}`);
+    return this.http.get(this.api + `Quizes/getQuizQuestions/${this.main.currentClassrom.id}/${quizID}`);
   }
 
-  getQUizAnswers(quizID): Observable<any>  {
-    return this.http.get(this.api + `Quizes/getQuizAnswers/${this.main.currentClassrom.id}/${quizID}`);
+  getQuizAnswers(quizID): Observable<any> {
+    return this.http.get(this.api + `Quizes/getAnswersForQuizId/${this.main.currentClassrom.id}/${this.main.currentSubject.id}/${quizID}`);
   }
 
-  completeQuiz(answers) {
+  completeQuiz(answers): Observable<any> {
     answers.classId = this.main.currentClassrom.id;
-    this.http.post(this.api + 'Quizes/completeQuiz', answers).subscribe( () => {
-      this.toastr.success('Pomyślnie zakończono quiz', 'Udało się!');
-    });
+    return this.http.post(this.api + 'Quizes/completeQuiz', answers);
   }
 }

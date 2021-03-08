@@ -31,6 +31,7 @@ export class MainService {
 
   loginViaToken() {
     return this.http.get(this.api + 'UserAuth/loginviatoken', { headers: errorInterceptorSkip }).subscribe((res: UserServerResponse) => {
+      console.log(res);
       this.shared.loading = false;
       this.setUserDataAndToken(res);
       this.redirect();

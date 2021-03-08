@@ -3,6 +3,7 @@ import { Homework } from '../../../core/models/Homework';
 import * as moment from 'moment';
 import { QuizService } from '../../../core/services/quiz.service';
 import { MainService } from '../../../core/services/main.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-single-quiz',
@@ -23,13 +24,15 @@ export class SingleQuizComponent implements OnInit {
   endTime;
   questions;
   selectedAnswers = [];
-  answers;
+  testWrittingAnswers;
+  usersAnswers;
   constructor(
     private quizService: QuizService,
     public main: MainService,
+    private toastr: ToastrService
   ) { }
-  setHomeworkData(hom) {
-    this.quiz = hom;
+  setHomeworkData(quiz) {
+    this.quiz = quiz;
     this.startTime = moment(this.quiz.startDate).format('YYYY-MM-DD HH:mm:ss');
     this.endTime = moment(this.quiz.finishDate).format('YYYY-MM-DD HH:mm:ss');
   }
@@ -58,6 +61,16 @@ export class SingleQuizComponent implements OnInit {
       quizId: this.quiz.id,
       answers: this.selectedAnswers
     };
-    this.quizService.completeQuiz(completedQuiz);
+    this.quizService.completeQuiz(completedQuiz).subscribe( () => {
+      this.toastr.success('Pomyślnie zakończono quiz', 'Udało się!');
+      this.quiz.status = 'NOACTIVE';
+    });
+  }
+
+  showAnswers() {
+    this.quizService.getQuizAnswers(this.quiz.id).subscribe(answers => {
+      console.log(answers);
+      this.usersAnswers = answers;
+    });
   }
 }

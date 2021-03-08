@@ -1,7 +1,7 @@
 <form [formGroup]="questionForm" class="row justify-content-around p-md-3 p-0">
   <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
     <div class="form-group col-12 p-0">
-      <h3 class="text-white termin">Treść pytania</h3>
+      <h3 class="termin">Treść pytania</h3>
       <label for='question'></label>
       <textarea class="form-control p-2 m-0" id="question" rows="4" formControlName="question" placeholder="Treść pytania"></textarea>
       <div *ngIf="questionForm.controls.question.invalid && submitted" class="alert alert-danger">
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-12 mb-md-5 col-md-5 rrow justify-content-center align-items-center pickerDiv p-0 m-0">
-      <h3 class="text-white termin">Poprawna odpowiedź</h3>
+      <h3 class="termin">Poprawna odpowiedź</h3>
       <label for='correctAnswer'></label>
       <input type="text" class="form-control" placeholder="Poprawna odpowiedź" name="name" id='correctAnswer' required formControlName="correctAnswer"/>
       <div *ngIf="questionForm.controls.correctAnswer.invalid && submitted" class="alert alert-danger">
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
-      <h3 class="text-white termin">Niepoprawna odpowiedź</h3>
+      <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer1'></label>
       <input type="text" class="form-control" placeholder="Niepoprawna odpowiedź" name="name" id='incorrectAnswer1' required formControlName="incorrectAnswer1"/>
       <div *ngIf="questionForm.controls.incorrectAnswer1.invalid && submitted" class="alert alert-danger">
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
-      <h3 class="text-white termin">Niepoprawna odpowiedź</h3>
+      <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer2'></label>
       <input type="text" class="form-control" placeholder="Niepoprawna odpowiedź" name="name" id='incorrectAnswer2' required formControlName="incorrectAnswer2"/>
       <div *ngIf="questionForm.controls.incorrectAnswer2.invalid && submitted" class="alert alert-danger">
@@ -33,7 +33,7 @@
       </div>
     </div>
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
-      <h3 class="text-white termin">Niepoprawna odpowiedź</h3>
+      <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer3'></label>
       <input type="text" class="form-control" placeholder="Niepoprawna odpowiedź" name="name" id='incorrectAnswer3' required formControlName="incorrectAnswer3"/>
       <div *ngIf="questionForm.controls.incorrectAnswer3.invalid && submitted" class="alert alert-danger">

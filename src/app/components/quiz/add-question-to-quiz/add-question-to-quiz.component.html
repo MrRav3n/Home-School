@@ -1,5 +1,6 @@
 <form [formGroup]="questionForm" class="row justify-content-around p-md-3 p-0">
   <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
+
     <div class="form-group col-12 p-0">
       <h3 class="termin">Treść pytania</h3>
       <label for='question'></label>
@@ -8,6 +9,7 @@
         Podaj treść pytania.
       </div>
     </div>
+
     <div class="col-12 mb-md-5 col-md-5 rrow justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="termin">Poprawna odpowiedź</h3>
       <label for='correctAnswer'></label>
@@ -16,6 +18,7 @@
         Podaj nazwę zadania.
       </div>
     </div>
+
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer1'></label>
@@ -24,6 +27,7 @@
         Podaj niepoprawną odpowiedź.
       </div>
     </div>
+
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer2'></label>
@@ -32,6 +36,7 @@
         Podaj niepoprawną odpowiedź.
       </div>
     </div>
+
     <div class="col-12 mb-md-5 col-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="termin">Niepoprawna odpowiedź</h3>
       <label for='incorrectAnswer3'></label>
@@ -41,5 +46,7 @@
       </div>
     </div>
   </div>
-  <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewQuestion()" [ngClass]="{'green': confirmed}">Zatwierdź</button>
+
+  <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewQuestion()" [ngClass]="{'green': formConfirmed}">Zatwierdź</button>
+
 </form>

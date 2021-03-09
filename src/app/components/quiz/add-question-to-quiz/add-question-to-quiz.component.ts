@@ -6,13 +6,12 @@ import { FormControl, FormGroup, Validators  } from '@angular/forms';
   templateUrl: './add-question-to-quiz.component.html',
   styleUrls: ['./add-question-to-quiz.component.scss']
 })
-export class AddQuestionToQuizComponent implements OnInit, OnDestroy {
+
+export class AddQuestionToQuizComponent implements OnInit {
   @Output() question = new EventEmitter();
   questionForm: FormGroup;
   submitted = false;
-  confirmed = false;
-
-  constructor() { }
+  formConfirmed = false;
 
   ngOnInit(): void {
     this.questionForm = new FormGroup({
@@ -24,14 +23,11 @@ export class AddQuestionToQuizComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {}
   addNewQuestion() {
     this.submitted = true;
     if (this.questionForm.valid) {
-
-      this.confirmed = true;
+      this.formConfirmed = true;
       this.question.emit(this.questionForm.value);
-      this.ngOnDestroy();
     }
   }
 

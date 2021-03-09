@@ -17,6 +17,7 @@ export class ClassService {
     responseType: 'arraybuffer' as 'json',
     observe: 'response',
   });
+
   constructor(
     private http: HttpClient,
     private toastr: ToastrService,

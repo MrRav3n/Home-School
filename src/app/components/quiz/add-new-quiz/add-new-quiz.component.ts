@@ -10,14 +10,16 @@ declare var jQuery: any;
   templateUrl: './add-new-quiz.component.html',
   styleUrls: ['./add-new-quiz.component.scss']
 })
+
 export class AddNewQuizComponent implements OnInit {
-  @ViewChild('startDate') startDate;
-  @ViewChild('finishDate') finishDate;
+  @ViewChild('startDate') quizStartDate;
+  @ViewChild('finishDate') quizFinishDate;
   quizQuestionsCount = [];
   quizForm: FormGroup;
   submitted = false;
   questions = [];
   showAddQuestion = false;
+
   constructor(
     private main: MainService,
     private quizService: QuizService
@@ -44,11 +46,11 @@ export class AddNewQuizComponent implements OnInit {
     })(jQuery);
   }
 
-  addNewHomework() {
+  addNewQuiz() {
     this.submitted = true;
-    const startDate = moment(this.startDate.nativeElement.value).toISOString();
+    const startDate = moment(this.quizStartDate.nativeElement.value).toISOString();
     this.quizForm.patchValue({startDate});
-    const finishDate = moment(this.finishDate.nativeElement.value).toISOString();
+    const finishDate = moment(this.quizFinishDate.nativeElement.value).toISOString();
     this.quizForm.patchValue({finishDate});
     if (this.quizForm.valid) {
       this.quizForm.addControl('questions', new FormControl(this.questions));
@@ -63,9 +65,10 @@ export class AddNewQuizComponent implements OnInit {
     this.submitted = false;
   }
 
-  addQuestion() {
+  startAddingQuestion() {
     this.showAddQuestion = true;
   }
+
   addQuestionToQuiz(question) {
     if (question) {
       this.questions.push(question);

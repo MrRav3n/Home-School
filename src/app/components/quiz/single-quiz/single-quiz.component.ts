@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Homework } from '../../../core/models/Homework';
 import * as moment from 'moment';
 import { QuizService } from '../../../core/services/quiz.service';
 import { MainService } from '../../../core/services/main.service';
@@ -10,7 +9,8 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './single-quiz.component.html',
   styleUrls: ['./single-quiz.component.scss']
 })
-export class SingleQuizComponent implements OnInit {
+
+export class SingleQuizComponent {
   @Input() set quizSet(quiz) {
     this.setHomeworkData(quiz);
   }
@@ -26,18 +26,19 @@ export class SingleQuizComponent implements OnInit {
   selectedAnswers = [];
   testWrittingAnswers;
   usersAnswers;
+
   constructor(
     private quizService: QuizService,
     public main: MainService,
     private toastr: ToastrService
   ) { }
+
   setHomeworkData(quiz) {
     this.quiz = quiz;
     this.startTime = moment(this.quiz.startDate).format('YYYY-MM-DD HH:mm:ss');
     this.endTime = moment(this.quiz.finishDate).format('YYYY-MM-DD HH:mm:ss');
   }
-  ngOnInit(): void {
-  }
+
   addFocusClass() {
     if (this.clickedStatus) {
       setTimeout(() => this.clickedStatus = !this.clickedStatus, 400);
@@ -45,10 +46,10 @@ export class SingleQuizComponent implements OnInit {
       this.clickedStatus = !this.clickedStatus;
     }
   }
+
   startTest() {
     this.quizService.getQuizQuestions(this.quiz.id).subscribe(res => {
       this.questions = res;
-      console.log(res);
     });
   }
 
@@ -69,7 +70,6 @@ export class SingleQuizComponent implements OnInit {
 
   showAnswers() {
     this.quizService.getQuizAnswers(this.quiz.id).subscribe(answers => {
-      console.log(answers);
       this.usersAnswers = answers;
     });
   }

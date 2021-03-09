@@ -1,5 +1,6 @@
 <form [formGroup]="quizForm" class="row justify-content-around p-md-3 p-0">
   <div class="col-12 row m-0 p-0 headerDiv p-3 justify-content-between align-items-end">
+
     <div class="form-group col-12 mb-md-5 p-0">
       <h3 class="text-white termin">Nazwa zadania</h3>
       <label for='numberPeople'></label><input type="email" class="form-control" placeholder="Nazwa" name="name" id='numberPeople' required formControlName="name"/>
@@ -7,18 +8,20 @@
         Podaj nazwę zadania.
       </div>
     </div>
+
     <div class="col-md-4 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="text-white termin text-left mr-3">Data rozpoczęcia testu </h3>
       <div id="startDatePicker">   </div>
-      <input type="hidden" id="startDate" value="" #startDate>
+      <input type="hidden" id="startDate" value="" #quizStartDate>
       <div *ngIf="quizForm.controls.startDate.invalid && submitted" class="alert alert-danger">
         Podaj termin rozpoczęcia testu.
       </div>
     </div>
+
     <div class="col-md-4 col-12 mb-md-5 row justify-content-center align-items-center pickerDiv p-0 m-0">
       <h3 class="text-white termin text-left mr-3">Data zakończenia testu </h3>
       <div id="finishDatePicker">   </div>
-      <input type="hidden" id="endDate" value="" #finishDate>
+      <input type="hidden" id="endDate" value="" #quizFinishDate>
       <div *ngIf="quizForm.controls.finishDate.invalid && submitted" class="alert alert-danger">
         Podaj termin zakończenia testu.
       </div>
@@ -28,10 +31,10 @@
   <div class="form-group col-12">
     <app-add-question-to-quiz *ngIf="showAddQuestion" (question)="addQuestionToQuiz($event)"></app-add-question-to-quiz>
     <div class="row p-0 m-0 justify-content-center col-12">
-      <button class="formBtn" (click)="addQuestion()">Dodaj pytanie</button>
+      <button class="formBtn" (click)="startAddingQuestion()">Dodaj pytanie</button>
     </div>
-
   </div>
 
-  <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewHomework()">Dodaj</button>
+  <button type="submit" class="formBtn col-6 mb-2 mb-md-0 col-md-4" (click)="addNewQuiz()">Dodaj test</button>
+
 </form>

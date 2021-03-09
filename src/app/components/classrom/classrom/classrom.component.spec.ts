@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClassromComponent } from './classrom.component';
 
@@ -6,7 +6,7 @@ describe('ClassromComponent', () => {
   let component: ClassromComponent;
   let fixture: ComponentFixture<ClassromComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClassromComponent ]
     })

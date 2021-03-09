@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TextChatService } from '../../../core/services/text-chat.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MainService } from '../../../core/services/main.service';
+import { TextChatMessage } from '../../../core/models/TextChatMessage';
 
 @Component({
   selector: 'app-text-chat',
@@ -10,9 +11,10 @@ import { MainService } from '../../../core/services/main.service';
 })
 export class TextChatComponent implements OnInit, OnDestroy {
   messageForm: FormGroup;
-  messages;
-  loadingMessages = true;
+  messages: TextChatMessage[];
+  loader = true;
   timer;
+  userData;
 
   constructor(
     private tcService: TextChatService,
@@ -28,6 +30,41 @@ export class TextChatComponent implements OnInit, OnDestroy {
     this.timer = setInterval(() => {
       this.getNewerMessages();
     }, 5000);
+    const {name, surrname} = this.main.user;
+    this.userData = {name, surrname};
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timer);
+  }
+
+  getNewerMessages() {
+    this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(messages => {
+      if (messages) {
+        for (const message of messages) {
+          this.messages.push(message);
+        }
+      }
+    });
+  }
+
+  getLastMessages() {
+    this.tcService.getLastMessages().subscribe(messages => {
+      this.loader = false;
+      this.messages = messages;
+    });
+  }
+
+  getOlderMessages() {
+    this.loader = true;
+    this.tcService.getOlderMessages(this.messages[this.messages.length - 1].messageID).subscribe(messages => {
+      if (messages) {
+        for (const message of messages) {
+          this.messages.push(message);
+        }
+      }
+      this.loader = false;
+    });
   }
 
   sendMessage() {
@@ -40,43 +77,9 @@ export class TextChatComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    clearInterval(this.timer);
-  }
-
-  getNewerMessages() {
-    this.tcService.getNewerMessages(this.messages[0].messageID).subscribe(res => {
-      if (res) {
-        for (const message of res.messages) {
-          this.messages.push(message);
-        }
-      }
-
-    });
-  }
-
-  getLastMessages() {
-    this.tcService.getLastMessages().subscribe(res => {
-      this.loadingMessages = false;
-      this.messages = res.messages;
-      const objDiv = document.getElementById('chatDiv');
-      objDiv.addEventListener('scroll', () => {
-        if (objDiv.scrollTop < 5 && !this.loadingMessages) {
-          this.getOlderMessages();
-        }
-      });
-    });
-  }
-
-  getOlderMessages() {
-    this.loadingMessages = true;
-    this.tcService.getOlderMessages(this.messages[this.messages.length - 1].messageID).subscribe(res => {
-      if (res.messages) {
-        for (const message of res.messages) {
-          this.messages.push(message);
-        }
-      }
-      this.loadingMessages = false;
-    });
+  doestUserDataMatch(name, surrname) {
+    if (name === this.userData.name && surrname === this.userData.surrname) {
+      return true;
+    }
   }
 }

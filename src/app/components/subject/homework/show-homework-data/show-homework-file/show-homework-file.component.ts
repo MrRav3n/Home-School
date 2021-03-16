@@ -52,12 +52,12 @@ export class ShowHomeworkFileComponent {
   }
 
   downloadAllFiles() {
-    for (const homeworkID of this.homework.files) {
+    for (const fileID of this.homework.files) {
       const fileData = {
         homeworkID: this.homework.id,
         classID: this.main.currentClassrom.id,
         subjectID: this.main.currentSubject.id,
-        fileID: homeworkID
+        fileID
       };
       this.classService.returnFileFromHomework(fileData).subscribe((res: any) => {
         const type = res.headers.get('Content-Type');

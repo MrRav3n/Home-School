@@ -13,10 +13,6 @@ import { Subject } from '../models/Subject';
 })
 export class ClassService {
   api = this.shared.apiUrl;
-  fileApiHeaders = new HttpHeaders({
-    responseType: 'arraybuffer' as 'json',
-    observe: 'response',
-  });
 
   constructor(
     private http: HttpClient,
@@ -37,33 +33,29 @@ export class ClassService {
     return this.http.put(this.api + 'Mark', mark);
   }
 
-  addUserToClass(userToAdd) {
-    return this.http.put(this.api + 'Class/addMember', userToAdd);
-  }
-
   addNewHomework(homework) {
     return this.http.post<Homework>(this.api + 'Homework/createHomework', homework);
   }
 
   returnFileFromHomework(homworkData) {
-    return this.http.post<HttpResponse<any>>(
-      this.shared.apiFilesUrl + 'HomeworkFiles/returnFileFromHomework', homworkData, {headers: this.fileApiHeaders});
+    return this.http.post(
+      this.shared.apiFilesUrl + 'HomeworkFiles/returnFileFromHomework', homworkData, {responseType: 'blob', observe: 'response'});
   }
 
   returnFileFromResponse(responseData): Observable<any>  {
-    return this.http.post<HttpResponse<any>>(
-      this.shared.apiFilesUrl + 'HomeworkFiles/returnFileFromResponse', responseData, {headers: this.fileApiHeaders});
+    return this.http.post(
+      this.shared.apiFilesUrl + 'HomeworkFiles/returnFileFromResponse', responseData, {responseType: 'blob', observe: 'response'});
   }
 
   addNewFileToResponse(classID, homeworkID, fileToSend): Observable<any> {
-    return this.http.post(this.shared.apiFilesUrl + 'HomeworkFiles/uploadToResponse/${classID}/${homeworkID}', fileToSend, {
+    return this.http.post(this.shared.apiFilesUrl + `HomeworkFiles/uploadToResponse/${classID}/${homeworkID}`, fileToSend, {
       reportProgress: true,
       observe: 'events'
     });
   }
 
   addNewFileToHomework(classID: string, subjectID: string, fileToSend): Observable<any> {
-    return this.http.post(this.shared.apiFilesUrl + 'HomeworkFiles/uploadToHomework/${classID}/${subjectID}', fileToSend, {
+    return this.http.post(this.shared.apiFilesUrl + `HomeworkFiles/uploadToHomework/${classID}/${subjectID}`, fileToSend, {
       reportProgress: true,
       observe: 'events',
     });
